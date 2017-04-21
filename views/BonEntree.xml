@@ -1,43 +1,39 @@
 <odoo>
     <data>
-
-        <record model="ir.actions.act_window" id="bonentree_list_action">
+        <record id="bonentree_list_action" model="ir.actions.act_window">
             <field name="name">Bon d'entrée </field>
             <field name="res_model">gctjara.bonentree</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="context"
-                eval="{'search_default_filter': 1,'search_default_by_responsible': 1}" />
+            <!-- <field
+                eval="{'search_default_filter': 1,'search_default_by_responsible': 1}" name="context"/> -->
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer le première Bon d'entrée</p>
             </field>
         </record>
-
-        <record model="ir.ui.view" id="bonentree_form_view">
+        <record id="bonentree_form_view" model="ir.ui.view">
             <field name="name">bonentree.form</field>
             <field name="model">gctjara.bonentree</field>
             <field name="arch" type="xml">
                 <form string="Bon d'entrée Form">
                     <sheet>
                         <group>
-                            <field name="numero" />
-                            <field name="date" />
+                            <field name="numero"/>
+                            <field name="date"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
-        
-        <record model="ir.ui.view" id="bonentree_tree_view">
+        <record id="bonentree_tree_view" model="ir.ui.view">
             <field name="name">bonentree.tree</field>
             <field name="model">gctjara.bonentree</field>
             <field name="arch" type="xml">
-                <tree string="Bon d'entrée" >
-                    <field name="numero" />
-                    <field name="date" />
+                <tree string="Bon d'entrée">
+                    <field name="numero"/>
+                    <field name="date"/>
                 </tree>
             </field>
         </record>
-        
     </data>
 </odoo>

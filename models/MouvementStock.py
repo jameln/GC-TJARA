@@ -7,25 +7,25 @@ class MouvementStock(models.Model):
     _name = 'gctjara.mvtstock'
     
     numero = fields.Char('Numero mvt')
-    date=fields.Date('Date de Mvt' , 
+    date = fields.Date('Date de Mvt' ,
                      default=fields.datetime.now() 
         )
     
-    bonentree_id= fields.Many2one(
-        string='Bon d\'entrée',
-        comodel_name='gctjara.bonentree',
-         
-        )
-    
-    bonlivaison_id= fields.Many2one(
-        string='Bon de livraison',
-        comodel_name='gctjara.bonlivraison',
-         
-        )
-    
-    
-    stock_id = fields.Many2one(
-        string='Bon d\'entrée',
-        comodel_name='gctjara.bonentree',
-         
-        )
+#     bonentree_id = fields.Many2one(
+#         string='Bon d\'entrée',
+#         comodel_name='gctjara.bonentree',
+#          
+#         )
+#     
+#     bonlivaison_id = fields.Many2one(
+#         string='Bon de livraison',
+#         comodel_name='gctjara.bonlivraison',
+#          
+#         )
+#     
+#     
+#     stock_id = fields.Many2one(
+#         string='Bon d\'entrée',
+#         comodel_name='gctjara.bonentree',
+#          
+#         )

@@ -17,20 +17,20 @@ class CommandeClient(models.Model):
                             required=True,
                             default=fields.datetime.now(),
                             help='Date   reception  de la commande ')
-     
-     facture_id =fields.One2many( string='Lignes Facture',
-                           comodel_name='gctjara.facturevente',
-                           inverse_name='commande_id',
-                           )
-     
-     lignecmd_id =fields.One2many( string='Lignes commande',
-                           comodel_name='gctjara.lignecmdvente',
-                           inverse_name='commande_id',
-                           )
-     
-     client_id=fields.Many2one(   string="Client",
-                                  comodel_name='gctjara.client'
-                               )
-     
-     
-     
+#      
+#      facture_id = fields.One2many(string='Lignes Facture',
+#                            comodel_name='gctjara.facturevente',
+#                            inverse_name='commande_id',
+#                            )
+#      
+#      lignecmd_id = fields.One2many(string='Lignes commande',
+#                            comodel_name='gctjara.lignecmdvente',
+#                            inverse_name='commande_id',
+#                            )
+#      
+#      client_id = fields.Many2one(string="Client",
+#                                   comodel_name='gctjara.client'
+#                                )
+#      
+#      
+#      

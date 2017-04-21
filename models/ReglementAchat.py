@@ -10,17 +10,17 @@ class ReglementAchat(models.Model):
                          required=True,
                          )
     
-    date=fields.Date( string='Date règlement',
+    date = fields.Date(string='Date règlement',
                       required=True,
                       default=fields.datetime.now(),
                       help='La date de création de la facture'
                       )
     
-    datevaleur=fields.Date( string='Date valeur',
+    datevaleur = fields.Date(string='Date valeur',
                             default=fields.datetime.now(),
                             )
     
-    daterecption=fields.Date(string='Date réception',
+    daterecption = fields.Date(string='Date réception',
                              default=fields.datetime.now(),
                              )
     
@@ -41,15 +41,15 @@ class ReglementAchat(models.Model):
         digits=(16, 3)
     )
     
-     
-    lignereglementachat_id=fields.One2many(
-         string='Ligne règlement',
-         index=True,
-         comodel_name='gctjara.ligneregachat',
-         inverse_name='reglement_id',
-         
-         )
-     
-
-   
+#      
+#     lignereglementachat_id = fields.One2many(
+#          string='Ligne règlement',
+#          index=True,
+#          comodel_name='gctjara.ligneregachat',
+#          inverse_name='reglement_id',
+#          
+#          )
+#      
+# 
+#    
     

@@ -37,28 +37,28 @@ class FactureAchat(models.Model):
   
      valid = fields.Boolean(
         string='Ne pas annuler',
-        default=False
+        default=True
     )
-     lignes_id = fields.One2many(
-        string='Stock',
-        comodel_name='gctjara.lignefactachat',
-        inverse_name='facture_id',
-    )
-     
-     lignefacturevente_id = fields.One2many(
-        string='Facture',
-        required=True,
-        index=True,
-        comodel_name='gctjara.lignefactvente',
-        inverse_name='facture_id'
-    )
-     
-     lignereglementachat_id=fields.One2many(
-         string='Règlement',
-         comodel_name='gctjara.ligneregachat',
-         inverse_name='facture_id',
-         )
-     
+#      lignes_id = fields.One2many(
+#         string='Stock',
+#         comodel_name='gctjara.lignefactachat',
+#         inverse_name='facture_id',
+#     )
+#      
+#      lignefacturevente_id = fields.One2many(
+#         string='Facture',
+#         required=True,
+#         index=True,
+#         comodel_name='gctjara.lignefactvente',
+#         inverse_name='facture_id'
+#     )
+#      
+#      lignereglementachat_id = fields.One2many(
+#          string='Règlement',
+#          comodel_name='gctjara.ligneregachat',
+#          inverse_name='facture_id',
+#          )
+#      
 
      state = fields.Selection(
         string='Etat',
@@ -73,32 +73,32 @@ class FactureAchat(models.Model):
     )
 
     
-     
-     fournisseur_id=fields.Many2one('gctjara.fournisseur',
-                                    string="Fournisseur",
-                                    ondelete='restrict'
-                                    )
-     
-     commande_id=fields.Many2one(   string="Commande",
-                                    ondelete='restrict',
-                                    comodel_name='gctjara.cmdfournisseur'
-                                    )
-       
-       
-    
-     attachment=fields.One2many('ir.attachment',
-                                'facture_rel',
-                                 string='Pièce jointe',
-                                 )
-     
-class Attachment(models.Model):
-
-     _inherit = 'ir.attachment'
-     _name = 'ir.attachment'
-     
-     facture_rel = fields.Many2one(
-        'gctjara.factureAchat',
-        string="Facture"
-    )     
+#      
+#      fournisseur_id = fields.Many2one('gctjara.fournisseur',
+#                                     string="Fournisseur",
+#                                     ondelete='restrict'
+#                                     )
+#      
+#      commande_id = fields.Many2one(string="Commande",
+#                                     ondelete='restrict',
+#                                     comodel_name='gctjara.cmdfournisseur'
+#                                     )
+#        
+#        
+#     
+#      attachment = fields.One2many('ir.attachment',
+#                                 'facture_rel',
+#                                  string='Pièce jointe'
+#                                  )
+#       
+# class Attachment(models.Model):
+#  
+#      _inherit = 'ir.attachment'
+#      _name = 'ir.attachment'
+#       
+#      facture_rel = fields.Many2one(
+#         'gctjara.factureAchat',
+#         string="Facture"
+#     )     
 
      

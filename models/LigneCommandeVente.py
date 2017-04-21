@@ -2,7 +2,7 @@
 
 from odoo import models, fields, api
 
-class LignefactureVente(models.Model):
+class LigneCommandeVente(models.Model):
     
    _name = 'gctjara.lignecmdvente'
    
@@ -13,16 +13,16 @@ class LignefactureVente(models.Model):
         digits=(16, 3)
     )
    
-
-   commande_id = fields.Many2one(
-        required=True,
-        index=True,
-        comodel_name='gctjara.cmdclient',
-        
-    )
-
-  
-   embalageproduit_id =fields.Many2one(
-        comodel_name='gctjara.ligneprodemballage',
-        string='Emballage'
-    )
+# 
+#    commande_id = fields.Many2one(
+#         required=True,
+#         index=True,
+#         comodel_name='gctjara.cmdclient',
+#         
+#     )
+# 
+#   
+#    embalageproduit_id = fields.Many2one(
+#         comodel_name='gctjara.ligneprodemballage',
+#         string='Emballage'
+#     )

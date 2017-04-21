@@ -1,22 +1,42 @@
 <odoo>
     <data>
-        <!-- <template id="listing"> -->
-        <!--   <ul> -->
-        <!--     <li t-foreach="objects" t-as="object"> -->
-        <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
-        <!--         <t t-esc="object.display_name"/> -->
-        <!--       </a> -->
-        <!--     </li> -->
-        <!--   </ul> -->
-        <!-- </template> -->
-        <!-- <template id="object"> -->
-        <!--   <h1><t t-esc="object.display_name"/></h1> -->
-        <!--   <dl> -->
-        <!--     <t t-foreach="object._fields" t-as="field"> -->
-        <!--       <dt><t t-esc="field"/></dt> -->
-        <!--       <dd><t t-esc="object[field]"/></dd> -->
-        <!--     </t> -->
-        <!--   </dl> -->
-        <!-- </template> -->
+        <record id="cmdfournisseur_list_action" model="ir.actions.act_window">
+            <field name="name">Commande fournisseur </field>
+            <field name="res_model">gctjara.cmdfournisseur</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Créer la première commande</p>
+            </field>
+        </record>
+        <record id="cmdfournisseur_form_view" model="ir.ui.view">
+            <field name="name">cmdfournisseur.form</field>
+            <field name="model">gctjara.cmdclient</field>
+            <field name="arch" type="xml">
+                <form string="Commande fournisseur">
+                    <sheet>
+                        <group>
+                            <field name="numerocmdc"/>
+                            <field name="datecommande"/>
+                            <field name="datereception"/>
+                          <!--   <field name="fournisseur_id"/> -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="cmdfournisseur_tree_view" model="ir.ui.view">
+            <field name="name">cmdfournisseur.tree</field>
+            <field name="model">gctjara.cmdfournisseur</field>
+            <field name="arch" type="xml">
+                <tree string="Commande fournisseur">
+                    <field name="numerocmdc"/>
+                    <field name="datecommande"/>
+                    <field name="datereception"/>
+                  <!--   <field name="fournisseur_id"/> -->
+                </tree>
+            </field>
+        </record>
     </data>
 </odoo>

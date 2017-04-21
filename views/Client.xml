@@ -1,90 +1,82 @@
 <odoo>
     <data>
-
-        <record model="ir.actions.act_window" id="client_list_action">
+        <record id="client_list_action" model="ir.actions.act_window">
             <field name="name">Client </field>
             <field name="res_model">gctjara.client</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="context"
-                eval="{'search_default_filter': 1,'search_default_by_responsible': 1}" />
+            <!-- <field
+                eval="{'search_default_filter': 1,'search_default_by_responsible': 1}" name="context"/> -->
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer votre première Client</p>
             </field>
         </record>
-
-        <record model="ir.ui.view" id="client_form_view">
+        <record id="client_form_view" model="ir.ui.view">
             <field name="name">client.form</field>
             <field name="model">gctjara.client</field>
             <field name="arch" type="xml">
                 <form string="Clients">
-
                     <sheet>
                         <group>
-                        <field name="image" widget="image" class="oe_left oe_avatar"/>
-                            
-                            <field name="name" />
-                             <field name="company_name" />
-                             <field name="email" />
-                             <field name="phone" />
-                             <field name="fax" />
-                             <field name="mobile" />
-                             <field name="adresse" />
-                             <field name="street" />
-                             <field name="street2" />
-                             <field name="zip" />
-                             <field name="city" />
-                             <field name="active" />
+                            <field class="oe_left oe_avatar"
+                                name="image" widget="image"/>
+                            <field name="name"/>
+                            <field name="company_name"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="fax"/>
+                            <field name="mobile"/>
+                            <field name="adresse"/>
+                            <field name="street"/>
+                            <field name="street2"/>
+                            <field name="zip"/>
+                            <field name="city"/>
+                            <field name="active"/>
                         </group>
-                    </sheet>
-                     <notebook>
-                       
-                            <!-- <page string="Produits" class="oe_page_Title">
-                                <group>
-                                    <field name="produit_id">
-                                        <tree>
-                                           <field name="name" String="Produit"/>
-                                          
-                                        </tree>
-                                    </field>
-                                </group>
-                            </page> -->
-                            <page string="Factures" class="oe_page_Title">
-                                <group>
-                                    <field name="facture_id">
-                                        <tree>
-                                           <field name="numero" String="N° Factures" />
-                                          
-                                        </tree>
-                                    </field>
-                                </group>
-                            </page>
-                              <page string="Commandes" class="oe_page_Title">
-                                <group>
-                                    <field name="commandeclient_id">
-                                        <tree>
-                                           <field name="name" String="Emballage"/>
-                                           <field name="quantite" String="Quantité"/>
-                                          
-                                        </tree>
-                                    </field>
-                                </group>
-                            </page>
-                        </notebook>
+                    <!-- </sheet>
+                    <notebook>
+                        <page class="oe_page_Title" string="Produits">
+                            <group>
+                                <field name="produit_id">
+                                    <tree>
+                                    <field String="Produit" name="name"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page class="oe_page_Title" string="Factures">
+                            <group>
+                                <field name="facture_id">
+                                    <tree>
+                                    <field String="N° Factures" name="numero"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page class="oe_page_Title" string="Commandes">
+                            <group>
+                                <field name="commandeclient_id">
+                                    <tree>
+                                    <field String="Emballage" name="name"/>
+                                    <field String="Quantité" name="quantite"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook> -->
                 </form>
             </field>
         </record>
-        
-        <record model="ir.ui.view" id="client_tree_view">
+        <record id="client_tree_view" model="ir.ui.view">
             <field name="name">client.tree</field>
             <field name="model">gctjara.client</field>
             <field name="arch" type="xml">
-                <tree string="Client" >
-                      <field name="company_name" />
-                      <field name="email" />
-                      <field name="phone" />
-                      <field name="mobile" />
-                      <field name="active" />
+                <tree string="Client">
+                    <field name="company_name"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="mobile"/>
+                    <field name="active"/>
                 </tree>
             </field>
         </record>

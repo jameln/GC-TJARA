@@ -13,22 +13,22 @@ class LignefactureVente(models.Model):
         default=1.0,
         digits=(16, 3)
     )
-   
-   stock_id = fields.Many2one(
-        string='Produit',
-        required=True,
-        index=True,
-        comodel_name='gctjara.stock',
-        ondelete='set null'
-    )
-   
-   facture_id = fields.Many2one(
-        required=True,
-        index=True,
-        comodel_name='gctjara.facturevente',
-        ondelete='cascade'
-    )
-   
+#    
+#    stock_id = fields.Many2one(
+#         string='Produit',
+#         required=True,
+#         index=True,
+#         comodel_name='gctjara.stock',
+#         ondelete='set null'
+#     )
+#    
+#    facture_id = fields.Many2one(
+#         required=True,
+#         index=True,
+#         comodel_name='gctjara.facturevente',
+#         ondelete='cascade'
+#     )
+#    
    prix_total = fields.Float(
         string='Prix TTC',
         compute="prixtot",

@@ -2,17 +2,17 @@
 
 from odoo import models, fields, api
 
-class LigneFactureAchat(models.Model):
+class LigneCommandeAchat(models.Model):
    _name = 'gctjara.lignecmdachat'
    
-     
-   commande_id = fields.Many2one(
-        required=True,
-        index=True,
-        comodel_name='gctjara.cmdfournisseur',
-        
-    )
-   embalageproduit_id =fields.Many2one(
-        comodel_name='gctjara.ligneprodemballage',
-        string='Emballage'
-    )
+#      
+#    commande_id = fields.Many2one(
+#         required=True,
+#         index=True,
+#         comodel_name='gctjara.cmdfournisseur',
+#         
+#     )
+#    embalageproduit_id = fields.Many2one(
+#         comodel_name='gctjara.ligneprodemballage',
+#         string='Emballage'
+#     )

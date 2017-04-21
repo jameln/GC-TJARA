@@ -27,16 +27,16 @@ class Produits(models.Model):
         default=fields.datetime.now(),
         )
     
-    description=fields.Text(
+    description = fields.Text(
         string='Description'
         )
     
    
-    prixachat=fields.Float(
+    prixachat = fields.Float(
         string='Prix d\'achat'
         )
     
-    prixvente=fields.Float(
+    prixvente = fields.Float(
         string='Prix de vente'
         )
     
@@ -47,27 +47,27 @@ class Produits(models.Model):
         digits=(16, 3)
     )
     
-    fournisseur_id = fields.One2many(
-        comodel='gctjara.fournisseur',
-        string="Fournisseur",
-        ondelete='restrict',
-        inverse_name='produit_id'
-        )
-    
-    client_id =fields.One2many(
-        comodel='gctjara.client',
-        string="Clients",
-        ondelete='restrict',
-        inverse_name='produit_id'
-        )
-    
-    stock_id =fields.One2many(
-        comodel_name='gctjara.stock',
-        string='Stock',
-        inverse_name='produit_id'
-    )
-    
-    embalageproduit_id =fields.Many2one(
-        comodel_name='gctjara.ligneprodemballage',
-        string='Emballage',
-    )
+#     fournisseur_id = fields.One2many(
+#         comodel='gctjara.fournisseur',
+#         string="Fournisseur",
+#         ondelete='restrict',
+#         inverse_name='produit_id'
+#         )
+#     
+#     client_id = fields.One2many(
+#         comodel='gctjara.client',
+#         string="Clients",
+#         ondelete='restrict',
+#         inverse_name='produit_id'
+#         )
+#     
+#     stock_id = fields.One2many(
+#         comodel_name='gctjara.stock',
+#         string='Stock',
+#         inverse_name='produit_id'
+#     )
+#     
+#     embalageproduit_id = fields.Many2one(
+#         comodel_name='gctjara.ligneprodemballage',
+#         string='Emballage',
+#     )

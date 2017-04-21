@@ -1,0 +1,75 @@
+<odoo>
+    <data>
+        <record id="gctjara_group_ventes" model="res.groups">
+            <field name="name">GC-TJARA / Ventes</field>
+            <field name="comment">Commentaire sur le groupe facturation de vente</field>
+            <field name="category_id" ref="base.module_category_administration"/>
+            <!--<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="users" eval="[(5, ref('base.user_root'))]" />-->
+        </record>
+        <record id="gctjara_group_achats" model="res.groups">
+            <field name="name">GC-TJARA / Achats</field>
+            <field name="comment">Commentaire sur le groupe facturation d'achat</field>
+            <field name="category_id" ref="base.module_category_administration"/>
+            <!--<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="users" eval="[(5, ref('base.user_root'))]" />-->
+        </record>
+        <record id="gctjara_group_admin" model="res.groups">
+            <field name="name">GC-TJARA/ Administrateurs</field>
+            <field name="comment">Commentaire sur le groupe Administrateurs</field>
+            <field name="category_id" ref="base.module_category_administration"/>
+            <!--<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="users" eval="[(5, ref('base.user_root'))]" />-->
+        </record>
+        <record id="gctjara_access_facture_admin" model="ir.model.access">
+            <field name="name">Achats</field>
+            <field name="model_id" ref="model_gctjara_factures_ventes"/>
+            <field name="group_id" ref="gctjara_group_ventes"/>
+            <field eval="True" name="perm_read"/>
+            <field eval="True" name="perm_create"/>
+            <field eval="True" name="perm_write"/>
+            <field eval="True" name="perm_unlink"/>
+            <field eval="True" name="active"/>
+        </record>
+        <record id="gctjara_access_facture_facturation" model="ir.model.access">
+            <field name="name">Ventes</field>
+            <field name="model_id" ref="model_gctjara_factures_achats"/>
+            <field name="group_id" ref="gctjara_group_achats"/>
+            <field eval="True" name="perm_read"/>
+            <field eval="False" name="perm_create"/>
+            <field eval="False" name="perm_write"/>
+            <field eval="False" name="perm_unlink"/>
+            <field eval="True" name="active"/>
+        </record>
+        <record id="gctjara_access_regvente" model="ir.model.access">
+            <field name="name">Règlements ventes</field>
+            <field name="model_id" ref="model_gctjara_reglements_ventes"/>
+            <!--<field name="group_id" ref="res.groups"/>-->
+            <field eval="True" name="perm_read"/>
+            <field eval="True" name="perm_create"/>
+            <field eval="True" name="perm_write"/>
+            <field eval="True" name="perm_unlink"/>
+            <field eval="True" name="active"/>
+        </record>
+        <record id="gctjara_access_regachat" model="ir.model.access">
+            <field name="name">Règlements achats</field>
+            <field name="model_id" ref="model_gctjara_reglements_achats"/>
+            <!--<field name="group_id" ref="res.groups"/>-->
+            <field eval="True" name="perm_read"/>
+            <field eval="True" name="perm_create"/>
+            <field eval="True" name="perm_write"/>
+            <field eval="True" name="perm_unlink"/>
+            <field eval="True" name="active"/>
+        </record>
+        <record id="gctjara_access_produits" model="ir.model.access">
+            <field name="name">produit</field>
+            <field name="model_id" ref="model_gctjara_produits"/>
+            <!--<field name="group_id" ref="res.groups"/>-->
+            <field eval="True" name="perm_read"/>
+            <field eval="True" name="perm_create"/>
+            <field eval="True" name="perm_write"/>
+            <field eval="True" name="perm_unlink"/>
+            <field eval="True" name="active"/>
+        </record>
+    </data>
+</odoo>

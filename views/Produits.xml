@@ -1,93 +1,94 @@
 <odoo>
     <data>
-
-        <record model="ir.actions.act_window" id="produits_list_action">
+        <record id="produits_list_action" model="ir.actions.act_window">
             <field name="name">Produits </field>
             <field name="res_model">gctjara.produits</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="context"
-                eval="{'search_default_filter': 1,'search_default_by_responsible': 1}" />
+            <field name="view_mode">tree,form,graph</field>
+           
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer votre première produits</p>
             </field>
         </record>
-
-        <record model="ir.ui.view" id="produits_form_view">
+        <record id="produits_form_view" model="ir.ui.view">
             <field name="name">produits.form</field>
             <field name="model">gctjara.produits</field>
             <field name="arch" type="xml">
                 <form string="Produits Form">
-
                     <sheet>
                         <group>
-                            <field name="produits" />
-                            <field name="code" />
-                             <field name="dateexpiration" />
-                            <field name="prixachat" />
-                            <field name="prixvente" />
-                            <field name="quantite" />
-                            <field name="description" />
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="dateexpiration"/>
+                            <field name="prixachat"/>
+                            <field name="prixvente"/>
+                            <field name="quantite"/>
+                            <field name="description"/>
                         </group>
                     </sheet>
-                     <notebook>
-                        <page string="Fournisseur" class="oe_page_Title">
-                                <group>
-                                    <field name="fournisseur_id">
-                                        <tree >
-                                            <field name="name" string="Fournisseur" />
-                                            <field name="matriculefiscal" string="Matricule" />
-                                        
-                                        </tree>
-                                        
-                                    </field>
-                                </group>
-                            </page>
-                            <page string="Clients" class="oe_page_Title">
-                                <group>
-                                    <field name="clients_id">
-                                        <tree>
-                                           <field name="name" String="Client"/>
-                                            <field name="company_name" String="Company"/>
-                                        </tree>
-                                    </field>
-                                </group>
-                            </page>
-                            <page string="Stock" class="oe_page_Title">
-                                <group>
-                                    <field name="stock_id">
-                                        <tree>
-                                           <field name="name" String="Stock"/>
-                                          
-                                        </tree>
-                                    </field>
-                                </group>
-                            </page>
-                              <page string="Emballages" class="oe_page_Title">
-                                <group>
-                                    <field name="embalageproduit_id">
-                                        <tree>
-                                           <field name="name" String="Emballage"/>
-                                           <field name="quantite" String="Quantité"/>
-                                          
-                                        </tree>
-                                    </field>
-                                </group>
-                            </page>
-                        </notebook>
+                    <!-- <notebook>
+                        <page class="oe_page_Title" string="Fournisseur">
+                            <group>
+                                <field name="fournisseur_id">
+                                    <tree>
+                                    <field name="name" string="Fournisseur"/>
+                                    <field name="matriculefiscal" string="Matricule"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page class="oe_page_Title" string="Clients">
+                            <group>
+                                <field name="clients_id">
+                                    <tree>
+                                    <field String="Client" name="name"/>
+                                    <field String="Company" name="company_name"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page class="oe_page_Title" string="Stock">
+                            <group>
+                                <field name="stock_id">
+                                    <tree>
+                                    <field String="Stock" name="name"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page class="oe_page_Title" string="Emballages">
+                            <group>
+                                <field name="embalageproduit_id">
+                                    <tree>
+                                    <field String="Emballage" name="name"/>
+                                    <field String="Quantité" name="quantite"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook> -->
                 </form>
             </field>
         </record>
-        
-        <record model="ir.ui.view" id="produits_tree_view">
+        <record id="produits_graph_view" model="ir.ui.view">
+            <field name="name">produits.graph</field>
+            <field name="model">gctjara.produits</field>
+            <field name="arch" type="xml">
+                <graph string="QteProdPart">
+                    <field name="name"/>
+                    <field name="quantite"/>
+                </graph>
+            </field>
+        </record>
+        <record id="produits_tree_view" model="ir.ui.view">
             <field name="name">produits.tree</field>
             <field name="model">gctjara.produits</field>
             <field name="arch" type="xml">
-                <tree string="Poduits Form" >
-                     <field name="produits" />
-                     <field name="code" />
-                     <field name="dateexpiration" />
-                     <field name="quantite" />
+                <tree string="Poduits">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="dateexpiration"/>
+                    <field name="quantite"/>
                 </tree>
             </field>
         </record>

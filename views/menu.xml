@@ -1,37 +1,37 @@
 <odoo>
     <data>
         <!-- TJARA Parent -->
-        <menuitem id="main_menue" name="GC-TJara" />
+        <menuitem id="main_menue" name="GC-TJara"/>
+        
         <!-- Achat -->
-        <menuitem id="achat_menu" name="Achats" parent="main_menue" sequence="1" />
-        <menuitem id="commande_menu" name="Commandes" parent="achat_menu" action="facture_list_action" sequence="2" />
-        <menuitem id="facture_menu" name="Factures" parent="achat_menu" action="factureachat_list_action" sequence="3" />
-        <menuitem id="reglement_menu" name="Règlement achats" parent="achat_menu" action="base.action_partner_form" sequence="4" />
-        <menuitem id="Bonentree_menu" name="Bons d'entrées" parent="achat_menu" action="bonentree_list_action" sequence="5" />
-      
+        <menuitem id="achat_menu" name="Achats" parent="main_menue" sequence="1"/>
+        <menuitem action="cmdfournisseur_list_action" id="commande_menu" name="Commandes" parent="achat_menu" sequence="2"/>
+        <menuitem action="factureachat_list_action" id="facture_menu"  name="Factures" parent="achat_menu" sequence="3"/>
+        <menuitem action="regachat_list_action" id="reglement_menu"   name="Règlement achats" parent="achat_menu" sequence="4"/>
+        <menuitem action="bonentree_list_action" id="Bonentree_menu"  name="Bons d'entrées" parent="achat_menu" sequence="5"/>
         
-         <!-- Vente -->
+        <!-- Vente -->
         <menuitem id="vente_menu" name="Ventes" parent="main_menue" sequence="10"/>
-        <menuitem id="commande_menu" name="Commandes" parent="vente_menu" action="facture_list_action" sequence="11" />
-        <menuitem id="facture_menu" name="Factures" parent="vente_menu" action="facturevente_list_action" sequence="12" />
-        <menuitem id="reglement_menu" name="Règlements" parent="vente_menu" action="base.action_partner_form" sequence="13" />
-        <menuitem id="bonlivraison_menu" name="Bon livraison" parent="vente_menu" action="produit_list_action" sequence="14" />
-       
-       
-         <!-- Stock -->
-        <menuitem id="stcock_menu" name="Stock" parent="main_menue" sequence="20" action="stock_list_action"/>
-        <menuitem id="produit_menu" name="Produits" parent="stcock_menu" action="produits_list_action" sequence="21" />
-        <menuitem id="emballage_menu" name="Emballages" parent="stcock_menu" action="emballage_list_action" sequence="22" />
-        <menuitem id="mouvement_menu" name="Mouvement de stock" parent="stcock_menu" action="base.action_partner_form" sequence="23" />
-       
-         <!-- Partener -->
-        <menuitem id="partner_menu" name="Partenaires" parent="main_menue" sequence="30" />
-        <menuitem id="client_menu" name="Clients" parent="partner_menu" action="client_list_action" sequence="31" />
-        <menuitem id="fournisseur_menu" name="Fournisseur" parent="partner_menu" action="fournisseur_list_action" sequence="32" />
-       
+        <menuitem action="cmdclient_list_action" id="commande_menu" name="Commandes" parent="vente_menu" sequence="11"/>
+        <menuitem action="facturevente_list_action" id="facture_menu"  name="Factures" parent="vente_menu" sequence="12"/>
+        <menuitem action="regvente_list_action" id="reglement_menu"   name="Règlements" parent="vente_menu" sequence="13"/>
+        <menuitem action="bonlivraison_list_action"  id="bonlivraison_menu" name="Bon livraison"   parent="vente_menu" sequence="14"/>
         
-           <!-- Dashboard -->
+        <!-- Stock -->
+        <menuitem id="stcock_menu" name="Stock" parent="main_menue" sequence="20"/>
+        <menuitem action="depot_list_action" id="depot_menu"   name="Depot" parent="stcock_menu" sequence="21"/>
+        <menuitem action="produits_list_action" id="produit_menu" name="Produits" parent="stcock_menu" sequence="22"/>
+        <menuitem action="emballage_list_action" id="emballage_menu" name="Emballages" parent="stcock_menu" sequence="23"/>
+        <menuitem action="mvtstock_list_action" id="mouvement_menu"  name="Mouvement de stock" parent="stcock_menu" sequence="24"/>
+        
+        <!-- Partener -->
+        <menuitem id="partner_menu" name="Partenaires" parent="main_menue" sequence="30"/>
+        <menuitem action="client_list_action" id="client_menu"  name="Clients" parent="partner_menu" sequence="31"/>
+        <menuitem action="fournisseur_list_action" id="fournisseur_menu"  name="Fournisseur" parent="partner_menu" sequence="32"/>
+        
+        <!-- Dashboard -->
         <menuitem id="tjara_menu" name="Dashboard" parent="main_menue" sequence="40"/>
-             <menuitem id="dashboard_menu" name="Tableau de bord" parent="main_menue" action="open_board_tjara" sequence="41" />                
+        <menuitem action="open_board_tjara" id="dashboard_menu"  name="Tableau de bord" parent="main_menue" sequence="41"/>
+        
     </data>
 </odoo>

@@ -12,20 +12,20 @@ class LigneFactureAchat(models.Model):
         digits=(16, 3)
     )
    
-   stock_id = fields.Many2one(
-        string='Produit',
-        required=True,
-        index=True,
-        comodel_name='gctjara.stock',
-        ondelete='set null'
-    )
-   
-   facture_id = fields.Many2one(
-        required=True,
-        index=True,
-        comodel_name='gctjara.factureAchat',
-        ondelete='cascade'
-    )
+#    stock_id = fields.Many2one(
+#         string='Produit',
+#         required=True,
+#         index=True,
+#         comodel_name='gctjara.stock',
+#         ondelete='set null'
+#     )
+#    
+#    facture_id = fields.Many2one(
+#         required=True,
+#         index=True,
+#         comodel_name='gctjara.factureAchat',
+#         ondelete='cascade'
+#     )
    
    prix_total = fields.Float(
         string='Prix TTC',

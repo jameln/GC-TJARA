@@ -13,24 +13,24 @@ class BonEntree(models.Model):
                          default=fields.datetime.now(),
                          help='La date de  bon de livraison'
                          )
-     
-     lignereglementachat_id=fields.One2many(
-         string='Ligne règlement',
-         index=True,
-         comodel_name='gctjara.ligneregachat',
-         inverse_name='bonentree_id',
-         
-         )
-     
-     mouvement_id=fields.One2many(
-         string='Mouvement de stock',
-         comodel_name='gctjara.mvtstock',
-         inverse_name='bonentree_id',
-         
-         )
-     
-     
-     
-     
+#      
+#      lignereglementachat_id = fields.One2many(
+#          string='Ligne règlement',
+#          index=True,
+#          comodel_name='gctjara.ligneregachat',
+#          inverse_name='bonentree_id',
+#          
+#          )
+#      
+#      mouvement_id = fields.One2many(
+#          string='Mouvement de stock',
+#          comodel_name='gctjara.mvtstock',
+#          inverse_name='bonentree_id',
+#          
+#          )
+#      
+#      
+#      
+#      
      
      

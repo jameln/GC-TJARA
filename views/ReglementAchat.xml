@@ -1,22 +1,51 @@
 <odoo>
     <data>
-        <!-- <template id="listing"> -->
-        <!--   <ul> -->
-        <!--     <li t-foreach="objects" t-as="object"> -->
-        <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
-        <!--         <t t-esc="object.display_name"/> -->
-        <!--       </a> -->
-        <!--     </li> -->
-        <!--   </ul> -->
-        <!-- </template> -->
-        <!-- <template id="object"> -->
-        <!--   <h1><t t-esc="object.display_name"/></h1> -->
-        <!--   <dl> -->
-        <!--     <t t-foreach="object._fields" t-as="field"> -->
-        <!--       <dt><t t-esc="field"/></dt> -->
-        <!--       <dd><t t-esc="object[field]"/></dd> -->
-        <!--     </t> -->
-        <!--   </dl> -->
-        <!-- </template> -->
+        <record id="regachat_list_action" model="ir.actions.act_window">
+            <field name="name">Réglements d'achat </field>
+            <field name="res_model">gctjara.regachat</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+         
+        </record>
+        <record id="mvtstock_form_view" model="ir.ui.view">
+            <field name="name">regachat.form</field>
+            <field name="model">gctjara.regachat</field>
+            <field name="arch" type="xml">
+                <form string="Règlement d'achat">
+                    <sheet>
+                        <group string="Général">
+                            <field name="numero"/>
+                            <field name="date"/>
+                            <field name="datevaleur"/>
+                        </group>
+                        <group String="Opérations">
+                            <field name="tauxtva"/>
+                            <field name="prixht"/>
+                            <field name="prixttc"/>
+                        </group>
+                    </sheet>
+                    <!-- <notebook>
+                        <page class="oe_page_Title" string="Description">
+                            <group>
+                                <field name="daterecption"/>
+                            </group>
+                        </page>
+                    </notebook> -->
+                </form>
+            </field>
+        </record>
+        <record id="regachat_tree_view" model="ir.ui.view">
+            <field name="name">regachat.tree</field>
+            <field name="model">gctjara.regachat</field>
+            <field name="arch" type="xml">
+                <tree string="Règlements d'achat">
+                    <field name="numero"/>
+                    <field name="datevaleur"/>
+                    <field name="tauxtva"/>
+                    <field name="prixht"/>
+                    <field name="prixttc"/>
+                </tree>
+            </field>
+        </record>
     </data>
 </odoo>
