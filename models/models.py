@@ -6,24 +6,24 @@ import Client
 import Fournisseur
 import Produits
 import Emballage
-import Stock
+# import Stock
 import CommandeClient
 import CommandeFournisseur
-import FactureVente
-import FactureAchat
-import ReglementAchat
-import ReglementVente
-import BonEntree
-import BonLivraison
-import LigneCommandeAchat
-import LigneCommandeVente
-import LigneFactureAchat
-import LigneReglementAchat
-import LigneReglementVente
-import LigneFactureVente
-import MouvementStock
+# import FactureVente
+# import FactureAchat
+# import ReglementAchat
+# import ReglementVente
+# import BonEntree
+# import BonLivraison
+# import LigneCommandeAchat
+# import LigneCommandeVente
+# import LigneFactureAchat
+# import LigneReglementAchat
+# import LigneReglementVente
+# import LigneFactureVente
+# import MouvementStock
 import Depot
-import LigneProduitEmballage
+# import LigneProduitEmballage
 
 
 # class gc-tjara(models.Model):

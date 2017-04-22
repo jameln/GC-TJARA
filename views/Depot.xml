@@ -1,15 +1,6 @@
 <odoo>
     <data>
-        <record id="depot_list_action" model="ir.actions.act_window">
-            <field name="name">Dépots </field>
-            <field name="res_model">gctjara.depot</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-           
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Créer le première dépôt</p>
-            </field>
-        </record>
+       
         <record id="depot_form_view" model="ir.ui.view">
             <field name="name">depot.form</field>
             <field name="model">gctjara.depot</field>
@@ -32,6 +23,16 @@
                     <field name="nomdepot"/>
                     <field name="adressedepot"/>
                 </tree>
+            </field>
+        </record>
+         <record id="depot_list_action" model="ir.actions.act_window">
+            <field name="name">Dépots </field>
+            <field name="res_model">gctjara.depot</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Créer le première dépôt</p>
             </field>
         </record>
     </data>

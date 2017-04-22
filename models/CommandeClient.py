@@ -31,6 +31,4 @@ class CommandeClient(models.Model):
 #      client_id = fields.Many2one(string="Client",
 #                                   comodel_name='gctjara.client'
 #                                )
-#      
-#      
-#      
+   

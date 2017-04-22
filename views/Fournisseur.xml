@@ -1,20 +1,11 @@
 <odoo>
     <data>
-        <record id="fournisseur_list_action" model="ir.actions.act_window">
-            <field name="name">Fournisseur </field>
-            <field name="res_model">gctjara.fournisseur</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-           
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Créer votre première fournisseur</p>
-            </field>
-        </record>
+        
         <record id="fournisseur_form_view" model="ir.ui.view">
             <field name="name">fournisseur.form</field>
             <field name="model">gctjara.fournisseur</field>
             <field name="arch" type="xml">
-                <form string="Clients">
+                <form string="Fournisseur">
                     <sheet>
                         <group>
                             <field class="oe_left oe_avatar"
@@ -28,7 +19,7 @@
                             <field name="mobile"/>
                             <field name="adresse"/>
                             <field name="street"/>
-                            <field name="street2"/>
+                           
                             <field name="zip"/>
                             <field name="city"/>
                             <field name="active"/>
@@ -78,6 +69,16 @@
                     <field name="mobile"/>
                     <field name="active"/>
                 </tree>
+            </field>
+        </record>
+        <record id="fournisseur_list_action" model="ir.actions.act_window">
+            <field name="name">Fournisseur </field>
+            <field name="res_model">gctjara.fournisseur</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Créer votre première fournisseur</p>
             </field>
         </record>
     </data>

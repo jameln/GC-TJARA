@@ -1,55 +1,55 @@
 <odoo>
-
-	<data>
-<!-- 
-		<record model="ir.actions.act_window" id="facture_calendar_action">
-			<field name="name">Factures</field>
-			<field name="res_model">tjara.facture</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">calendar</field>
-		</record>
-
-		<record model="ir.actions.act_window" id="produit_graph_action">
-			<field name="name">Produits</field>
-			<field name="res_model">tjara.produit</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">graph</field>
-		</record>
-
-		<record model="ir.ui.view" id="board_tjara_form">
-			<field name="name">Dashboard Form</field>
-			<field name="model">board.board</field>
-			<field name="type">form</field>
-			<field name="arch" type="xml">
-				<form string="Tjara Dashboard">
-					<board style="2-1">
-						<column>
-							<action string="Qté par produit" name="%(produit_graph_action)d"  />
-							<action string="Factures" name="%(facture_list_action)d" />
-						</column>
-						<column>
-							<action string="Calendrier" name="%(facture_calendar_action)d" />
-
-							<action string="Ventes" name="%(sale.action_order_report_all)d" />
-						</column>
-					</board>
-				</form>
-			</field>
-		</record>
-
-		<record model="ir.actions.act_window" id="open_board_tjara">
-			<field name="name">Dashboard</field>
-			<field name="res_model">board.board</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">form</field>
-			<field name="usage">menu</field>
-			<field name="view_id" ref="board_tjara_form" />
-		</record>
- -->
-
-
-
-
-
-	</data>
+    <data>
+        <record id="facturevente_calendar_action" model="ir.actions.act_window">
+            <field name="name">Factures Ventes</field>
+            <field name="res_model">gctjara.facturevente</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar</field>
+        </record>
+        <record id="factureachat_calendar_action" model="ir.actions.act_window">
+            <field name="name">Factures Achats</field>
+            <field name="res_model">gctjara.factureAchat</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar</field>
+        </record>
+        <record id="produits_graph_action" model="ir.actions.act_window">
+            <field name="name">Produits</field>
+            <field name="res_model">gctjara.produits</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+        </record>
+        <record id="board_gctjara_form" model="ir.ui.view">
+            <field name="name">Dashboard Form</field>
+            <field name="model">board.board</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="GC-TJARA Dashboard">
+                    <board style="2-1">
+                        <column>
+                            <action name="%(produits_graph_view)d" string="Qté par produit"/>
+                            <action name="%(factureachat_list_action)d" string="Factures Achats"/>
+                        </column>
+                        <column>
+                            <action name="%(produits_graph_view)d" string="Qté par produit"/>
+                            <action name="%(facturevente_list_action)d" string="Factures Ventes"/>
+                        </column>
+                        <column>
+                            <action
+                                name="%(facturevente_calendar_action)d" string="Calendrier"/>
+                            <action
+                                name="%(factureachat_calendar_action)d" string="Ventes"/>
+                        </column>
+                    </board>
+                </form>
+            </field>
+        </record>
+        <record id="open_board_tjara" model="ir.actions.act_window">
+            <field name="name">Dashboard</field>
+            <field name="res_model">board.board</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="usage">menu</field>
+            <field name="view_id" ref="board_tjara_form"/>
+        </record>
+    </data>
 </odoo>

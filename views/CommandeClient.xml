@@ -1,15 +1,6 @@
 <odoo>
     <data>
-        <record id="cmdclient_list_action" model="ir.actions.act_window">
-            <field name="name">Commande clients </field>
-            <field name="res_model">gctjara.cmdclient</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-           
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Créer la première commande</p>
-            </field>
-        </record>
+       
         <record id="cmdclient_form_view" model="ir.ui.view">
             <field name="name">cmdclient.form</field>
             <field name="model">gctjara.cmdclient</field>
@@ -38,5 +29,17 @@
                 </tree>
             </field>
         </record>
+        
+         <record id="cmdclient_list_action" model="ir.actions.act_window">
+            <field name="name">Commande clients </field>
+            <field name="res_model">gctjara.cmdclient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Créer la première commande</p>
+            </field>
+        </record>
+        
     </data>
 </odoo>

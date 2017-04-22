@@ -31,6 +31,8 @@ class Fournisseur(models.Model):
      zip = fields.Char(change_default=True)
      
      city = fields.Char()
+     
+     active = fields.Boolean(default=True)
 #      
 #      commande_id = fields.One2many(
 #          string="Commande",
