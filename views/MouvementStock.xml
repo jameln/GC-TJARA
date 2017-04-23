@@ -1,12 +1,6 @@
 <odoo>
     <data>
-        <record id="mvtstock_list_action" model="ir.actions.act_window">
-            <field name="name">Mouvements de stock </field>
-            <field name="res_model">gctjara.mvtstock</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-         
-        </record>
+      
         <record id="mvtstock_form_view" model="ir.ui.view">
             <field name="name">mvtstock.form</field>
             <field name="model">gctjara.mvtstock</field>
@@ -39,5 +33,13 @@
                 </tree>
             </field>
         </record>
+          <record id="mvtstock_list_action" model="ir.actions.act_window">
+            <field name="name">Mouvements de stock </field>
+            <field name="res_model">gctjara.mvtstock</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+         
+        </record>
+        
     </data>
 </odoo>

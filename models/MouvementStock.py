@@ -14,18 +14,18 @@ class MouvementStock(models.Model):
 #     bonentree_id = fields.Many2one(
 #         string='Bon d\'entrée',
 #         comodel_name='gctjara.bonentree',
-#          
+#           
 #         )
-#     
+#      
 #     bonlivaison_id = fields.Many2one(
 #         string='Bon de livraison',
 #         comodel_name='gctjara.bonlivraison',
-#          
+#           
 #         )
-#     
-#     
+#      
+#      
 #     stock_id = fields.Many2one(
 #         string='Bon d\'entrée',
 #         comodel_name='gctjara.bonentree',
-#          
+#           
 #         )

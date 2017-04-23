@@ -53,20 +53,20 @@ class Produits(models.Model):
 #         ondelete='restrict',
 #         inverse_name='produit_id'
 #         )
-#     
+#       
 #     client_id = fields.One2many(
 #         comodel='gctjara.client',
 #         string="Clients",
 #         ondelete='restrict',
 #         inverse_name='produit_id'
 #         )
-#     
+#       
 #     stock_id = fields.One2many(
 #         comodel_name='gctjara.stock',
 #         string='Stock',
 #         inverse_name='produit_id'
 #     )
-#     
+#       
 #     embalageproduit_id = fields.Many2one(
 #         comodel_name='gctjara.ligneprodemballage',
 #         string='Emballage',

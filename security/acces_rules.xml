@@ -21,7 +21,7 @@
             <!--<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
             <field name="users" eval="[(5, ref('base.user_root'))]" />-->
         </record>
-        <record id="gctjara_access_facture_admin" model="ir.model.access">
+        <record id="gctjara_access_facture_vente" model="ir.model.access">
             <field name="name">Achats</field>
             <field name="model_id" ref="model_gctjara_factures_ventes"/>
             <field name="group_id" ref="gctjara_group_ventes"/>
@@ -31,7 +31,7 @@
             <field eval="True" name="perm_unlink"/>
             <field eval="True" name="active"/>
         </record>
-        <record id="gctjara_access_facture_facturation" model="ir.model.access">
+        <record id="gctjara_access_facture_achat" model="ir.model.access">
             <field name="name">Ventes</field>
             <field name="model_id" ref="model_gctjara_factures_achats"/>
             <field name="group_id" ref="gctjara_group_achats"/>
@@ -44,7 +44,7 @@
         <record id="gctjara_access_regvente" model="ir.model.access">
             <field name="name">Règlements ventes</field>
             <field name="model_id" ref="model_gctjara_reglements_ventes"/>
-            <!--<field name="group_id" ref="res.groups"/>-->
+            <field name="group_id" ref="gctjara_group_ventes"/>
             <field eval="True" name="perm_read"/>
             <field eval="True" name="perm_create"/>
             <field eval="True" name="perm_write"/>
@@ -54,7 +54,7 @@
         <record id="gctjara_access_regachat" model="ir.model.access">
             <field name="name">Règlements achats</field>
             <field name="model_id" ref="model_gctjara_reglements_achats"/>
-            <!--<field name="group_id" ref="res.groups"/>-->
+            <field name="group_id" ref="gctjara_group_achats"/>
             <field eval="True" name="perm_read"/>
             <field eval="True" name="perm_create"/>
             <field eval="True" name="perm_write"/>

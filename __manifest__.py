@@ -23,33 +23,33 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'report', 'board', 'sale', 'purchase'],
+    'depends': ['base', 'mail', 'report', 'board'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+#         'security/ir.model.access.csv',
 #         'views/views.xml',
 #         'views/templates.xml',
         
-#         'views/BonEntree.xml',
-#         'views/BonLivraison.xml',
-         'views/Client.xml',
-         'views/Fournisseur.xml',
-         'views/CommandeClient.xml',
-         'views/CommandeFournisseur.xml',
-#         'views/FactureAchat.xml',
-#         'views/FactureVente.xml',
-#         'views/ReglementAchat.xml',
-#         'views/ReglementVente.xml',
-         'views/Depot.xml',
-#         'views/Stock.xml',
-         'views/Produits.xml',
-#         'views/MouvementStock.xml',
-         'views/Emballages.xml',
-#         'security/acces_rules.xml',
-#         'views/dashboard.xml',
-         'views/menu.xml',
-              
+        'views/BonEntree.xml',
+        'views/BonLivraison.xml',
+        'views/Client.xml',
+        'views/Fournisseur.xml',
+        'views/CommandeClient.xml',
+        'views/CommandeFournisseur.xml',
+        'views/FactureAchat.xml',
+        'views/FactureVente.xml',
+        'views/ReglementAchat.xml',
+        'views/ReglementVente.xml',
+        'views/Depot.xml',
+        'views/Stock.xml',
+        'views/Produits.xml',
+        'views/MouvementStock.xml',
+        'views/Emballages.xml',
+#        'security/acces_rules.xml',
+#        'views/dashboard.xml',
+        'views/menu.xml',
+#               
     ],
     # only loaded in demonstration mode
     'demo': [

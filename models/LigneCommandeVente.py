@@ -4,9 +4,9 @@ from odoo import models, fields, api
 
 class LigneCommandeVente(models.Model):
     
-   _name = 'gctjara.lignecmdvente'
+    _name = 'gctjara.lignecmdvente'
    
-   quantite = fields.Float(
+    quantite = fields.Float(
         string='Quantite',
         required=True,
         default=1.0,
@@ -14,15 +14,15 @@ class LigneCommandeVente(models.Model):
     )
    
 # 
-#    commande_id = fields.Many2one(
-#         required=True,
-#         index=True,
-#         comodel_name='gctjara.cmdclient',
-#         
-#     )
-# 
-#   
-#    embalageproduit_id = fields.Many2one(
-#         comodel_name='gctjara.ligneprodemballage',
-#         string='Emballage'
-#     )
+#     commande_id = fields.Many2one(
+#          required=True,
+#          index=True,
+#          comodel_name='gctjara.cmdclient',
+#          
+#      )
+#  
+#    
+#     embalageproduit_id = fields.Many2one(
+#          comodel_name='gctjara.ligneprodemballage',
+#          string='Emballage'
+#      )

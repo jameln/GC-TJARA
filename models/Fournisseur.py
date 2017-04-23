@@ -33,23 +33,23 @@ class Fournisseur(models.Model):
      city = fields.Char()
      
      active = fields.Boolean(default=True)
-#      
+      
 #      commande_id = fields.One2many(
-#          string="Commande",
-#          ondelete='restrict',
-#          comodel_name='gctjara.cmdfournisseur',
-#          inverse_name='fournisseur_id',
-#          )
-#      
-#      facture_id = fields.One2many(
-#          string="Factures",
-#          ondelete='restrict',
-#          comodel_name='gctjara.factureAchat',
-#          inverse_name='fournisseur_id',
-#          )
-#      
-#      produit_id = fields.Many2one(
-#          string='Prosuits',
-#          comodel_name='gctjara.produits'
+#         string="Commande",
+#         ondelete='restrict',
+#         comodel_name='gctjara.cmdfournisseur',
+#         inverse_name='fournisseur_id',
 #         )
-#  
+#       
+#      facture_id = fields.One2many(
+#         string="Factures",
+#         ondelete='restrict',
+#         comodel_name='gctjara.factureachat',
+#         inverse_name='fournisseur_id',
+#         )
+#       
+#      produit_id = fields.Many2one(
+#         string='Prosuits',
+#         comodel_name='gctjara.produits'
+#        )
+#   

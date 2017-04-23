@@ -24,13 +24,25 @@
                             <field name="prixttc"/>
                         </group>
                     </sheet>
-                    <!-- <notebook>
+                     <notebook>
+                      <page class="oe_page_Title" string="Attachement">
+                                <group>
+                                    <field name="attachment">
+                                        <tree>
+                                            <field name="name"/>
+                                            <field name="datas_fname"/>
+                                            <field name="mimetype"/>
+                                            <field name="create_date"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page><!--
                         <page class="oe_page_Title" string="Description">
                             <group>
                                 <field name="daterecption"/>
                             </group>
-                        </page>
-                    </notebook> -->
+                        </page>-->
+                    </notebook> 
                 </form>
             </field>
         </record>

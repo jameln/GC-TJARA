@@ -14,5 +14,5 @@ class Emballage(models.Model):
 #         comodel_name='gctjara.ligneprodemballage',
 #         string='Produits'
 #     )
-# 
-#      
+#  
+#       

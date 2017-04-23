@@ -19,14 +19,14 @@ class BonLivraison(models.Model):
      
 #      
 #      lignereglementvente_id = fields.One2many(
-#          string='Règlement',
-#          comodel_name='gctjara.ligneregvente',
-#          inverse_name='bonlivraison_id',
-#          )
-#      
+#         string='Règlement',
+#         comodel_name='gctjara.ligneregvente',
+#         inverse_name='bonlivraison_id',
+#         )
+#       
 #      mouvement_id = fields.One2many(
-#          string='Mouvement',
-#          comodel_name='gctjara.mvtstock',
-#          inverse_name='bonlivaison_id',
-#          )
-#      
+#         string='Mouvement',
+#         comodel_name='gctjara.mvtstock',
+#         inverse_name='bonlivaison_id',
+#         )
+# #      

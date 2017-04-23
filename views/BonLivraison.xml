@@ -1,13 +1,12 @@
 <odoo>
     <data>
-        <record id="bonlivraison_list_action" model="ir.actions.act_window">
+         <record id="bonlivraison_list_action" model="ir.actions.act_window">
             <field name="name">Bon de livrison </field>
             <field name="res_model">gctjara.bonlivraison</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <!-- <field
-                eval="{'search_default_filter': 1,'search_default_by_responsible': 1}" name="context"/>
-            <field name="help" type="html"> -->
+           
+            <field name="help" type="html"> 
                 <p class="oe_view_nocontent_create">Créer le première Bon de livraison</p>
             </field>
         </record>
@@ -35,5 +34,8 @@
                 </tree>
             </field>
         </record>
+        
+       
+        
     </data>
 </odoo>
