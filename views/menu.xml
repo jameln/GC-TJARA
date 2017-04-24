@@ -28,7 +28,7 @@
         <menuitem id="partner_menu" name="Partenaires" parent="main_menue" sequence="30"/>
         <menuitem action="client_list_action" id="client_menu"  name="Clients" parent="partner_menu" sequence="31"/>
         <menuitem action="fournisseur_list_action" id="fournisseur_menu"  name="Fournisseurs" parent="partner_menu" sequence="32"/>
-        
+        <menuitem id="users_menu" name="Utilisateurs" parent="partner_menu" action="base.action_partner_form" sequence="33" />
         <!-- Dashboard -->
          <menuitem id="tjara_menu" name="Dashboard" parent="main_menue" sequence="40"/>
        <!-- <menuitem action="open_board_tjara" id="dashboard_menu"  name="Tableau de bord" parent="main_menue" sequence="41"/>

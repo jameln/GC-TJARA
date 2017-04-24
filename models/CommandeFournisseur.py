@@ -5,7 +5,10 @@ from odoo import models, fields, api
 class CommandeFournisseur(models.Model):
      _name = 'gctjara.cmdfournisseur'
      
-     numero = fields.Char('Numero Commande')
+     numero = fields.Char(
+         string='Numero ',
+         default=lambda self: self.env['ir.sequence'].next_by_code('gctjara.cmdfrs.seq')
+     )
      
      datecommande = fields.Date('Date',
                             required=True,
@@ -98,9 +101,10 @@ class CommandeFournisseur(models.Model):
         })
     
         self.env['gctjara.factureachat'].write({
-                'numero' : 'fact/cmd/001',
+                'numero' :  "ff",#lambda self: self.env['ir.sequence'].next_by_code('gctjara.factureachat.seq'),
                 'datefact': self.datereception
                 })
+
                
         return True
 

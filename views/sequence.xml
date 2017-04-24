@@ -1,0 +1,62 @@
+<odoo>
+<data noupdate="1">
+
+		<!-- sequences commande client-->
+		<record id="sequence_gctjara_cmdclt" model="ir.sequence">
+			<field name="name">Commande client séquence</field>
+			<field name="code">gctjara.cmdclt.seq</field>
+			<field name="prefix">CMDCLT/%(year)s/</field>
+			<field eval="1" name="number_next" />
+			<field eval="1" name="number_increment" />
+			<field eval="False" name="company_id"/>
+		</record>
+    <!-- sequences commande fourniseur -->
+        <record id="sequence_gctjara_cmdfrs" model="ir.sequence">
+            <field name="name">Commande fournisseur séquence</field>
+            <field name="code">gctjara.cmdfrs.seq</field>
+            <field name="prefix">CMDFRS/%(year)s/</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field eval="False" name="company_id"/>
+        </record>
+            <!-- sequences facture achat -->
+        <record id="sequence_gctjara_factureachat" model="ir.sequence">
+            <field name="name">Facture achat séquence</field>
+            <field name="code">gctjara.factureachat.seq</field>
+            <field name="prefix">FA/%(year)s/</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field eval="False" name="company_id"/>
+        </record>
+          <!-- sequences facture vente -->
+        <record id="sequence_gctjara_facturevente" model="ir.sequence">
+            <field name="name">Facture vente séquence</field>
+            <field name="code">gctjara.facturevente.seq</field>
+            <field name="prefix">FV/%(year)s/</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field eval="False" name="company_id"/>
+        </record>
+        
+          <!-- sequences reglement achat -->
+        <record id="sequence_gctjara_regachat" model="ir.sequence">
+            <field name="name">Reglement achat séquence</field>
+            <field name="code">gctjara.regachat.seq</field>
+            <field name="prefix">RA/%(year)s/</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field eval="False" name="company_id"/>
+        </record>
+        
+          <!-- sequences reglement achat -->
+        <record id="sequence_gctjara_regvente" model="ir.sequence">
+            <field name="name">Reglement vente séquence</field>
+            <field name="code">gctjara.regvente.seq</field>
+            <field name="prefix">RV/%(year)s/</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field eval="False" name="company_id"/>
+        </record>
+
+</data>
+</odoo>

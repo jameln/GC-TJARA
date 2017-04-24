@@ -12,6 +12,7 @@ class FactureAchat(models.Model):
         required=True,
         index=True,
         size=50,
+        default=lambda self: self.env['ir.sequence'].next_by_code('gctjara.factureachat.seq')
        
     )
     
@@ -101,7 +102,7 @@ class FactureAchat(models.Model):
         if values.has_key('state'):
             if values.get('state') == 'sa':
                 values['state'] = 'br'
-        result = super(Facture, self).write(values)
+        result = super(FactureAchat, self).write(values)
         return result
 
     @api.multi
