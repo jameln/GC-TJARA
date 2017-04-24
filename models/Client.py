@@ -36,24 +36,26 @@ class Client(models.Model):
      
      active = fields.Boolean(default=True)
      
-#      commande_id = fields.One2many(
-#         string="Commandes",
-#         ondelete='restrict',
-#         comodel_name='gctjara.cmdclient',
-#         inverse_name='client_id',
-#                                    )
-#       
-#      facture_id = fields.One2many(
-#         string="Factures",
-#         ondelete='restrict',
-#         comodel_name='gctjara.facturevente',
-#         inverse_name='client_id',
-#         )
-#        
-#      produit_id = fields.Many2one(
-#         string='Produits',
-#         comodel_name='gctjara.produits'
-#         )
-# #       
-      
+#      produits_id = fields.Many2one(
+#          string='Produits',
+#          comodel_name='gctjara.produits'
+#          )
+#         
+     
+     commande_id = fields.One2many(
+       string="Commandes",
+       ondelete='restrict',
+       comodel_name='gctjara.cmdclient',
+       inverse_name='client_id',
+                                  )
+       
+     facture_id = fields.One2many(
+       string="Factures",
+       ondelete='restrict',
+       comodel_name='gctjara.facturevente',
+       inverse_name='client_id',
+       )
+     
+   
+ 
      

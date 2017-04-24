@@ -8,20 +8,46 @@ class CommandeClient(models.Model):
      numerocmdc = fields.Char('Numero Commande')     
   
      
-     datecommande = fields.Date('Date de CMD',
-                            required=True,
-                            default=fields.datetime.now(),
-                            help='Date création')
+     datecommande = fields.Date(
+         string='Date',
+         required=True,
+         default=fields.datetime.now(),
+         help='Date création')
      
-     datereception = fields.Date('Date de reception',
-                            required=True,
-                            default=fields.datetime.now(),
-                            help='Date   reception  de la commande ')
+     datereception = fields.Date(
+         'Date de reception',
+         required=True,
+         default=fields.datetime.now(),
+         help='Date   reception  de la commande '
+         )
      
-     attachment = fields.One2many('ir.attachment',
-                               'cmdclient',
-                                string='Pièces jointes'
+     attachment = fields.One2many(
+         'ir.attachment',
+         'cmdclient',
+         string='Pièces jointes'
                                 )
+     
+     description = fields.Text(
+         String='Description'
+         )
+     
+        
+     quantite = fields.Float(
+        string='Quantite',
+        required=True,
+        default=1.0,
+        digits=(16, 3)
+    )
+    
+     valid = fields.Boolean(
+        string='Ne pas annuler',
+        default=False
+    )
+     
+     client_id = fields.Many2one(string="Client",
+                                comodel_name='gctjara.client'
+                             )
+     
      
      state = fields.Selection(
         string='Etat',
@@ -30,7 +56,7 @@ class CommandeClient(models.Model):
             ('sa', 'Saisie'),
             ('br', 'Brouillon'),
             ('va', 'Validee'),
-            ('pa', 'Payee'),
+            ('tr', 'Terminee'),
             ('an', 'Annulee')
         ]
     )
@@ -40,16 +66,16 @@ class CommandeClient(models.Model):
         if values.has_key('state'):
             if values.get('state') == 'sa':
                 values['state'] = 'br'
-        result = super(Facture, self).write(values)
+        result = super(CommandeClient, self).write(values)
         return result
 
      @api.multi
      def afficher(self):
         print "afficher()"
-        raise ValidationError('id facture : ' + str(self.id))
+        raise ValidationError('id commande : ' + str(self.id))
         return True
 
-     def fct_brouillon(self):
+     def cmdclt_brouillon(self):
         self.write({'state': 'br'})
         return True
     
@@ -66,31 +92,43 @@ class CommandeClient(models.Model):
                 }
     
      @api.one
-     def fct_valider(self):
+     def cmdclt_valider(self):
         
-        self.message_post(type='notification',
-                          subtype='mt_comment',
-                          subject='Note d\'information: Validation Facture N ' + self.name,
-                          body='La Facture N ' + self.name + ' a ete valide par : ' + str(self.env.user.name),
-                          partner_ids=[self.client_id.id])
+#         self.message_post(type='notification',
+#                           subtype='mt_comment',
+#                           subject='Note d\'information: Validation commande N ' + self.numerocmdc,
+#                           body='La commande N ' + self.numerocmdc + ' a ete valide par : ' + str(self.env.user.name),
+#                           partner_ids=[self.client_id.id])
                           
         self.write({
             'state': 'va',
-            'description': 'facture valide le: ' +
+            'description': 'Commande valide le: ' +
                            fields.datetime.now().strftime('%d/%m/%Y %H:%M')
         })
         return True
 
-     def fct_payer(self):
-        self.write({'state': 'pa'})
+     def cmdclt_terminer(self):
+        self.write({'state': 'tr'})
         return True
-
-     def fct_annuler(self):
+    
+     def cmdclt_annuler(self):
         if self.valid:
-            raise ValidationError("Cette facture est verouillee!")
+            raise ValidationError("Cette commande est verouillee!")
         self.write({'state': 'an'})
         return True
        
+
+      
+     facture_id = fields.One2many(string='Lignes Facture',
+                         comodel_name='gctjara.facturevente',
+                         inverse_name='commande_id',
+                         )
+       
+#      lignecmd_id = fields.One2many(string='Lignes commande',
+#                           comodel_name='gctjara.lignecmdvente',
+#                           inverse_name='commande_id',
+#                           )
+#       
 class Attachment(models.Model):
   
      _inherit = 'ir.attachment'
@@ -100,18 +138,4 @@ class Attachment(models.Model):
         'gctjara.cmdclient',
         string="Pièces jointes"
     ) 
-#      
-#      facture_id = fields.One2many(string='Lignes Facture',
-#                           comodel_name='gctjara.facturevente',
-#                           inverse_name='commande_id',
-#                           )
-#       
-#      lignecmd_id = fields.One2many(string='Lignes commande',
-#                           comodel_name='gctjara.lignecmdvente',
-#                           inverse_name='commande_id',
-#                           )
-#       
-#      client_id = fields.Many2one(string="Client",
-#                                  comodel_name='gctjara.client'
-#                               )
-#    
+    

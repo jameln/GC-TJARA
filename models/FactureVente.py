@@ -65,23 +65,19 @@ class FactureVente(models.Model):
 #          comodel_name='gctjara.ligneregvente',
 #          inverse_name='facture_id',
 #          )
-#       
-#  
-#    
-# #   
-# #      
-#      client_id = fields.Many2one('gctjara.client',
-#                                     string="lient",
-#                                     ondelete='restrict'
-#                                     )
-#       
-#      commande_id = fields.Many2one(string="Commande",
-#                                     ondelete='restrict',
-#                                     comodel_name='gctjara.cmdclient'
-#                                     )
-#         
-#         
-#     
+     
+     client_id = fields.Many2one('gctjara.client',
+                                   string="Client",
+                                   ondelete='restrict'
+                                   )
+       
+     commande_id = fields.Many2one(string="Commande",
+                                   ondelete='restrict',
+                                   comodel_name='gctjara.cmdclient'
+                                   )
+         
+         
+    
      attachment = fields.One2many('ir.attachment',
                                'facturevente',
                                 string='Pièce jointe'

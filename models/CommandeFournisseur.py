@@ -7,7 +7,7 @@ class CommandeFournisseur(models.Model):
      
      numero = fields.Char('Numero Commande')
      
-     datecommande = fields.Date('Date de CMD',
+     datecommande = fields.Date('Date',
                             required=True,
                             default=fields.datetime.now(),
                             help='Date création')
@@ -17,12 +17,34 @@ class CommandeFournisseur(models.Model):
                             default=fields.datetime.now(),
                             help='Date   reception  de la commande ')
      
+     description = fields.Text(
+         String='Description'
+         )
      
-     attachment = fields.One2many('ir.attachment',
-                               'cmdfournisseur',
-                                string='Pièces jointes'
-                                )
+     fournisseur_id = fields.Many2one(
+                                    comodel_name='gctjara.fournisseur',
+                                    string="Fournisseur",
+                                    ondelete='restrict'
+                                   )
+      
+     attachment = fields.One2many(
+         'ir.attachment',
+         'cmdfournisseur',
+         string='Pièces jointes'
+         )
      
+     quantite = fields.Float(
+        string='Quantite',
+        required=True,
+        default=1.0,
+        digits=(16, 3)
+    )
+     
+     valid = fields.Boolean(
+        string='Ne pas annuler',
+        default=False
+    )
+   
      state = fields.Selection(
         string='Etat',
         default='sa',
@@ -30,27 +52,27 @@ class CommandeFournisseur(models.Model):
             ('sa', 'Saisie'),
             ('br', 'Brouillon'),
             ('va', 'Validee'),
-            ('pa', 'Payee'),
+            ('tr', 'Terminee'),
             ('an', 'Annulee')
         ]
     )
-     
      
      def write(self, values):
         print values
         if values.has_key('state'):
             if values.get('state') == 'sa':
                 values['state'] = 'br'
-        result = super(Facture, self).write(values)
+        result = super(CommandeFournisseur, self).write(values)
         return result
 
      @api.multi
      def afficher(self):
         print "afficher()"
-        raise ValidationError('id facture : ' + str(self.id))
+        raise ValidationError('id commande : ' + str(self.id))
         return True
 
-     def fct_brouillon(self):
+     def cmdfrs_brouillon(self):
+
         self.write({'state': 'br'})
         return True
     
@@ -67,31 +89,30 @@ class CommandeFournisseur(models.Model):
                 }
     
      @api.one
-     def fct_valider(self):
-        
-        self.message_post(type='notification',
-                          subtype='mt_comment',
-                          subject='Note d\'information: Validation Facture N ' + self.name,
-                          body='La Facture N ' + self.name + ' a ete valide par : ' + str(self.env.user.name),
-                          partner_ids=[self.client_id.id])
-                          
+     def cmdfrs_valider(self):
+              
         self.write({
             'state': 'va',
-            'description': 'facture valide le: ' +
+            'description': 'Commande fournisseur valide le: ' +
                            fields.datetime.now().strftime('%d/%m/%Y %H:%M')
         })
+    
+        self.env['gctjara.factureachat'].write({
+                'numero' : 'fact/cmd/001',
+                'datefact': self.datereception
+                })
+               
         return True
 
-     def fct_payer(self):
-        self.write({'state': 'pa'})
+     def cmdfrs_terminer(self):
+        self.write({'state': 'tr'})
         return True
-
-     def fct_annuler(self):
+    
+     def cmdfrs_annuler(self):
         if self.valid:
-            raise ValidationError("Cette facture est verouillee!")
+            raise ValidationError("Cette commande fournisseur est verouillee!")
         self.write({'state': 'an'})
         return True
-       
 class Attachment(models.Model):
   
      _inherit = 'ir.attachment'
@@ -102,18 +123,15 @@ class Attachment(models.Model):
         string="Pièces jointes"
     ) 
      
-#      facture_id = fields.One2many(string='Lignes Facture',
-#                           comodel_name='gctjara.factureachat',
-#                           inverse_name='commande_id',
-#                           )
-#       
+
 #      lignecmd_id = fields.One2many(string='Lignes commande',
 #                           comodel_name='gctjara.lignecmdachat',
 #                           inverse_name='commande_id',
 #                           )
 #       
-#      fournisseur_id = fields.Many2one(
-#                                    comodel_name='gctjara.fournisseur',
-#                                    string="Fournisseur",
-#                                    ondelete='restrict'
-#                                    )
+
+# 
+#      facture_id = fields.One2many(string='Lignes Facture',
+#                          comodel_name='gctjara.factureachat',
+#                          inverse_name='commande_id',
+#                          )

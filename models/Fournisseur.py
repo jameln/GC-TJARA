@@ -34,12 +34,12 @@ class Fournisseur(models.Model):
      
      active = fields.Boolean(default=True)
       
-#      commande_id = fields.One2many(
-#         string="Commande",
-#         ondelete='restrict',
-#         comodel_name='gctjara.cmdfournisseur',
-#         inverse_name='fournisseur_id',
-#         )
+     commande_id = fields.One2many(
+       string="Commande",
+       ondelete='restrict',
+       comodel_name='gctjara.cmdfournisseur',
+       inverse_name='fournisseur_id',
+       )
 #       
 #      facture_id = fields.One2many(
 #         string="Factures",

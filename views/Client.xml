@@ -28,23 +28,21 @@
                             <field name="mobile"/>
                             <field name="adresse"/>
                             <field name="street"/>
-                            
                             <field name="zip"/>
                             <field name="city"/>
                             <field name="active"/>
                         </group>
-                    <!-- 
-                    <notebook>
-                        <page class="oe_page_Title" string="Produits">
-                            <group>
-                                <field name="produit_id">
-                                    <tree>
-                                    <field String="Produit" name="name"/>
-                                    </tree>
-                                </field>
-                            </group>
-                        </page>
-                        <page class="oe_page_Title" string="Factures">
+                        <notebook>
+                            <!-- <page class="oe_page_Title" string="Produits">
+                                <group>
+                                    <field name="produits_id">
+                                        <tree>
+                                            <field String="Produit" name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page> -->
+                            <!--    <page class="oe_page_Title" string="Factures">
                             <group>
                                 <field name="facture_id">
                                     <tree>
@@ -52,19 +50,19 @@
                                     </tree>
                                 </field>
                             </group>
-                        </page>
-                        <page class="oe_page_Title" string="Commandes">
-                            <group>
-                                <field name="commandeclient_id">
+                        </page>-->
+                            <page class="oe_page_Title" string="Commandes">
+                                <group>
+                                    <field name="commande_id">
                                     <tree>
-                                    <field String="Emballage" name="name"/>
+                                    <field String="Numéro" name="numerocmdc"/>
                                     <field String="Quantité" name="quantite"/>
                                     </tree>
-                                </field>
-                            </group>
-                        </page>
-                    </notebook> -->
-                   </sheet>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
                 </form>
             </field>
         </record>

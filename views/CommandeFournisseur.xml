@@ -8,26 +8,23 @@
                     <header string="Facture">
                         <!--<button string="Valider la facture test" type="object" name="afficher" 
                             confirm="Etes vous sur?"/> -->
-                        <button class="oe_highlight"
-                            name="fct_brouillon" states="an"
-                            string="Retour pour correction" type="object"/>
-                        <button class="oe_highlight" name="fct_valider"
-                            states="br" string="Valider la facture" type="object"/>
-                        <button class="oe_highlight" name="fct_annuler"
-                            states="br" string="Annuler la facture" type="object"/>
-                        <button class="oe_highlight" name="fct_payer"
-                            states="va"
-                            string="Marquer facture comme payee" type="object"/>
+                        <button class="oe_highlight"  name="cmdfrs_brouillon"     states="an"  string="Retour pour correction" type="object"/>
+                        <button class="oe_highlight"  name="cmdfrs_valider"       states="br"  string="Valider la commande"     type="object"/>
+                        <button class="oe_highlight"  name="cmdfrs_annuler"       states="br"  string="Annuler la commande"     type="object"/>
+                        <button class="oe_highlight"  name="cmdfrs_terminer"      states="va"  string="Marquer commande comme terminée" type="object"/>
                         <field name="state"
-                            statusbar_colors="{'br':'white','va':'blue','an':'red','pa':'green'}"
-                            statusbar_visible="br,va,pa,an" widget="statusbar"/>
+                            statusbar_colors="{'br':'white','va':'blue','an':'red','tr':'green'}"
+                            statusbar_visible="br,va,tr,an" widget="statusbar"/>
                     </header>
                     <sheet>
                         <group>
                             <field name="numero"/>
                             <field name="datecommande"/>
                             <field name="datereception"/>
-                            <!--   <field name="fournisseur_id"/> -->
+                            <field name="fournisseur_id"/> 
+                            <field name="valid" />
+                            <field name="description"/>
+                            
                         </group>
                     </sheet>
                     <notebook>
@@ -55,7 +52,7 @@
                     <field name="numero"/>
                     <field name="datecommande"/>
                     <field name="datereception"/>
-                    <!--   <field name="fournisseur_id"/> -->
+                    <field name="fournisseur_id"/> 
                 </tree>
             </field>
         </record>
@@ -69,37 +66,37 @@
             </field>
         </record>
         <!-- WorkFlow-->
-        <record id="validation_workflow" model="workflow">
+        <record id="commandefournisseur_workflow" model="workflow">
             <field name="name">gctjara.workflow_validation_commande_fournisseur</field>
             <field name="osv">gctjara.cmdfournisseur</field>
             <field name="on_create">True</field>
         </record>
         <record id="activity_depart" model="workflow.activity">
-            <field name="wkf_id" ref="validation_workflow"/>
+            <field name="wkf_id" ref="commandefournisseur_workflow"/>
             <field name="flow_start">True</field>
             <field name="name">brouillon</field>
             <field name="kind">function</field>
-            <field name="action">fct_brouillon()</field>
+            <field name="action">cmdfrs_brouillon()</field>
         </record>
         <record id="activity_valide" model="workflow.activity">
-            <field name="wkf_id" ref="validation_workflow"/>
+            <field name="wkf_id" ref="commandefournisseur_workflow"/>
             <field name="name">validee</field>
             <field name="kind">function</field>
-            <field name="action">fct_valider()</field>
+            <field name="action">cmdfrs_valider()</field>
         </record>
         <record id="activity_paye" model="workflow.activity">
-            <field name="wkf_id" ref="validation_workflow"/>
+            <field name="wkf_id" ref="commandefournisseur_workflow"/>
             <field name="flow_stop">True</field>
-            <field name="name">payee</field>
+            <field name="name">terminee</field>
             <field name="kind">function</field>
-            <field name="action">fct_payer()</field>
+            <field name="action">cmdfrs_terminer()</field>
         </record>
         <record id="activity_annule" model="workflow.activity">
-            <field name="wkf_id" ref="validation_workflow"/>
+            <field name="wkf_id" ref="commandefournisseur_workflow"/>
             <field name="flow_stop">True</field>
             <field name="name">annulee</field>
             <field name="kind">function</field>
-            <field name="action">fct_annuler()</field>
+            <field name="action">cmdfrs_annuler()</field>
         </record>
         <record id="trans_br_va" model="workflow.transition">
             <field name="act_from" ref="activity_depart"/>
@@ -109,17 +106,17 @@
         <record id="trans_va_pa" model="workflow.transition">
             <field name="act_from" ref="activity_valide"/>
             <field name="act_to" ref="activity_paye"/>
-            <field name="signal">fct_payer</field>
+            <field name="signal">cmdfrs_terminer</field>
         </record>
         <record id="trans_br_an" model="workflow.transition">
             <field name="act_from" ref="activity_depart"/>
             <field name="act_to" ref="activity_annule"/>
-            <field name="signal">fct_annuler</field>
+            <field name="signal">cmdfrs_annuler</field>
         </record>
         <record id="trans_an_br" model="workflow.transition">
             <field name="act_from" ref="activity_annule"/>
             <field name="act_to" ref="activity_depart"/>
-            <field name="signal">fct_brouillon</field>
+            <field name="signal">cmdfrs_brouillon</field>
         </record>
         <!--end workflow -->
     </data>

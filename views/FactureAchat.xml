@@ -14,23 +14,7 @@
             <field name="model">gctjara.factureachat</field>
             <field name="arch" type="xml">
                 <form string="Facture Form">
-                    <header string="Facture">
-                        <!--<button string="Valider la facture test" type="object" name="afficher" 
-                            confirm="Etes vous sur?"/> -->
-                        <button class="oe_highlight"
-                            name="fctachat_brouillon" states="an"
-                            string="Retour pour correction" type="object"/>
-                        <button class="oe_highlight" name="fctachat_valider"
-                            states="br" string="Valider la facture" type="object"/>
-                        <button class="oe_highlight" name="fctachat_annuler"
-                            states="br" string="Annuler la facture" type="object"/>
-                        <button class="oe_highlight" name="fctachat_payer"
-                            states="va"
-                            string="Marquer facture comme payee" type="object"/>
-                        <field name="state"
-                            statusbar_colors="{'br':'white','va':'blue','an':'red','pa':'green'}"
-                            statusbar_visible="br,va,pa,an" widget="statusbar"/>
-                    </header>
+                    
                     <sheet>
                         <group>
                             <field name="numero"/>
@@ -102,59 +86,6 @@
                 </tree>
             </field>
         </record>
-        <!-- WorkFlow-->
-        <record id="validation_workflow" model="workflow">
-            <field name="name">gctjara.workflow_validation_facture_achat</field>
-            <field name="osv">gctjara.factureachat</field>
-            <field name="on_create">True</field>
-        </record>
-        <record id="activity_depart" model="workflow.activity">
-            <field name="wkf_id" ref="validation_workflow"/>
-            <field name="flow_start">True</field>
-            <field name="name">brouillon</field>
-            <field name="kind">function</field>
-            <field name="action">fctachat_brouillon()</field>
-        </record>
-        <record id="activity_valide" model="workflow.activity">
-            <field name="wkf_id" ref="validation_workflow"/>
-            <field name="name">validee</field>
-            <field name="kind">function</field>
-            <field name="action">fctachat_valider()</field>
-        </record>
-        <record id="activity_paye" model="workflow.activity">
-            <field name="wkf_id" ref="validation_workflow"/>
-            <field name="flow_stop">True</field>
-            <field name="name">payee</field>
-            <field name="kind">function</field>
-            <field name="action">fctachat_payer()</field>
-        </record>
-        <record id="activity_annule" model="workflow.activity">
-            <field name="wkf_id" ref="validation_workflow"/>
-            <field name="flow_stop">True</field>
-            <field name="name">annulee</field>
-            <field name="kind">function</field>
-            <field name="action">fctachat_annuler()</field>
-        </record>
-        <record id="trans_br_va" model="workflow.transition">
-            <field name="act_from" ref="activity_depart"/>
-            <field name="act_to" ref="activity_valide"/>
-            <field name="signal">fctachat_valider</field>
-        </record>
-        <record id="trans_va_pa" model="workflow.transition">
-            <field name="act_from" ref="activity_valide"/>
-            <field name="act_to" ref="activity_paye"/>
-            <field name="signal">fctachat_payer</field>
-        </record>
-        <record id="trans_br_an" model="workflow.transition">
-            <field name="act_from" ref="activity_depart"/>
-            <field name="act_to" ref="activity_annule"/>
-            <field name="signal">fctachat_annuler</field>
-        </record>
-        <record id="trans_an_br" model="workflow.transition">
-            <field name="act_from" ref="activity_annule"/>
-            <field name="act_to" ref="activity_depart"/>
-            <field name="signal">fctachat_brouillon</field>
-        </record>
-        <!--end workflow -->
+      
     </data>
 </odoo>
