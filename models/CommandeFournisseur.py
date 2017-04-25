@@ -90,22 +90,28 @@ class CommandeFournisseur(models.Model):
                 'type':'ir.actions.act_window'
                 
                 }
+            
+     def create_factachat(self):
+        sequences =   self.env['ir.sequence'].next_by_code('gctjara.factureachat.seq') 
+        self.env['gctjara.factureachat'].create({
+              'numero' :  sequences,
+              'datefact': self.datereception,
+              
+            })
+        return True
+    
+    
     
      @api.one
      def cmdfrs_valider(self):
-              
+      
+       
         self.write({
             'state': 'va',
-            'description': 'Commande fournisseur valide le: ' +
-                           fields.datetime.now().strftime('%d/%m/%Y %H:%M')
-        })
+            'description': 'Commande fournisseur valide le: ' + fields.datetime.now().strftime('%d/%m/%Y %H:%M'),
+            })
+        self.create_factachat()
     
-        self.env['gctjara.factureachat'].write({
-                'numero' :  "ff",#lambda self: self.env['ir.sequence'].next_by_code('gctjara.factureachat.seq'),
-                'datefact': self.datereception
-                })
-
-               
         return True
 
      def cmdfrs_terminer(self):

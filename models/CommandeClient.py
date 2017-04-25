@@ -93,6 +93,17 @@ class CommandeClient(models.Model):
                 'type':'ir.actions.act_window'
                 
                 }
+            
+              
+     def create_factvente(self):
+        sequences =   self.env['ir.sequence'].next_by_code('gctjara.facturevente.seq') 
+        self.env['gctjara.facturevente'].create({
+              'numero' :  sequences,
+              'datefact': self.datereception,
+              
+            })
+        return True
+    
     
      @api.one
      def cmdclt_valider(self):
@@ -105,11 +116,14 @@ class CommandeClient(models.Model):
                           
         self.write({
             'state': 'va',
-            'description': 'Commande valide le: ' +
-                           fields.datetime.now().strftime('%d/%m/%Y %H:%M')
+            'description': 'Commande valide le: ' + fields.datetime.now().strftime('%d/%m/%Y %H:%M')
         })
+        
+        
+        self.create_factvente()
+         
         return True
-
+    
      def cmdclt_terminer(self):
         self.write({'state': 'tr'})
         return True

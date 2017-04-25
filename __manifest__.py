@@ -43,8 +43,8 @@
         'views/Produits.xml',
         'views/MouvementStock.xml',
         'views/Emballages.xml',
-#        'security/acces_rules.xml',
-#        'views/dashboard.xml',
+        'security/acces_rules.xml',
+        'views/dashboard.xml',
         'views/sequence.xml',
         'views/menu.xml',
                
