@@ -12,6 +12,7 @@ class Produits(models.Model):
         index=True,
         help='Le nom du produit',
         size=50,
+        
         )    
 
     code = fields.Char(
@@ -66,7 +67,25 @@ class Produits(models.Model):
 #         inverse_name='produit_id'
 #     )
 #       
-#     embalageproduit_id = fields.Many2one(
-#         comodel_name='gctjara.ligneprodemballage',
-#         string='Emballage',
-#     )
+    produitemballee_id = fields.One2many(
+        comodel_name='gctjara.produitemballee',
+        string='Emballage',
+        inverse_name='produit_id'
+    )
+    states=fields.Char('Status', default ='able')
+              
+    def create_produitemballee(self):
+        
+        self.env['gctjara.produitemballee'].write({
+            'quantite':50,
+            'produit_id' :  self.name,
+            'emballage_id': 1,
+            'prix_total':1200
+              
+            })
+        self.states='enable'
+        return True
+    
+   
+   
+    

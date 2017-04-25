@@ -30,8 +30,8 @@
         <menuitem action="fournisseur_list_action" id="fournisseur_menu"  name="Fournisseurs" parent="partner_menu" sequence="32"/>
         <menuitem id="users_menu" name="Utilisateurs" parent="partner_menu" action="base.action_partner_form" sequence="33" />
         <!-- Dashboard -->
-         <menuitem id="tjara_menu" name="Dashboard" parent="main_menue" sequence="40"/>
-         <menuitem action="open_board_tjara" id="dashboard_menu"  name="Tableau de bord" parent="main_menue" sequence="41"/>
+         <menuitem id="dashboard_menu" name="Dashboard" parent="main_menue" sequence="40"/>
+         <menuitem action="open_board_tjara" id="tableaubord_menu"  name="Tableau de bord" parent="dashboard_menu" sequence="41"/>
       
          </data>
 </odoo>

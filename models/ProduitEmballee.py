@@ -3,9 +3,9 @@
 from odoo import models, fields, api
 
 class LigneProduitEmballage(models.Model):
-    _name = 'gctjara.ligneprodemballage'
+    _name = 'gctjara.produitemballee'
    
-    quantite = fields.Float(
+    quantite = fields.Integer(
         string='Quantite',
         required=True,
         default=1.0,
@@ -22,13 +22,13 @@ class LigneProduitEmballage(models.Model):
     
     emballage_id = fields.Many2one(
          comodel_name='gctjara.emballage',
-         string='Nom de produit',
+         string='Emballage',
      )
 #    
 
     prix_total = fields.Float(
         string='Prix TTC',
-        compute="prixtot",
+        
         digits=(16, 3)
     )
 

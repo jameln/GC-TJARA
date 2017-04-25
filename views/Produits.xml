@@ -15,6 +15,12 @@
             <field name="model">gctjara.produits</field>
             <field name="arch" type="xml">
                 <form string="Produits Form">
+                <header string="Facture">
+                       
+                        <button class="oe_highlight" name="create_produitemballee" attrs="{'invisible':[('states','=','enable')]}"
+                            string="Ajouter Prouit emballée" type="object"  states=""/>
+                       
+                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>
@@ -25,9 +31,12 @@
                             <field name="quantite"/>
                             <field name="description"/>
                         </group>
+                        <group>
+                            <field name="states" />
+                        </group>
                     </sheet>
-                    <!-- <notebook>
-                        <page class="oe_page_Title" string="Fournisseur">
+                     <notebook>
+                      <!--  <page class="oe_page_Title" string="Fournisseur">
                             <group>
                                 <field name="fournisseur_id">
                                     <tree>
@@ -55,18 +64,20 @@
                                     </tree>
                                 </field>
                             </group>
-                        </page>
+                        </page>-->
                         <page class="oe_page_Title" string="Emballages">
                             <group>
-                                <field name="embalageproduit_id">
+                                <field name="produitemballee_id">
                                     <tree>
-                                    <field String="Emballage" name="name"/>
-                                    <field String="Quantité" name="quantite"/>
+                                    
+                                        <field String="Quantité" name="quantite"/>
+                                        <field String="Prix" name="prix_total"/>
+                                        
                                     </tree>
                                 </field>
                             </group>
                         </page>
-                    </notebook> -->
+                    </notebook> 
                 </form>
             </field>
         </record>
@@ -92,5 +103,6 @@
                 </tree>
             </field>
         </record>
+       
     </data>
 </odoo>

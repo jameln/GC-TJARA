@@ -21,7 +21,7 @@ import ReglementVente
 # import LigneReglementAchat
 # import LigneReglementVente
 # import LigneFactureVente
-# import LigneProduitEmballage
+import ProduitEmballee
 import MouvementStock
 import Depot
 

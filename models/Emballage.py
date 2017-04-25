@@ -10,9 +10,10 @@ class Emballage(models.Model):
      
      poids = fields.Char('Poids unitaire')
      
-#      embalageproduit_id = fields.Many2one(
-#         comodel_name='gctjara.ligneprodemballage',
-#         string='Produits'
-#     )
-#  
-#       
+     produitemballee_id = fields.One2many(
+        comodel_name='gctjara.produitemballee',
+        string='Produits',
+        inverse_name='emballage_id'
+    )
+  
+       
