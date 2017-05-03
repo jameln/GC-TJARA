@@ -21,26 +21,57 @@
                             <field name="numero"/>
                             <field name="datecommande"/>
                             <field name="datereception"/>
-                            <field name="fournisseur_id"/> 
+                            <field name="fournisseur_id" /> 
                             <field name="valid" />
-                            <field name="description"/>
+                            
                             
                         </group>
+                    
+                        <notebook>
+                             <page class="oe_page_Title" string="Produits">
+                                    <group>
+                                        <field name="lignecmd_id">
+                                            <tree >
+                                                <field name="embalageproduit_id"/>
+                                                <field name="quantite"/>
+                                                <field name="prix_total" />
+                                                
+                                            </tree>
+                                           
+    
+                                             <form>
+                                                 <group>
+                                                     <field name="embalageproduit_id"/>
+                                                     <field name="quantite" />
+                                                     <field name="prix_total" />
+                                                 </group>
+                                            </form>
+                                           
+                                        </field>
+                                        
+                                    </group>
+                                </page>
+                                
+                                 <page class="oe_page_Title" string="Description">
+                                    <group>
+                                        <field name="description"/>       
+                                    </group>
+                                </page>
+                                
+                                <page class="oe_page_Title" string="Attachement">
+                                    <group>
+                                        <field name="attachment">
+                                            <tree>
+                                            <field name="name"/>
+                                            <field name="datas_fname"/>
+                                            <field name="mimetype"/>
+                                            <field name="create_date"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                        </notebook>
                     </sheet>
-                    <notebook>
-                        <page class="oe_page_Title" string="Attachement">
-                            <group>
-                                <field name="attachment">
-                                    <tree>
-                                    <field name="name"/>
-                                    <field name="datas_fname"/>
-                                    <field name="mimetype"/>
-                                    <field name="create_date"/>
-                                    </tree>
-                                </field>
-                            </group>
-                        </page>
-                    </notebook>
                 </form>
             </field>
         </record>

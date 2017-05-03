@@ -46,6 +46,8 @@
         'security/acces_rules.xml',
         'views/dashboard.xml',
         'views/sequence.xml',
+       'report/report_factureachat.xml',
+       'report/report_factureachat_template.xml',
         'views/menu.xml',
                
     ],

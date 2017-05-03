@@ -6,7 +6,7 @@ class BonEntree(models.Model):
     
     _name = 'gctjara.bonentree'
      
-    numero = fields.Integer('Numéro')
+    numero = fields.Char('Numéro')
      
     date = fields.Date(
          string='Date bon d\'entrée',

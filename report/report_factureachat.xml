@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <report file="gctjara.report_factureachat" id="factureachat_report"
+            model="gctjara.factureachat" name="gc-tjara.report_factureachat"
+            report_type="qweb-pdf" string="Factures"/>
+            
+</data>
+</odoo>

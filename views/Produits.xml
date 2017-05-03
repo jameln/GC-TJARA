@@ -18,7 +18,7 @@
                 <header string="Facture">
                        
                         <button class="oe_highlight" name="create_produitemballee" attrs="{'invisible':[('states','=','enable')]}"
-                            string="Ajouter Prouit emballée" type="object"  states=""/>
+                            string="Ajouter Prouit emballée" type="object"  />
                        
                     </header>
                     <sheet>
@@ -30,11 +30,13 @@
                             <field name="prixvente"/>
                             <field name="quantite"/>
                             <field name="description"/>
+                            
                         </group>
                         <group>
-                            <field name="states" />
+                           <field name="states" attrs="{'invisible':[('states','!=','')]}"/> 
                         </group>
-                    </sheet>
+                        
+                   
                      <notebook>
                       <!--  <page class="oe_page_Title" string="Fournisseur">
                             <group>
@@ -67,17 +69,19 @@
                         </page>-->
                         <page class="oe_page_Title" string="Emballages">
                             <group>
-                                <field name="produitemballee_id">
-                                    <tree>
-                                    
-                                        <field String="Quantité" name="quantite"/>
-                                        <field String="Prix" name="prix_total"/>
-                                        
+                                <field name="produitemballee_ids">
+                                    <tree > 
+                                        <field String="Emballage" name="emballage_id"/>
                                     </tree>
+                                    <form>
+                                         <field String="Emballage" name="emballage_id"/>
+                                        
+                                    </form>
                                 </field>
                             </group>
                         </page>
                     </notebook> 
+                     </sheet>
                 </form>
             </field>
         </record>

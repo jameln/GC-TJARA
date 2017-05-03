@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_factureachat">
+            <t t-call="report.html_container">
+                <t t-as="o" t-foreach="docs">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <h2>GC-TJARA</h2>
+                            <p>FACTURE D'ACHATS <span t-field="o.numero"/></p>
+                        </div>
+                        
+                     </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,5 +1,7 @@
 <odoo>
     <data>
+    
+      
         <record id="factureachat_list_action" model="ir.actions.act_window">
             <field name="name">Factures Achats</field>
             <field name="res_model">gctjara.factureachat</field>
@@ -14,7 +16,6 @@
             <field name="model">gctjara.factureachat</field>
             <field name="arch" type="xml">
                 <form string="Facture Form">
-                    
                     <sheet>
                         <group>
                             <field name="numero"/>
@@ -86,6 +87,5 @@
                 </tree>
             </field>
         </record>
-      
     </data>
 </odoo>

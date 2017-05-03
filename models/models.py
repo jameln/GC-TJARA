@@ -15,7 +15,7 @@ import Emballage
 import Stock
 import ReglementAchat
 import ReglementVente
-# import LigneCommandeAchat
+import LigneCommandeAchat
 # import LigneCommandeVente
 # import LigneFactureAchat
 # import LigneReglementAchat

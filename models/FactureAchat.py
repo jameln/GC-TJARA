@@ -83,12 +83,13 @@ class FactureAchat(models.Model):
 #                                    ondelete='restrict'
 #                                    )
 #       
-#     commande_id = fields.Many2one(string="Commande",
-#                                    ondelete='restrict',
-#                                    comodel_name='gctjara.cmdfournisseur'
-#                                    )
-#         
-#         
+    commande_id = fields.Many2one(
+        string="Commande",
+        ondelete='restrict',
+        comodel_name='gctjara.cmdfournisseur'
+          )
+         
+         
      
     attachment = fields.One2many('ir.attachment',
                                'factureachat',

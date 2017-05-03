@@ -24,11 +24,12 @@ class CommandeFournisseur(models.Model):
          String='Description'
          )
      
+     
      fournisseur_id = fields.Many2one(
-                                    comodel_name='gctjara.fournisseur',
-                                    string="Fournisseur",
-                                    ondelete='restrict'
-                                   )
+         comodel_name='gctjara.fournisseur',
+         string="Fournisseur",
+         ondelete='restrict'
+         )
       
      attachment = fields.One2many(
          'ir.attachment',
@@ -36,13 +37,7 @@ class CommandeFournisseur(models.Model):
          string='Pièces jointes'
          )
      
-     quantite = fields.Float(
-        string='Quantite',
-        required=True,
-        default=1.0,
-        digits=(16, 3)
-    )
-     
+       
      valid = fields.Boolean(
         string='Ne pas annuler',
         default=False
@@ -59,6 +54,23 @@ class CommandeFournisseur(models.Model):
             ('an', 'Annulee')
         ]
     )
+     
+     
+     lignecmd_id = fields.One2many(
+         string='Produits',
+         comodel_name='gctjara.lignecmdachat',
+         inverse_name='commande_id'
+                         )
+     
+
+ 
+     facture_id = fields.One2many(
+         string='Facture',
+         comodel_name='gctjara.factureachat',
+         inverse_name='commande_id',
+                        )
+     
+  
      
      def write(self, values):
         print values
@@ -92,25 +104,35 @@ class CommandeFournisseur(models.Model):
                 }
             
      def create_factachat(self):
-        sequences =   self.env['ir.sequence'].next_by_code('gctjara.factureachat.seq') 
+        sequences = self.env['ir.sequence'].next_by_code('gctjara.factureachat.seq') 
         self.env['gctjara.factureachat'].create({
               'numero' :  sequences,
               'datefact': self.datereception,
               
             })
+        
         return True
+    
+     def create_bon_entree(self):
+         self.env['gctjara.bonentree'].create({
+             'numero':self.env['ir.sequence'].next_by_code('gctjara.bonentree.seq') ,
+             'date':fields.datetime.now().strftime('%d/%m/%Y %H:%M'),
+            
+             })        
+         return True
     
     
     
      @api.one
      def cmdfrs_valider(self):
       
-       
         self.write({
             'state': 'va',
             'description': 'Commande fournisseur valide le: ' + fields.datetime.now().strftime('%d/%m/%Y %H:%M'),
             })
-        self.create_factachat()
+      
+        if self.create_factachat():
+            self.create_bon_entree()
     
         return True
 
@@ -123,6 +145,10 @@ class CommandeFournisseur(models.Model):
             raise ValidationError("Cette commande fournisseur est verouillee!")
         self.write({'state': 'an'})
         return True
+
+     
+
+
 class Attachment(models.Model):
   
      _inherit = 'ir.attachment'
@@ -132,16 +158,3 @@ class Attachment(models.Model):
         'gctjara.cmdfournisseur',
         string="Pièces jointes"
     ) 
-     
-
-#      lignecmd_id = fields.One2many(string='Lignes commande',
-#                           comodel_name='gctjara.lignecmdachat',
-#                           inverse_name='commande_id',
-#                           )
-#       
-
-# 
-#      facture_id = fields.One2many(string='Lignes Facture',
-#                          comodel_name='gctjara.factureachat',
-#                          inverse_name='commande_id',
-#                          )

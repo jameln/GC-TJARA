@@ -67,11 +67,14 @@ class Produits(models.Model):
 #         inverse_name='produit_id'
 #     )
 #       
-    produitemballee_id = fields.One2many(
+    produitemballee_ids = fields.One2many(
         comodel_name='gctjara.produitemballee',
         string='Emballage',
         inverse_name='produit_id'
     )
+    
+    emballages_id = fields.Many2many('gctjara.emballage', string='Emballages', store=False)
+    
     states=fields.Char('Status', default ='able')
               
     def create_produitemballee(self):

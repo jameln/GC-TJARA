@@ -18,6 +18,7 @@ encoding//models/LigneFactureVente.py=utf-8
 encoding//models/LigneReglementAchat.py=utf-8
 encoding//models/LigneReglementVente.py=utf-8
 encoding//models/MouvementStock.py=utf-8
+encoding//models/ProduitEmballee.py=utf-8
 encoding//models/Produits.py=utf-8
 encoding//models/ReglementAchat.py=utf-8
 encoding//models/ReglementVente.py=utf-8
