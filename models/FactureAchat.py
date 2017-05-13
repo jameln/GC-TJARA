@@ -6,7 +6,8 @@ class FactureAchat(models.Model):
     
     _name = 'gctjara.factureachat'
     
-     
+    _rec_name = 'numero'
+       
     numero = fields.Char(
         string='N° facture',
         required=True,
@@ -42,17 +43,18 @@ class FactureAchat(models.Model):
         default=False
     )
     
-    state = fields.Selection(
-        string='Etat',
-        default='sa',
-        selection=[
-            ('sa', 'Saisie'),
-            ('br', 'Brouillon'),
-            ('va', 'Validee'),
-            ('pa', 'Payee'),
-            ('an', 'Annulee')
-        ]
-    )
+  
+#     state = fields.Selection(
+#         string='Etat',
+#         default='sa',
+#         selection=[
+#             ('sa', 'Saisie'),
+#             ('br', 'Brouillon'),
+#             ('va', 'Validee'),
+#             ('pa', 'Payee'),
+#             ('an', 'Annulee')
+#         ]
+#     )
 
 #     
 #     lignes_id = fields.One2many(
@@ -77,24 +79,81 @@ class FactureAchat(models.Model):
 #       
 # 
 # 
-#       
-#     fournisseur_id = fields.Many2one('gctjara.fournisseur',
-#                                    string="Fournisseur",
-#                                    ondelete='restrict'
-#                                    )
-#       
+       
+    fournisseur_id = fields.Many2one('gctjara.fournisseur',
+                                   string="Fournisseur",
+                                   ondelete='restrict',
+                                   store=True
+                                   )
+       
     commande_id = fields.Many2one(
         string="Commande",
         ondelete='restrict',
         comodel_name='gctjara.cmdfournisseur'
           )
-         
-         
-     
+            
+#     @api.depends('lignecmd_id')
+#     def reffact(self):
+#         for r in self:
+#             if r.lignecmd_id.reffact==self.id :
+#                 r.lignefact_id=r.lignecmd_id
+    
+    lignefact_id = fields.One2many(
+        string='Produits',
+        comodel_name='gctjara.lignefactachat',
+#         compute='reffact',
+        inverse_name='facture_id'
+         )
+        
+    lignecmd_id = fields.One2many(
+        string='Produits',
+        comodel_name='gctjara.lignecmdachat',
+        inverse_name='commande_id'
+         )
+       
+      
     attachment = fields.One2many('ir.attachment',
                                'factureachat',
                                 string='Pièce jointe'
                                 )
+         
+#     produit_ids = fields.Many2one(
+#          string='Produits',
+#          
+#          )
+ 
+# 
+#     @api.multi
+#     @api.depends('commande_id')
+#     def ligneproduit(self):
+#         for rec in self :
+#             for r in self.commande_id :
+#                 r.produit_ids=rec.lignecmd_id
+#                 r.quantite= rec.lignecmd_id.quantite
+#                 r.prix_tot= rec.lignecmd_id.prix_total
+             
+#     produit_ids = fields.Char(
+#           string='Produits',
+#          # related='commande_id.lignecmd_id',
+#         #  compute='ligneproduit',
+#           store=True
+#               
+#            )
+#     quantite = fields.Char(
+#           string='Quantité',
+#          # related='commande_id.lignecmd_id',
+#          # compute='ligneproduit',
+#           store=True
+#               
+#            )
+#     prix_tot = fields.Char(
+#           string='Prix tot.',
+#          # related='commande_id.lignecmd_id',
+#          # compute='ligneproduit',
+#           store=True
+#               
+#            )
+   
        
   
   

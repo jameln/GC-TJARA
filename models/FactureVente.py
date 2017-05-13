@@ -6,7 +6,9 @@ class FactureVente(models.Model):
     
      _name = 'gctjara.facturevente'
      
-#      _inherit = 'mail.thread'
+     _rec_name = 'numero'
+     
+     _inherit = 'mail.thread'
      
      numero = fields.Char(
         string='N° facture',

@@ -6,24 +6,24 @@ from odoo import fields , models, api
 class Emballage(models.Model):
      _name = 'gctjara.emballage'
      
-     _rec_name= 'type'
+     _rec_name= 'name'
      
-     name = fields.Char(string='Nom' , compute='_compute_name')
+     name = fields.Char(string='Nom' ,default="Produit" ,compute='_compute_name')
      
-     @api.depends('type', 'poids')
-     def _compute_name(self):
-        for r in self:
-            r.name= r.type + " "+ r.poids
-        
+    
        
-     type = fields.Char('Type d\'emballage')
+     type = fields.Char('Type d\'emballage', default='Type')
      
-     poids = fields.Char('Poids unitaire')
+     poids = fields.Integer('Poids unitaire')
      
      produitemballee_id = fields.One2many(
         comodel_name='gctjara.produitemballee',
         string='Produits',
         inverse_name='emballage_id'
     )
-  
+     @api.depends('type', 'poids')
+     def _compute_name(self):
+        for r in self:
+            r.name= r.type + " "+ str(r.poids)
+        
        

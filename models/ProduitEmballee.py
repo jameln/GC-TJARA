@@ -4,6 +4,8 @@ from odoo import models, fields, api
 
 class LigneProduitEmballage(models.Model):
     _name = 'gctjara.produitemballee'
+    
+    _rec_name = 'name'
        
     _sql_constraints = [
         ('produitemballée', 'unique (emballage_id , produit_id )', 'Cette emballage est déja crée')
@@ -16,16 +18,28 @@ class LigneProduitEmballage(models.Model):
         for r in self:
             if(isinstance(r.produit_id.name , unicode)) and isinstance(r.emballage_id.name,unicode):
                 r.name= r.produit_id.name + " "+ r.emballage_id.name
-        
-    
-    
+               
+   
+         
+    @api.depends('produit_id')
+    def _prix_unit(self):
+         for r in self:
+            r.prixunit=r.produit_id.prixunit
+     
+     
   
-    quantite = fields.Integer(
-        string='Quantite',
-        required=True,
-        default=1.0,
+#     quantite = fields.Integer(
+#         string='Quantite',
+#         required=True,
+#         default=0,
+#        
+#     )
+    
+    quantitestocke=fields.Float(
+        string ='Stock',
+        default=0.0,
         digits=(16, 3)
-    )
+        )
      
     produit_id = fields.Many2one(
           string='Produit',
@@ -35,37 +49,27 @@ class LigneProduitEmballage(models.Model):
           ondelete='set null'
       )
     
+    prixunit= fields.Float(
+        related='produit_id.prixunit',
+        string='Prix unitaire',
+        compute='_prix_unit',
+        store=True
+    )
+    
     emballage_id = fields.Many2one(
          comodel_name='gctjara.emballage',
          string='Emballage',
      )
     
+    lignecmd_id = fields.One2many(
+        string='Commandes',
+        comodel_name='gctjara.lignecmdachat',
+        inverse_name='embalageproduit_id'
+                        )  
+  
 
-    prix_total = fields.Float(
-        string='Montant',
-        digits=(16, 3)
-    )
-
-
-#     stock_id = fields.One2many(
-#          string='Stock',
-#          required=True,
+#     cmdachat_id = fields.Many2many(
+#          string='Commandes',
 #          index=True,
-#          comodel_name='gctjara.stock',
-#          inverse_name='embalageproduit_id'
-#      )
-#     
-    cmdachat_id = fields.One2many(
-         string='Commandes',
-         index=True,
-         comodel_name='gctjara.lignecmdachat',
-         inverse_name='embalageproduit_id'
-     )
-     
-#     cmdvente_id = fields.One2many(
-#          string='Commande Vente',
-#          required=True,
-#          index=True,
-#          comodel_name='gctjara.lignecmdvente',
-#          inverse_name='embalageproduit_id'
-#      )
+#          comodel_name='gctjara.cmdfournisseur',
+#      )   

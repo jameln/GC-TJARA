@@ -7,7 +7,7 @@
             <field name="view_mode">tree,form</field>
          
         </record>
-        <record id="mvtstock_form_view" model="ir.ui.view">
+        <record id="regachat_form_view" model="ir.ui.view">
             <field name="name">regachat.form</field>
             <field name="model">gctjara.regachat</field>
             <field name="arch" type="xml">
@@ -23,29 +23,34 @@
                             <field name="prixht"/>
                             <field name="prixttc"/>
                         </group>
-                    </sheet>
-                     <notebook>
-                      <page class="oe_page_Title" string="Attachement">
-                                <group>
-                                    <field name="attachment">
-                                        <tree>
+                    
+                    
+                      <notebook>
+                           <page class="oe_page_Title" string="Description">
+                                    <group>
+                                        <field name="description"/>       
+                                    </group>
+                                </page>
+                                
+                                <page class="oe_page_Title" string="Attachement">
+                                    <group>
+                                        <field name="attachment">
+                                            <tree>
                                             <field name="name"/>
                                             <field name="datas_fname"/>
                                             <field name="mimetype"/>
                                             <field name="create_date"/>
-                                        </tree>
-                                    </field>
-                                </group>
-                            </page><!--
-                        <page class="oe_page_Title" string="Description">
-                            <group>
-                                <field name="daterecption"/>
-                            </group>
-                        </page>-->
-                    </notebook> 
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                        </notebook>
+                    </sheet>
                 </form>
             </field>
         </record>
+        
+        
         <record id="regachat_tree_view" model="ir.ui.view">
             <field name="name">regachat.tree</field>
             <field name="model">gctjara.regachat</field>
@@ -59,5 +64,8 @@
                 </tree>
             </field>
         </record>
+        
     </data>
 </odoo>
+
+

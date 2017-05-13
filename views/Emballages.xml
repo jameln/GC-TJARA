@@ -17,9 +17,11 @@
                 <form string="Emballage Form">
                     <sheet>
                         <group>
+                        
+                            <field name="name"/>
                             <field name="type"/>
                             <field name="poids"/>
-                          <!--   <field name="embalageproduit_id"/> -->
+                           
                         </group>
                     </sheet>
                 </form>
@@ -29,10 +31,11 @@
             <field name="name">emballage.tree</field>
             <field name="model">gctjara.emballage</field>
             <field name="arch" type="xml">
-                <tree string="Emballage Form">
+                <tree string="Emballages">
+                   <field name="name"/>
                     <field name="type"/>
                     <field name="poids"/>
-                 <!--    <field name="embalageproduit_id"/> -->
+                 
                 </tree>
             </field>
         </record>

@@ -15,26 +15,25 @@
             <field name="model">gctjara.produits</field>
             <field name="arch" type="xml">
                 <form string="Produits Form">
-                <header string="Facture">
+                <!-- <header string="Facture">
                        
                         <button class="oe_highlight" name="create_produitemballee" attrs="{'invisible':[('states','=','enable')]}"
                             string="Ajouter Prouit emballée" type="object"  />
                        
-                    </header>
+                    </header> -->
                     <sheet>
                         <group>
                             <field name="name"/>
                             <field name="code"/>
                             <field name="dateexpiration"/>
-                            <field name="prixachat"/>
-                            <field name="prixvente"/>
-                            <field name="quantite"/>
+                            <field name="prixunit"/>
+                            <!-- <field name="quantite"/> -->
                             <field name="description"/>
                             
                         </group>
-                        <group>
+                        <!-- <group>
                            <field name="states" attrs="{'invisible':[('states','!=','')]}"/> 
-                        </group>
+                        </group> -->
                         
                    
                      <notebook>
@@ -71,10 +70,19 @@
                             <group>
                                 <field name="produitemballee_ids">
                                     <tree > 
-                                        <field String="Emballage" name="emballage_id"/>
+                                        <field String="Emballage" name="emballage_id">
+                                            <group>
+                                                <field name="name"/>
+                                              
+                                            </group>
+                                        </field>           
                                     </tree>
                                     <form>
-                                         <field String="Emballage" name="emballage_id"/>
+                                        <field String="Emballage" name="emballage_id">
+                                            <group>
+                                                <field name="name"/>
+                                            </group>
+                                        </field>  
                                         
                                     </form>
                                 </field>
@@ -91,7 +99,7 @@
             <field name="arch" type="xml">
                 <graph string="QteProdPart">
                     <field name="name"/>
-                    <field name="quantite"/>
+                  <!--   <field name="quantite"/> -->
                 </graph>
             </field>
         </record>
@@ -103,7 +111,6 @@
                     <field name="name"/>
                     <field name="code"/>
                     <field name="dateexpiration"/>
-                    <field name="quantite"/>
                 </tree>
             </field>
         </record>

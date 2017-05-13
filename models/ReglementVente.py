@@ -6,6 +6,8 @@ class ReglementVente(models.Model):
 
     _name = 'gctjara.regvente'
     
+    _rec_name = 'numero'
+    
     numero = fields.Char(string='Numero règlement',
                          required=True,
                          )

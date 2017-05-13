@@ -11,7 +11,6 @@ encoding//models/Emballage.py=utf-8
 encoding//models/FactureAchat.py=utf-8
 encoding//models/FactureVente.py=utf-8
 encoding//models/Fournisseur.py=utf-8
-encoding//models/LigneCommandeAchat.py=utf-8
 encoding//models/LigneCommandeVente.py=utf-8
 encoding//models/LigneFactureAchat.py=utf-8
 encoding//models/LigneFactureVente.py=utf-8

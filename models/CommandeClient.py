@@ -5,6 +5,9 @@ from odoo import models, fields, api
 class CommandeClient(models.Model):
      _name = 'gctjara.cmdclient'
      
+     _rec_name = 'numerocmdc'
+
+     
      numerocmdc = fields.Char(
          string='Numéro',
          default=lambda self: self.env['ir.sequence'].next_by_code('gctjara.cmdclt.seq'),

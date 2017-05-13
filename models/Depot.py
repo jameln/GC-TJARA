@@ -6,6 +6,8 @@ class Depot(models.Model):
 
     _name = 'gctjara.depot'
     
+    _rec_name = 'nomdepot'
+    
     nomdepot = fields.Char('Nom de depot', required=True)
     
     adressedepot = fields.Char('Adresse de depot')

@@ -6,6 +6,8 @@ class MouvementStock(models.Model):
 
     _name = 'gctjara.mvtstock'
     
+    _rec_name = 'numero'
+    
     numero = fields.Char('Numero mvt')
     date = fields.Date('Date de Mvt' ,
                      default=fields.datetime.now() 

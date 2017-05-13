@@ -6,6 +6,8 @@ class Stock(models.Model):
 
     _name = 'gctjara.stock'
     
+    _rec_name = 'numero'
+    
     numero = fields.Char('Ref stock')
      
     produit_id = fields.Many2one(

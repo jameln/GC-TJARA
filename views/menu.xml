@@ -18,11 +18,11 @@
         <menuitem action="bonlivraison_list_action"  id="bonlivraison_menu" name="Bons des livraisons"   parent="vente_menu" sequence="14"/>
       
         <!-- Stock -->
-         <menuitem id="stcock_menu" name="Stock" parent="main_menue" sequence="20" action="stock_list_action"/>
-        <menuitem action="depot_list_action" id="depot_menu"   name="Depot" parent="stcock_menu" sequence="21"/>
-        <menuitem action="produits_list_action" id="produit_menu" name="Produits" parent="stcock_menu" sequence="22"/>
-        <menuitem action="emballage_list_action" id="emballage_menu" name="Emballages" parent="stcock_menu" sequence="23"/>
-        <menuitem action="mvtstock_list_action" id="mouvement_menu"  name="Mouvements des stocks" parent="stcock_menu" sequence="24"/>
+         <menuitem id="stcock_menu" name="Stock" parent="main_menue" sequence="20" />
+      
+        <menuitem action="produits_list_action" id="produit_menu" name="Produits" parent="stcock_menu" sequence="21"/>
+        <menuitem action="emballage_list_action" id="emballage_menu" name="Emballages" parent="stcock_menu" sequence="22"/>
+        <menuitem action="mvtstock_list_action" id="mouvement_menu"  name="Mouvements des stocks" parent="stcock_menu" sequence="23"/>
          
         <!-- Partener -->
         <menuitem id="partner_menu" name="Partenaires" parent="main_menue" sequence="30"/>

@@ -14,6 +14,8 @@ class BonEntree(models.Model):
          default=fields.datetime.now(),
          help='La date de  bon de livraison'
         )
+    
+    produit=fields.Char(string='Produits')
       
 #     lignereglementachat_id = fields.One2many(
 #         string='Ligne règlement',

@@ -5,6 +5,8 @@ from odoo import models, fields, api
 class Fournisseur(models.Model):
      _name = 'gctjara.fournisseur'
      
+     _rec_name = 'name'
+     
      name = fields.Char('Nom', required=True)
      
      matriculefiscal = fields.Char('Matricule fiscale', required=True)

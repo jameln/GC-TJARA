@@ -4,7 +4,7 @@
             <field name="name">Client </field>
             <field name="res_model">gctjara.client</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,kanban</field>
             <!-- <field
                 eval="{'search_default_filter': 1,'search_default_by_responsible': 1}" name="context"/> -->
             <field name="help" type="html">
@@ -79,5 +79,38 @@
                 </tree>
             </field>
         </record>
+        
+          <record model="ir.ui.view" id="client_kanban_view">
+            <field name="name">client.kanban</field>
+            <field name="model">gctjara.client</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="company_name"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                </kanban>
+            </field>
+        </record>
+        
+        <record id="client_kanban_view" model="ir.ui.view">
+            <field name="name">client.kanban</field>
+            <field name="model">gctjara.client</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <field name="name"/>
+                                <field name="company_name"/>
+                                <field name="email"/>
+                                <field name="phone"/>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
     </data>
 </odoo>

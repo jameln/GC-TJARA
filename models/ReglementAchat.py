@@ -6,6 +6,8 @@ class ReglementAchat(models.Model):
 
     _name = 'gctjara.regachat'
     
+    _rec_name = 'numero'
+    
     numero = fields.Char(string='Numero règlement',
                          required=True,
                          )
@@ -39,6 +41,10 @@ class ReglementAchat(models.Model):
         string='Prix TTC',
         compute="prixttc",
         digits=(16, 3)
+    )
+    description = fields.Text(
+        string='Description',
+       
     )
     attachment = fields.One2many('ir.attachment',
                                'regachat',
