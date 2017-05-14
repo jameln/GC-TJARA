@@ -5,7 +5,7 @@ from odoo import models, fields, api
 class LigneCommandeAchat(models.Model):
     _name = 'gctjara.lignecmdachat'
     
-    _rec_name = 'embalageproduit_id'
+    _rec_name = 'name'
     
     name =fields.Char(
         string='Nom:',
@@ -59,8 +59,7 @@ class LigneCommandeAchat(models.Model):
     @api.multi 
     @api.depends("quantite" , "embalageproduit_id")
     def prixtot(self):
-#         tauxtva=0
-#         prixht=0
+
         for pe in self:
             tauxtva=float(pe.tva)/100
             prixht=pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids

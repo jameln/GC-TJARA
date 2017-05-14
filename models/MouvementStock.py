@@ -21,9 +21,9 @@ class MouvementStock(models.Model):
         string='Quantité'
         )
     
-    produit = fields.Char(
+    produit = fields.Many2one(
         string='Produits',
-        store=True
+          comodel_name='gctjara.produitemballee'
         )
     type=fields.Char(
         string='Type')

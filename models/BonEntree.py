@@ -56,21 +56,38 @@ class BonEntree(models.Model):
               'type':'Entrée'
               
             })
-        print "*************maj stock ******************* "
         self.maj_produits()
-        print "*************fin stock stock ******************* "
         return True
     
+    def getProductID(self):
+        if self.produit: 
+            return {
+                'name' : 'Produit',
+                'res_model':'gctjara.produitemballee',
+                'res_id':self.produit.id,
+                'view_type':'form',
+                'view_mode':'form',
+                'type':'ir.actions.act_window'
+                
+                }
     
     
     @api.multi 
     def maj_produits(self):
-        qteprod= int(self.produit.quantitestocke) + int(self.produit.quantitestocke)
-        for allrec in self.env['gctjara.produitemballee']:
-             if allrec.id == self.produit.id:
-                self.env['gctjara.produitemballee'].write({
-                    'quantitestocke': qteprod,
-                    })
+        qteprod= int(self.produit.quantitestocke) + int(self.quantite)
+       
+#         for allrec in self.env['gctjara.produitemballee']:
+#             if allrec.id == self.produit.id:
+#                 print("allrec.id ========>" + allrec.id)
+#         record = self.env['gctjara.produitemballee'].write({
+#                     'quantitestocke': qteprod,
+#                     })
+        product = self.env['gctjara.produitemballee']
+        product_id = self.produit.id
+        package_product = product.browse(product_id)
+        package_product.quantitestocke = qteprod
+       
         return True
+    
     
     

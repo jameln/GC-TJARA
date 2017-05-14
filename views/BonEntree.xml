@@ -6,7 +6,7 @@
             <field name="name">Bon d'entrée </field>
             <field name="res_model">gctjara.bonentree</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,search</field>
 
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer le première Bon d'entrée</p>
@@ -57,6 +57,24 @@
                     <field name="quantite"/>
                     <field name="state"/>
                 </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="bonentree_search_view">
+            <field name="name">bonentree.search</field>
+            <field name="model">gctjara.bonentree</field>
+            <field name="arch" type="xml">
+                <search string="Bon d'entrée Search">
+                    <field name="numero" />
+                    <field name="date" />
+                    <field name="produit" />
+                    <field name="quantite" />
+                    <filter name="filter" string="States" domain="[('create_uid', '=', uid)]" />
+                    <group string="Group By">
+                        <filter name="by_state" string="State"
+                            context="{'group_by': 'state'}" />
+                    </group>
+
+                </search>
             </field>
         </record>
         
