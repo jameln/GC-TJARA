@@ -8,26 +8,27 @@ class MouvementStock(models.Model):
     
     _rec_name = 'numero'
     
-    numero = fields.Char('Numero mvt')
-    date = fields.Date('Date de Mvt' ,
-                     default=fields.datetime.now() 
+    numero = fields.Char(
+        string='Numero mvt',
+        default=lambda self: self.env['ir.sequence'].next_by_code('gctjara.mvtstock.seq'))
+    
+    date = fields.Date(
+        string='Date de Mvt' ,
+        default=fields.datetime.now() 
         )
     
-#     bonentree_id = fields.Many2one(
-#         string='Bon d\'entrée',
-#         comodel_name='gctjara.bonentree',
-#           
-#         )
-#      
-#     bonlivaison_id = fields.Many2one(
-#         string='Bon de livraison',
-#         comodel_name='gctjara.bonlivraison',
-#           
-#         )
-#      
-#      
-#     stock_id = fields.Many2one(
-#         string='Bon d\'entrée',
-#         comodel_name='gctjara.bonentree',
-#           
-#         )
+    quantite = fields.Integer(
+        string='Quantité'
+        )
+    
+    produit = fields.Char(
+        string='Produits',
+        store=True
+        )
+    type=fields.Char(
+        string='Type')
+    
+    bonentree_id=fields.Many2one(
+        string='Réf bon d\'entrée',
+        comodel_name='gctjara.bonentree'
+        )

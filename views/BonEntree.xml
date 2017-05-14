@@ -18,11 +18,28 @@
                 <field name="model">gctjara.bonentree</field>
                 <field name="arch" type="xml">
                     <form string="Bons des entrées Form">
+                     <header string="Bon d'entrée">
+                       
+                        <button class="oe_highlight" 
+                            name="cmd_livree" states="nr"
+                            string="Commande livrée" type="object"
+                            attrs="{'invisible': [('state','!=','nr'),]}"/>
+                        <button class="oe_highlight"
+                            name="creat_mvtstock" states="nr"
+                            string="Entrée au stock" type="object" 
+                            attrs="{'invisible': [('state','!=','nr'),]}"/>
+                    
+                        <field name="state"
+                            statusbar_colors="{'nr':'white','rc':'blue','lv':'green'}"
+                            statusbar_visible="nr,rc,lv" widget="statusbar"/>
+                    </header>
                         <sheet>
+                         
                             <group>
                                 <field name="numero"/>
                                 <field name="date"/>
                                  <field name="produit" />
+                                 <field name="quantite"/>
                             </group>
                         </sheet>
                     </form>
@@ -37,10 +54,50 @@
                     <field name="numero"/>
                     <field name="date"/>
                     <field name="produit" />
+                    <field name="quantite"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
         
-            
+            <!-- WorkFlow-->
+        <record id="bonentree_workflow" model="workflow">
+            <field name="name">gctjara.workflow_validation_bon_entree</field>
+            <field name="osv">gctjara.bonentree</field>
+            <field name="on_create">True</field>
+        </record>
+        <record id="activity_depart" model="workflow.activity">
+            <field name="wkf_id" ref="bonentree_workflow"/>
+            <field name="flow_start">True</field>
+            <field name="name">non reçu</field>
+            <field name="kind">function</field>
+            <field name="action">action_draft()</field>
+        </record>
+        <record id="activity_valide" model="workflow.activity">
+            <field name="wkf_id" ref="bonentree_workflow"/>
+            <field name="name">reçu</field>
+            <field name="kind">function</field>
+            <field name="action">creat_mvtstock()</field>
+        </record>
+        <record id="activity_livree" model="workflow.activity">
+            <field name="wkf_id" ref="bonentree_workflow"/>
+            <field name="flow_stop">True</field>
+            <field name="name">livrée</field>
+            <field name="kind">function</field>
+            <field name="action">cmd_livree()</field>
+        </record>
+       
+        <record id="trans_rc" model="workflow.transition">
+            <field name="act_from" ref="activity_depart"/>
+            <field name="act_to" ref="activity_valide"/>
+            <field name="signal">creat_mvtstock</field>
+        </record>
+        <record id="trans_lv" model="workflow.transition">
+            <field name="act_from" ref="activity_depart"/>
+            <field name="act_to" ref="activity_livree"/>
+            <field name="signal">cmd_livree</field>
+        </record>
+       
+        <!--end workflow -->
     </data>
 </odoo>

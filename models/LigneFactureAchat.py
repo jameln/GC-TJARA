@@ -22,7 +22,15 @@ class LigneFactureAchat(models.Model):
         string='Quantite',
         required=True,
           )
-    
+    prixunit= fields.Float(
+       string='Prix unitaire',
+       store=True
+    )
+    tva = fields.Integer(
+        string='TVA',
+        default='6',
+        digits=(16, 3),
+    )
     facture_id = fields.Many2one(
          required=True,
          index=True,

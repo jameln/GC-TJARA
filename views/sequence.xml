@@ -75,5 +75,14 @@
             <field eval="1" name="number_increment" />
             <field eval="False" name="company_id"/>
         </record>
+              <!-- sequences mouvement de stock -->
+        <record id="sequence_gctjara_mvtstock" model="ir.sequence">
+            <field name="name">Mouvement de stock  séquence</field>
+            <field name="code">gctjara.mvtstock.seq</field>
+            <field name="prefix">MS/%(year)s/000</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field eval="False" name="company_id"/>
+        </record>
 </data>
 </odoo>

@@ -44,41 +44,6 @@ class FactureAchat(models.Model):
     )
     
   
-#     state = fields.Selection(
-#         string='Etat',
-#         default='sa',
-#         selection=[
-#             ('sa', 'Saisie'),
-#             ('br', 'Brouillon'),
-#             ('va', 'Validee'),
-#             ('pa', 'Payee'),
-#             ('an', 'Annulee')
-#         ]
-#     )
-
-#     
-#     lignes_id = fields.One2many(
-#         string='Stock',
-#         comodel_name='gctjara.lignefactachat',
-#         inverse_name='facture_id',
-#     )
-#       
-#     lignefacturevente_id = fields.One2many(
-#         string='Facture',
-#         required=True,
-#         index=True,
-#         comodel_name='gctjara.lignefactvente',
-#         inverse_name='facture_id'
-#     )
-#       
-#     lignereglementachat_id = fields.One2many(
-#          string='Règlement',
-#          comodel_name='gctjara.ligneregachat',
-#          inverse_name='facture_id',
-#          )
-#       
-# 
-# 
        
     fournisseur_id = fields.Many2one('gctjara.fournisseur',
                                    string="Fournisseur",
@@ -91,12 +56,7 @@ class FactureAchat(models.Model):
         ondelete='restrict',
         comodel_name='gctjara.cmdfournisseur'
           )
-            
-#     @api.depends('lignecmd_id')
-#     def reffact(self):
-#         for r in self:
-#             if r.lignecmd_id.reffact==self.id :
-#                 r.lignefact_id=r.lignecmd_id
+
     
     lignefact_id = fields.One2many(
         string='Produits',
@@ -116,45 +76,44 @@ class FactureAchat(models.Model):
                                'factureachat',
                                 string='Pièce jointe'
                                 )
-         
-#     produit_ids = fields.Many2one(
-#          string='Produits',
-#          
-#          )
- 
-# 
-#     @api.multi
-#     @api.depends('commande_id')
-#     def ligneproduit(self):
-#         for rec in self :
-#             for r in self.commande_id :
-#                 r.produit_ids=rec.lignecmd_id
-#                 r.quantite= rec.lignecmd_id.quantite
-#                 r.prix_tot= rec.lignecmd_id.prix_total
-             
-#     produit_ids = fields.Char(
-#           string='Produits',
-#          # related='commande_id.lignecmd_id',
-#         #  compute='ligneproduit',
-#           store=True
-#               
-#            )
-#     quantite = fields.Char(
-#           string='Quantité',
-#          # related='commande_id.lignecmd_id',
-#          # compute='ligneproduit',
-#           store=True
-#               
-#            )
-#     prix_tot = fields.Char(
-#           string='Prix tot.',
-#          # related='commande_id.lignecmd_id',
-#          # compute='ligneproduit',
-#           store=True
-#               
-#            )
+    
+    timbre=fields.Float(
+        string ='Timbre',
+        default=0.5,
+        store=True
+        )
    
-       
+    montant = fields.Float(
+         string='Montant',
+         compute='_montant_totale',
+         digits=(16, 3),
+         default = 0.0,
+         store=True
+    )
+    montantttc=fields.Float(
+         string='Montant TTC',
+         compute='_montant_ttc',
+         digits=(16, 3),
+         default = 0.0,
+         store=True
+        )
+    
+    @api.one
+    @api.depends("lignefact_id")
+    def _montant_totale(self):
+       montanttot=0
+       for lfa in self.lignefact_id:
+               montanttot = montanttot + lfa.prix_total 
+       self.montant=montanttot
+
+    @api.one
+    @api.depends("montant")
+    def _montant_ttc(self):
+       mmttc=0
+       for mnt in self:
+               mmttc = self.montant + self.timbre
+       self.montantttc=mmttc
+  
   
   
     def write(self, values):

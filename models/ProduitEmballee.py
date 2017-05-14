@@ -67,9 +67,3 @@ class LigneProduitEmballage(models.Model):
         inverse_name='embalageproduit_id'
                         )  
   
-
-#     cmdachat_id = fields.Many2many(
-#          string='Commandes',
-#          index=True,
-#          comodel_name='gctjara.cmdfournisseur',
-#      )   

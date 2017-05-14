@@ -38,8 +38,7 @@
         'views/FactureVente.xml',
         'views/ReglementAchat.xml',
         'views/ReglementVente.xml',
-#         'views/Depot.xml',
-#         'views/Stock.xml',
+
         'views/Produits.xml',
         'views/MouvementStock.xml',
         'views/Emballages.xml',

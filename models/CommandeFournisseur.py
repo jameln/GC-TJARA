@@ -172,7 +172,9 @@ class CommandeFournisseur(models.Model):
                     'quantite':r.quantite,
                     'embalageproduit_id':r.embalageproduit_id.id,
                     'prix_total':r.prix_total,
-                    'facture_id':record.id
+                    'facture_id':record.id,
+                    'prixunit':r.prixunit,
+                    'tva':r.tva
                     })
         return True
     
@@ -182,7 +184,8 @@ class CommandeFournisseur(models.Model):
                   rec.env['gctjara.bonentree'].create({
                       'numero':self.env['ir.sequence'].next_by_code('gctjara.bonentree.seq') ,
                       'date':fields.datetime.now().strftime('%m/%d/%Y %H:%M'),
-                      'produit' : r.embalageproduit_id.name
+                      'produit' : r.embalageproduit_id.id,
+                      'quantite': str(r.quantite)
                       })   
           
           return True

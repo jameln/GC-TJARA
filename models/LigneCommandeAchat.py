@@ -23,6 +23,29 @@ class LigneCommandeAchat(models.Model):
         required=True,
           )
     
+    tva = fields.Selection(
+        string='TVA',
+        default='6',
+        selection=[
+            ('0', '0'),
+            ('6', '6'),
+            ('12', '12'),
+            ('18', '18'),
+            ('22', '22')
+        ]
+    )
+    @api.depends('embalageproduit_id')
+    def _prix_unit(self):
+         for r in self:
+            r.prixunit=r.embalageproduit_id.prixunit
+            
+    prixunit= fields.Float(
+        related='embalageproduit_id.prixunit',
+        string='Prix unitaire',
+        compute='_prix_unit',
+        store=True
+    )
+    
     commande_id = fields.Many2one(
          required=True,
          index=True,
@@ -33,11 +56,17 @@ class LigneCommandeAchat(models.Model):
          comodel_name='gctjara.produitemballee',
          string='Emballages'
      )
-     
+    @api.multi 
     @api.depends("quantite" , "embalageproduit_id")
     def prixtot(self):
+#         tauxtva=0
+#         prixht=0
         for pe in self:
-            pe.prix_total = pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids
+            tauxtva=float(pe.tva)/100
+            prixht=pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids
+            print ("tva ===> "+str(tauxtva))
+            print("prixht ==>" + str(prixht))
+            pe.prix_total =prixht*(1+tauxtva)
             
     prix_total = fields.Float(
         string='Prix Tot',
@@ -46,19 +75,7 @@ class LigneCommandeAchat(models.Model):
         store=True
     )
     reffact=fields.Char()
-    
-#     @api.model
-#     @api.depends('reffact')
-#     def create(self,vals):
-#         result = super(LigneCommandeAchat, self).create(vals)
-#         record = self.env['gctjara.lignefactachat'].create({
-#                     'quantite':self.quantite,
-#                     'embalageproduit_id':vals['embalageproduit_id'],
-#                     'prix_total':self.prix_total,
-#                     'facture_id':nextval('gctjara_lignefactachat_id_seq')
-#                     })
-#         return result
-    
+
     def is_empty(any_structure):
         if any_structure:
            print('Structure is not empty.')

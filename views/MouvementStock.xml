@@ -1,20 +1,20 @@
 <odoo>
     <data>
-      
         <record id="mvtstock_form_view" model="ir.ui.view">
             <field name="name">mvtstock.form</field>
             <field name="model">gctjara.mvtstock</field>
             <field name="arch" type="xml">
-                <form string="Mouvements de stock">
+                <form string="Mouvements de stock" create="false"> 
                     <sheet>
                         <group string="Général">
                             <field name="numero"/>
                             <field name="date"/>
+                            <field name="type"/>
                         </group>
                         <group String="Références">
-                            <!-- <field name="bonentree_id"/>
-                            <field name="bonlivaison_id"/>
-                            <field name="stock_id"/> -->
+                            <field name="bonentree_id"/>
+                            <field name="quantite"/>
+                            <field name="produit"/>
                         </group>
                     </sheet>
                 </form>
@@ -24,22 +24,21 @@
             <field name="name">mvtstock.tree</field>
             <field name="model">gctjara.mvtstock</field>
             <field name="arch" type="xml">
-                <tree string="Mouvements de  stock">
+                <tree string="Mouvements de  stock" create="false">
                     <field name="numero"/>
                     <field name="date"/>
-                    <!-- <field name="bonentree_id"/>
-                    <field name="bonlivaison_id"/>
-                    <field name="stock_id"/> -->
+                    <field name="bonentree_id"/>
+                    <field name="quantite"/>
+                    <field name="produit"/>
+                    <field name="type"/>
                 </tree>
             </field>
         </record>
-          <record id="mvtstock_list_action" model="ir.actions.act_window">
+        <record id="mvtstock_list_action" model="ir.actions.act_window">
             <field name="name">Mouvements de stock </field>
             <field name="res_model">gctjara.mvtstock</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-         
         </record>
-        
     </data>
 </odoo>

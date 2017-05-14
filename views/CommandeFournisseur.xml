@@ -42,6 +42,8 @@
                                         <tree editable="bottom">
                                             <field name="embalageproduit_id"/>
                                             <field name="quantite"/>
+                                            <field name="prixunit"/>
+                                            <field name="tva"/>
                                              <field name="prix_total" />
                                             
                                            
@@ -94,7 +96,7 @@
                     <field name="datecommande"/>
                     <field name="datereception"/>
                     <field name="fournisseur_id"/>
-                   <!--  <field name = "montant"/> -->
+                    <field name = "montant" sum="True"/> 
                 </tree>
             </field>
         </record>
