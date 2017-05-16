@@ -47,7 +47,7 @@
             <field eval="False" name="company_id"/>
         </record>
         
-          <!-- sequences reglement achat -->
+          <!-- sequences reglement vente -->
         <record id="sequence_gctjara_regvente" model="ir.sequence">
             <field name="name">Reglement vente séquence</field>
             <field name="code">gctjara.regvente.seq</field>

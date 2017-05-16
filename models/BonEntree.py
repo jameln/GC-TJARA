@@ -75,13 +75,7 @@ class BonEntree(models.Model):
     @api.multi 
     def maj_produits(self):
         qteprod= int(self.produit.quantitestocke) + int(self.quantite)
-       
-#         for allrec in self.env['gctjara.produitemballee']:
-#             if allrec.id == self.produit.id:
-#                 print("allrec.id ========>" + allrec.id)
-#         record = self.env['gctjara.produitemballee'].write({
-#                     'quantitestocke': qteprod,
-#                     })
+    
         product = self.env['gctjara.produitemballee']
         product_id = self.produit.id
         package_product = product.browse(product_id)

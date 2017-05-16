@@ -9,6 +9,42 @@
                 <p class="oe_view_nocontent_create">Créer votre première facture</p>
             </field>
         </record>
+        <act_window id="action_group" 
+                    key2="client_action_multi"
+                    name="Payment"    
+                    res_model="gctjara.factureachatregle"
+                    src_model="gctjara.factureachat" 
+                    target="new" 
+                    view_mode="form"
+                    />
+                    
+        <record id="factureachatregle_form_view" model="ir.ui.view">
+            <field name="name">factureachatregle.form</field>
+            <field name="model">gctjara.factureachatregle</field>
+            <field name="arch" type="xml">
+                <form string="Payment facture achat">
+                    
+                    <group col="2">
+                        <group >
+                            <field name="datereception"/>
+                            <field name="datevaleur"/>
+                            <field name="dateoperation"/>
+                            <field name="dateecheance"/>
+                        </group>
+                        <group>
+                            <field name="modepayment"/>
+                            <field name="etatrapp" options="{'vertical': true}" widget="radio"/>
+                        </group>
+                    </group>
+                   
+                    <footer>
+                        <button class="oe_highlight" name="Payment"
+                            string="Crée règlement" type="object"/>
+                        <button class="oe_link" special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
         <record id="factureachat_form_view" model="ir.ui.view">
             <field name="name">factureachat.form</field>
             <field name="model">gctjara.factureachat</field>
@@ -21,6 +57,8 @@
                             <field name="datepayfact"/>
                             <field name="valid"/>
                             <field name="fournisseur_id"/>
+                            <field name="etatreglement"/>
+                            
                         </group>
                         <notebook>
                             <page class="oe_page_Title" string="Produits">
@@ -87,6 +125,7 @@
                     <field name="datefact"/>
                     <field name="datepayfact"/>
                     <field name="valid"/>
+                    <field name="etatreglement"/>
                     <field name="montant" sum="True"/>
                     <field name="montantttc" sum="True"/>
                 </tree>

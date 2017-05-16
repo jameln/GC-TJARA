@@ -7,6 +7,8 @@ class CommandeFournisseur(models.Model):
      
      _rec_name = 'numero'
      
+     _inherit='mail.thread'
+     
      numero = fields.Char(
          string='Numero ',
         # default=lambda self: self.env['ir.sequence'].next_by_code('gctjara.cmdfrs.seq')
@@ -70,30 +72,13 @@ class CommandeFournisseur(models.Model):
             ('an', 'Annulee')
         ]
     )
-#      produitembalee=fields.Many2many(
-#          string='Produits',
-#          comodel_name='gctjara.produitemballee',
-#          relation='lignecommandeachat',
-#          column1='commande_id',
-#          column2='embalageproduit_id'
-#         
-#          )
-#      
+
      lignecmd_id = fields.One2many(
         string='Produits',
         comodel_name='gctjara.lignecmdachat',
         inverse_name='commande_id'
          )
-      
-
-
-
-#  
-#      facture_id = fields.Many2one(
-#          string='Facture',
-#          comodel_name='gctjara.factureachat',
-         
-#                         )
+     
      
      montant = fields.Float(
          string='Montant',

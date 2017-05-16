@@ -8,8 +8,10 @@ class ReglementAchat(models.Model):
     
     _rec_name = 'numero'
     
-    numero = fields.Char(string='Numero règlement',
-                         required=True,
+    numero = fields.Char(
+        string='Numero règlement',
+        required=True,
+        default=lambda self: self.env['ir.sequence'].next_by_code('gctjara.regachat.seq')
                          )
     
     date = fields.Date(string='Date règlement',
@@ -22,54 +24,60 @@ class ReglementAchat(models.Model):
                             default=fields.datetime.now(),
                             )
     
+    dateoperation=fields.Date(
+        string='Date d\'opération',
+        default=fields.datetime.now(),
+                            )
+    
     daterecption = fields.Date(string='Date réception',
                              default=fields.datetime.now(),
                              )
     
     tauxtva = fields.Char(
         string='TVA',
-        compute="tauxtva",
+     
         digits=(16, 3)
     )
     prixht = fields.Float(
         string='Prix HT',
-        compute="prixht",
+       
         digits=(16, 3)
     )
    
     prixttc = fields.Float(
         string='Prix TTC',
-        compute="prixttc",
+        
         digits=(16, 3)
     )
+    modepayment=fields.Selection(
+        string='Mode de payment',
+        default='',
+        selection=[
+            ('ch', 'Chèque'),
+            ('es', 'Espèce'),
+            ('vr', 'Virement'),
+            ('tr', 'Traite'),
+            ('pr', 'Prélevement')
+        ]
+    )
+    etatrapp=fields.Selection(
+        string='Etat de rapprochement',
+        default='',
+        selection=[
+            ('cd', 'A céditer'),
+            ('db', 'A débiter'),
+            ('vs', 'A versé'),
+            ('rp', 'Rapproché'),
+        
+        ]
+    )
+
+    
     description = fields.Text(
         string='Description',
        
     )
-    attachment = fields.One2many('ir.attachment',
-                               'regachat',
-                                string='Pièces jointes'
-                                )
-       
-class Attachment(models.Model):
-  
-     _inherit = 'ir.attachment'
-     _name = 'ir.attachment'
-       
-     regachat = fields.Many2one(
-        'gctjara.regachat',
-        string="Pièces jointes"
-    )     
-  
-#      
-#     lignereglementachat_id = fields.One2many(
-#          string='Ligne règlement',
-#          index=True,
-#          comodel_name='gctjara.ligneregachat',
-#          inverse_name='reglement_id',
-#           
-#          )
-#       
-# # 
-#    
+    upload_file=fields.Binary(string='Upload File')
     
+    file_name=fields.Char(string='File Name')
+

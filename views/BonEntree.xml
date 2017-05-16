@@ -23,7 +23,8 @@
                         <button class="oe_highlight" 
                             name="cmd_livree" states="nr"
                             string="Commande livrée" type="object"
-                            attrs="{'invisible': [('state','!=','nr'),]}"/>
+                            attrs="{'invisible': [('state','!=','nr'),]}"
+                            confirm="Are you sure you want to do this?"/>
                         <button class="oe_highlight"
                             name="creat_mvtstock" states="nr"
                             string="Entrée au stock" type="object" 

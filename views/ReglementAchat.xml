@@ -13,16 +13,26 @@
             <field name="arch" type="xml">
                 <form string="Règlement d'achat">
                     <sheet>
-                        <group string="Général">
-                            <field name="numero"/>
-                            <field name="date"/>
-                            <field name="datevaleur"/>
+                     <group col="2">
+                            <group string="Général">
+                                <field name="numero"/>
+                                <field name="date"/>
+                                <field name="datevaleur"/>
+                                <field name="daterecption"/>
+                                <field name="dateoperation"/>
+   
+                            </group>
+                            <group String="Opérations">
+                                <field name="tauxtva"/>
+                                <field name="prixht"/>
+                                <field name="prixttc"/>
+                            </group>
                         </group>
-                        <group String="Opérations">
-                            <field name="tauxtva"/>
-                            <field name="prixht"/>
-                            <field name="prixttc"/>
+                        <group >
+                            <field name="etatrapp"/>
+                            <field name="modepayment" options="{'horizontal': true}" widget="radio"/>
                         </group>
+                        
                     
                     
                       <notebook>
@@ -32,18 +42,16 @@
                                     </group>
                                 </page>
                                 
-                                <page class="oe_page_Title" string="Attachement">
-                                    <group>
-                                        <field name="attachment">
-                                            <tree>
-                                            <field name="name"/>
-                                            <field name="datas_fname"/>
-                                            <field name="mimetype"/>
-                                            <field name="create_date"/>
-                                            </tree>
-                                        </field>
-                                    </group>
+                                 <page class="oe_page_Title" string="Upload Files">
+                                     <sheet>
+                                        <group name="group_top">
+                                            <field name="upload_file" filename="file_name" widget="binary" height="64" />
+                                            <field name="file_name" invisble="1" />       
+                                        </group>
+                                     </sheet>
                                 </page>
+                                
+                               
                         </notebook>
                     </sheet>
                 </form>
@@ -58,9 +66,12 @@
                 <tree string="Règlements d'achat">
                     <field name="numero"/>
                     <field name="datevaleur"/>
-                    <field name="tauxtva"/>
+                    <field name="daterecption"/>
+                    <field name="etatrapp"/>
                     <field name="prixht"/>
                     <field name="prixttc"/>
+                    <field name="modepayment"/>
+                    
                 </tree>
             </field>
         </record>
