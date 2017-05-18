@@ -4,7 +4,7 @@
             <field name="name">Factures Achats</field>
             <field name="res_model">gctjara.factureachat</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,graph</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer votre première facture</p>
             </field>
@@ -66,16 +66,16 @@
                                     <field name="lignefact_id">
                                     <!--   <field name="lignecmd_id"> -->
                                     <tree editable="bottom">
-                                    <field name="embalageproduit_id"/>
-                                    <field name="prixunit"/>
-                                    <field name="quantite"/>
-                                    <field name="tva"/>
-                                    <field name="prix_total"/>
+	                                    <field name="embalageproduit_id"/>
+	                                    <field name="prixunit"/>
+	                                    <field name="quantite"/>
+	                                    <field name="tva"/>
+	                                    <field name="prix_total"/>
                                     </tree>
                                     <form>
-                                    <group>
-                                    <field name="embalageproduit_id"/>
-                                    </group>
+	                                    <group>
+	                                    	<field name="embalageproduit_id"/>
+	                                    </group>
                                     </form>
                                     </field>
                                 </group>
@@ -108,14 +108,39 @@
                                 </group>
                             </page>
                         </notebook>
+                        
+                   
+                        <p>
+                            <strong>ARRETEE LE PRESENT FACTURE D'ACHAT A LA SOMME DE:</strong>
+                             <field name="amount_to_text"/>
+                          
+                        </p>
+                    
                         <div class="oe_read_only">
                             <Label for="create_uid" string="Facture crée par :"/>
                             <field name="create_uid"/>
                         </div>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>
+        
+        
+        <record model="ir.ui.view" id="facture_graph_view">
+            <field name="name">factureachat.graph</field>
+            <field name="model">gctjara.factureachat</field>
+            <field name="arch" type="xml">
+                <graph string="Participations by Courses">
+                    <field name="fournisseur_id" />
+                    <field name="montantttc" type="measure" />
+                </graph>
+            </field>
+        </record>
+        
         <record id="facture_tree_view" model="ir.ui.view">
             <field name="name">factureachat.tree</field>
             <field name="model">gctjara.factureachat</field>

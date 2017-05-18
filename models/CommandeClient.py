@@ -1,18 +1,35 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class CommandeClient(models.Model):
      _name = 'gctjara.cmdclient'
      
      _rec_name = 'numerocmdc'
+     
+     _inherit='mail.thread'
 
      
      numerocmdc = fields.Char(
-         string='Numéro',
-         default=lambda self: self.env['ir.sequence'].next_by_code('gctjara.cmdclt.seq'),
-          )     
-  
+        string='Numero ',
+        default=lambda self: self._newrecord(),
+        store=True,
+        readonly=True
+        )
+     
+    
+     @api.model
+     def _newrecord(self):
+         sequence = self.env['ir.sequence'].search([('code','=','gctjara.cmdclt.seq')])
+         next= sequence.get_next_char(sequence.number_next_actual)
+         return next
+     
+     @api.model
+     def create(self, vals):
+        vals['numerocmdc'] = self.env['ir.sequence'].next_by_code('gctjara.cmdclt.seq')
+        return super(CommandeClient, self).create(vals)
+    
      
      datecommande = fields.Date(
          string='Date',
@@ -20,11 +37,11 @@ class CommandeClient(models.Model):
          default=fields.datetime.now(),
          help='Date création')
      
-     datereception = fields.Date(
-         'Date de reception',
+     datelivraison = fields.Date(
+         string='Date de livraison',
          required=True,
          default=fields.datetime.now(),
-         help='Date   reception  de la commande '
+         help='Date livraison  de la commande '
          )
      
      attachment = fields.One2many(
@@ -37,21 +54,17 @@ class CommandeClient(models.Model):
          String='Description'
          )
      
-        
-     quantite = fields.Float(
-        string='Quantite',
-        required=True,
-        default=1.0,
-        digits=(16, 3)
-    )
+ 
     
      valid = fields.Boolean(
         string='Ne pas annuler',
         default=False
     )
      
-     client_id = fields.Many2one(string="Client",
-                                comodel_name='gctjara.client'
+     client_id = fields.Many2one(
+          string="Client",
+          ondelete='restrict',
+          comodel_name='gctjara.client'
                              )
      
      
@@ -66,6 +79,32 @@ class CommandeClient(models.Model):
             ('an', 'Annulee')
         ]
     )
+     
+     lignecmd_id = fields.One2many(
+        string='Produits',
+        comodel_name='gctjara.lignecmdvente',
+        inverse_name='commande_id'
+         )
+     
+     
+     montant = fields.Float(
+         string='Montant',
+         compute='_montant_totale',
+         digits=(16, 3),
+         default = 0.0,
+         store=True
+    )
+    
+     @api.one
+     @api.depends("lignecmd_id")
+     def _montant_totale(self):
+       montanttot=0
+       for lca in self.lignecmd_id:
+               montanttot = montanttot + lca.prix_total 
+       self.montant=montanttot
+ 
+      
+  
      
      def write(self, values):
         print values
@@ -82,6 +121,7 @@ class CommandeClient(models.Model):
         return True
 
      def cmdclt_brouillon(self):
+
         self.write({'state': 'br'})
         return True
     
@@ -97,58 +137,68 @@ class CommandeClient(models.Model):
                 
                 }
             
-              
-     def create_factvente(self):
-        sequences =   self.env['ir.sequence'].next_by_code('gctjara.facturevente.seq') 
-        self.env['gctjara.facturevente'].create({
+          
+
+     @api.multi
+     def create_bon_livraison(self):
+         
+        sequences = self.env['ir.sequence'].next_by_code('gctjara.bonlivraison.seq') 
+        record = self.env['gctjara.bonlivraison'].create({
+            
               'numero' :  sequences,
-              'datefact': self.datereception,
+              'date':fields.datetime.now().strftime('%m/%d/%Y %H:%M'),
+              'client_id':self.client_id.id,
+              'commande_id' :  self.id
               
-            })
+               })
+        print("********************** bon de livraison  crée *************************")
+         
+        
+        for rec in self:
+             for r in rec.lignecmd_id :
+#                  r.refcmd=  record.id
+                 record1 = self.env['gctjara.lignebonlivraison'].create({
+                     'quantite':r.quantite,
+                     'embalageproduit_id':r.embalageproduit_id.id,
+                     'prix_total':r.prix_total,
+                     'commande_id':record.id,
+                     'prixunit':r.prixunit,
+                     'tva':r.tva,
+                     'bonlivraison_id':record.id,
+                     'commande_id':self.id
+                     
+                     }) 
+             
+                 
+        print("********************** bon de livraison  crée *************************")
+          
         return True
     
     
-     @api.one
+    
+     @api.multi
      def cmdclt_valider(self):
-        
-#         self.message_post(type='notification',
-#                           subtype='mt_comment',
-#                           subject='Note d\'information: Validation commande N ' + self.numerocmdc,
-#                           body='La commande N ' + self.numerocmdc + ' a ete valide par : ' + str(self.env.user.name),
-#                           partner_ids=[self.client_id.id])
-                          
+      
         self.write({
             'state': 'va',
-            'description': 'Commande valide le: ' + fields.datetime.now().strftime('%d/%m/%Y %H:%M')
-        })
-        
-        
-        self.create_factvente()
-         
+            'description': 'Commande client valide le: ' + fields.datetime.now().strftime('%d/%m/%Y %H:%M'),
+            })  
+        self.create_bon_livraison()
         return True
-    
+
      def cmdclt_terminer(self):
         self.write({'state': 'tr'})
         return True
     
      def cmdclt_annuler(self):
         if self.valid:
-            raise ValidationError("Cette commande est verouillee!")
+            raise ValidationError("Cette commande client est verouillee!")
         self.write({'state': 'an'})
         return True
-       
 
-      
-     facture_id = fields.One2many(string='Lignes Facture',
-                         comodel_name='gctjara.facturevente',
-                         inverse_name='commande_id',
-                         )
-       
-#      lignecmd_id = fields.One2many(string='Lignes commande',
-#                           comodel_name='gctjara.lignecmdvente',
-#                           inverse_name='commande_id',
-#                           )
-#       
+     
+
+
 class Attachment(models.Model):
   
      _inherit = 'ir.attachment'

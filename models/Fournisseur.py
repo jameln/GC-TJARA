@@ -7,6 +7,8 @@ class Fournisseur(models.Model):
      
      _rec_name = 'name'
      
+     _inherit='mail.thread'
+     
      name = fields.Char('Nom', required=True)
      
      matriculefiscal = fields.Char('Matricule fiscale', required=True)
@@ -42,16 +44,16 @@ class Fournisseur(models.Model):
        comodel_name='gctjara.cmdfournisseur',
        inverse_name='fournisseur_id',
        )
-#       
-#      facture_id = fields.One2many(
-#         string="Factures",
-#         ondelete='restrict',
-#         comodel_name='gctjara.factureachat',
-#         inverse_name='fournisseur_id',
-#         )
-#       
+       
+     facture_id = fields.One2many(
+       string="Factures",
+       ondelete='restrict',
+       comodel_name='gctjara.factureachat',
+       inverse_name='fournisseur_id',
+       )
+       
 #      produit_id = fields.Many2one(
-#         string='Prosuits',
-#         comodel_name='gctjara.produits'
-#        )
-#   
+#        string='Prosuits',
+#        comodel_name='gctjara.produits'
+#       )
+#    

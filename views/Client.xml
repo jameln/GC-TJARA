@@ -56,7 +56,7 @@
                                     <field name="commande_id">
                                     <tree>
                                     <field String="Numéro" name="numerocmdc"/>
-                                    <field String="Quantité" name="quantite"/>
+                                    
                                     </tree>
                                     </field>
                                 </group>

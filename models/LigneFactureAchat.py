@@ -45,7 +45,10 @@ class LigneFactureAchat(models.Model):
     @api.depends("quantite" , "embalageproduit_id")
     def prixtot(self):
         for pe in self:
-            pe.prix_total = pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids
+            tauxtva=float(pe.tva)/100
+            prixht=pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids
+           
+            pe.prix_total =prixht*(1+tauxtva)
             
     prix_total = fields.Float(
         string='Prix Tot',

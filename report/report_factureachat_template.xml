@@ -6,11 +6,79 @@
                 <t t-as="o" t-foreach="docs">
                     <t t-call="report.external_layout">
                         <div class="page">
-                            <h2>GC-TJARA</h2>
-                            <p>FACTURE D'ACHATS <span t-field="o.numero"/></p>
+                          
+                            <h3>FACTURE D'ACHATS N° <span t-field="o.numero"/></h3>
+                            
+                           <p>Crée le      : <span t-field="o.datefact"/><br/>
+                           Fournisseur  :  <span t-field="o.fournisseur_id"/><br/>
+                           Réf commande : <span t-field="o.commande_id"/></p>
+                          
+                            
+                                <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                
+                                                <th class="text-left">Produits</th>
+                                                <th class="text-left">Quantity</th>
+                                                <th class="text-left">TVA</th>
+                                                <th class="text-left">Unit Price</th>
+                                                <th class="text-left"  >Total Price</th>
+                                                
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="o.lignefact_id" t-as="page">
+                                                <tr>
+                                                   <td> <t t-esc="page.embalageproduit_id.name"/> </td> 
+                                                   <td> <t t-esc="page.prixunit"/> </td> 
+                                                   <td> <t t-esc="page.quantite"/> </td> 
+                                                   <td> <t t-esc="page.tva"/> </td> 
+                                                   <td> <t t-esc="page.prix_total"/> </td> 
+                                                </tr>
+                                                </t>
+                                         </tbody>
+                                </table> 
+                                
+                            
+                        <div class="row" name="total">
+                            <div class="col-xs-4 pull-right">
+                                <table class="table table-condensed">
+                                    <tr class="border-black">
+                                        <td><strong>Montant</strong></td>
+                                            <td class="text-right">
+                                                <span t-field="o.montant"/>
+                                            </td>
+                                            <br/>
+                                    </tr>
+                               
+                               
+                                    <tr class="border-black">          
+                                            <td><strong>Timbre</strong></td>
+                                            <td class="text-right">
+                                                <span t-field="o.timbre"/>
+                                            </td>
+                                            <br/>
+                                     </tr>
+                                 
+                               
+                                    <tr class="border-black">         
+                                            <td><strong>Montant TTC</strong></td>
+                                            <td class="text-right">
+                                                <span t-field="o.montantttc"/>
+                                            </td>
+                                            <br/>
+                                    </tr>
+                                </table>
+                            </div>
+                         </div>                           
                         </div>
                         
                      </t>
+                       <p>
+                            <strong>ARRETEE LE PRESENT DEVIS/COMMANDE A LA SOMME DE:</strong><br/>
+                            <span t-field="o.amount_to_text"/>
+                          
+                        </p>
                 </t>
             </t>
         </template>
@@ -97,7 +165,7 @@
                            Lines associated -->
                             <!-- 
                             <t t-foreach="layout_category['lines']" t-as="l">
-                                <tr>
+                               <tr> 
                                     <td><span t-field="l.name"/></td>
                                     <td class="text-right">
                                         <span t-field="l.product_uom_qty"/>

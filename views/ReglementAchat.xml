@@ -4,7 +4,10 @@
             <field name="name">Réglements d'achat </field>
             <field name="res_model">gctjara.regachat</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,pivot</field>
+            <field name="context"
+                eval="{'search_default_filter': 1,'search_default_by_Fournisseur': 1}" />
+
          
         </record>
         <record id="regachat_form_view" model="ir.ui.view">
@@ -75,7 +78,18 @@
                 </tree>
             </field>
         </record>
-        
+            
+    <record id="regachat_pivot_view" model="ir.ui.view">
+         <field name="name">regachat.pivot</field>
+         <field name="model">gctjara.regachat</field>
+         <field name="arch" type="xml">
+             <pivot string="Facture Pivot" disable_linking="True">
+                 <field name="numero" type="col"/>
+                 <field name="daterecption" interval="day" type="row"/>
+                 <field name="prixttc" type="measure"/>
+             </pivot>
+         </field>
+    </record>   
     </data>
 </odoo>
 

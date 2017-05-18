@@ -26,14 +26,7 @@ class LigneProduitEmballage(models.Model):
          for r in self:
             r.prixunit=r.produit_id.prixunit
      
-     
-  
-#     quantite = fields.Integer(
-#         string='Quantite',
-#         required=True,
-#         default=0,
-#        
-#     )
+
     
     quantitestocke=fields.Float(
         string ='Stock',
@@ -64,6 +57,12 @@ class LigneProduitEmballage(models.Model):
     lignecmd_id = fields.One2many(
         string='Commandes',
         comodel_name='gctjara.lignecmdachat',
+        inverse_name='embalageproduit_id'
+                        )  
+    
+    lignecmdvente_id = fields.One2many(
+        string='Commandes',
+        comodel_name='gctjara.lignecmdvente',
         inverse_name='embalageproduit_id'
                         )  
   

@@ -32,3 +32,7 @@ class MouvementStock(models.Model):
         string='Réf bon d\'entrée',
         comodel_name='gctjara.bonentree'
         )
+    bonlivraison_id=fields.Many2one(
+        string='Réf bon de livraison',
+        comodel_name='gctjara.bonlivraison'
+        )

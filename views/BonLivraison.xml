@@ -18,8 +18,33 @@
                     <sheet>
                         <group>
                             <field name="numero"/>
-                            <field name="datebl"/>
+                            <field name="date"/>
+                            <field name="client_id" />
+                            <field name ="commande_id" />
                         </group>
+                        
+                        <notebook>
+                            <page class="oe_page_Title" string="Produits">
+                                <group>
+                                    <field name="lignebonlivraison_id">
+                                        <tree >
+                                            <field name="embalageproduit_id"/>
+                                            <field name="quantite"/>
+                                            <field name="prixunit"/>
+                                            <field name="tva"/>
+                                            <field name="prix_total" />
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="embalageproduit_id"/>                                                
+                                            </group>
+                                         </form>
+                                         
+                                    </field> 
+                                </group>
+                            </page>
+
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -30,7 +55,9 @@
             <field name="arch" type="xml">
                 <tree string="Bon de livraison">
                     <field name="numero"/>
-                    <field name="datebl"/>
+                    <field name="date"/>
+                    <field name="client_id" />
+                    <field name ="commande_id" />
                 </tree>
             </field>
         </record>

@@ -83,8 +83,5 @@ class LigneCommandeAchat(models.Model):
             print('Structure is empty.')
             return False
          
-#   
-#     self._create_lignefacture()
-#                
 
   
