@@ -32,8 +32,9 @@
                             </group>
                         </group>
                         <group >
-                            <field name="etatrapp"/>
-                            <field name="modepayment" options="{'horizontal': true}" widget="radio"/>
+                            <field name="etatrapp" options="{'horizontal': true}" widget="radio"/>
+                            <field name="modepayment" />
+                            <field name="facture_id" />
                         </group>
                         
                     
@@ -74,6 +75,7 @@
                     <field name="prixht"/>
                     <field name="prixttc"/>
                     <field name="modepayment"/>
+                     <field name="facture_id" />
                     
                 </tree>
             </field>
@@ -83,7 +85,7 @@
          <field name="name">regachat.pivot</field>
          <field name="model">gctjara.regachat</field>
          <field name="arch" type="xml">
-             <pivot string="Facture Pivot" disable_linking="True">
+             <pivot string="Reglement achat Pivot" disable_linking="True">
                  <field name="numero" type="col"/>
                  <field name="daterecption" interval="day" type="row"/>
                  <field name="prixttc" type="measure"/>

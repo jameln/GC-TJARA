@@ -19,14 +19,14 @@
 
 
                         <button class="oe_highlight"
-                            name="creat_mvtstock" states="at"
-                            string="Facturée le BLs" type="object"
-                            attrs="{'invisible': [('state','!=','lv'),]}"/>
+                            name="create_factvente" states="at"
+                            string="Créer facture" type="object"
+                            attrs="{'invisible': [('state','!=','at'),]}"/>
 
                         <button class="oe_highlight"
-                            name="cmd_livree" states="at"
-                            string="Annulée la commande" type="object"
-                            attrs="{'invisible': [('state','!=','lv'),]}"
+                            name="action_draft" states="at"
+                            string="Annuler la commande" type="object"
+                            attrs="{'invisible': [('state','!=','at'),]}"
                             confirm="Cette commande sera annulée."/>
 
                         <field name="state"
@@ -72,10 +72,11 @@
             <field name="model">gctjara.bonlivraison</field>
             <field name="arch" type="xml">
                 <tree string="Bon de livraison">
-                    <field name="numero"/>
-                    <field name="date"/>
-                    <field name="client_id" />
+                    <field name ="numero"/>
+                    <field name ="date"/>
+                    <field name ="client_id" />
                     <field name ="commande_id" />
+                    <field name ="state" />
                 </tree>
             </field>
         </record>
@@ -111,12 +112,12 @@
         <record id="trans_lv" model="workflow.transition">
             <field name="act_from" ref="activity_depart"/>
             <field name="act_to" ref="activity_valide"/>
-            <field name="signal">creat_mvtstock</field>
+            <field name="signal">create_factvente</field>
         </record>
         <record id="trans_an" model="workflow.transition">
             <field name="act_from" ref="activity_depart"/>
             <field name="act_to" ref="activity_annulee"/>
-            <field name="signal">cmd_livree</field>
+            <field name="signal">action_draft</field>
         </record>
 
         <!--end workflow -->

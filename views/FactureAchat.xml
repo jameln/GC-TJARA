@@ -27,13 +27,14 @@
                     <group col="2">
                         <group >
                             <field name="datereception"/>
-                            <field name="datevaleur"/>
+
                             <field name="dateoperation"/>
                             <field name="dateecheance"/>
                         </group>
                         <group>
                             <field name="modepayment"/>
                             <field name="etatrapp" options="{'vertical': true}" widget="radio"/>
+                           
                         </group>
                     </group>
                    

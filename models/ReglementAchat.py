@@ -49,6 +49,12 @@ class ReglementAchat(models.Model):
         
         digits=(16, 3)
     )
+
+    facture_id = fields.Many2one(
+        string='Réf. facture',
+        comodel_name='gctjara.factureachat'
+    )
+
     modepayment=fields.Selection(
         string='Mode de payment',
         default='',

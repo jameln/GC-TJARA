@@ -2,9 +2,9 @@
 
 from odoo import models, fields, api
 
-class LigneCommandeVente(models.Model):
+class LigneBonLivraison(models.Model):
     
-    _name = 'gctjara.lignecmdvente'
+    _name = 'gctjara.lignebonlivraison'
     
     _rec_name='name'
    
@@ -23,30 +23,15 @@ class LigneCommandeVente(models.Model):
         string='Quantite',
         required=True,
           )
-    
-    tva = fields.Selection(
+    prixunit= fields.Float(
+       string='Prix unitaire',
+       store=True
+    )
+    tva = fields.Integer(
         string='TVA',
         default='6',
-        selection=[
-            ('0', '0'),
-            ('6', '6'),
-            ('12', '12'),
-            ('18', '18'),
-            ('22', '22')
-        ]
+        digits=(16, 3),
     )
-    @api.depends('embalageproduit_id')
-    def _prix_unit(self):
-         for r in self:
-            r.prixunit=r.embalageproduit_id.prixunit
-            
-    prixunit= fields.Float(
-        related='embalageproduit_id.prixunit',
-        string='Prix unitaire',
-        compute='_prix_unit',
-        store=True
-    )
-    
     commande_id = fields.Many2one(
          required=True,
          index=True,
@@ -57,13 +42,20 @@ class LigneCommandeVente(models.Model):
          comodel_name='gctjara.produitemballee',
          string='Emballages'
      )
-    @api.multi 
+    
+    bonlivraison_id = fields.Many2one(
+         required=True,
+         index=True,
+         comodel_name='gctjara.bonlivraison',
+          
+     )
+     
     @api.depends("quantite" , "embalageproduit_id")
     def prixtot(self):
-
         for pe in self:
             tauxtva=float(pe.tva)/100
             prixht=pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids
+           
             pe.prix_total =prixht*(1+tauxtva)
             
     prix_total = fields.Float(
@@ -72,27 +64,3 @@ class LigneCommandeVente(models.Model):
         digits=(16, 3),
         store=True
     )
-    refcmd=fields.Char()
-    
-    @api.depends("quantite" , "embalageproduit_id")
-    def prixht(self):
-        for pht in self:
-            prixht=pht.quantite * pht.embalageproduit_id.prixunit*pht.embalageproduit_id.emballage_id.poids
-            pht.prix_ht =prixht
-            
-    prix_ht = fields.Float(
-        string='Prix ht',
-        compute="prixht",
-        digits=(16, 3),
-        store=True
-    )
-    
-
-    def is_empty(any_structure):
-        if any_structure:
-           print('Structure is not empty.')
-           return  True
-        else:
-            print('Structure is empty.')
-            return False
-         

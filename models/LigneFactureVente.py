@@ -35,7 +35,7 @@ class LignefactureVente(models.Model):
     facture_id = fields.Many2one(
          required=True,
          index=True,
-         comodel_name='gctjara.factureachat',
+         comodel_name='gctjara.facturevente',
           
      )
     embalageproduit_id = fields.Many2one(
@@ -54,6 +54,19 @@ class LignefactureVente(models.Model):
     prix_total = fields.Float(
         string='Prix Tot',
         compute="prixtot",
+        digits=(16, 3),
+        store=True
+    )
+    
+    @api.depends("quantite" , "embalageproduit_id")
+    def prixht(self):
+        for pht in self:
+            prixht=pht.quantite * pht.embalageproduit_id.prixunit*pht.embalageproduit_id.emballage_id.poids
+            pht.prix_ht =prixht
+            
+    prix_ht = fields.Float(
+        string='Prix ht',
+        compute="prixht",
         digits=(16, 3),
         store=True
     )

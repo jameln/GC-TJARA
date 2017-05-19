@@ -144,9 +144,10 @@ class FactureAchatTemp(models.TransientModel):
     _name = "gctjara.factureachatregle"
     
     datereception=fields.Date(string='Date réception')
-    datevaleur=fields.Date(string='Date valeur')
+    
     dateoperation=fields.Date(string='Date opération')
     dateecheance=fields.Date(string='Date écheance')
+
     modepayment=fields.Selection(
         string='Mode de payment',
         default='',
@@ -154,15 +155,14 @@ class FactureAchatTemp(models.TransientModel):
             ('ch', 'Chèque'),
             ('es', 'Espèce'),
             ('vr', 'Virement'),
-            ('tr', 'Traite'),
-            ('pr', 'Prélevement')
+            ('tr', 'Traite')
+          
         ]
     )
     etatrapp=fields.Selection(
         string='Etat de rapprochement',
         default='',
         selection=[
-            ('cd', 'A céditer'),
             ('db', 'A débiter'),
             ('vs', 'A versé'),
             ('rp', 'Rapproché'),
@@ -191,7 +191,8 @@ class FactureAchatTemp(models.TransientModel):
                   'prixht':factures.montant,
                   'prixttc': factures.montantttc,
                   'etatrapp':self.etatrapp,
-                 ' modepayment':self.modepayment
+                  'modepayment':self.modepayment,
+                  'facture_id':factures.id
                   
                    })
                

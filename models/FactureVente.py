@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+
 
 class FactureVente(models.Model):
     
@@ -62,92 +64,141 @@ class FactureVente(models.Model):
 #         inverse_name='facture_id',
 #     )
 #       
-#      lignereglementvente_id = fields.One2many(
-#          string='Règlement',
-#          comodel_name='gctjara.ligneregvente',
-#          inverse_name='facture_id',
-#          )
+     lignefact_id = fields.One2many(
+        string='Produits',
+        comodel_name='gctjara.lignefactvente',
+        inverse_name='facture_id'
+         )
      
      client_id = fields.Many2one('gctjara.client',
                                    string="Client",
                                    ondelete='restrict'
                                    )
-       
-     commande_id = fields.Many2one(string="Commande",
-                                   ondelete='restrict',
-                                   comodel_name='gctjara.cmdclient'
+
+     bonlivraison_id = fields.Many2one(
+         string="Bon livraison N°",
+         ondelete='restrict',
+         comodel_name='gctjara.bonlivraison'
                                    )
          
          
     
-     attachment = fields.One2many('ir.attachment',
-                               'facturevente',
-                                string='Pièce jointe'
+     attachment = fields.One2many(
+         'ir.attachment',
+         'facturevente',
+          string='Pièce jointe'
                                 )
      
-     
-     def write(self, values):
-        print values
-        if values.has_key('state'):
-            if values.get('state') == 'sa':
-                values['state'] = 'br'
-        result = super(FactureVente, self).write(values)
-        return result
-
-     @api.multi
-     def afficher(self):
-        print "afficher()"
-        raise ValidationError('id facture : ' + str(self.id))
-        return True
-
-     def fctvente_brouillon(self):
-        self.write({'state': 'br'})
-        return True
+     etatreglement=fields.Char(
+        string='Etat facture',
+        readonly='1',
+        store=True,
+        default=''
+        )
+       
+      
+     attachment = fields.One2many('ir.attachment',
+                               'factureachat',
+                                string='Pièce jointe'
+                                )
     
-     def getClientID(self):
-        if self.client_id: 
-            return {
-                'name' : 'client',
-                'res_model':'res.partner',
-                'res_id':self.client_id.id,
-                'view_type':'form',
-                'view_mode':'form',
-                'type':'ir.actions.act_window'
-                
-                }
+     timbre=fields.Float(
+        string ='Timbre',
+        default=0.5,
+        store=True
+        )
+    
+   
+     montant = fields.Float(
+         string='Montant',
+         compute='_montant_totale',
+         digits=(16, 3),
+         default = 0.0,
+         store=True
+    )
+     montantttc=fields.Float(
+         string='Montant TTC',
+         compute='_montant_ttc',
+         digits=(16, 3),
+         default = 0.0,
+         store=True
+        )
     
      @api.one
-     def fctvente_valider(self):
+     @api.depends("lignefact_id")
+     def _montant_totale(self):
+        montanttot=0
+        for lfa in self.lignefact_id:
+               montanttot = montanttot + lfa.prix_total 
+        self.montant=montanttot
+
+     @api.one
+     @api.depends("montant")
+     def _montant_ttc(self):
+       mmttc=0
+       for mnt in self:
+               mmttc = self.montant + self.timbre
+       self.montantttc=mmttc
+    
+
+class FactureVenteTemp(models.TransientModel):
+    _name = "gctjara.factureventeregle"
+    
+    datereception=fields.Date(string='Date réception')
+    datevaleur=fields.Date(string='Date valeur')
+    dateoperation=fields.Date(string='Date opération')
+    dateecheance=fields.Date(string='Date écheance')
+
+    modepayment=fields.Selection(
+        string='Mode de payment',
+        default='',
+        selection=[
+            ('ch', 'Chèque'),
+            ('es', 'Espèce'),
+            ('vr', 'Virement'),
+            ('tr', 'Traite'),
+            ('pr', 'Prélevement')
+        ]
+    )
+    etatrapp=fields.Selection(
+        string='Etat de rapprochement',
+        default='',
+        selection=[
+            ('cd', 'A céditer'),
+            ('vs', 'A versé'),
+            ('rp', 'Rapproché'),
         
-#         self.message_post(type='notification',
-#                           subtype='mt_comment',
-#                           subject='Note d\'information: Validation Facture N ' + self.name,
-#                           body='La Facture N ' + self.name + ' a ete valide par : ' + str(self.env.user.name),
-#                           partner_ids=[self.client_id.id])
-                          
-        self.write({
-            'state': 'va',
-            'description': 'facture valide le: ' +
-                           fields.datetime.now().strftime('%d/%m/%Y %H:%M')
-        })
-        return True
+        ]
+    )
 
-     def fctvente_payer(self):
-        self.write({'state': 'pa'})
-        return True
+    @api.multi
+    def Payment(self):
+        for facture_id in self.env.context.get('active_ids'):
+            factures=self.env['gctjara.facturevente'].search([('id','=',facture_id)])
+           
+         
+            if(factures.etatreglement == u"Réglée"):
+                raise ValidationError('La facture numéro  ' + str(factures.numero) + ' est déja réglée')
+                return False
 
-     def fctvente_annuler(self):
-        if self.valid:
-            raise ValidationError("Cette facture est verouillee!")
-        self.write({'state': 'an'})
+                              
+            self.env['gctjara.regvente'].create({
+                  'numero' : self.env['ir.sequence'].next_by_code('gctjara.regvente.seq'),
+                  'date':fields.datetime.now(),
+                  'dateoperation':self.dateoperation,
+                  'datevaleur':self.datevaleur,
+                  'daterecption':self.dateecheance,
+                  'tauxtva':'18',
+                  'prixht':factures.montant,
+                  'prixttc': factures.montantttc,
+                  'etatrapp':self.etatrapp,
+                  'modepayment':self.modepayment,
+                  'facture_id':factures.id
+                  
+                   })
+               
+            factures.etatreglement='Réglée'
+       
         return True
-#      
-class Attachment(models.Model):
+    
  
-     _inherit = 'ir.attachment'
-     _name = 'ir.attachment'
-      
-     facturevente = fields.Many2one(
-        'gctjara.facturevente',
-        string="Facture"
-    )  
