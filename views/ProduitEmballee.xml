@@ -1,0 +1,96 @@
+<odoo>
+    <data>
+        <record id="produitemballee_list_action" model="ir.actions.act_window">
+            <field name="name">Produits Embalées </field>
+            <field name="res_model">gctjara.produitemballee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+        <record id="produitemballee_form_view" model="ir.ui.view">
+            <field name="name">produitemballee.form</field>
+            <field name="model">gctjara.produitemballee</field>
+            <field name="arch" type="xml">
+                <form string="Produits Embalées Form">
+
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="quantitestocke"/>
+                            <field name="produit_id"/>
+                            <field name="emballage_id"/>
+                            <field name="prixunit"/>
+                            
+                        </group>
+
+                   
+                     <notebook>
+
+                        <page class="oe_page_Title" string="Achats">
+                            <group>
+                                <field name="lignecmd_id">
+                                    <tree > 
+
+                                            <group>
+                                                <field name="name"/>
+                                              
+                                            </group>
+
+                                    </tree>
+                                    <form>
+
+                                            <group>
+                                                <field name="name"/>
+                                            </group>
+
+                                        
+                                    </form>
+                                </field>
+                            </group>
+                        </page>
+
+                        <page class="oe_page_Title" string="Ventes">
+                            <group>
+                                <field name="lignecmdvente_id">
+                                    <tree >
+
+                                            <group>
+                                                <field name="name"/>
+
+                                            </group>
+
+                                    </tree>
+                                    <form>
+
+                                            <group>
+                                                <field name="name"/>
+                                            </group>
+
+
+                                    </form>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook> 
+                     </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="produitembalee_tree_view" model="ir.ui.view">
+            <field name="name">produitemballee.tree</field>
+            <field name="model">gctjara.produitemballee</field>
+            <field name="arch" type="xml">
+                <tree string="Poduits embalées">
+                    <field name="name"/>
+                    <field name="quantitestocke"/>
+                    <field name="produit_id"/>
+                    <field name="emballage_id"/>
+                    <field name="prixunit"/>
+
+                </tree>
+            </field>
+        </record>
+       
+    </data>
+</odoo>
