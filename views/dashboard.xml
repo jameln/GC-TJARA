@@ -12,12 +12,19 @@
             <field name="view_type">form</field>
             <field name="view_mode">calendar</field>
         </record>
-        <record id="produits_graph_action" model="ir.actions.act_window">
-            <field name="name">Produits</field>
-            <field name="res_model">gctjara.produits</field>
+        <record id="regachat_graph_action" model="ir.actions.act_window">
+            <field name="name">Réglement achat</field>
+            <field name="res_model">gctjara.regachat</field>
             <field name="view_type">form</field>
             <field name="view_mode">graph</field>
         </record>
+         <record id="regvente_graph_action" model="ir.actions.act_window">
+            <field name="name">Réglement vente</field>
+            <field name="res_model">gctjara.regvente</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+        </record>
+        
         <record id="board_gctjara_form" model="ir.ui.view">
             <field name="name">Dashboard Form</field>
             <field name="model">board.board</field>
@@ -26,24 +33,25 @@
                 <form string="GC-TJARA Dashboard">
                     <board style="2-1">
                         <column>
-                            <action name="%(produits_graph_view)d" string="Qté par produit"/>
-                            <action name="%(factureachat_list_action)d" string="Factures Achats"/>
+                            <action name="%(regachat_graph_view)d" string="Réglement achat"/>
+                            <action name="%(regvente_graph_view)d" string="Réglement vente"/>
+                            
                         </column>
                         <column>
-                            <action name="%(produits_graph_view)d" string="Qté par produit"/>
+                            <action name="%(factureachat_list_action)d" string="Factures Achats"/>
                             <action name="%(facturevente_list_action)d" string="Factures Ventes"/>
                         </column>
-                        <column>
+                        <!-- <column>
                             <action
-                                name="%(facturevente_calendar_action)d" string="Calendrier"/>
+                                name="%(facturevente_calendar_action)d" string="Ventes"/>
                             <action
-                                name="%(factureachat_calendar_action)d" string="Ventes"/>
-                        </column>
+                                name="%(factureachat_calendar_action)d" string="Achats"/>
+                        </column> -->
                     </board>
                 </form>
             </field>
         </record>
-        <record id="open_board_tjara" model="ir.actions.act_window">
+        <record id="open_board_gctjara" model="ir.actions.act_window">
             <field name="name">Dashboard</field>
             <field name="res_model">board.board</field>
             <field name="view_type">form</field>
