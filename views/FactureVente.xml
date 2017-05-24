@@ -27,7 +27,7 @@
                                    
                                     <tree editable="bottom">
                                         <field name="embalageproduit_id"/>
-                                        <field name="prixunit"/>
+                                        <field name="prixvente"/>
                                         <field name="quantite"/>
                                         <field name="prix_ht" />
                                         <field name="tva"/>
@@ -89,15 +89,36 @@
                     <field name="client_id"/>
                     <field name="bonlivraison_id"/>
                     <field name="etatreglement" />
+                    <field name="refregvente"/>
                     <field name="create_uid"/>
                 </tree>
+            </field>
+        </record>
+         <record model="ir.ui.view" id="facturevente_calendar_view">
+            <field name="name">facturevente.calendar</field>
+            <field name="model">gctjara.facturevente</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendier facture vente" date_start="datefact" color="client_id">
+                    <field name="numero" />
+                    <field name="etatreglement" />
+                </calendar>
+            </field>
+        </record>
+         <record model="ir.ui.view" id="facturevente_graph_view">
+            <field name="name">facturevente.graph</field>
+            <field name="model">gctjara.facturevente</field>
+            <field name="arch" type="xml">
+                <graph string="Participations by Courses">
+                    <field name="client_id" />
+                    <field name="montantttc" type="measure" />
+                </graph>
             </field>
         </record>
         <record id="facturevente_list_action" model="ir.actions.act_window">
             <field name="name">Factures Ventes</field>
             <field name="res_model">gctjara.facturevente</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer votre première facture</p>
             </field>
@@ -126,13 +147,14 @@
                         </group>
                         <group>
                             <field name="modepayment"/>
-                            <field name="etatrapp" />
+                            <field name="etatrapp"  options="{'vertical': true}" widget="radio"/>
+                            <field name="numerochq"  attrs="{'invisible': [('modepayment','!=','ch'),('modepayment','!=','tr')]}"/>
                         </group>
                     </group>
                    
                     <footer>
-                        <button class="oe_highlight" name="Payment"
-                            string="Créer règlement" type="object"/> or
+                        <button class="oe_highlight" name="Paiement"
+                            string="Créer règlement" type="object"/> 
                         <button class="oe_link" special="cancel" string="Annuler"/>
                     </footer>
                 </form>
