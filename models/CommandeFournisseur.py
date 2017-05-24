@@ -31,7 +31,8 @@ class CommandeFournisseur(models.Model):
      datecommande = fields.Date('Date',
                             required=True,
                             default=fields.datetime.now(),
-                            help='Date création')
+                            help='Date création',
+                            readonly=True)
      
      datereception = fields.Date('Date de reception',
                             required=True,

@@ -65,6 +65,8 @@
                                             <td><strong>Montant TTC</strong></td>
                                             <td class="text-right">
                                                 <span t-field="o.montantttc"/>
+<!--                                                <span t-field="o.montantttc" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/> -->
+
                                             </td>
                                             <br/>
                                     </tr>
@@ -77,6 +79,7 @@
                        <p>
                             <strong>ARRETEE LE PRESENT DEVIS/COMMANDE A LA SOMME DE:</strong><br/>
                             <span t-field="o.amount_to_text"/>
+                            
                           
                         </p>
                 </t>

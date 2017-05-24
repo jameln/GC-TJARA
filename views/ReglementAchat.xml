@@ -4,12 +4,13 @@
             <field name="name">Réglements d'achat </field>
             <field name="res_model">gctjara.regachat</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form,pivot</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
             <field name="context"
-                eval="{'search_default_filter': 1,'search_default_by_Fournisseur': 1}" />
+                eval="{'search_default_filter': 1,'search_default_by_responsible': 1}" />
 
          
         </record>
+      
         <record id="regachat_form_view" model="ir.ui.view">
             <field name="name">regachat.form</field>
             <field name="model">gctjara.regachat</field>
@@ -35,6 +36,8 @@
                             <field name="etatrapp" options="{'horizontal': true}" widget="radio"/>
                             <field name="modepayment" />
                             <field name="facture_id" />
+                            <field name="numerochq"  attrs="{'invisible': [('modepayment','!=','ch'),('modepayment','!=','tr')]}"/>
+
                         </group>
                         
                     
@@ -72,10 +75,12 @@
                     <field name="datevaleur"/>
                     <field name="daterecption"/>
                     <field name="etatrapp"/>
+                    
+                      
                     <field name="prixht"/>
                     <field name="prixttc"/>
                     <field name="modepayment"/>
-                     <field name="facture_id" />
+                   <!--   <field name="facture_id" /> -->
                     
                 </tree>
             </field>
@@ -91,7 +96,17 @@
                  <field name="prixttc" type="measure"/>
              </pivot>
          </field>
-    </record>   
+    </record> 
+      <record id="regachat_graph_view" model="ir.ui.view">
+            <field name="name">regachat.graph</field>
+            <field name="model">gctjara.regachat</field>
+            <field name="arch" type="xml">
+                <graph string="Reg Par Forniseur">
+                    <field name="numero"/>
+                    <field name="prixttc" type="measure"/>
+                </graph>
+            </field>
+        </record>  
     </data>
 </odoo>
 

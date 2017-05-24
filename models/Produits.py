@@ -40,15 +40,21 @@ class Produits(models.Model):
         digits=(16, 3)
         )
     
+    prixvente=fields.Float(
+        string='Prix de vente',
+        default=0.0,
+        digits=(16, 3)
+        )
+    
    
 #     prixachat = fields.Float(
 #         string='Prix d\'achat'
 #         )
     
-    prixvente = fields.Float(
-        string='Prix de vente'
-        )
-    
+#     prixvente = fields.Float(
+#         string='Prix de vente'
+#         )
+#     
 #     quantite = fields.Float(
 #         string='Quantite',
 #         required=True,

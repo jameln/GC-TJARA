@@ -23,7 +23,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'report', 'board','account','sale'],
+    'depends': ['base', 'mail', 'report', 'board','account','sale','web'],
 
     # always loaded
     'data': [
@@ -39,13 +39,16 @@
         'views/ReglementAchat.xml',
         'views/ReglementVente.xml',
         'views/Produits.xml',
-        'views/MouvementStock.xml',
         'views/Emballages.xml',
+        'views/ProduitEmballee.xml',
+        'views/MouvementStock.xml',
         'security/acces_rules.xml',
         'views/dashboard.xml',
         'views/sequence.xml',
         'report/report_factureachat.xml',
         'report/report_factureachat_template.xml',
+        'report/report_facturevente.xml',
+        'report/report_facturevente_template.xml',
         'views/order_invoice.xml',
         'views/menu.xml',
                

@@ -4,7 +4,7 @@
             <field name="name">Bon de livrison </field>
             <field name="res_model">gctjara.bonlivraison</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,search,calendar</field>
            
             <field name="help" type="html"> 
                 <p class="oe_view_nocontent_create">Créer le première Bon de livraison</p>
@@ -48,7 +48,7 @@
                                         <tree >
                                             <field name="embalageproduit_id"/>
                                             <field name="quantite"/>
-                                            <field name="prixunit"/>
+                                            <field name="prixvente"/>
                                             <field name="tva"/>
                                             <field name="prix_total" />
                                         </tree>
@@ -80,6 +80,34 @@
                 </tree>
             </field>
         </record>
+         <record model="ir.ui.view" id="bonlivraison_search_view">
+            <field name="name">bonlivraison.search</field>
+            <field name="model">gctjara.bonlivraison</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter name="state" string="Status"
+                        domain="[('state', '!=', 'annulée')]" />
+                    <group string="Group By">
+                        <filter name="state" string="Status"
+                            context="{'group_by': 'state'}" />
+                    </group>
+
+                </search>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="bonlivraison_calendar_view">
+            <field name="name">bonlivraison.calendar</field>
+            <field name="model">gctjara.bonlivraison</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendier bl" date_start="date" color="state">
+                    <field name="numero" />
+                    <field name ="client_id" />
+                </calendar>
+            </field>
+        </record>
+
         
       <!-- WorkFlow-->
 

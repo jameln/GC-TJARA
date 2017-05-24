@@ -7,6 +7,9 @@
             <field name="res_model">gctjara.bonentree</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,search,calendar</field>
+            <field name="context"
+                eval="{'search_default_filter': 1,'search_default_by_responsible': 1}" />
+
 
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer le première Bon d'entrée</p>
@@ -51,7 +54,7 @@
             <field name="name">bonentree.tree</field>
             <field name="model">gctjara.bonentree</field>
             <field name="arch" type="xml">
-                <tree string="Bon d'entrée">
+                <tree string="Bon d'entrée" decoration-warning="state == 'nr'" decoration-muted="state == 'lv'">
                     <field name="numero"/>
                     <field name="date"/>
                     <field name="produit" />

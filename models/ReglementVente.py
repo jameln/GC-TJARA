@@ -79,6 +79,8 @@ class ReglementVente(models.Model):
         
         ]
     )
+    numerochq=fields.Char(string='Numero')
+
 
     
     description = fields.Text(

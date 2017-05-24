@@ -54,6 +54,8 @@ class ReglementAchat(models.Model):
         string='Réf. facture',
         comodel_name='gctjara.factureachat'
     )
+  
+            
 
     modepayment=fields.Selection(
         string='Mode de payment',
@@ -77,6 +79,8 @@ class ReglementAchat(models.Model):
         
         ]
     )
+    
+    numerochq=fields.Char(string='Numero')
 
     
     description = fields.Text(

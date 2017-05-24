@@ -95,7 +95,7 @@ class FactureVente(models.Model):
         store=True,
         default=''
         )
-       
+     refregvente = fields.Many2one(string='Réf reglement')
       
      attachment = fields.One2many('ir.attachment',
                                'factureachat',
@@ -104,7 +104,8 @@ class FactureVente(models.Model):
     
      timbre=fields.Float(
         string ='Timbre',
-        default=0.5,
+        default=0.500,
+        digits=(16, 3),
         store=True
         )
     
@@ -170,9 +171,11 @@ class FactureVenteTemp(models.TransientModel):
         
         ]
     )
+    numerochq=fields.Char(string='Numero')
+
 
     @api.multi
-    def Payment(self):
+    def Paiement(self):
         for facture_id in self.env.context.get('active_ids'):
             factures=self.env['gctjara.facturevente'].search([('id','=',facture_id)])
            
@@ -182,7 +185,7 @@ class FactureVenteTemp(models.TransientModel):
                 return False
 
                               
-            self.env['gctjara.regvente'].create({
+            record=self.env['gctjara.regvente'].create({
                   'numero' : self.env['ir.sequence'].next_by_code('gctjara.regvente.seq'),
                   'date':fields.datetime.now(),
                   'dateoperation':self.dateoperation,
@@ -193,11 +196,13 @@ class FactureVenteTemp(models.TransientModel):
                   'prixttc': factures.montantttc,
                   'etatrapp':self.etatrapp,
                   'modepayment':self.modepayment,
+                  'numerochq':self.numerochq,
                   'facture_id':factures.id
                   
                    })
                
             factures.etatreglement='Réglée'
+            factures.refregvente = record.id
        
         return True
     

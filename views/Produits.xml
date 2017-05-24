@@ -4,7 +4,7 @@
             <field name="name">Produits </field>
             <field name="res_model">gctjara.produits</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form,graph</field>
+            <field name="view_mode">tree,form</field>
            
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer votre première produits</p>
@@ -27,7 +27,7 @@
                             <field name="code"/>
                             <field name="dateexpiration"/>
                             <field name="prixunit"/>
-                            <!-- <field name="quantite"/> -->
+                            <field name="prixvente"/>
                             <field name="description"/>
                             
                         </group>
@@ -37,35 +37,7 @@
                         
                    
                      <notebook>
-                      <!--  <page class="oe_page_Title" string="Fournisseur">
-                            <group>
-                                <field name="fournisseur_id">
-                                    <tree>
-                                    <field name="name" string="Fournisseur"/>
-                                    <field name="matriculefiscal" string="Matricule"/>
-                                    </tree>
-                                </field>
-                            </group>
-                        </page>
-                        <page class="oe_page_Title" string="Clients">
-                            <group>
-                                <field name="clients_id">
-                                    <tree>
-                                    <field String="Client" name="name"/>
-                                    <field String="Company" name="company_name"/>
-                                    </tree>
-                                </field>
-                            </group>
-                        </page>
-                        <page class="oe_page_Title" string="Stock">
-                            <group>
-                                <field name="stock_id">
-                                    <tree>
-                                    <field String="Stock" name="name"/>
-                                    </tree>
-                                </field>
-                            </group>
-                        </page>-->
+                   
                         <page class="oe_page_Title" string="Emballages">
                             <group>
                                 <field name="produitemballee_ids">
@@ -93,16 +65,7 @@
                 </form>
             </field>
         </record>
-        <record id="produits_graph_view" model="ir.ui.view">
-            <field name="name">produits.graph</field>
-            <field name="model">gctjara.produits</field>
-            <field name="arch" type="xml">
-                <graph string="QteProdPart">
-                    <field name="name"/>
-                  <!--   <field name="quantite"/> -->
-                </graph>
-            </field>
-        </record>
+        
         <record id="produits_tree_view" model="ir.ui.view">
             <field name="name">produits.tree</field>
             <field name="model">gctjara.produits</field>
@@ -111,6 +74,8 @@
                     <field name="name"/>
                     <field name="code"/>
                     <field name="dateexpiration"/>
+                    <field name="prixunit"/>
+                    <field name="prixvente"/>
                 </tree>
             </field>
         </record>

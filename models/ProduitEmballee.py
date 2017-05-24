@@ -25,10 +25,15 @@ class LigneProduitEmballage(models.Model):
     def _prix_unit(self):
          for r in self:
             r.prixunit=r.produit_id.prixunit
+            
+    @api.depends('produit_id')
+    def _prix_vente(self):
+         for r in self:
+            r.prixvente=r.produit_id.prixvente
      
 
     
-    quantitestocke=fields.Float(
+    quantitestocke=fields.Integer(
         string ='Stock',
         default=0.0,
         digits=(16, 3)
@@ -48,7 +53,12 @@ class LigneProduitEmballage(models.Model):
         compute='_prix_unit',
         store=True
     )
-    
+    prixvente= fields.Float(
+        related='produit_id.prixvente',
+        string='Prix de vente',
+        compute='_prix_vente',
+        store=True
+    )
     emballage_id = fields.Many2one(
          comodel_name='gctjara.emballage',
          string='Emballage',

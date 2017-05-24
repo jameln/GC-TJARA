@@ -35,7 +35,8 @@ class CommandeClient(models.Model):
          string='Date',
          required=True,
          default=fields.datetime.now(),
-         help='Date création')
+         help='Date création',
+         readonly=True)
      
      datelivraison = fields.Date(
          string='Date de livraison',
@@ -162,7 +163,7 @@ class CommandeClient(models.Model):
                      'embalageproduit_id':r.embalageproduit_id.id,
                      'prix_total':r.prix_total,
                      'commande_id':record.id,
-                     'prixunit':r.prixunit,
+                     'prixvente':r.prixvente,
                      'tva':r.tva,
                      'bonlivraison_id':record.id,
                      'commande_id':self.id

@@ -88,7 +88,7 @@ class BonLivraison(models.Model):
                    'embalageproduit_id':rlf.embalageproduit_id.id,
                    'prix_total':rlf.prix_total,
                    'facture_id':record.id,
-                   'prixunit':rlf.prixunit,
+                   'prixvente':rlf.prixvente,
                    'tva':rlf.tva
                    })
            self.creat_mvtstock()
@@ -121,6 +121,7 @@ class BonLivraison(models.Model):
              for rbl in rec.lignebonlivraison_id:
                  
                    qteprod = int(rbl.embalageproduit_id.quantitestocke) - int(rbl.quantite)
+                   print("quantité stockée ====> " + str(qteprod))
                    if qteprod <= 0 :
                        raise ValidationError(
                            'Impossible de poursuit cette opération , le stock du ' + str(rbl.embalageproduit_id.name) + ' est épuisé')

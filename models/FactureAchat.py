@@ -109,6 +109,22 @@ class FactureAchat(models.Model):
          store=True
         )
     
+    refregachat=fields.Many2one(string='Réf reglement')
+    
+    def getReglementID(self):
+        if self.refregachat: 
+            return {
+                'name' : 'Règlement',
+                'res_model':'gctjara.regachat',
+                'res_id':self.refregachat.id,
+                'view_type':'form',
+                'view_mode':'form',
+                'type':'ir.actions.act_window'
+                
+                }
+    
+    currency_id = fields.Many2one('res.currency',string='Currency',default=lambda self:self.env.user.company_id.currency_id)
+    
     @api.one
     @api.depends("lignefact_id")
     def _montant_totale(self):
@@ -137,14 +153,14 @@ class FactureAchat(models.Model):
         readonly=True, 
         compute='_amount_in_words'
         )
+    
   
   
 
 class FactureAchatTemp(models.TransientModel):
+
     _name = "gctjara.factureachatregle"
-    
     datereception=fields.Date(string='Date réception')
-    
     dateoperation=fields.Date(string='Date opération')
     dateecheance=fields.Date(string='Date écheance')
 
@@ -156,7 +172,6 @@ class FactureAchatTemp(models.TransientModel):
             ('es', 'Espèce'),
             ('vr', 'Virement'),
             ('tr', 'Traite')
-          
         ]
     )
     etatrapp=fields.Selection(
@@ -169,9 +184,9 @@ class FactureAchatTemp(models.TransientModel):
         
         ]
     )
-
+    numerochq=fields.Char(string='Numero')
     @api.multi
-    def Payment(self):
+    def Paiement(self):
         for facture_id in self.env.context.get('active_ids'):
             factures=self.env['gctjara.factureachat'].search([('id','=',facture_id)])
            
@@ -179,25 +194,23 @@ class FactureAchatTemp(models.TransientModel):
             if(factures.etatreglement == u"Réglée"):
                 raise ValidationError('La facture numéro  ' + str(factures.numero) + ' est déja réglée')
                 return False
-
                               
-            self.env['gctjara.regachat'].create({
+            record=self.env['gctjara.regachat'].create({
                   'numero' : self.env['ir.sequence'].next_by_code('gctjara.regachat.seq'),
                   'date':fields.datetime.now(),
                   'dateoperation':self.dateoperation,
-                  'datevaleur':self.datevaleur,
                   'daterecption':self.dateecheance,
                   'tauxtva':'18',
                   'prixht':factures.montant,
                   'prixttc': factures.montantttc,
                   'etatrapp':self.etatrapp,
                   'modepayment':self.modepayment,
+                  'numerochq':self.numerochq,
                   'facture_id':factures.id
-                  
                    })
-               
-            factures.etatreglement='Réglée'
-       
+           
+            factures.etatreglement= 'Réglée'
+            factures.refregachat=record.id
         return True
     
     
@@ -259,7 +272,9 @@ def _convert_nnn_fr(val):
 
 def french_number(val):
     if val < 100:
-        return _convert_nn_fr(val)
+        return _convert_nnn_fr(val)
+        # return _convert_nn_fr(val)
+
     if val < 1000:
         return _convert_nnn_fr(val)
     for (didx, dval) in ((v - 1, 1000 ** v) for v in range(len(denom_fr))):

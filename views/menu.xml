@@ -22,8 +22,9 @@
          <menuitem id="stcock_menu" name="Stock" parent="main_menue" sequence="20" groups="gctjara_group_achats,gctjara_group_achats" />
       
         <menuitem action="produits_list_action" id="produit_menu" name="Produits" parent="stcock_menu" sequence="21"/>
-        <menuitem action="emballage_list_action" id="emballage_menu" name="Emballages" parent="stcock_menu" sequence="22"/>
-        <menuitem action="mvtstock_list_action" id="mouvement_menu"  name="Mouvements des stocks" parent="stcock_menu" sequence="23"/>
+         <menuitem action="produitemballee_list_action" id="produitembalee_menu" name="Produits Emballées" parent="produit_menu" sequence="22"/>
+        <menuitem action="emballage_list_action" id="emballage_menu" name="Emballages" parent="stcock_menu" sequence="23"/>
+        <menuitem action="mvtstock_list_action" id="mouvement_menu"  name="Mouvements des stocks" parent="stcock_menu" sequence="24"/>
          
         <!-- Partener -->
         <menuitem id="partner_menu" name="Partenaires" parent="main_menue" sequence="30" groups="gctjara_group_admin"/>
@@ -32,7 +33,7 @@
         <menuitem id="users_menu" name="Utilisateurs" parent="partner_menu" action="base.action_partner_form" sequence="33" />
         <!-- Dashboard -->
          <menuitem id="dashboard_menu" name="Dashboard" parent="main_menue" sequence="40" />
-         <menuitem action="open_board_tjara" id="tableaubord_menu"  name="Tableau de bord" parent="dashboard_menu" sequence="41"/>
+         <menuitem action="open_board_gctjara" id="tableaubord_menu"  name="Tableau de bord" parent="dashboard_menu" sequence="41"/>
       
          </data>
 </odoo>

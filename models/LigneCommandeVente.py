@@ -38,10 +38,10 @@ class LigneCommandeVente(models.Model):
     @api.depends('embalageproduit_id')
     def _prix_unit(self):
          for r in self:
-            r.prixunit=r.embalageproduit_id.prixunit
+            r.prixunit=r.embalageproduit_id.prixvente
             
-    prixunit= fields.Float(
-        related='embalageproduit_id.prixunit',
+    prixvente= fields.Float(
+        related='embalageproduit_id.prixvente',
         string='Prix unitaire',
         compute='_prix_unit',
         store=True
@@ -63,7 +63,7 @@ class LigneCommandeVente(models.Model):
 
         for pe in self:
             tauxtva=float(pe.tva)/100
-            prixht=pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids
+            prixht=pe.quantite * pe.embalageproduit_id.prixvente*pe.embalageproduit_id.emballage_id.poids
             pe.prix_total =prixht*(1+tauxtva)
             
     prix_total = fields.Float(
@@ -77,7 +77,7 @@ class LigneCommandeVente(models.Model):
     @api.depends("quantite" , "embalageproduit_id")
     def prixht(self):
         for pht in self:
-            prixht=pht.quantite * pht.embalageproduit_id.prixunit*pht.embalageproduit_id.emballage_id.poids
+            prixht=pht.quantite * pht.embalageproduit_id.prixvente*pht.embalageproduit_id.emballage_id.poids
             pht.prix_ht =prixht
             
     prix_ht = fields.Float(

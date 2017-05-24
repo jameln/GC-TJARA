@@ -23,14 +23,15 @@ class LignefactureVente(models.Model):
         string='Quantite',
         required=True,
           )
-    prixunit= fields.Float(
+    prixvente= fields.Float(
        string='Prix unitaire',
-       store=True
+       store=True,
+      digits=(16, 3)
     )
     tva = fields.Integer(
         string='TVA',
         default='6',
-        digits=(16, 3),
+      
     )
     facture_id = fields.Many2one(
          required=True,
@@ -47,7 +48,7 @@ class LignefactureVente(models.Model):
     def prixtot(self):
         for pe in self:
             tauxtva=float(pe.tva)/100
-            prixht=pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids
+            prixht=pe.quantite * pe.embalageproduit_id.prixvente*pe.embalageproduit_id.emballage_id.poids
            
             pe.prix_total =prixht*(1+tauxtva)
             
@@ -61,7 +62,7 @@ class LignefactureVente(models.Model):
     @api.depends("quantite" , "embalageproduit_id")
     def prixht(self):
         for pht in self:
-            prixht=pht.quantite * pht.embalageproduit_id.prixunit*pht.embalageproduit_id.emballage_id.poids
+            prixht=pht.quantite * pht.embalageproduit_id.prixvente*pht.embalageproduit_id.emballage_id.poids
             pht.prix_ht =prixht
             
     prix_ht = fields.Float(

@@ -6,9 +6,9 @@
             <field name="name">Réglements des ventes </field>
             <field name="res_model">gctjara.regvente</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form,pivot</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
             <field name="context"
-                eval="{'search_default_filter': 1,'search_default_by_Client': 1}" />
+                eval="{'search_default_filter': 1,'search_default_by_responsible': 1}" />
 
          
         </record>
@@ -37,6 +37,8 @@
                             <field name="etatrapp" options="{'horizontal': true}" widget="radio"/>
                             <field name="modepayment" />
                             <field name="facture_id" />
+                            <field name="numerochq"  attrs="{'invisible': [('modepayment','!=','ch'),('modepayment','!=','tr')]}"/>
+
                         </group>
                         
                     
@@ -94,6 +96,16 @@
              </pivot>
          </field>
     </record>   
-       
+       <record id="regvente_graph_view" model="ir.ui.view">
+            <field name="name">regvente.graph</field>
+            <field name="model">gctjara.regvente</field>
+            <field name="arch" type="xml">
+                <graph string="Reg Par Client">
+                    <field name="numero" group="True"  stacked="True" type="row"/>
+                    <field name="etatrapp" group="True"  stacked="True" type="col"/>
+                    <field name="prixttc" type="measure" />
+                </graph>
+            </field>
+        </record>  
     </data>
 </odoo>

@@ -23,8 +23,9 @@ class LigneBonLivraison(models.Model):
         string='Quantite',
         required=True,
           )
-    prixunit= fields.Float(
+    prixvente= fields.Float(
        string='Prix unitaire',
+       digits=(16, 3),
        store=True
     )
     tva = fields.Integer(
@@ -54,7 +55,7 @@ class LigneBonLivraison(models.Model):
     def prixtot(self):
         for pe in self:
             tauxtva=float(pe.tva)/100
-            prixht=pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids
+            prixht=pe.quantite * pe.embalageproduit_id.prixvente*pe.embalageproduit_id.emballage_id.poids
            
             pe.prix_total =prixht*(1+tauxtva)
             
