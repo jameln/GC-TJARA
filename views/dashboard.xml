@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <record id="facturevente_calendar_action" model="ir.actions.act_window">
+    <!--    <record id="facturevente_calendar_action" model="ir.actions.act_window">
             <field name="name">Factures Ventes</field>
             <field name="res_model">gctjara.facturevente</field>
             <field name="view_type">form</field>
@@ -11,7 +11,7 @@
             <field name="res_model">gctjara.factureachat</field>
             <field name="view_type">form</field>
             <field name="view_mode">calendar</field>
-        </record>
+        </record>-->
           <record id="produitemballee_graph_action" model="ir.actions.act_window">
             <field name="name">Produits emballées</field>
             <field name="res_model">gctjara.produitemballee</field>
@@ -33,15 +33,17 @@
             <field name="arch" type="xml">
                 <form string="GC-TJARA Dashboard">
                     <board style="2-1">
-                        <column>
-                            <action name="%(produitemballee_graph_view)d" string="Produits embalées"/>
-                            <action name="%(regvente_graph_view)d" string="Réglement vente"/>
-                            
-                        </column>
+
                        
                         <column>
-                            <action   name="%(facturevente_calendar_action)d" string="Ventes"/>
-                            <action   name="%(factureachat_calendar_action)d" string="Achats"/>
+                         <!--   <action   name="%(facturevente_calendar_action)d" string="Ventes"/>
+                            <action   name="%(factureachat_calendar_action)d" string="Achats"/>-->
+                            <action name="%(produitemballee_graph_view)d" string="Produits embalées"/>
+                        </column>
+                         <column>
+
+                            <action name="%(regvente_graph_view)d" string="Réglement vente"/>
+
                         </column>
                     </board>
                 </form>
