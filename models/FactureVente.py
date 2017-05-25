@@ -95,7 +95,7 @@ class FactureVente(models.Model):
         store=True,
         default=''
         )
-     refregvente = fields.Many2one(string='Réf reglement')
+     refregvente = fields.Many2one(comodel_name='gctjara.regvente',string='Réf reglement')
       
      attachment = fields.One2many('ir.attachment',
                                'factureachat',

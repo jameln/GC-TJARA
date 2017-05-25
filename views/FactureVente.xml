@@ -12,13 +12,14 @@
                             <field name="datefact"/>
                             <field name="datepayfact"/>
                             <field name="valid"/>
-                            <field name="description"/>
+
                             
                         </group>
                         <group string="Références">
                             <field name="client_id"/>
                             <field name="bonlivraison_id"/>
                             <field name="etatreglement" />
+                            <field name="refregvente" />
                         </group> 
                         <notebook>
                           <page class="oe_page_Title" string="Produits">

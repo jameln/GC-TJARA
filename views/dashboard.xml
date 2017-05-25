@@ -1,6 +1,6 @@
 <odoo>
     <data>
-    <!--    <record id="facturevente_calendar_action" model="ir.actions.act_window">
+        <record id="facturevente_calendar_action" model="ir.actions.act_window">
             <field name="name">Factures Ventes</field>
             <field name="res_model">gctjara.facturevente</field>
             <field name="view_type">form</field>
@@ -11,7 +11,7 @@
             <field name="res_model">gctjara.factureachat</field>
             <field name="view_type">form</field>
             <field name="view_mode">calendar</field>
-        </record>-->
+        </record>
           <record id="produitemballee_graph_action" model="ir.actions.act_window">
             <field name="name">Produits emballées</field>
             <field name="res_model">gctjara.produitemballee</field>
@@ -25,26 +25,33 @@
             <field name="view_type">form</field>
             <field name="view_mode">graph</field>
         </record>
-        
+         <record id="regachat_graph_action" model="ir.actions.act_window">
+            <field name="name">Réglement achats</field>
+            <field name="res_model">gctjara.regachat</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+        </record>
         <record id="board_gctjara_form" model="ir.ui.view">
             <field name="name">Dashboard Form</field>
             <field name="model">board.board</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="GC-TJARA Dashboard">
-                    <board style="2-1">
+                    <board style="1-1">
+
+
+                          <column>
+                            <action name="%(produitemballee_graph_action)d" string="Produits embalées"/>
+                            <action name="%(regachat_graph_action)d" string="Réglement achat"/>
+                            <action name="%(regvente_graph_action)d" string="Réglement vente"/>
+                        </column>
 
                        
                         <column>
-                         <!--   <action   name="%(facturevente_calendar_action)d" string="Ventes"/>
-                            <action   name="%(factureachat_calendar_action)d" string="Achats"/>-->
-                            <action name="%(produitemballee_graph_view)d" string="Produits embalées"/>
+                            <action   name="%(facturevente_calendar_action)d" string="Ventes"/>
+                            <action   name="%(factureachat_calendar_action)d" string="Achats"/>
                         </column>
-                         <column>
 
-                            <action name="%(regvente_graph_view)d" string="Réglement vente"/>
-
-                        </column>
                     </board>
                 </form>
             </field>

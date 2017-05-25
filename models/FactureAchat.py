@@ -109,7 +109,7 @@ class FactureAchat(models.Model):
          store=True
         )
     
-    refregachat=fields.Many2one(string='Réf reglement')
+    refregachat=fields.Many2one(comodel_name='gctjara.regachat',string='Réf reglement')
     
     def getReglementID(self):
         if self.refregachat: 
@@ -208,9 +208,10 @@ class FactureAchatTemp(models.TransientModel):
                   'numerochq':self.numerochq,
                   'facture_id':factures.id
                    })
-           
+            print ("recored id  >>>> " + str(record.id))
             factures.etatreglement= 'Réglée'
             factures.refregachat=record.id
+            print ("recored id  >>>> " + str(record.id))
         return True
     
     
@@ -263,7 +264,7 @@ def _convert_nnn_fr(val):
         if rem == 1:
             word = 'Millime'
         else:
-            word = to_19_fr[rem] + ' Millime'
+            word = to_19_fr[rem] + ' Cent'
         if mod > 0:
             word += ' '
     if mod > 0:

@@ -89,11 +89,12 @@
             <field name="name">cmdclient.tree</field>
             <field name="model">gctjara.cmdclient</field>
             <field name="arch" type="xml">
-                <tree string="Commande client">
+                <tree string="Commande client" decoration-info="state == 'va'" decoration-muted="state == 'an'" decoration-success="state == 'tr'">
                     <field name="numerocmdc" />
                     <field name="datecommande" />
                     <field name="datelivraison" />
                     <field name="client_id" />
+                    <field name="state" />
                     <field name="montant" sum="True" />
                 </tree>
             </field>
