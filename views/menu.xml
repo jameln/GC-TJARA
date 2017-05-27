@@ -12,7 +12,7 @@
    
         <!-- Vente -->
          <menuitem id="vente_menu" name="Ventes" parent="main_menue" sequence="10" groups="gctjara_group_ventes" />
-        <menuitem action="cmdclient_list_action" id="commandeclts_menu" name="Commandes Clients" parent="vente_menu" sequence="11"/>
+        <menuitem action="cmdclient_list_action" id="commandeclts_menu" name="Commandes Clients" parent="vente_menu" sequence="11" groups="gctjara_group_ventes"  />
         <menuitem action="bonlivraison_list_action"  id="bonlivraison_menu" name="Bons des livraisons"   parent="vente_menu" sequence="12"/>
         <menuitem action="facturevente_list_action" id="facturevente_menu"  name="Factures Ventes" parent="vente_menu" sequence="13"/>
         <menuitem action="regvente_list_action" id="reglementvente_menu"   name="Règlements Ventes" parent="vente_menu" sequence="14"/> 

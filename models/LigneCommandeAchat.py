@@ -65,10 +65,17 @@ class LigneCommandeAchat(models.Model):
             prixht=pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids
             print ("tva ===> "+str(tauxtva))
             print("prixht ==>" + str(prixht))
+            pe.prix_ht=prixht
             pe.prix_total =prixht*(1+tauxtva)
             
     prix_total = fields.Float(
         string='Prix Tot',
+        compute="prixtot",
+        digits=(16, 3),
+        store=True
+    )
+    prix_ht = fields.Float(
+        string='Prix HT',
         compute="prixtot",
         digits=(16, 3),
         store=True

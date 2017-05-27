@@ -42,11 +42,11 @@
                                         <tree editable="bottom">
                                             <field name="embalageproduit_id"/>
                                             <field name="quantite"/>
-                                            <field name="prixunit"/>
+                                            <field name="prixunit" readonly="1"/>
                                             <field name="tva"/>
-                                             <field name="prix_total" />
-                                            
-                                           
+                                            <field name="prix_ht" readonly="1"/>
+                                             <field name="prix_total" readonly="1"/>
+                                 
                                         </tree>
                                         <form>
                                             <group>
@@ -61,7 +61,10 @@
                                 </group>
                                  <group class="oe_subtotal_footer">
 <!--                                      <label  class="oe_subtotal_footer_separator" string="Montant"/>  nolabel="1"-->
+                              
+                                     <field name="montant_ht" />
                                      <field name="montant" />
+                                     
                                   </group> 
                                
                             </page>

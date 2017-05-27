@@ -109,7 +109,13 @@ class FactureVente(models.Model):
         store=True
         )
     
-   
+     montantht = fields.Float(
+         string='Montant HT',
+         compute='_montant_totale',
+         digits=(16, 3),
+         default = 0.0,
+         store=True
+    )
      montant = fields.Float(
          string='Montant',
          compute='_montant_totale',
@@ -129,9 +135,12 @@ class FactureVente(models.Model):
      @api.depends("lignefact_id")
      def _montant_totale(self):
         montanttot=0
+        mht=0
         for lfa in self.lignefact_id:
                montanttot = montanttot + lfa.prix_total 
+               mht+= lfa.prix_ht
         self.montant=montanttot
+        self.montantht=mht
 
      @api.one
      @api.depends("montant")

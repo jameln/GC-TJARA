@@ -93,17 +93,24 @@ class FactureAchat(models.Model):
         store=True
         )
     
-   
-    montant = fields.Float(
-         string='Montant',
-         compute='_montant_totale',
+    prix_ht = fields.Float(
+         string='Montant HT',
+         compute='montant_ht',
          digits=(16, 3),
          default = 0.0,
          store=True
     )
+    montant = fields.Float(
+         string='Montant',
+         compute='montant_totale',
+         digits=(16, 3),
+         default = 0.0,
+         store=True
+    )
+  
     montantttc=fields.Float(
          string='Montant TTC',
-         compute='_montant_ttc',
+         compute='montant_ttc',
          digits=(16, 3),
          default = 0.0,
          store=True
@@ -127,15 +134,24 @@ class FactureAchat(models.Model):
     
     @api.one
     @api.depends("lignefact_id")
-    def _montant_totale(self):
-       montanttot=0
+    def montant_ht(self):
+       montantht=0       
        for lfa in self.lignefact_id:
-               montanttot = montanttot + lfa.prix_total 
+           montantht += lfa.prix_ht
+       self.prix_ht=montantht
+       
+    @api.one
+    @api.depends("lignefact_id")
+    def montant_totale(self):
+       montanttot=0
+       for rec in self :
+           for lfa in rec.lignefact_id:
+                   montanttot +=   lfa.prix_total 
        self.montant=montanttot
 
     @api.one
     @api.depends("montant")
-    def _montant_ttc(self):
+    def montant_ttc(self):
        mmttc=0
        for mnt in self:
                mmttc = self.montant + self.timbre

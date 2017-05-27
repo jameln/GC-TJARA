@@ -12,9 +12,9 @@ class Emballage(models.Model):
      
     
        
-     type = fields.Char('Type d\'emballage', default='Type')
+     type = fields.Char('Type d\'emballage', default='Type', placeholder="Type")
      
-     poids = fields.Integer('Poids unitaire')
+     poids = fields.Integer(string='Poids unitaire', placeholder="0")
      
      produitemballee_id = fields.One2many(
         comodel_name='gctjara.produitemballee',

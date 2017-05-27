@@ -42,13 +42,16 @@
                                     </field>
                                 </group>
                                 <group class="oe_subtotal_footer">
-                                    <label
-                                    class="oe_subtotal_footer_separator" string="Montant"/>
-                                    <field name="montant" nolabel="1"/>
+                                    <!-- <label
+                                    class="oe_subtotal_footer_separator" string="Montant"/> -->
+                                    <field name="montantht" />
+                                    <newline />
+                                    <field name="montant" nolabel="0"/>
                                     <newline/>
                                     <field name="timbre" nolabel="0"/>
                                     <label
                                     class="oe_subtotal_footer_separator" string="Montant TTC"/>
+                                  
                                     <field name="montantttc" nolabel="1"/>
                                 </group>
                             </page>

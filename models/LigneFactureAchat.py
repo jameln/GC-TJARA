@@ -41,13 +41,14 @@ class LigneFactureAchat(models.Model):
          comodel_name='gctjara.produitemballee',
          string='Emballages'
      )
-     
+    
+    @api.multi
     @api.depends("quantite" , "embalageproduit_id")
     def prixtot(self):
         for pe in self:
             tauxtva=float(pe.tva)/100
             prixht=pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids
-           
+            pe.prix_ht=prixht
             pe.prix_total =prixht*(1+tauxtva)
             
     prix_total = fields.Float(
@@ -56,5 +57,11 @@ class LigneFactureAchat(models.Model):
         digits=(16, 3),
         store=True
     )
-    
+    prix_ht = fields.Float(
+        string='Prix HT',
+        compute="prixtot",
+        digits=(16, 3),
+        store=True
+    )
+
   

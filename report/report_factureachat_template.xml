@@ -14,14 +14,16 @@
                            Réf commande : <span t-field="o.commande_id"/></p>
                           
                             
-                                <table class="table table-condensed">
-                                        <thead>
+                                <table class="table table-condensed"  >
+                                        <thead color="green"  >
                                             <tr>
                                                 
                                                 <th class="text-left">Produits</th>
-                                                <th class="text-left">Quantity</th>
+                                                 <th class="text-left">Prix unitaire</th>
+                                                <th class="text-left">Quantité</th>
+                                                <th class="text-left">Prix HT</th>
                                                 <th class="text-left">TVA</th>
-                                                <th class="text-left">Unit Price</th>
+                                               
                                                 <th class="text-left"  >Total Price</th>
                                                 
                                             </tr>
@@ -32,6 +34,7 @@
                                                    <td> <t t-esc="page.embalageproduit_id.name"/> </td> 
                                                    <td> <t t-esc="page.prixunit"/> </td> 
                                                    <td> <t t-esc="page.quantite"/> </td> 
+                                                   <td> <t t-esc="page.prix_ht"/> </td>
                                                    <td> <t t-esc="page.tva"/> </td> 
                                                    <td> <t t-esc="page.prix_total"/> </td> 
                                                 </tr>
@@ -46,7 +49,7 @@
                                     <tr class="border-black">
                                         <td><strong>Montant</strong></td>
                                             <td class="text-right">
-                                                <span t-field="o.montant"/>
+                                                <span t-field="o.prix_ht"/>
                                             </td>
                                             <br/>
                                     </tr>

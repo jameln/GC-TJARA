@@ -86,6 +86,7 @@ class BonLivraison(models.Model):
                record1 = self.env['gctjara.lignefactvente'].create({
                    'quantite':rlf.quantite,
                    'embalageproduit_id':rlf.embalageproduit_id.id,
+                   'prix_ht':rlf.prix_ht,
                    'prix_total':rlf.prix_total,
                    'facture_id':record.id,
                    'prixvente':rlf.prixvente,

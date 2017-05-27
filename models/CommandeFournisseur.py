@@ -79,23 +79,35 @@ class CommandeFournisseur(models.Model):
         comodel_name='gctjara.lignecmdachat',
         inverse_name='commande_id'
          )
-     
+
+     montant_ht = fields.Float(
+         string='Montant HT',
+         compute='_montant_totale',
+         digits=(16, 3),
+         default = 0.0,
+         store=True
+    ) 
      
      montant = fields.Float(
-         string='Montant',
+         string='Montant TTC',
          compute='_montant_totale',
          digits=(16, 3),
          default = 0.0,
          store=True
     )
     
-     @api.one
+     @api.multi
      @api.depends("lignecmd_id")
      def _montant_totale(self):
        montanttot=0
-       for lca in self.lignecmd_id:
-               montanttot = montanttot + lca.prix_total 
+       montantht=0
+       for rec in self :
+           for lca in rec.lignecmd_id:
+                   montanttot += lca.prix_total 
+                   montantht +=lca.prix_ht
        self.montant=montanttot
+       self.montant_ht=montantht
+
  
       
   
@@ -157,6 +169,7 @@ class CommandeFournisseur(models.Model):
                 record1 = self.env['gctjara.lignefactachat'].create({
                     'quantite':r.quantite,
                     'embalageproduit_id':r.embalageproduit_id.id,
+                    'prix_ht': r.prix_ht,
                     'prix_total':r.prix_total,
                     'facture_id':record.id,
                     'prixunit':r.prixunit,

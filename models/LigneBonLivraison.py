@@ -56,11 +56,17 @@ class LigneBonLivraison(models.Model):
         for pe in self:
             tauxtva=float(pe.tva)/100
             prixht=pe.quantite * pe.embalageproduit_id.prixvente*pe.embalageproduit_id.emballage_id.poids
-           
+            pe.prix_ht=prixht
             pe.prix_total =prixht*(1+tauxtva)
             
     prix_total = fields.Float(
         string='Prix Tot',
+        compute="prixtot",
+        digits=(16, 3),
+        store=True
+    )
+    prix_ht = fields.Float(
+        string='Prix HT',
         compute="prixtot",
         digits=(16, 3),
         store=True
