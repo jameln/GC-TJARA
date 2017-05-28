@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_bonlivraison">
+            <t t-call="report.html_container">
+                <t t-as="o" t-foreach="docs">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                          
+                            <h3>Bon de livraison N° <span t-field="o.numero"/></h3>
+                          <div class="col-xs-6 pull-left">  
+                           <p >
+                           Crée le      : <span t-field="o.date"/><br/>
+                           Client  :  <span t-field="o.client_id"/><br/>
+                           Réf commande : <span t-field="o.commande_id"/></p>
+                          </div>
+                            
+                                <table class="table table-condensed"  >
+                                        <thead style="border:solid 2px; border-color:#0C6592" >
+                                            <tr>
+                                                
+                                                <th class="text-left">Produits</th>
+                                                <th class="text-left">Quantité</th>
+                                                                                        
+                                            </tr>
+                                            </thead>
+                                            <tbody style="border:solid 2px; border-color:#0C6592">
+                                                <t t-foreach="o.lignebonlivraison_id" t-as="page">
+                                                <tr>
+                                                   <td> <t t-esc="page.embalageproduit_id.name"/> </td> 
+                                
+                                                   <td> <t t-esc="page.quantite"/> </td> 
+                                      
+                                                </tr>
+                                                </t>
+                                         </tbody>
+                                </table> 
+           
+                        </div>
+                        
+                     </t>
+                       
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

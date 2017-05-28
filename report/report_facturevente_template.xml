@@ -8,14 +8,16 @@
                         <div class="page">
                           
                             <h3>FACTURE DE VENTE N° <span t-field="o.numero"/></h3>
-                            
-                           <p>Crée le      : <span t-field="o.datefact"/><br/>
+                              <div class="col-xs-6 pull-left">  
+                           
+                           <p style="border:solid 2px; border-color:#0C6592">
+                           Crée le      : <span t-field="o.datefact"/><br/>
                            Client  :  <span t-field="o.client_id"/><br/>
-                           Réf BLs : <span t-field="o.bonlivraison_id"/></p>
+                           Réf BLs : <span t-field="o.bonlivraison_id"/></p></div>
                           
                             
                                 <table class="table table-condensed">
-                                        <thead>
+                                        <thead style="border:solid 2px; border-color:#0C6592">
                                             <tr>
                                                 
                                                 <th class="text-left">Produits</th>
@@ -27,7 +29,7 @@
                                                 
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody style="border:solid 2px; border-color:#0C6592">
                                                 <t t-foreach="o.lignefact_id" t-as="page">
                                                 <tr>
                                                    <td> <t t-esc="page.embalageproduit_id.name"/> </td> 
@@ -45,7 +47,7 @@
                             
                         <div class="row" name="total">
                             <div class="col-xs-4 pull-right">
-                                <table class="table table-condensed">
+                                <table class="table table-condensed" style="border:solid 2px; border-color:#0C6592">
                                     <tr class="border-black">
                                         <td><strong>Montant HT</strong></td>
                                             <td class="text-right">

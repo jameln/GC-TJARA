@@ -108,7 +108,7 @@
                 </tree>
             </field>
         </record>
-        <record id="cmdfournisseur_list_action" model="ir.actions.act_window">
+        <record id="cmdfournisseur_list_action" model="ir.actions.act_window" >
             <field name="name">Commande fournisseur </field>
             <field name="res_model">gctjara.cmdfournisseur</field>
             <field name="view_type">form</field>

@@ -8,14 +8,15 @@
                         <div class="page">
                           
                             <h3>FACTURE D'ACHATS N° <span t-field="o.numero"/></h3>
-                            
-                           <p>Crée le      : <span t-field="o.datefact"/><br/>
+                          <div class="col-xs-6 pull-left">  
+                           <p  style="border:solid 2px; border-color:#0C6592">
+                           Crée le      : <span t-field="o.datefact"/><br/>
                            Fournisseur  :  <span t-field="o.fournisseur_id"/><br/>
                            Réf commande : <span t-field="o.commande_id"/></p>
-                          
+                          </div>
                             
                                 <table class="table table-condensed"  >
-                                        <thead color="green"  >
+                                        <thead style="border:solid 2px; border-color:#0C6592" >
                                             <tr>
                                                 
                                                 <th class="text-left">Produits</th>
@@ -28,7 +29,7 @@
                                                 
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody style="border:solid 2px; border-color:#0C6592">
                                                 <t t-foreach="o.lignefact_id" t-as="page">
                                                 <tr>
                                                    <td> <t t-esc="page.embalageproduit_id.name"/> </td> 
@@ -45,16 +46,22 @@
                             
                         <div class="row" name="total">
                             <div class="col-xs-4 pull-right">
-                                <table class="table table-condensed">
+                                <table class="table table-condensed" style="border:solid 2px; border-color:#0C6592">
                                     <tr class="border-black">
-                                        <td><strong>Montant</strong></td>
+                                        <td><strong>Montant HT</strong></td>
                                             <td class="text-right">
                                                 <span t-field="o.prix_ht"/>
                                             </td>
                                             <br/>
                                     </tr>
                                
-                               
+                                   <tr class="border-black">
+                                        <td><strong>Montant</strong></td>
+                                            <td class="text-right">
+                                                <span t-field="o.montant"/>
+                                            </td>
+                                            <br/>
+                                    </tr>
                                     <tr class="border-black">          
                                             <td><strong>Timbre</strong></td>
                                             <td class="text-right">
@@ -75,16 +82,19 @@
                                     </tr>
                                 </table>
                             </div>
-                         </div>                           
+                         </div>
+                         <br/><br/>
+                         <div class="col-xs-6 pull-left">
+                         <p style="border:solid 2px; border-color:#0C6592">
+                            <strong>ARRETEE LE PRESENT DEVIS/COMMANDE A LA SOMME DE:</strong><br/>
+                            <span t-field="o.amount_to_text"/>
+                             </p>    </div>
+                          
+                                                
                         </div>
                         
                      </t>
-                       <p>
-                            <strong>ARRETEE LE PRESENT DEVIS/COMMANDE A LA SOMME DE:</strong><br/>
-                            <span t-field="o.amount_to_text"/>
-                            
-                          
-                        </p>
+                       
                 </t>
             </t>
         </template>

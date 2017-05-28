@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <report file="gctjara.report_cmdfournisseur" id="cmdfournisseur_report"
+            model="gctjara.cmdfournisseur" name="gc-tjara.report_cmdfournisseur"
+            report_type="qweb-pdf" string="Commande achat"/>
+            
+</data>
+</odoo>
