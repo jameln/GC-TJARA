@@ -17,12 +17,16 @@
             <field name="arch" type="xml">
                 <form string="Règlement d'achat">
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+							<button class="fa fa-clock-o" aria-hidden="true" String="Durée rapp." >
+                                <field name="duration" />
+                            </button>
+						</div>
                      <group col="2">
                             <group string="Général">
                                 <field name="numero"/>
                                 <field name="date"/>
                                 <field name="datevaleur"/>
-                                <field name="daterecption"/>
                                 <field name="dateoperation"/>
    
                             </group>
@@ -57,8 +61,8 @@
                                         </group>
                                      </sheet>
                                 </page>
-                                
-                               
+
+
                         </notebook>
                     </sheet>
                 </form>
@@ -73,10 +77,10 @@
                 <tree string="Règlements d'achat">
                     <field name="numero"/>
                     <field name="datevaleur"/>
-                    <field name="daterecption"/>
+                    <field name="dateoperation"/>
+                    <field name="dateecheance"/>
                     <field name="etatrapp"/>
-                    
-                      
+
                     <field name="prixht"/>
                     <field name="prixttc"/>
                     <field name="modepayment"/>
@@ -92,7 +96,7 @@
          <field name="arch" type="xml">
              <pivot string="Reglement achat Pivot" disable_linking="True">
                  <field name="numero" type="col"/>
-                 <field name="daterecption" interval="day" type="row"/>
+                 <field name="datevaleur" interval="day" type="row"/>
                  <field name="prixttc" type="measure"/>
              </pivot>
          </field>

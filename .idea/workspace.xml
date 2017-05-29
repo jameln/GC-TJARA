@@ -2,11 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41164d17-225c-4bb1-9a70-4fbca5ec39c2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../t-jara/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../t-jara/READme.md" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gc-tjara.iml" afterPath="$PROJECT_DIR$/.idea/gc-tjara.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/CommandeFournisseur.py" afterPath="$PROJECT_DIR$/models/CommandeFournisseur.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Emballage.py" afterPath="$PROJECT_DIR$/models/Emballage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/LigneFactureAchat.py" afterPath="$PROJECT_DIR$/models/LigneFactureAchat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/CommandeFournisseur.xml" afterPath="$PROJECT_DIR$/views/CommandeFournisseur.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/FactureAchat.py" afterPath="$PROJECT_DIR$/models/FactureAchat.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/ReglementAchat.py" afterPath="$PROJECT_DIR$/models/ReglementAchat.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/FactureAchat.xml" afterPath="$PROJECT_DIR$/views/FactureAchat.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/ReglementAchat.xml" afterPath="$PROJECT_DIR$/views/ReglementAchat.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../t-jara/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/.settings/org.eclipse.core.resources.prefs" afterPath="$PROJECT_DIR$/../t-jara/.settings/org.eclipse.core.resources.prefs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/__manifest__.py" afterPath="$PROJECT_DIR$/../t-jara/__manifest__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/models/Facture.py" afterPath="$PROJECT_DIR$/../t-jara/models/Facture.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/models/LigneFacture.py" afterPath="$PROJECT_DIR$/../t-jara/models/LigneFacture.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/models/Produit.py" afterPath="$PROJECT_DIR$/../t-jara/models/Produit.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/models/models.py" afterPath="$PROJECT_DIR$/../t-jara/models/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/report/report_facture_template.xml" afterPath="$PROJECT_DIR$/../t-jara/report/report_facture_template.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/security/acces_rules.xml" afterPath="$PROJECT_DIR$/../t-jara/security/acces_rules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/views/facture.xml" afterPath="$PROJECT_DIR$/../t-jara/views/facture.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/views/produit.xml" afterPath="$PROJECT_DIR$/../t-jara/views/produit.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,52 +39,42 @@
     <favorites_list name="gc-tjara" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file leaf-file-name="FactureAchat.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/FactureAchat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="102" column="5" lean-forward="true" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+            <state relative-caret-position="636">
+              <caret line="218" column="31" lean-forward="false" selection-start-line="218" selection-start-column="19" selection-end-line="218" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LigneFactureAchat.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/LigneFactureAchat.py">
+      <file leaf-file-name="FactureAchat.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/FactureAchat.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="39" column="41" lean-forward="true" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+            <state relative-caret-position="420">
+              <caret line="28" column="51" lean-forward="false" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LigneCommandeAchat.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/LigneCommandeAchat.py">
+      <file leaf-file-name="ReglementAchat.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/ReglementAchat.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="74" column="5" lean-forward="true" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+            <state relative-caret-position="252">
+              <caret line="80" column="45" lean-forward="false" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandeFournisseur.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/CommandeFournisseur.py">
+      <file leaf-file-name="ReglementAchat.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/ReglementAchat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="159" column="46" lean-forward="true" selection-start-line="159" selection-start-column="46" selection-end-line="159" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandeFournisseur.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/CommandeFournisseur.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="46" column="81" lean-forward="false" selection-start-line="46" selection-start-column="81" selection-end-line="46" selection-end-column="81" />
+            <state relative-caret-position="345">
+              <caret line="35" column="28" lean-forward="true" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -87,33 +93,34 @@
       <list>
         <option value="$PROJECT_DIR$/views/BonLivraison.xml" />
         <option value="$PROJECT_DIR$/models/BonLivraison.py" />
-        <option value="$PROJECT_DIR$/views/ReglementAchat.xml" />
         <option value="$PROJECT_DIR$/models/ReglementVente.py" />
-        <option value="$PROJECT_DIR$/models/ReglementAchat.py" />
         <option value="$PROJECT_DIR$/views/menu.xml" />
         <option value="$PROJECT_DIR$/views/ProduitEmballee.xml" />
         <option value="$PROJECT_DIR$/models/ProduitEmballee.py" />
         <option value="$PROJECT_DIR$/__manifest__.py" />
         <option value="$PROJECT_DIR$/views/CommandeClient.xml" />
-        <option value="$PROJECT_DIR$/views/FactureAchat.xml" />
         <option value="$PROJECT_DIR$/views/FactureVente.xml" />
         <option value="$PROJECT_DIR$/models/FactureVente.py" />
         <option value="$PROJECT_DIR$/views/dashboard.xml" />
-        <option value="$PROJECT_DIR$/models/FactureAchat.py" />
         <option value="$PROJECT_DIR$/models/LigneCommandeAchat.py" />
         <option value="$PROJECT_DIR$/models/LigneFactureAchat.py" />
         <option value="$PROJECT_DIR$/models/CommandeFournisseur.py" />
         <option value="$PROJECT_DIR$/models/Emballage.py" />
         <option value="$PROJECT_DIR$/views/CommandeFournisseur.xml" />
+        <option value="$PROJECT_DIR$/models/FactureAchat.py" />
+        <option value="$PROJECT_DIR$/views/FactureAchat.xml" />
+        <option value="$PROJECT_DIR$/views/ReglementAchat.xml" />
+        <option value="$PROJECT_DIR$/models/ReglementAchat.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
     <option name="y" value="24" />
-    <option name="width" value="1295" />
-    <option name="height" value="744" />
+    <option name="width" value="1535" />
+    <option name="height" value="876" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -129,6 +136,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -172,11 +180,10 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../openacademy" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
@@ -413,12 +420,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1295" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="65" y="24" width="1535" height="876" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15984556" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15960912" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958803" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -449,12 +456,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/models/BonLivraison.py</url>
-          <line>93</line>
+          <line>94</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/models/BonLivraison.py</url>
-          <line>111</line>
+          <line>112</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -468,21 +475,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/BonLivraison.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/FactureVente.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1305">
-          <caret line="87" column="22" lean-forward="false" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/BonLivraison.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1170">
@@ -689,13 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/ReglementAchat.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="99" column="5" lean-forward="false" selection-start-line="105" selection-start-column="55" selection-end-line="108" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/ProduitEmballee.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -747,14 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/FactureAchat.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/FactureVente.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -763,19 +740,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/ReglementAchat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="29" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/FactureVente.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1440">
           <caret line="97" column="65" lean-forward="false" selection-start-line="97" selection-start-column="65" selection-end-line="97" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -789,32 +757,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/LigneFactureAchat.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="39" column="41" lean-forward="true" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+        <state relative-caret-position="585">
+          <caret line="39" column="41" lean-forward="false" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/LigneCommandeAchat.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="74" column="5" lean-forward="true" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="1110">
+          <caret line="81" column="5" lean-forward="false" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+          <folding>
+            <marker date="1495835254258" expanded="true" signature="1506:1786" ph="..." />
+            <marker date="1495835254258" expanded="true" signature="1531:1786" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/CommandeFournisseur.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="159" column="46" lean-forward="true" selection-start-line="159" selection-start-column="46" selection-end-line="159" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/FactureAchat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="102" column="5" lean-forward="true" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+        <state relative-caret-position="2385">
+          <caret line="172" column="46" lean-forward="false" selection-start-line="172" selection-start-column="46" selection-end-line="172" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -823,7 +786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="54" lean-forward="false" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -838,7 +800,55 @@
     <entry file="file://$PROJECT_DIR$/views/CommandeFournisseur.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
-          <caret line="46" column="81" lean-forward="false" selection-start-line="46" selection-start-column="81" selection-end-line="46" selection-end-column="81" />
+          <caret line="46" column="80" lean-forward="false" selection-start-line="46" selection-start-column="80" selection-end-line="46" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../t-jara/views/facture.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="55" column="30" lean-forward="true" selection-start-line="53" selection-start-column="24" selection-end-line="55" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../openacademy/models/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="123" column="42" lean-forward="true" selection-start-line="123" selection-start-column="42" selection-end-line="123" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/FactureAchat.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="51" lean-forward="false" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/FactureAchat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="218" column="31" lean-forward="false" selection-start-line="218" selection-start-column="19" selection-end-line="218" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/ReglementAchat.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="80" column="45" lean-forward="false" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/ReglementAchat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="35" column="28" lean-forward="true" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
           <folding />
         </state>
       </provider>

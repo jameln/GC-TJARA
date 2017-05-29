@@ -176,7 +176,7 @@ class FactureAchat(models.Model):
 class FactureAchatTemp(models.TransientModel):
 
     _name = "gctjara.factureachatregle"
-    datereception=fields.Date(string='Date réception')
+    datevaleur=fields.Date(string='Date valeur')
     dateoperation=fields.Date(string='Date opération')
     dateecheance=fields.Date(string='Date écheance')
 
@@ -215,7 +215,8 @@ class FactureAchatTemp(models.TransientModel):
                   'numero' : self.env['ir.sequence'].next_by_code('gctjara.regachat.seq'),
                   'date':fields.datetime.now(),
                   'dateoperation':self.dateoperation,
-                  'daterecption':self.dateecheance,
+                  'datevaleur': self.datevaleur,
+                  'dateecheance':self.dateecheance,
                   'tauxtva':'18',
                   'prixht':factures.montant,
                   'prixttc': factures.montantttc,

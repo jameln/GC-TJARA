@@ -20,18 +20,31 @@ class ReglementAchat(models.Model):
                       help='La date de création de la facture'
                       )
     
-    datevaleur = fields.Date(string='Date valeur',
-                            default=fields.datetime.now(),
+    datevaleur = fields.Date(
+        string='Date valeur',
+        default=fields.datetime.now(),
                             )
     
     dateoperation=fields.Date(
         string='Date d\'opération',
         default=fields.datetime.now(),
                             )
-    
-    daterecption = fields.Date(string='Date réception',
-                             default=fields.datetime.now(),
-                             )
+    dateecheance = fields.Date(
+        string='Date d\'écheance',
+        default=fields.datetime.now(),
+                            )
+    duration=fields.Integer(
+        string='Durée de raprrochement',
+        compute='_get_duration'
+    )
+
+    @api.depends('date', 'datevaleur')
+    def _get_duration(self):
+        for r in self:
+            start_date = fields.Datetime.from_string(r.date)
+            end_date =  fields.Datetime.from_string(r.datevaleur)
+            r.duration = (end_date - start_date).days
+
     
     tauxtva = fields.Char(
         string='TVA',
