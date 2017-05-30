@@ -18,9 +18,9 @@
             <field name="arch" type="xml">
                 <form string="Règlement de vente">
                     <sheet>
-                          <div class="oe_button_box" name="button_box"
-                             attrs="{'invisible': [('etatrapp','=','Rapproché')]}">
-                            <button name="Rapproche" class="fa fa-clock-o" aria-hidden="true" String="Rapproché">
+                          <div class="oe_button_box" name="button_box" >
+                           <button name="Rapproche" type="object"  attrs="{'invisible': [('etatrapp','=','Rapproché')]}"
+                                    class="fa fa-clock-o" aria-hidden="true" String="Rapproché">
                                 <field name="duration"/>
                             </button>
                         </div>
