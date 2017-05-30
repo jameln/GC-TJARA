@@ -6,6 +6,7 @@
             <field name="arch" type="xml">
                 <form string="Mouvements de stock" create="false"> 
                     <sheet>
+                        <group co="2">
                         <group string="Général">
                             <field name="numero"/>
                             <field name="date"/>
@@ -16,6 +17,7 @@
                             <field name="bonlivraison_id"  attrs="{'invisible': [('type','!=','Sortie'),]}"/>
                             <field name="quantite"/>
                             <field name="produit"/>
+                        </group>
                         </group>
                     </sheet>
                 </form>
@@ -51,8 +53,8 @@
                 </search>
             </field>
         </record>
-        
-        
+
+
 
         <record id="mvtstock_list_action" model="ir.actions.act_window">
             <field name="name">Mouvements de stock </field>

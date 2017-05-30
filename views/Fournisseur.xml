@@ -10,18 +10,24 @@
                         <group>
                             <field class="oe_left oe_avatar" name="image" widget="image"/>
                             <field name="name"/>
+                        </group>
+                          <group col="2">
+                              <group string="Informations générales">
                             <field name="matriculefiscal"/>
                             <field name="company_name"/>
                             <field name="email"/>
                             <field name="phone"/>
                             <field name="fax"/>
                             <field name="mobile"/>
+                                  </group>
+                              <group string="Coordonnées">
                             <field name="adresse"/>
                             <field name="street"/>
                            
                             <field name="zip"/>
                             <field name="city"/>
                             <field name="active"/>
+                                  </group>
                         </group>
                     </sheet>
                     <notebook>

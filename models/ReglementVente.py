@@ -34,7 +34,19 @@ class ReglementVente(models.Model):
     daterecption = fields.Date(string='Date réception',
                              default=fields.datetime.now(),
                              )
-    
+
+    duration = fields.Integer(
+        string='Durée de raprrochement',
+        compute='_get_duration'
+    )
+
+    @api.depends('date', 'daterecption')
+    def _get_duration(self):
+        for r in self:
+            start_date = fields.Datetime.from_string(r.date)
+            end_date = fields.Datetime.from_string(r.daterecption)
+            r.duration = (end_date - start_date).days
+
     tauxtva = fields.Char(
         string='TVA',
      
@@ -79,6 +91,12 @@ class ReglementVente(models.Model):
         
         ]
     )
+
+    def Rapproche(self):
+        self.write({'etatrapp': 'rp'})
+        return True
+
+
     numerochq=fields.Char(string='Numero')
 
 

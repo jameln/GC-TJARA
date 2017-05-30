@@ -5,65 +5,67 @@
             <field name="model">gctjara.facturevente</field>
             <field name="arch" type="xml">
                 <form string="Facture Form">
-                    
-                    <sheet>
-                        <group string="Informations générales">
-                            <field name="numero"/>
-                            <field name="datefact"/>
-                            <field name="datepayfact"/>
-                            <field name="valid"/>
 
-                            
+                    <sheet>
+                        <group col="2">
+                            <group string="Informations générales">
+                                <field name="numero"/>
+                                <field name="datefact"/>
+                                <field name="datepayfact"/>
+                                <field name="valid"/>
+
+
+                            </group>
+                            <group string="Références">
+                                <field name="client_id"/>
+                                <field name="bonlivraison_id"/>
+                                <field name="etatreglement"/>
+                                <field name="refregvente"/>
+                            </group>
                         </group>
-                        <group string="Références">
-                            <field name="client_id"/>
-                            <field name="bonlivraison_id"/>
-                            <field name="etatreglement" />
-                            <field name="refregvente" />
-                        </group> 
                         <notebook>
-                          <page class="oe_page_Title" string="Produits">
+                            <page class="oe_page_Title" string="Produits">
                                 <group>
                                     <field name="lignefact_id">
-                                   
-                                    <tree editable="bottom">
-                                        <field name="embalageproduit_id"/>
-                                        <field name="prixvente"/>
-                                        <field name="quantite"/>
-                                        <field name="prix_ht" />
-                                        <field name="tva"/>
-                                        <field name="prix_total"/>
-                                    </tree>
-                                    <form>
-                                        <group>
+
+                                        <tree editable="bottom">
                                             <field name="embalageproduit_id"/>
-                                        </group>
-                                    </form>
+                                            <field name="prixvente"/>
+                                            <field name="quantite"/>
+                                            <field name="prix_ht"/>
+                                            <field name="tva"/>
+                                            <field name="prix_total"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="embalageproduit_id"/>
+                                            </group>
+                                        </form>
                                     </field>
                                 </group>
                                 <group class="oe_subtotal_footer">
                                     <!-- <label
                                     class="oe_subtotal_footer_separator" string="Montant"/> -->
-                                    <field name="montantht" />
-                                    <newline />
+                                    <field name="montantht"/>
+                                    <newline/>
                                     <field name="montant" nolabel="0"/>
                                     <newline/>
                                     <field name="timbre" nolabel="0"/>
                                     <label
-                                    class="oe_subtotal_footer_separator" string="Montant TTC"/>
-                                  
+                                            class="oe_subtotal_footer_separator" string="Montant TTC"/>
+
                                     <field name="montantttc" nolabel="1"/>
                                 </group>
                             </page>
                             <page class="oe_page_Title" string="Attachement">
                                 <group>
                                     <field name="attachment">
-                                    <tree>
-                                    <field name="name"/>
-                                    <field name="datas_fname"/>
-                                    <field name="mimetype"/>
-                                    <field name="create_date"/>
-                                    </tree>
+                                        <tree>
+                                            <field name="name"/>
+                                            <field name="datas_fname"/>
+                                            <field name="mimetype"/>
+                                            <field name="create_date"/>
+                                        </tree>
                                     </field>
                                 </group>
                             </page>
@@ -73,12 +75,12 @@
                                 </group>
                             </page>
                         </notebook>
-                    
+
                         <div class="oe_read_only">
                             <Label for="create_uid" string="Facture crée par :"/>
                             <field name="create_uid"/>
                         </div>
-                        
+
                     </sheet>
                 </form>
             </field>
@@ -92,29 +94,29 @@
                     <field name="datefact"/>
                     <field name="client_id"/>
                     <field name="bonlivraison_id"/>
-                    <field name="etatreglement" />
+                    <field name="etatreglement"/>
                     <field name="refregvente"/>
                     <field name="create_uid"/>
                 </tree>
             </field>
         </record>
-         <record model="ir.ui.view" id="facturevente_calendar_view">
+        <record model="ir.ui.view" id="facturevente_calendar_view">
             <field name="name">facturevente.calendar</field>
             <field name="model">gctjara.facturevente</field>
             <field name="arch" type="xml">
                 <calendar string="Calendier facture vente" date_start="datefact" color="client_id">
-                    <field name="numero" />
-                    <field name="etatreglement" />
+                    <field name="numero"/>
+                    <field name="etatreglement"/>
                 </calendar>
             </field>
         </record>
-         <record model="ir.ui.view" id="facturevente_graph_view">
+        <record model="ir.ui.view" id="facturevente_graph_view">
             <field name="name">facturevente.graph</field>
             <field name="model">gctjara.facturevente</field>
             <field name="arch" type="xml">
                 <graph string="Participations by Courses">
-                    <field name="client_id" />
-                    <field name="montantttc" type="measure" />
+                    <field name="client_id"/>
+                    <field name="montantttc" type="measure"/>
                 </graph>
             </field>
         </record>
@@ -127,23 +129,23 @@
                 <p class="oe_view_nocontent_create">Créer votre première facture</p>
             </field>
         </record>
-          <act_window id="action_group" 
+        <act_window id="action_group"
                     key2="client_action_multi"
-                    name="Payment"    
+                    name="Payment"
                     res_model="gctjara.factureventeregle"
-                    src_model="gctjara.facturevente" 
-                    target="new" 
+                    src_model="gctjara.facturevente"
+                    target="new"
                     view_mode="form"
-                    />
-                    
+        />
+
         <record id="factureventeregle_form_view" model="ir.ui.view">
             <field name="name">factureventeregle.form</field>
             <field name="model">gctjara.factureventeregle</field>
             <field name="arch" type="xml">
                 <form string="Payment facture vente">
-                    
+
                     <group col="2">
-                        <group >
+                        <group>
                             <field name="datereception"/>
                             <field name="datevaleur"/>
                             <field name="dateoperation"/>
@@ -151,19 +153,20 @@
                         </group>
                         <group>
                             <field name="modepayment"/>
-                            <field name="etatrapp"  options="{'vertical': true}" widget="radio"/>
-                            <field name="numerochq"  attrs="{'invisible': [('modepayment','!=','ch'),('modepayment','!=','tr')]}"/>
+                            <field name="etatrapp" options="{'vertical': true}" widget="radio"/>
+                            <field name="numerochq"
+                                   attrs="{'invisible': [('modepayment','!=','ch'),('modepayment','!=','tr')]}"/>
                         </group>
                     </group>
-                   
+
                     <footer>
                         <button class="oe_highlight" name="Paiement"
-                            string="Créer règlement" type="object"/> 
+                                string="Créer règlement" type="object"/>
                         <button class="oe_link" special="cancel" string="Annuler"/>
                     </footer>
                 </form>
             </field>
         </record>
-      
+
     </data>
 </odoo>

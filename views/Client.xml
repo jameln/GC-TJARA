@@ -17,21 +17,29 @@
             <field name="arch" type="xml">
                 <form string="Clients">
                     <sheet>
-                        <group>
-                            <field class="oe_left oe_avatar"
-                                name="image" widget="image"/>
-                            <field name="name"/>
-                            <field name="company_name"/>
-                            <field name="email"/>
-                            <field name="phone"/>
-                            <field name="fax"/>
-                            <field name="mobile"/>
-                            <field name="adresse"/>
-                            <field name="street"/>
-                            <field name="zip"/>
-                            <field name="city"/>
-                            <field name="active"/>
-                        </group>
+
+                            <group >
+                                <field class="oe_left oe_avatar"
+                                    name="image" widget="image"/>
+                             <field name="name"/>
+                             </group>
+                            <group col="2">
+                               <group string="Informations générales">
+                                <field name="company_name"/>
+                                <field name="email"/>
+                                <field name="phone"/>
+                                <field name="fax"/>
+                                <field name="mobile"/>
+                            </group>
+                            <group string="Coordonées">
+                                <field name="adresse"/>
+                                <field name="street"/>
+                                <field name="zip"/>
+                                <field name="city"/>
+                                <field name="active"/>
+                            </group>
+                           </group>
+
                         <notebook>
                             <!-- <page class="oe_page_Title" string="Produits">
                                 <group>
@@ -56,7 +64,7 @@
                                     <field name="commande_id">
                                     <tree>
                                     <field String="Numéro" name="numerocmdc"/>
-                                    
+
                                     </tree>
                                     </field>
                                 </group>
@@ -79,7 +87,7 @@
                 </tree>
             </field>
         </record>
-        
+
           <record model="ir.ui.view" id="client_kanban_view">
             <field name="name">client.kanban</field>
             <field name="model">gctjara.client</field>
@@ -92,7 +100,7 @@
                 </kanban>
             </field>
         </record>
-        
+
         <record id="client_kanban_view" model="ir.ui.view">
             <field name="name">client.kanban</field>
             <field name="model">gctjara.client</field>

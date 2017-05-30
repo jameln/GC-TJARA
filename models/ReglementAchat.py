@@ -92,7 +92,11 @@ class ReglementAchat(models.Model):
         
         ]
     )
-    
+
+    def Rapproche(self):
+        self.write({'etatrapp': 'rp'})
+        return True
+
     numerochq=fields.Char(string='Numero')
 
     

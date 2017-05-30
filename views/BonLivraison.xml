@@ -1,12 +1,12 @@
 <odoo>
     <data>
-         <record id="bonlivraison_list_action" model="ir.actions.act_window">
-            <field name="name">Bon de livrison </field>
+        <record id="bonlivraison_list_action" model="ir.actions.act_window">
+            <field name="name">Bon de livrison</field>
             <field name="res_model">gctjara.bonlivraison</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,search,calendar</field>
-           
-            <field name="help" type="html"> 
+
+            <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer le première Bon de livraison</p>
             </field>
         </record>
@@ -15,51 +15,55 @@
             <field name="model">gctjara.bonlivraison</field>
             <field name="arch" type="xml">
                 <form string="Bon de livraison Form">
-                     <header string="Bon des livraison">
+                    <header string="Bon des livraison">
 
 
                         <button class="oe_highlight"
-                            name="create_factvente" states="at"
-                            string="Créer facture" type="object"
-                            attrs="{'invisible': [('state','!=','at'),]}"/>
+                                name="create_factvente" states="at"
+                                string="Créer facture" type="object"
+                                attrs="{'invisible': [('state','!=','at'),]}"/>
 
                         <button class="oe_highlight"
-                            name="action_draft" states="at"
-                            string="Annuler la commande" type="object"
-                            attrs="{'invisible': [('state','!=','at'),]}"
-                            confirm="Cette commande sera annulée."/>
+                                name="action_draft" states="at"
+                                string="Annuler la commande" type="object"
+                                attrs="{'invisible': [('state','!=','at'),]}"
+                                confirm="Cette commande sera annulée."/>
 
                         <field name="state"
-                            statusbar_colors="{'at':'white','an':'blue','lv':'green'}"
-                            statusbar_visible="at,an,lv" widget="statusbar"/>
+                               statusbar_colors="{'at':'white','an':'blue','lv':'green'}"
+                               statusbar_visible="at,an,lv" widget="statusbar"/>
                     </header>
                     <sheet>
-                        <group>
+                        <group col="2">
+                         <group>
                             <field name="numero"/>
                             <field name="date"/>
-                            <field name="client_id" />
-                            <field name ="commande_id" />
+                         </group>
+                          <group>
+                            <field name="client_id"/>
+                            <field name="commande_id"/>
                         </group>
-                        
+                        </group>
+
                         <notebook>
                             <page class="oe_page_Title" string="Produits">
                                 <group>
                                     <field name="lignebonlivraison_id">
-                                        <tree >
+                                        <tree>
                                             <field name="embalageproduit_id"/>
                                             <field name="quantite"/>
                                             <field name="prixvente"/>
-                                            <field name="prix_ht" />
+                                            <field name="prix_ht"/>
                                             <field name="tva"/>
-                                            <field name="prix_total" />
+                                            <field name="prix_total"/>
                                         </tree>
                                         <form>
                                             <group>
-                                                <field name="embalageproduit_id"/>                                                
+                                                <field name="embalageproduit_id"/>
                                             </group>
-                                         </form>
-                                         
-                                    </field> 
+                                        </form>
+
+                                    </field>
                                 </group>
                             </page>
 
@@ -73,44 +77,44 @@
             <field name="model">gctjara.bonlivraison</field>
             <field name="arch" type="xml">
                 <tree string="Bon de livraison" decoration-warning="state == 'at'" decoration-muted="state == 'an'">
-                    <field name ="numero"/>
-                    <field name ="date"/>
-                    <field name ="client_id" />
-                    <field name ="commande_id" />
-                    <field name ="state" />
+                    <field name="numero"/>
+                    <field name="date"/>
+                    <field name="client_id"/>
+                    <field name="commande_id"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
-         <record model="ir.ui.view" id="bonlivraison_search_view">
+        <record model="ir.ui.view" id="bonlivraison_search_view">
             <field name="name">bonlivraison.search</field>
             <field name="model">gctjara.bonlivraison</field>
             <field name="arch" type="xml">
                 <search>
                     <filter name="state" string="Status"
-                        domain="[('state', '!=', 'annulée')]" />
+                            domain="[('state', '!=', 'annulée')]"/>
                     <group string="Group By">
                         <filter name="state" string="Status"
-                            context="{'group_by': 'state'}" />
+                                context="{'group_by': 'state'}"/>
                     </group>
 
                 </search>
             </field>
         </record>
-        
-        
+
+
         <record model="ir.ui.view" id="bonlivraison_calendar_view">
             <field name="name">bonlivraison.calendar</field>
             <field name="model">gctjara.bonlivraison</field>
             <field name="arch" type="xml">
                 <calendar string="Calendier bl" date_start="date" color="state">
-                    <field name="numero" />
-                    <field name ="client_id" />
+                    <field name="numero"/>
+                    <field name="client_id"/>
                 </calendar>
             </field>
         </record>
 
-        
-      <!-- WorkFlow-->
+
+        <!-- WorkFlow-->
 
         <record id="bonlivraison_workflow" model="workflow">
             <field name="name">gctjara.workflow_validation_bon_livraison</field>
@@ -150,6 +154,6 @@
         </record>
 
         <!--end workflow -->
-        
+
     </data>
 </odoo>

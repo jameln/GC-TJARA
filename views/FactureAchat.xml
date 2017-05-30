@@ -9,23 +9,23 @@
                 <p class="oe_view_nocontent_create">Créer votre première facture</p>
             </field>
         </record>
-        <act_window id="action_group1" 
+        <act_window id="action_group1"
                     key2="client_action_multi"
-                    name="Paiement"    
+                    name="Paiement"
                     res_model="gctjara.factureachatregle"
-                    src_model="gctjara.factureachat" 
-                    target="new" 
+                    src_model="gctjara.factureachat"
+                    target="new"
                     view_mode="form"
-                    />
-                    
+        />
+
         <record id="factureachatregle_form_view" model="ir.ui.view">
             <field name="name">factureachatregle.form</field>
             <field name="model">gctjara.factureachatregle</field>
             <field name="arch" type="xml">
                 <form string="Paiement facture achat">
-                    
+
                     <group col="2">
-                        <group >
+                        <group>
                             <field name="datevaleur"/>
                             <field name="dateoperation"/>
                             <field name="dateecheance"/>
@@ -33,15 +33,16 @@
                         <group>
                             <field name="modepayment"/>
                             <field name="etatrapp" options="{'vertical': true}" widget="radio"/>
-                            <field name="numerochq"  attrs="{'invisible': [('modepayment','!=','ch'),('modepayment','!=','tr')]}"/>
+                            <field name="numerochq"
+                                   attrs="{'invisible': [('modepayment','!=','ch'),('modepayment','!=','tr')]}"/>
 
-                           
+
                         </group>
                     </group>
-                   
+
                     <footer>
                         <button class="oe_highlight" name="Paiement"
-                            string="Crée règlement" type="object"/>
+                                string="Crée règlement" type="object"/>
                         <button class="oe_link" special="cancel" string="Cancel"/>
                     </footer>
                 </form>
@@ -54,59 +55,63 @@
             <field name="arch" type="xml">
                 <form string="Facture Form">
                     <sheet>
-                        <group>
-                            <field name="numero"/>
-                            <field name="datefact"/>
-                            <field name="datepayfact"/>
-                            <field name="valid"/>
-                            <field name="fournisseur_id"/>
-                            <field name="etatreglement"/>
-                            <field name="refregachat" />
+                        <group col="2">
+                            <group>
+                                <field name="numero"/>
+                                <field name="datefact"/>
+                                <field name="datepayfact"/>
+                                <field name="valid"/>
+                            </group>
+                            <group>
+                                <field name="fournisseur_id"/>
+                                <field name="etatreglement"/>
+                                <field name="refregachat"/>
 
-                            
+                            </group>
                         </group>
                         <notebook>
                             <page class="oe_page_Title" string="Produits">
                                 <group>
                                     <field name="lignefact_id">
-                                    <!--   <field name="lignecmd_id"> -->
-                                    <tree editable="bottom">
-	                                    <field name="embalageproduit_id"/>
-	                                    <field name="prixunit"/>
-	                                    <field name="quantite"/>
-	                                    <field name="tva"/>
-	                                    <field name="prix_ht" />
-	                                    <field name="prix_total"/>
-                                    </tree>
-                                    <form>
-	                                    <group>
-	                                    	<field name="embalageproduit_id"/>
-	                                    </group>
-                                    </form>
+                                        <!--   <field name="lignecmd_id"> -->
+                                        <tree editable="bottom">
+                                            <field name="embalageproduit_id"/>
+                                            <field name="prixunit"/>
+                                            <field name="quantite"/>
+                                            <field name="tva"/>
+                                            <field name="prix_ht"/>
+                                            <field name="prix_total"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="embalageproduit_id"/>
+                                            </group>
+                                        </form>
                                     </field>
                                 </group>
                                 <group class="oe_subtotal_footer">
-<!--                                     <label class="oe_subtotal_footer_separator" string="Montant"/> -->
-                                     <newline/>
-                                   <field name="prix_ht"  nolabel="0"/>
+                                    <!--                                     <label class="oe_subtotal_footer_separator" string="Montant"/> -->
+                                    <newline/>
+                                    <field name="prix_ht" nolabel="0"/>
                                     <newline/>
                                     <field name="montant" nolabel="0"/>
                                     <newline/>
                                     <field name="timbre" nolabel="0"/>
                                     <label
-                                    class="oe_subtotal_footer_separator" string="Montant TTC"/>
-                                    <field name="montantttc" nolabel="1"/> <!-- <field name="currency_id" nolabel="1" readonly="1"/> -->
+                                            class="oe_subtotal_footer_separator" string="Montant TTC"/>
+                                    <field name="montantttc"
+                                           nolabel="1"/> <!-- <field name="currency_id" nolabel="1" readonly="1"/> -->
                                 </group>
                             </page>
                             <page class="oe_page_Title" string="Attachement">
                                 <group>
                                     <field name="attachment">
-                                    <tree>
-                                    <field name="name"/>
-                                    <field name="datas_fname"/>
-                                    <field name="mimetype"/>
-                                    <field name="create_date"/>
-                                    </tree>
+                                        <tree>
+                                            <field name="name"/>
+                                            <field name="datas_fname"/>
+                                            <field name="mimetype"/>
+                                            <field name="create_date"/>
+                                        </tree>
                                     </field>
                                 </group>
                             </page>
@@ -116,14 +121,14 @@
                                 </group>
                             </page>
                         </notebook>
-                        
-                   
+
+
                         <p>
                             <strong>ARRETEE LE PRESENT FACTURE D'ACHAT A LA SOMME DE:</strong>
-                             <field name="amount_to_text"/>
-                          
+                            <field name="amount_to_text"/>
+
                         </p>
-                    
+
                         <div class="oe_read_only">
                             <Label for="create_uid" string="Facture crée par :"/>
                             <field name="create_uid"/>
@@ -136,29 +141,29 @@
                 </form>
             </field>
         </record>
-        
-        
+
+
         <record model="ir.ui.view" id="facture_graph_view">
             <field name="name">factureachat.graph</field>
             <field name="model">gctjara.factureachat</field>
             <field name="arch" type="xml">
                 <graph string="Participations by Courses">
-                    <field name="fournisseur_id" />
-                    <field name="montantttc" type="measure" />
+                    <field name="fournisseur_id"/>
+                    <field name="montantttc" type="measure"/>
                 </graph>
             </field>
         </record>
-         <record model="ir.ui.view" id="factureachat_calendar_view">
+        <record model="ir.ui.view" id="factureachat_calendar_view">
             <field name="name">factureachat.calendar</field>
             <field name="model">gctjara.factureachat</field>
             <field name="arch" type="xml">
                 <calendar string="Calendier facture achat" date_start="datefact" color="fournisseur_id">
-                    <field name="numero" />
-                    <field name="etatreglement" />
+                    <field name="numero"/>
+                    <field name="etatreglement"/>
                 </calendar>
             </field>
         </record>
-        
+
         <record id="facture_tree_view" model="ir.ui.view">
             <field name="name">factureachat.tree</field>
             <field name="model">gctjara.factureachat</field>
@@ -167,9 +172,10 @@
                     <field name="numero"/>
                     <field name="datefact"/>
                     <field name="datepayfact"/>
-                    <field name="valid"/>
+                    <field name="attachment"/>
                     <field name="etatreglement"/>
-                    <button type="object" name="getReglementID" icon="fa-bars"  attrs="{'invisible':[('etatreglement','!=', 'Réglée')]}"   /> 
+                    <button type="object" name="getReglementID" icon="fa-bars"
+                            attrs="{'invisible':[('etatreglement','!=', 'Réglée')]}"/>
                     <field name="montant" sum="True"/>
                     <field name="montantttc" sum="True"/>
                 </tree>
