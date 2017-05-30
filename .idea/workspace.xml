@@ -3,28 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="41164d17-225c-4bb1-9a70-4fbca5ec39c2" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../t-jara/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/views/Depot.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/views/Stock.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/views/templates.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/views/views.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../t-jara/READme.md" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/ReglementAchat.py" afterPath="$PROJECT_DIR$/models/ReglementAchat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/ReglementVente.py" afterPath="$PROJECT_DIR$/models/ReglementVente.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/BonEntree.xml" afterPath="$PROJECT_DIR$/views/BonEntree.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/BonLivraison.xml" afterPath="$PROJECT_DIR$/views/BonLivraison.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/Client.xml" afterPath="$PROJECT_DIR$/views/Client.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/CommandeClient.xml" afterPath="$PROJECT_DIR$/views/CommandeClient.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/CommandeFournisseur.xml" afterPath="$PROJECT_DIR$/views/CommandeFournisseur.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/Emballages.xml" afterPath="$PROJECT_DIR$/views/Emballages.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/FactureAchat.xml" afterPath="$PROJECT_DIR$/views/FactureAchat.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/FactureVente.xml" afterPath="$PROJECT_DIR$/views/FactureVente.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/Fournisseur.xml" afterPath="$PROJECT_DIR$/views/Fournisseur.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/MouvementStock.xml" afterPath="$PROJECT_DIR$/views/MouvementStock.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/ProduitEmballee.xml" afterPath="$PROJECT_DIR$/views/ProduitEmballee.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/Produits.xml" afterPath="$PROJECT_DIR$/views/Produits.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/ReglementAchat.xml" afterPath="$PROJECT_DIR$/views/ReglementAchat.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/ReglementVente.xml" afterPath="$PROJECT_DIR$/views/ReglementVente.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../t-jara/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/.settings/org.eclipse.core.resources.prefs" afterPath="$PROJECT_DIR$/../t-jara/.settings/org.eclipse.core.resources.prefs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/__manifest__.py" afterPath="$PROJECT_DIR$/../t-jara/__manifest__.py" />
@@ -435,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496082182651</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="PFE V3.5.5">
+      <created>1496165604903</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1496165604903</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -478,7 +465,8 @@
     <MESSAGE value="PFE V3.4.9" />
     <MESSAGE value="PFE V3.5.1" />
     <MESSAGE value="PFE V3.5.4" />
-    <option name="LAST_COMMIT_MESSAGE" value="PFE V3.5.4" />
+    <MESSAGE value="PFE V3.5.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="PFE V3.5.5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
