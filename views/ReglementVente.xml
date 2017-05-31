@@ -18,10 +18,15 @@
             <field name="arch" type="xml">
                 <form string="Règlement de vente">
                     <sheet>
-                          <div class="oe_button_box" name="button_box" >
-                           <button name="Rapproche" type="object"  attrs="{'invisible': [('etatrapp','=','Rapproché')]}"
-                                    class="fa fa-clock-o" aria-hidden="true" String="Rapproché">
-                                <field name="duration"/>
+                         <div class="oe_button_box" name="button_box">
+                            <button String="Rapproché"
+                                aria-hidden="true"
+                                attrs="{'invisible': [('etatrapp','=','Rapproché')]}"
+                                class="btn btn-primary" name="Rapproche" type="object">
+                                <p>
+                                    <field name="duration"/>
+                                    <span> jour(s)</span>
+                                </p>
                             </button>
                         </div>
                         <group col="3">
