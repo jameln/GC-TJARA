@@ -4,7 +4,7 @@
             <field name="name">facturevente.form</field>
             <field name="model">gctjara.facturevente</field>
             <field name="arch" type="xml">
-                <form string="Facture Form">
+                <form string="Facture Form" create="false">
 
                     <sheet>
                         <group col="2">
@@ -28,7 +28,7 @@
                                 <group>
                                     <field name="lignefact_id">
 
-                                        <tree editable="bottom">
+                                        <tree editable="bottom" >
                                             <field name="embalageproduit_id"/>
                                             <field name="prixvente"/>
                                             <field name="quantite"/>
@@ -89,7 +89,7 @@
             <field name="name">facturevente.tree</field>
             <field name="model">gctjara.facturevente</field>
             <field name="arch" type="xml">
-                <tree string="Factures ">
+                <tree string="Factures " create="false">
                     <field name="numero"/>
                     <field name="datefact"/>
                     <field name="client_id"/>

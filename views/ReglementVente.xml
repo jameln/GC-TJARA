@@ -16,7 +16,7 @@
             <field name="name">regvente.form</field>
             <field name="model">gctjara.regvente</field>
             <field name="arch" type="xml">
-                <form string="Règlement de vente">
+                <form string="Règlement de vente"  create="false">
                     <sheet>
                          <div class="oe_button_box" name="button_box">
                             <button String="Rapproché"
@@ -84,7 +84,7 @@
             <field name="name">regvente.tree</field>
             <field name="model">gctjara.regvente</field>
             <field name="arch" type="xml">
-                <tree string="Règlements de vente"  colors="#0000ff:duration&lt;1;red:duration&gt;1" >
+                <tree string="Règlements de vente"  colors="#0000ff:duration&lt;1;red:duration&gt;1"  create="false">
                     <field name="numero"/>
                     <field name="datevaleur"/>
                     <field name="daterecption"/>

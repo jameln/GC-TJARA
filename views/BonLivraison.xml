@@ -14,7 +14,7 @@
             <field name="name">bonlivraison.form</field>
             <field name="model">gctjara.bonlivraison</field>
             <field name="arch" type="xml">
-                <form string="Bon de livraison Form">
+                <form string="Bon de livraison Form" create="false">
                     <header string="Bon des livraison">
 
 
@@ -76,7 +76,7 @@
             <field name="name">bonlivraison.tree</field>
             <field name="model">gctjara.bonlivraison</field>
             <field name="arch" type="xml">
-                <tree string="Bon de livraison" decoration-warning="state == 'at'" decoration-muted="state == 'an'">
+                <tree string="Bon de livraison" create="false" decoration-warning="state == 'at'" decoration-muted="state == 'an'">
                     <field name="numero"/>
                     <field name="date"/>
                     <field name="client_id"/>
@@ -89,7 +89,7 @@
             <field name="name">bonlivraison.search</field>
             <field name="model">gctjara.bonlivraison</field>
             <field name="arch" type="xml">
-                <search>
+                <search create="false">
                     <filter name="state" string="Status"
                             domain="[('state', '!=', 'annulée')]"/>
                     <group string="Group By">

@@ -20,7 +20,7 @@
             <field name="name">bonentree.form</field>
             <field name="model">gctjara.bonentree</field>
             <field name="arch" type="xml">
-                <form string="Bons des entrées Form">
+                <form string="Bons des entrées Form" create="false">
                     <header string="Bon d'entrée">
 
                         <button class="oe_highlight"
@@ -58,7 +58,7 @@
             <field name="name">bonentree.tree</field>
             <field name="model">gctjara.bonentree</field>
             <field name="arch" type="xml">
-                <tree string="Bon d'entrée" decoration-warning="state == 'nr'" decoration-muted="state == 'lv'">
+                <tree string="Bon d'entrée" create="false" decoration-warning="state == 'nr'" decoration-muted="state == 'lv'">
                     <field name="numero"/>
                     <field name="date"/>
                     <field name="produit"/>

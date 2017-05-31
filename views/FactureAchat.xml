@@ -53,7 +53,7 @@
             <field name="name">factureachat.form</field>
             <field name="model">gctjara.factureachat</field>
             <field name="arch" type="xml">
-                <form string="Facture Form">
+                <form string="Facture Form" create="false">
                     <sheet>
                         <group col="2">
                             <group>
@@ -168,7 +168,7 @@
             <field name="name">factureachat.tree</field>
             <field name="model">gctjara.factureachat</field>
             <field name="arch" type="xml">
-                <tree string="Factures ">
+                <tree string="Factures " create="false">
                     <field name="numero"/>
                     <field name="datefact"/>
                     <field name="datepayfact"/>
