@@ -17,16 +17,13 @@
             <field name="arch" type="xml">
                 <form string="Règlement d'achat"  create="false">
                     <sheet>
-                        <div class="oe_button_box" name="button_box">
+                        <div class="oe_button_box" name="button_box"  >
 
-                            <button String="Rapproché"
-
-                                attrs="{'invisible': [('etatrapp','=','Rapproché')]}"
-                                class="btn btn-primary" name="Rapproche" type="object">
-                                <p>
-                                    <field name="duration"/>
-                                    <span> jour(s)</span>
-                                </p>
+                            <button string="Rapproché" class="oe_stat_button oe_read_only" icon="fa-clock-o" 
+                                attrs="{'invisible': [('etatrapp','=','rp')]}"
+                                name="Rapproche" type="object" style="font-weight: bold; font-size: 16px;"
+                                confirm="Etes vous sûre de rapproché ce réglement?">
+                                <p><span> après </span><field name="duration"/> <span> jour(s)</span></p>
 
                             </button>
                         </div>
@@ -37,9 +34,6 @@
                                 <field name="datevaleur"/>
                                 <field name="dateoperation"/>
                                 <field name="dateecheance"/>
-
-                                <field name="duration"/>
-
                             </group>
                             <group String="Opérations">
                                 <field name="tauxtva"/>
@@ -85,14 +79,13 @@
             <field name="name">regachat.tree</field>
             <field name="model">gctjara.regachat</field>
             <field name="arch" type="xml">
-                <tree string="Règlements d'achat" colors="#0000ff:duration&lt;1;red:duration&gt;1"  create="false">
+                <tree string="Règlements d'achat"  decoration-warning="etatrapp == 'db'" decoration-info="etatrapp == 'vs'" decoration-success ="etatrapp == 'rp'"  create="false">
                     <field name="numero"/>
                     <field name="datevaleur"/>
                     <field name="dateoperation"/>
                     <field name="dateecheance"/>
                     <field name="etatrapp"/>
                     <field name="duration"/>
-
                     <field name="prixht"/>
                     <field name="prixttc"/>
                     <field name="modepayment"/>

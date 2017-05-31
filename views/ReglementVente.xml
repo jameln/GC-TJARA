@@ -18,15 +18,14 @@
             <field name="arch" type="xml">
                 <form string="Règlement de vente"  create="false">
                     <sheet>
-                         <div class="oe_button_box" name="button_box">
-                            <button String="Rapproché"
-                                aria-hidden="true"
-                                attrs="{'invisible': [('etatrapp','=','Rapproché')]}"
-                                class="btn btn-primary" name="Rapproche" type="object">
-                                <p>
-                                    <field name="duration"/>
-                                    <span> jour(s)</span>
-                                </p>
+                         <div class="oe_button_box" name="button_box"  >
+
+                            <button string="Rapproché" class="oe_stat_button oe_read_only" icon="fa-clock-o" 
+                                attrs="{'invisible': [('etatrapp','=','rp')]}"
+                                name="Rapproche" type="object" style="font-weight: bold; font-size: 16px;"
+                                confirm="Etes vous sûre de rapproché ce réglement?">
+                                <p><span> après </span><field name="duration"/> <span> jour(s)</span></p>
+
                             </button>
                         </div>
                         <group col="3">
@@ -36,8 +35,7 @@
                                 <field name="datevaleur"/>
                                 <field name="daterecption"/>
                                 <field name="dateoperation"/>
-                                  <field name="duration"/>
-
+                                 
                             </group>
                             <group String="Opérations">
                                 <field name="tauxtva"/>
@@ -84,7 +82,7 @@
             <field name="name">regvente.tree</field>
             <field name="model">gctjara.regvente</field>
             <field name="arch" type="xml">
-                <tree string="Règlements de vente"  colors="#0000ff:duration&lt;1;red:duration&gt;1"  create="false">
+                <tree string="Règlements de vente"  decoration-warning="etatrapp == 'cd'" decoration-info="etatrapp == 'vs'" decoration-success ="etatrapp == 'rp'"  create="false">
                     <field name="numero"/>
                     <field name="datevaleur"/>
                     <field name="daterecption"/>
