@@ -16,8 +16,8 @@ class LigneProduitEmballage(models.Model):
     @api.depends('produit_id', 'emballage_id')
     def _compute_name(self):
         for r in self:
-            if(isinstance(r.produit_id.name , unicode)) and isinstance(r.emballage_id.name,unicode):
-                r.name= r.produit_id.name + " "+ r.emballage_id.name
+            if(isinstance(r.produit_id.name , unicode)) and isinstance(r.emballage_id.name,unicode)and isinstance(r.emballage_id.unite,unicode):
+                r.name= r.produit_id.name + " "+ r.emballage_id.name+" "+r.emballage_id.unite
                
    
     @api.one     

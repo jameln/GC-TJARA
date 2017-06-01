@@ -58,7 +58,7 @@ class CommandeFournisseur(models.Model):
      
        
      valid = fields.Boolean(
-        string='Ne pas annuler',
+        string='Confirmé',
         default=False
     )
    

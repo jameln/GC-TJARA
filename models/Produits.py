@@ -37,13 +37,15 @@ class Produits(models.Model):
     prixunit=fields.Float(
         string='Prix unitaire',
         default=0.0,
-        digits=(16, 3)
+        digits=(16, 3),
+        required=True
         )
     
     prixvente=fields.Float(
         string='Prix de vente',
         default=0.0,
-        digits=(16, 3)
+        digits=(16, 3),
+        required=True
         )
     
    
@@ -92,6 +94,8 @@ class Produits(models.Model):
         string='Emballages',
         store=False
         )
+    
+   
     
 #     states=fields.Char('Status', default ='able')
 #               

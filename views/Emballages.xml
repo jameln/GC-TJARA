@@ -16,11 +16,15 @@
             <field name="arch" type="xml">
                 <form string="Emballage Form">
                     <sheet>
+                        <group col="2">
                         <group>
-                        
                             <field name="name"/>
                             <field name="type"/>
+                        </group>
+                            <group>
                             <field name="poids"/>
+                            <field name ="unite"/>
+                         </group>
                            
                         </group>
                     </sheet>
@@ -35,6 +39,7 @@
                    <field name="name"/>
                     <field name="type"/>
                     <field name="poids"/>
+                    <field name ="unite"/>
                  
                 </tree>
             </field>

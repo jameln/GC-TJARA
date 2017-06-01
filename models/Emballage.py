@@ -8,18 +8,29 @@ class Emballage(models.Model):
      
      _rec_name= 'name'
      
-     name = fields.Char(string='Nom' ,default="Produit" ,compute='_compute_name')
-     
-    
+     name = fields.Char(string='Nom' ,default="Produit" ,compute='_compute_name',required=True)
+         
        
-     type = fields.Char('Type d\'emballage', default='Type', placeholder="Type")
+     type = fields.Char('Type d\'emballage', default='Type', placeholder="Type",required=True)
      
-     poids = fields.Integer(string='Poids unitaire', placeholder="0")
+     poids = fields.Integer(string='Poids unitaire', placeholder="0",required=True)
      
      produitemballee_id = fields.One2many(
         comodel_name='gctjara.produitemballee',
         string='Produits',
         inverse_name='emballage_id'
+    )
+     unite=fields.Selection(
+        string='Unité',
+        default='',
+        selection=[
+            ('KG', 'KG'),
+            ('L', 'L'),
+            ('Pièce', 'Pièce'),
+            ('M', 'M'),
+        
+        ],
+        required=True
     )
      @api.depends('type', 'poids')
      def _compute_name(self):
