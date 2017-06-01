@@ -87,7 +87,11 @@ class Produits(models.Model):
         inverse_name='produit_id'
     )
     
-    emballages_id = fields.Many2many('gctjara.emballage', string='Emballages', store=False)
+    emballages_id = fields.Many2many(
+        comodel_name='gctjara.emballage', 
+        string='Emballages',
+        store=False
+        )
     
 #     states=fields.Char('Status', default ='able')
 #               

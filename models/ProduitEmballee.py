@@ -20,16 +20,20 @@ class LigneProduitEmballage(models.Model):
                 r.name= r.produit_id.name + " "+ r.emballage_id.name
                
    
-         
-    @api.depends('produit_id')
+    @api.one     
+    @api.depends('produit_id','emballage_id')
     def _prix_unit(self):
          for r in self:
-            r.prixunit=r.produit_id.prixunit
-            
-    @api.depends('produit_id')
+            r.prixunit=r.produit_id.prixunit*r.emballage_id.poids
+    @api.one       
+    @api.depends('produit_id','emballage_id')
     def _prix_vente(self):
          for r in self:
-            r.prixvente=r.produit_id.prixvente
+            r.prixvente=r.produit_id.prixvente*r.emballage_id.poids
+            print("r.produit_id.prixvente ****>>" +str(r.produit_id.prixvente))
+            print("r.emballage_id.poids ****>>" +str(r.emballage_id.poids))
+            print(" r.prixvente ****>>" +str( r.prixvente))
+     
      
 
     
@@ -48,16 +52,18 @@ class LigneProduitEmballage(models.Model):
       )
     
     prixunit= fields.Float(
-        related='produit_id.prixunit',
+#         related='produit_id.prixunit,emballage_id.poids',
         string='Prix unitaire',
         compute='_prix_unit',
-        store=True
+        store=True,
+        digits=(16, 3)
     )
     prixvente= fields.Float(
-        related='produit_id.prixvente',
+#         related='produit_id.prixvente,emballage_id.poids',
         string='Prix de vente',
         compute='_prix_vente',
-        store=True
+        store=True,
+        digits=(16, 3)
     )
     emballage_id = fields.Many2one(
          comodel_name='gctjara.emballage',

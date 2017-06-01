@@ -63,7 +63,7 @@ class LigneCommandeVente(models.Model):
 
         for pe in self:
             tauxtva=float(pe.tva)/100
-            prixht=pe.quantite * pe.embalageproduit_id.prixvente*pe.embalageproduit_id.emballage_id.poids
+            prixht=pe.quantite * pe.embalageproduit_id.prixvente#*pe.embalageproduit_id.emballage_id.poids
             pe.prix_ht=prixht
             pe.prix_total =prixht*(1+tauxtva)
             
@@ -84,7 +84,7 @@ class LigneCommandeVente(models.Model):
     @api.depends("quantite" , "embalageproduit_id")
     def prixht(self):
         for pht in self:
-            prixht=pht.quantite * pht.embalageproduit_id.prixvente*pht.embalageproduit_id.emballage_id.poids
+            prixht=pht.quantite * pht.embalageproduit_id.prixvente#*pht.embalageproduit_id.emballage_id.poids
             pht.prix_ht =prixht
             
     prix_ht = fields.Float(

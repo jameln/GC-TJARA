@@ -62,7 +62,7 @@ class LigneCommandeAchat(models.Model):
 
         for pe in self:
             tauxtva=float(pe.tva)/100
-            prixht=pe.quantite * pe.embalageproduit_id.prixunit*pe.embalageproduit_id.emballage_id.poids
+            prixht=pe.quantite * pe.embalageproduit_id.prixunit #*pe.embalageproduit_id.emballage_id.poids
             print ("tva ===> "+str(tauxtva))
             print("prixht ==>" + str(prixht))
             pe.prix_ht=prixht

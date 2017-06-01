@@ -55,7 +55,7 @@ class LigneBonLivraison(models.Model):
     def prixtot(self):
         for pe in self:
             tauxtva=float(pe.tva)/100
-            prixht=pe.quantite * pe.embalageproduit_id.prixvente*pe.embalageproduit_id.emballage_id.poids
+            prixht=pe.quantite * pe.embalageproduit_id.prixvente #*pe.embalageproduit_id.emballage_id.poids
             pe.prix_ht=prixht
             pe.prix_total =prixht*(1+tauxtva)
             
