@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/gc-tjara.iml" filepath="$PROJECT_DIR$/.idea/gc-tjara.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../openacademy/.idea/openacademy.iml" filepath="$PROJECT_DIR$/../openacademy/.idea/openacademy.iml" />
       <module fileurl="file://$PROJECT_DIR$/../t-jara/.idea/t-jara.iml" filepath="$PROJECT_DIR$/../t-jara/.idea/t-jara.iml" />
     </modules>
   </component>

@@ -78,6 +78,7 @@
                                             <field name="embalageproduit_id"/>
                                             <field name="prixunit"/>
                                             <field name="quantite"/>
+                                            <field name="quantitetot" />
                                             <field name="tva"/>
                                             <field name="prix_ht"/>
                                             <field name="prix_total"/>

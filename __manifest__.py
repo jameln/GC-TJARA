@@ -23,7 +23,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'report', 'board','account','sale','web'],
+    'depends': ['base', 'mail', 'report', 'board','account','sale'],
 
     # always loaded
     'data': [

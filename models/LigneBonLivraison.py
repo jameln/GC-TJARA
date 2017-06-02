@@ -50,6 +50,17 @@ class LigneBonLivraison(models.Model):
          comodel_name='gctjara.bonlivraison',
           
      )
+
+    @api.depends('quantite', 'embalageproduit_id')
+    def compute_qte_tot(self):
+        for r in self:
+            r.quantitetot = r.quantite * r.embalageproduit_id.emballage_id.poids
+
+    quantitetot = fields.Float(
+        string='Qte total',
+        compute='compute_qte_tot',
+        required=True,
+    )
      
     @api.depends("quantite" , "embalageproduit_id")
     def prixtot(self):

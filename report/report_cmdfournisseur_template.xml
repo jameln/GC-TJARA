@@ -22,6 +22,7 @@
                                                 <th class="text-left">Produits</th>
                                                  <th class="text-left">Prix unitaire</th>
                                                 <th class="text-left">Quantité</th>
+                                                <th class="text-left">Quantité Total <t t-esc="page.embalageproduit_id.unite"/></th>
                                                 <th class="text-left">Prix HT</th>
                                                 <th class="text-left">TVA</th>
                                                
@@ -34,7 +35,8 @@
                                                 <tr>
                                                    <td> <t t-esc="page.embalageproduit_id.name"/> </td> 
                                                    <td> <t t-esc="page.prixunit"/> </td> 
-                                                   <td> <t t-esc="page.quantite"/> </td> 
+                                                   <td> <t t-esc="page.quantite"/> </td>
+                                                    <td> <t t-esc="page.quantitetot"/> </td>
                                                    <td> <t t-esc="page.prix_ht"/> </td>
                                                    <td> <t t-esc="page.tva"/> </td> 
                                                    <td> <t t-esc="page.prix_total"/> </td> 

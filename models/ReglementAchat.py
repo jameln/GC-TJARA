@@ -7,6 +7,8 @@ class ReglementAchat(models.Model):
     _name = 'gctjara.regachat'
     
     _rec_name = 'numero'
+
+    _inherit = 'mail.thread'
     
     numero = fields.Char(
         string='Numero règlement',

@@ -4,6 +4,11 @@ from odoo import models, fields, api
 
 class Client(models.Model):
      _name = 'gctjara.client'
+
+     _rec_name = 'name'
+
+     _inherit='mail.thread'
+
      
      name = fields.Char('Nom', required=True)
     

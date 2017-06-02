@@ -96,6 +96,15 @@ class CommandeFournisseur(models.Model):
          store=True
     )
     
+     montanttva=fields.Float(
+        string='TVA',
+        compute='_montant_totale',
+        digits=(16, 3),
+        default = 0.0,
+        store=True
+        )
+
+    
      @api.multi
      @api.depends("lignecmd_id")
      def _montant_totale(self):
@@ -107,7 +116,7 @@ class CommandeFournisseur(models.Model):
                    montantht +=lca.prix_ht
        self.montant=montanttot
        self.montant_ht=montantht
-
+       self.montanttva=montanttot-montantht
  
       
   

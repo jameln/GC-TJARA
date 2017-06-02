@@ -54,6 +54,7 @@ class LigneProduitEmballage(models.Model):
     prixunit= fields.Float(
 #         related='produit_id.prixunit,emballage_id.poids',
         string='Prix unitaire',
+#         default='_prix_unit',
         compute='_prix_unit',
         store=True,
         digits=(16, 3)
@@ -61,6 +62,7 @@ class LigneProduitEmballage(models.Model):
     prixvente= fields.Float(
 #         related='produit_id.prixvente,emballage_id.poids',
         string='Prix de vente',
+#           default='_prix_vente',
         compute='_prix_vente',
         store=True,
         digits=(16, 3)

@@ -49,6 +49,7 @@
                                         <tree editable="bottom">
                                             <field name="embalageproduit_id"/>
                                             <field name="quantite"/>
+                                            <field name="quantitetot" />
                                             <field name="prixvente" readonly="1"/>
                                             <field name="prix_ht" readonly="1"/>
                                             <field name="tva"/>
@@ -57,17 +58,18 @@
                                         <form>
                                             <group>
                                                 <field name="embalageproduit_id"/>
-
                                             </group>
-
                                         </form>
-
                                     </field>
 
                                 </group>
                                 <group class="oe_subtotal_footer">
-                                    <label class="oe_subtotal_footer_separator" string="Montant"/>
-                                    <field name="montant" nolabel="1"/>
+                                                                      
+                                    <field name="montant_ht"/>
+                                    <field name="montanttva" />
+                                     <label class="oe_subtotal_footer_separator" string="Montant TTC"/> 
+                                    <field name="montant"  nolabel="1"/>
+
                                 </group>
 
                             </page>
@@ -90,6 +92,10 @@
                             </page>
                         </notebook>
                     </sheet>
+                     <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                     </div>
                 </form>
             </field>
         </record>

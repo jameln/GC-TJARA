@@ -22,6 +22,8 @@ class LigneFactureAchat(models.Model):
         string='Quantite',
         required=True,
           )
+
+
     prixunit= fields.Float(
        string='Prix unitaire',
        store=True
@@ -41,6 +43,17 @@ class LigneFactureAchat(models.Model):
          comodel_name='gctjara.produitemballee',
          string='Emballages'
      )
+
+    @api.depends('quantite', 'embalageproduit_id')
+    def compute_qte_tot(self):
+        for r in self:
+            r.quantitetot = r.quantite * r.embalageproduit_id.emballage_id.poids
+
+    quantitetot = fields.Float(
+        string='Qte total',
+        compute='compute_qte_tot',
+        required=True,
+    )
     
     @api.multi
     @api.depends("quantite" , "embalageproduit_id")
