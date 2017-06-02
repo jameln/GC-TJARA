@@ -182,6 +182,7 @@ class CommandeClient(models.Model):
 #                  r.refcmd=  record.id
                  record1 = self.env['gctjara.lignebonlivraison'].create({
                      'quantite':r.quantite,
+                     'quantitetot':r.quantitetot,
                      'embalageproduit_id':r.embalageproduit_id.id,
                      'prix_total':r.prix_total,
                      'commande_id':record.id,

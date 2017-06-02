@@ -101,7 +101,10 @@ class FactureVente(models.Model):
                                'factureachat',
                                 string='Pièce jointe'
                                 )
-    
+
+     currency_id = fields.Many2one('res.currency', string='Currency',
+                                   default=lambda self: self.env.user.company_id.currency_id)
+
      timbre=fields.Float(
         string ='Timbre',
         default=0.500,

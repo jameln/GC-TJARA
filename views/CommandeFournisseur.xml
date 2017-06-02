@@ -52,6 +52,7 @@
                                             <field name="quantitetot"/>
                                             <field name="prixunit" readonly="1"/>
                                             <field name="tva"/>
+                                            <field name="remise"/>
                                             <field name="prix_ht" readonly="1"/>
                                             <field name="prix_total" readonly="1"/>
 
@@ -93,6 +94,14 @@
                                     </field>
                                 </group>
                             </page>
+                             <page string="Détails" class="oe_read_only">
+                                <group>
+                                    <field name="create_uid"/>
+                                    <field name="create_date"/>
+                                    <field name="write_uid"/>
+                                    <field name="write_date"/>
+                                </group>
+                             </page>
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">

@@ -4,7 +4,7 @@
             <field name="name">facturevente.form</field>
             <field name="model">gctjara.facturevente</field>
             <field name="arch" type="xml">
-                <form string="Facture Form" create="false">
+                <form string="Facture Form" >
 
                     <sheet>
                         <group col="2">
@@ -55,7 +55,7 @@
                                     <label
                                             class="oe_subtotal_footer_separator" string="Montant TTC"/>
 
-                                    <field name="montantttc" nolabel="1"/>
+                                    <field name="montantttc" nolabel="1"/><field name="currency_id" nolabel="1" readonly="1"/>
                                 </group>
                             </page>
                             <page class="oe_page_Title" string="Attachement">
@@ -73,6 +73,14 @@
                             <page class="oe_page_Title" string="Description">
                                 <group>
                                     <field name="description"/>
+                                </group>
+                            </page>
+                             <page string="Détails" class="oe_read_only">
+                                <group>
+                                    <field name="create_uid"/>
+                                    <field name="create_date"/>
+                                    <field name="write_uid"/>
+                                    <field name="write_date"/>
                                 </group>
                             </page>
                         </notebook>
@@ -94,7 +102,7 @@
             <field name="name">facturevente.tree</field>
             <field name="model">gctjara.facturevente</field>
             <field name="arch" type="xml">
-                <tree string="Factures " create="false">
+                <tree string="Factures ">
                     <field name="numero"/>
                     <field name="datefact"/>
                     <field name="client_id"/>
@@ -136,7 +144,7 @@
         </record>
         <act_window id="action_group"
                     key2="client_action_multi"
-                    name="Payment"
+                    name="Paiement"
                     res_model="gctjara.factureventeregle"
                     src_model="gctjara.facturevente"
                     target="new"
@@ -147,7 +155,7 @@
             <field name="name">factureventeregle.form</field>
             <field name="model">gctjara.factureventeregle</field>
             <field name="arch" type="xml">
-                <form string="Payment facture vente">
+                <form string="Paiement facture vente">
 
                     <group col="2">
                         <group>

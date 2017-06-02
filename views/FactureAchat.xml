@@ -101,7 +101,7 @@
                                     <label
                                             class="oe_subtotal_footer_separator" string="Montant TTC"/>
                                     <field name="montantttc"
-                                           nolabel="1"/> <!-- <field name="currency_id" nolabel="1" readonly="1"/> -->
+                                           nolabel="1"/>  <field name="currency_id" nolabel="1" readonly="1"/>
                                 </group>
                             </page>
                             <page class="oe_page_Title" string="Attachement">
@@ -116,9 +116,17 @@
                                     </field>
                                 </group>
                             </page>
-                            <page>
+                            <page class="oe_page_Title" string="Description">
                                 <group>
                                     <field name="description"/>
+                                </group>
+                            </page>
+                             <page string="Détails" class="oe_read_only">
+                                <group>
+                                    <field name="create_uid"/>
+                                    <field name="create_date"/>
+                                    <field name="write_uid"/>
+                                    <field name="write_date"/>
                                 </group>
                             </page>
                         </notebook>

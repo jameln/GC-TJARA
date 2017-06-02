@@ -106,6 +106,7 @@ class BonLivraison(models.Model):
                          'numero' :  sequencesmvt,
                          'date': fields.datetime.now().strftime('%m/%d/%Y %H:%M'),
                          'quantite':rbl.quantite,
+                         'quantitetot': r.quantitetot,
                          'produit':rbl.embalageproduit_id.id,
                          'bonlivraison_id': self.id,
                          'type':'Sortie'

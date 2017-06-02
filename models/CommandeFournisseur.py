@@ -177,6 +177,7 @@ class CommandeFournisseur(models.Model):
                 r.reffact=  record.id
                 record1 = self.env['gctjara.lignefactachat'].create({
                     'quantite':r.quantite,
+                    'quantitetot': r.quantitetot,
                     'embalageproduit_id':r.embalageproduit_id.id,
                     'prix_ht': r.prix_ht,
                     'prix_total':r.prix_total,

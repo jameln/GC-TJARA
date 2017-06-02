@@ -35,7 +35,7 @@ class LigneCommandeAchat(models.Model):
           )
     
     tva = fields.Selection(
-        string='TVA',
+        string='TVA (%)',
         default='6',
         selection=[
             ('0', '0'),
@@ -45,7 +45,11 @@ class LigneCommandeAchat(models.Model):
             ('22', '22')
         ]
     )
-    
+    remise = fields.Float(
+        string='Remise (%)',
+        default='0.0',
+
+    )
     @api.depends('embalageproduit_id')
     def _prix_unit(self):
          for r in self:
@@ -71,14 +75,14 @@ class LigneCommandeAchat(models.Model):
     @api.multi 
     @api.depends("quantite" , "embalageproduit_id")
     def prixtot(self):
-
         for pe in self:
+            remise= float(pe.remise)/100
             tauxtva=float(pe.tva)/100
             prixht=pe.quantite * pe.embalageproduit_id.prixunit #*pe.embalageproduit_id.emballage_id.poids
             print ("tva ===> "+str(tauxtva))
             print("prixht ==>" + str(prixht))
             pe.prix_ht=prixht
-            pe.prix_total =prixht*(1+tauxtva)
+            pe.prix_total =(prixht*(1+tauxtva))-remise
             
     prix_total = fields.Float(
         string='Prix Tot',
