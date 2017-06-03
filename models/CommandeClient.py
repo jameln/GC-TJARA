@@ -111,24 +111,30 @@ class CommandeClient(models.Model):
         store=True
         )
 
-    
+     montantremise = fields.Float(
+         string='Remise',
+         compute='_montant_totale',
+         digits=(16, 3),
+         default=0.0,
+         store=True
+     )
+
      @api.multi
      @api.depends("lignecmd_id")
      def _montant_totale(self):
-       montanttot=0
-       montantht=0
-       for rec in self :
-           for lca in rec.lignecmd_id:
-                   montanttot += lca.prix_total 
-                   montantht +=lca.prix_ht
-       self.montant=montanttot
-       self.montant_ht=montantht
-       self.montanttva=montanttot-montantht
+         montanttot = 0
+         montantht = 0
+         montantremise = 0
+         for rec in self:
+             for lca in rec.lignecmd_id:
+                 montanttot += lca.prix_total
+                 montantht += lca.prix_ht
+                 montantremise += lca.prix_ht * (float(lca.remise / 100))
+         self.montant = montanttot
+         self.montant_ht = montantht
+         self.montanttva = montanttot - montantht
+         self.montantremise = montantremise
 
- 
-      
-  
-     
      def write(self, values):
         print values
         if values.has_key('state'):
@@ -159,8 +165,6 @@ class CommandeClient(models.Model):
                 'type':'ir.actions.act_window'
                 
                 }
-            
-          
 
      @api.multi
      def create_bon_livraison(self):
@@ -174,12 +178,10 @@ class CommandeClient(models.Model):
               'commande_id' :  self.id
               
                })
-        print("********************** bon de livraison  crée *************************")
-         
+
         
         for rec in self:
              for r in rec.lignecmd_id :
-#                  r.refcmd=  record.id
                  record1 = self.env['gctjara.lignebonlivraison'].create({
                      'quantite':r.quantite,
                      'quantitetot':r.quantitetot,
@@ -189,14 +191,11 @@ class CommandeClient(models.Model):
                      'prixvente':r.prixvente,
                      'prix_ht':r.prix_ht,
                      'tva':r.tva,
+                     'remise':r.remise,
                      'bonlivraison_id':record.id,
                      'commande_id':self.id
                      
-                     }) 
-             
-                 
-        print("********************** bon de livraison  crée *************************")
-          
+                     })
         return True
     
     
@@ -232,5 +231,4 @@ class Attachment(models.Model):
      cmdclient = fields.Many2one(
         'gctjara.cmdclient',
         string="Pièces jointes"
-    ) 
-    
+    )

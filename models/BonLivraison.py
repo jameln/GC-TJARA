@@ -67,7 +67,6 @@ class BonLivraison(models.Model):
 
      @api.multi 
      def create_factvente(self):
-       print("********************* Création du facture***********************")
        sequences = self.env['ir.sequence'].next_by_code('gctjara.facturevente.seq')
        record = self.env['gctjara.facturevente'].create({
              
@@ -75,12 +74,12 @@ class BonLivraison(models.Model):
              'datefact': self.date,
              'client_id':self.client_id.id,
              'bonlivraison_id' : self.id,
+
  
            })
 
        for rec in self:
            for rlf in rec.lignebonlivraison_id :
-               print ("*******************Création du ligne facture*************")
                self.state = 'lv'
 #                rlf.bonlivraison_id = record.id
                record1 = self.env['gctjara.lignefactvente'].create({
@@ -90,7 +89,8 @@ class BonLivraison(models.Model):
                    'prix_total':rlf.prix_total,
                    'facture_id':record.id,
                    'prixvente':rlf.prixvente,
-                   'tva':rlf.tva
+                   'tva':rlf.tva,
+                   'remise': rlf.remise,
                    })
            self.creat_mvtstock()
        return True
@@ -100,13 +100,12 @@ class BonLivraison(models.Model):
      def creat_mvtstock(self):
          for rec in self:
              for rbl in rec.lignebonlivraison_id:
-                 print("*********Création mouvement de stock ****************")
                  sequencesmvt = self.env['ir.sequence'].next_by_code('gctjara.mvtstock.seq')
                  self.env['gctjara.mvtstock'].create({
                          'numero' :  sequencesmvt,
                          'date': fields.datetime.now().strftime('%m/%d/%Y %H:%M'),
                          'quantite':rbl.quantite,
-                         'quantitetot': r.quantitetot,
+                         'quantitetot': rbl.quantitetot,
                          'produit':rbl.embalageproduit_id.id,
                          'bonlivraison_id': self.id,
                          'type':'Sortie'
@@ -123,7 +122,6 @@ class BonLivraison(models.Model):
              for rbl in rec.lignebonlivraison_id:
                  
                    qteprod = int(rbl.embalageproduit_id.quantitestocke) - int(rbl.quantite)
-                   print("quantité stockée ====> " + str(qteprod))
                    if qteprod <= 0 :
                        raise ValidationError(
                            'Impossible de poursuit cette opération , le stock du ' + str(rbl.embalageproduit_id.name) + ' est épuisé')

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+
 
 class CommandeFournisseur(models.Model):
      _name = 'gctjara.cmdfournisseur'
@@ -103,20 +105,30 @@ class CommandeFournisseur(models.Model):
         default = 0.0,
         store=True
         )
+     montantremise = fields.Float(
+         string='Remise',
+         compute='_montant_totale',
+         digits=(16, 3),
+         default=0.0,
+         store=True
+     )
 
     
      @api.multi
      @api.depends("lignecmd_id")
      def _montant_totale(self):
-       montanttot=0
-       montantht=0
-       for rec in self :
-           for lca in rec.lignecmd_id:
-                   montanttot += lca.prix_total 
-                   montantht +=lca.prix_ht
-       self.montant=montanttot
-       self.montant_ht=montantht
-       self.montanttva=montanttot-montantht
+           montanttot=0
+           montantht=0
+           montantremise = 0
+           for rec in self :
+               for lca in rec.lignecmd_id:
+                       montanttot += lca.prix_total
+                       montantht +=lca.prix_ht
+                       montantremise +=lca.prix_ht*(float(lca.remise/100))
+           self.montant=montanttot
+           self.montant_ht=montantht
+           self.montanttva=montanttot-montantht
+           self.montantremise=montantremise
  
       
   
@@ -151,15 +163,7 @@ class CommandeFournisseur(models.Model):
                 'type':'ir.actions.act_window'
                 
                 }
-            
-#      @api.multi
-#      @api.depends('lignecmd_id')
-#      def ligneproduit(self):
-#         for rec in self :
-#             for r in self.lignecmd_id :
-#                 r.produit_ids=rec.lignecmd_id
-#                 r.quantite= rec.lignecmd_id.quantite
-#                 r.prix_tot= rec.lignecmd_id.prix_total
+
             
      def create_factachat(self):
         sequences = self.env['ir.sequence'].next_by_code('gctjara.factureachat.seq') 
@@ -183,7 +187,8 @@ class CommandeFournisseur(models.Model):
                     'prix_total':r.prix_total,
                     'facture_id':record.id,
                     'prixunit':r.prixunit,
-                    'tva':r.tva
+                    'tva':r.tva,
+                    'remise': r.remise,
                     })
         return True
     

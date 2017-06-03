@@ -130,24 +130,39 @@ class FactureAchat(models.Model):
                 
                 }
     
-    currency_id = fields.Many2one('res.currency',string='Currency',default=lambda self:self.env.user.company_id.currency_id)
-    
+    currency_id = fields.Many2one(
+        comodel_name='res.currency',
+        string='Currency',
+        default=lambda self:self.env.user.company_id.currency_id
+    )
+
+    montantremise = fields.Float(
+        string='Remise',
+        compute='montant_totale',
+        digits=(16, 3),
+        default=0.0,
+        store=True
+    )
+
     @api.one
     @api.depends("lignefact_id")
     def montant_ht(self):
-       montantht=0       
+       montantht=0
        for lfa in self.lignefact_id:
            montantht += lfa.prix_ht
        self.prix_ht=montantht
        
-    @api.one
+    @api.multi
     @api.depends("lignefact_id")
     def montant_totale(self):
        montanttot=0
+       montantremise=0
        for rec in self :
            for lfa in rec.lignefact_id:
-                   montanttot +=   lfa.prix_total 
+                   montanttot +=   lfa.prix_total
+                   montantremise+=lfa.prix_ht*(float(lfa.remise/100))
        self.montant=montanttot
+       self.montantremise=montantremise
 
     @api.one
     @api.depends("montant")
@@ -160,7 +175,7 @@ class FactureAchat(models.Model):
     @api.one
     @api.depends('montantttc')
     def _amount_in_words(self):
-        self.amount_to_text = amount_to_text_fr(self.montantttc, 'dinars')
+        self.amount_to_text = amount_to_text_fr(self.montantttc, "dinars")
     
     
     amount_to_text = fields.Text(
@@ -225,10 +240,8 @@ class FactureAchatTemp(models.TransientModel):
                   'numerochq':self.numerochq,
                   'facture_id':factures.id
                    })
-            print ("recored id  >>>> " + str(record.id))
             factures.etatreglement= 'Réglée'
             factures.refregachat=record.id
-            print ("recored id  >>>> " + str(record.id))
         return True
     
     

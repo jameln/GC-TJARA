@@ -34,20 +34,15 @@ class LigneCommandeAchat(models.Model):
         required=True,
           )
     
-    tva = fields.Selection(
+    tva = fields.Float(
         string='TVA (%)',
         default='6',
-        selection=[
-            ('0', '0'),
-            ('6', '6'),
-            ('12', '12'),
-            ('18', '18'),
-            ('22', '22')
-        ]
+        digits=(16, 1),
     )
     remise = fields.Float(
         string='Remise (%)',
         default='0.0',
+        digits=(16,1),
 
     )
     @api.depends('embalageproduit_id')
@@ -72,8 +67,20 @@ class LigneCommandeAchat(models.Model):
          comodel_name='gctjara.produitemballee',
          string='Emballages'
      )
+
+    tva = fields.Float(
+        string='TVA (%)',
+        default='6',
+        digits=(16, 1),
+    )
+    remise = fields.Float(
+        string='Remise (%)',
+        default='0.0',
+        digits=(16, 1),
+
+    )
     @api.multi 
-    @api.depends("quantite" , "embalageproduit_id")
+    @api.depends("quantite" , "embalageproduit_id","tva","remise")
     def prixtot(self):
         for pe in self:
             remise= float(pe.remise)/100
@@ -82,7 +89,7 @@ class LigneCommandeAchat(models.Model):
             print ("tva ===> "+str(tauxtva))
             print("prixht ==>" + str(prixht))
             pe.prix_ht=prixht
-            pe.prix_total =(prixht*(1+tauxtva))-remise
+            pe.prix_total =(prixht*(1+tauxtva))-(prixht*remise)
             
     prix_total = fields.Float(
         string='Prix Tot',

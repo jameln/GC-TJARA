@@ -53,6 +53,7 @@
                                             <field name="prixvente" readonly="1"/>
                                             <field name="prix_ht" readonly="1"/>
                                             <field name="tva"/>
+                                            <field name="remise"/>
                                             <field name="prix_total" readonly="1"/>
                                         </tree>
                                         <form>
@@ -67,6 +68,7 @@
                                                                       
                                     <field name="montant_ht"/>
                                     <field name="montanttva" />
+                                    <field name="montantremise"/>
                                      <label class="oe_subtotal_footer_separator" string="Montant TTC"/> 
                                     <field name="montant"  nolabel="1"/>
 

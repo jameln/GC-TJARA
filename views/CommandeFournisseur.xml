@@ -71,6 +71,7 @@
                                 <group class="oe_subtotal_footer">
                                     <field name="montant_ht"/>
                                     <field name="montanttva" />
+                                    <field name="montantremise"/>
                                     <label class="oe_subtotal_footer_separator" string="Montant TTC"/> 
                                     <field name="montant"  nolabel="1"/>
 
