@@ -37,7 +37,7 @@ class LigneBonLivraison(models.Model):
      )
     embalageproduit_id = fields.Many2one(
          comodel_name='gctjara.produitemballee',
-         string='Emballages'
+         string='Produits'
      )
     
     bonlivraison_id = fields.Many2one(

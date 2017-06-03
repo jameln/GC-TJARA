@@ -124,6 +124,7 @@
                     <field name="state"/>
                     <field name="fournisseur_id"/>
                     <field name="montant" sum="True"/>
+                    <field name="create_uid"/>
                 </tree>
             </field>
         </record>

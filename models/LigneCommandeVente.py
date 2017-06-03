@@ -66,7 +66,7 @@ class LigneCommandeVente(models.Model):
      )
     embalageproduit_id = fields.Many2one(
          comodel_name='gctjara.produitemballee',
-         string='Emballages'
+         string='Produits'
      )
     @api.multi 
     @api.depends("quantite" , "embalageproduit_id","tva","remise")

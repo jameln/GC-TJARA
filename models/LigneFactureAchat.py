@@ -37,7 +37,7 @@ class LigneFactureAchat(models.Model):
      )
     embalageproduit_id = fields.Many2one(
          comodel_name='gctjara.produitemballee',
-         string='Emballages'
+         string='Produits'
      )
 
     @api.depends('quantite', 'embalageproduit_id')

@@ -63,7 +63,12 @@ class BonLivraison(models.Model):
 
      @api.multi 
      def action_draft(self):
-       self.state = 'an'
+         for r in self:
+             cmd = self.env['gctjara.cmdclient']
+             commande_id = r.commande_id.id
+             ref_cmd = cmd.browse(commande_id)
+             ref_cmd.state = 'an'
+             r.state = 'an'
 
      @api.multi 
      def create_factvente(self):

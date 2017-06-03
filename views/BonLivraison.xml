@@ -17,7 +17,6 @@
                 <form string="Bon de livraison Form" create="false">
                     <header string="Bon des livraison">
 
-
                         <button class="oe_highlight"
                                 name="create_factvente" states="at"
                                 string="Créer facture" type="object"
@@ -84,6 +83,7 @@
                     <field name="client_id"/>
                     <field name="commande_id"/>
                     <field name="state"/>
+                    <field name="create_uid"/>
                 </tree>
             </field>
         </record>

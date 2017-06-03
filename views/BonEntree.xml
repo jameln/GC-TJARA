@@ -64,6 +64,8 @@
                     <field name="produit"/>
                     <field name="quantite"/>
                     <field name="state"/>
+                    <field name="create_uid"/>
+
                 </tree>
             </field>
         </record>

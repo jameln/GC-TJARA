@@ -97,6 +97,7 @@
                     <field name="prixttc"/>
                     <field name="facture_id"/>
                     <field name="modepayment"/>
+                    <field name="create_uid"/>
 
                 </tree>
             </field>

@@ -65,7 +65,7 @@ class LigneCommandeAchat(models.Model):
      )
     embalageproduit_id = fields.Many2one(
          comodel_name='gctjara.produitemballee',
-         string='Emballages'
+         string='Produits'
      )
 
     tva = fields.Float(
