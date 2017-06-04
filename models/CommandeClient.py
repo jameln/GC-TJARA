@@ -54,9 +54,7 @@ class CommandeClient(models.Model):
      description = fields.Text(
          String='Description'
          )
-     
- 
-    
+
      valid = fields.Boolean(
         string='Ne pas annuler',
         default=False
@@ -66,7 +64,14 @@ class CommandeClient(models.Model):
           string="Client",
           ondelete='restrict',
           comodel_name='gctjara.client'
-                             )
+       )
+
+     adresse=fields.Char(
+         string='Adresse',
+         related='client_id.adresse',
+         readonly="1",
+         store=True
+     )
      
      
      state = fields.Selection(

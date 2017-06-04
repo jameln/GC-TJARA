@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        
+
         <record id="fournisseur_form_view" model="ir.ui.view">
             <field name="name">fournisseur.form</field>
             <field name="model">gctjara.fournisseur</field>
@@ -11,23 +11,23 @@
                             <field class="oe_left oe_avatar" name="image" widget="image"/>
                             <field name="name"/>
                         </group>
-                          <group col="2">
-                              <group string="Informations générales">
-                            <field name="matriculefiscal"/>
-                            <field name="company_name"/>
-                            <field name="email"/>
-                            <field name="phone"/>
-                            <field name="fax"/>
-                            <field name="mobile"/>
-                                  </group>
-                              <group string="Coordonnées">
-                            <field name="adresse"/>
-                            <field name="street"/>
-                           
-                            <field name="zip"/>
-                            <field name="city"/>
-                            <field name="active"/>
-                                  </group>
+                        <group col="2">
+                            <group string="Informations générales">
+                                <field name="matriculefiscal"/>
+                                <field name="company_name"/>
+                                <field name="email"/>
+                                <field name="phone"/>
+                                <field name="fax"/>
+                                <field name="mobile"/>
+                            </group>
+                            <group string="Coordonnées">
+                                <field name="adresse"/>
+                                <field name="street"/>
+
+                                <field name="zip"/>
+                                <field name="city"/>
+                                <field name="active"/>
+                            </group>
                         </group>
                     </sheet>
                     <notebook>
@@ -44,7 +44,7 @@
                             <group>
                                 <field name="facture_id">
                                     <tree>
-                                    <field String="N° Factures" name="numero"/>
+                                        <field String="N° Factures" name="numero"/>
                                     </tree>
                                 </field>
                             </group>
@@ -53,13 +53,13 @@
                             <group>
                                 <field name="commande_id">
                                     <tree>
-                                         <field name="numero" readonly="1"/>
+                                        <field name="numero" readonly="1"/>
                                     </tree>
                                 </field>
                             </group>
                         </page>
-                    </notebook> 
-                     <div class="oe_chatter">
+                    </notebook>
+                    <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
                         <field name="message_ids" widget="mail_thread"/>
                     </div>
@@ -71,7 +71,7 @@
             <field name="model">gctjara.fournisseur</field>
             <field name="arch" type="xml">
                 <tree string="Fournisseur">
-                    <field name="name" />
+                    <field name="name"/>
                     <field name="company_name"/>
                     <field name="email"/>
                     <field name="phone"/>
@@ -80,12 +80,90 @@
                 </tree>
             </field>
         </record>
+
+        <record id="fournisseur_kanban_view" model="ir.ui.view">
+            <field name="name">fournisseur.kanban</field>
+            <field name="model">gctjara.fournisseur</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <field name="image"/>
+
+                            </div>
+                        </t>
+
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <span>
+                                            <field name="name" widget="kanban_label_selection"/>
+                                            <br/>
+                                            <field name="company_name" widget="kanban_label_selection"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-xs-6">
+                                        <span class="pull-right text-right">
+                                            <field name="phone" widget="kanban_label_selection"/>
+                                            <br/>
+                                            <field name="email" widget="kanban_label_selection"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img t-att-src="kanban_image('gctjara.fournisseur', 'image', record.id.value)"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong>
+                                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <span>
+                                                        <field name="name" widget="kanban_label_selection"/>
+                                                        <br/>
+                                                        <field name="company_name" widget="kanban_label_selection"/>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </strong>
+
+                                    <div name="tags"/>
+                                    <ul>
+                                        <li>Phone :
+                                            <field name="phone"/>
+                                        </li>
+                                        <li>EMAIL:
+                                            <field name="email"/>
+                                        </li>
+                                    </ul>
+                                    <div name="tags"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+
+
+            </field>
+        </record>
+
         <record id="fournisseur_list_action" model="ir.actions.act_window">
-            <field name="name">Fournisseur </field>
+            <field name="name">Fournisseur</field>
             <field name="res_model">gctjara.fournisseur</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-           
+            <field name="view_mode">tree,form,kanban</field>
+
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer votre première fournisseur</p>
             </field>

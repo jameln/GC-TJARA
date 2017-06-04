@@ -37,7 +37,7 @@
                             </group>
                             <group>
                                 <field name="client_id"/>
-                              
+                                <field name="adresse" />
                             </group>
 
                         </group>
@@ -119,17 +119,36 @@
                     <field name="datecommande"/>
                     <field name="datelivraison"/>
                     <field name="client_id"/>
+
                     <field name="state"/>
                     <field name="montant" sum="True"/>
                     <field name="create_uid"/>
                 </tree>
             </field>
         </record>
+        <record id='cmdclient_search_view' model='ir.ui.view'>
+            <field name="name">cmdclient.search</field>
+            <field name="model">gctjara.cmdclient</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="numerocmdc"/>
+                    <field name="state"/>
+                    <field name="client_id"/>
+                    <field name="create_uid"/>
+                    <filter name="filter" string="States" domain="[('state', '!=', 'an')]"/>
+                    <group string="Group By">
+                        <filter name="by_state" string="States"
+                                context="{'group_by': 'state'}"/>
+                    </group>
+
+                </search>
+            </field>
+        </record>
         <record id="cmdclient_list_action" model="ir.actions.act_window">
             <field name="name">Commandes clients</field>
             <field name="res_model">gctjara.cmdclient</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,search</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer la première commande</p>
             </field>

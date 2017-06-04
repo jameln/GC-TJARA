@@ -40,6 +40,13 @@ class BonLivraison(models.Model):
           ondelete='restrict',
           comodel_name='gctjara.client'
                              )
+
+     adresse = fields.Char(
+         string='Adresse',
+         related='client_id.adresse',
+         readonly="1",
+         store=True
+     )
      
      lignebonlivraison_id = fields.One2many(
         string='Produits',

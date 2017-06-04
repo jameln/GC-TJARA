@@ -40,6 +40,7 @@
                          </group>
                           <group>
                             <field name="client_id"/>
+                              <field name="adresse"/>
                             <field name="commande_id"/>
                         </group>
                         </group>
@@ -92,6 +93,12 @@
             <field name="model">gctjara.bonlivraison</field>
             <field name="arch" type="xml">
                 <search create="false">
+                    <field name="numero"/>
+                    <field name="date"/>
+                    <field name="client_id"/>
+                    <field name="commande_id"/>
+                    <field name="state"/>
+                    <field name="create_uid"/>
                     <filter name="state" string="Status"
                             domain="[('state', '!=', 'annulée')]"/>
                     <group string="Group By">

@@ -12,6 +12,7 @@
                            <p >
                            Crée le      : <span t-field="o.date"/><br/>
                            Client  :  <span t-field="o.client_id"/><br/>
+                           Adresse :  <span t-field="o.client_id.adresse"/><br/>
                            Réf commande : <span t-field="o.commande_id"/></p>
                           </div>
                             
