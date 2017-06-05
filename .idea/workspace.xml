@@ -4,8 +4,11 @@
     <list default="true" id="41164d17-225c-4bb1-9a70-4fbca5ec39c2" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../t-jara/.idea/vcs.xml" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../t-jara/READme.md" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/FactureVente.py" afterPath="$PROJECT_DIR$/models/FactureVente.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/FactureVente.xml" afterPath="$PROJECT_DIR$/views/FactureVente.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gc-tjara.iml" afterPath="$PROJECT_DIR$/.idea/gc-tjara.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Emballage.py" afterPath="$PROJECT_DIR$/models/Emballage.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/menu.xml" afterPath="$PROJECT_DIR$/views/menu.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../t-jara/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/.settings/org.eclipse.core.resources.prefs" afterPath="$PROJECT_DIR$/../t-jara/.settings/org.eclipse.core.resources.prefs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../t-jara/__manifest__.py" afterPath="$PROJECT_DIR$/../t-jara/__manifest__.py" />
@@ -34,81 +37,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CommandeFournisseur.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/CommandeFournisseur.xml">
+      <file leaf-file-name="menu.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/menu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="921">
-              <caret line="143" column="28" lean-forward="false" selection-start-line="139" selection-start-column="18" selection-end-line="143" selection-end-column="28" />
+            <state relative-caret-position="480">
+              <caret line="32" column="105" lean-forward="false" selection-start-line="32" selection-start-column="105" selection-end-line="32" selection-end-column="105" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FactureVente.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/FactureVente.py">
+      <file leaf-file-name="Emballage.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/Emballage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="150" column="10" lean-forward="true" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FactureAchat.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/FactureAchat.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="215" column="9" lean-forward="true" selection-start-line="215" selection-start-column="9" selection-end-line="215" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandeClient.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/CommandeClient.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FactureAchat.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/FactureAchat.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-195">
-              <caret line="29" column="57" lean-forward="true" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BonLivraison.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/BonLivraison.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="42" column="50" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BonLivraison.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/BonLivraison.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="48" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FactureVente.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/FactureVente.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="90" column="35" lean-forward="true" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+            <state relative-caret-position="555">
+              <caret line="37" column="26" lean-forward="false" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -125,10 +68,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/menu.xml" />
         <option value="$PROJECT_DIR$/models/ProduitEmballee.py" />
         <option value="$PROJECT_DIR$/views/dashboard.xml" />
-        <option value="$PROJECT_DIR$/models/Emballage.py" />
         <option value="$PROJECT_DIR$/views/views.xml" />
         <option value="$PROJECT_DIR$/views/Produits.xml" />
         <option value="$PROJECT_DIR$/views/Emballages.xml" />
@@ -167,6 +108,8 @@
         <option value="$PROJECT_DIR$/views/BonLivraison.xml" />
         <option value="$PROJECT_DIR$/models/FactureVente.py" />
         <option value="$PROJECT_DIR$/views/FactureVente.xml" />
+        <option value="$PROJECT_DIR$/views/menu.xml" />
+        <option value="$PROJECT_DIR$/models/Emballage.py" />
       </list>
     </option>
   </component>
@@ -192,7 +135,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -236,10 +178,11 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="/home/ubuntu/Bureau/nextma_facture_montant_lettres_qweb" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../resource/__init__.py" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
@@ -519,7 +462,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21886793" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -559,41 +502,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/Emballages.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="7" lean-forward="false" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/security/acces_rules.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="203" column="40" lean-forward="false" selection-start-line="203" selection-start-column="40" selection-end-line="203" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/security/ir.model.access.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="88" lean-forward="false" selection-start-line="11" selection-start-column="88" selection-end-line="11" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/MouvementStock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/sequence.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/Produits.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-228">
@@ -837,7 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="52" lean-forward="false" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -853,7 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="975">
           <caret line="66" column="6" lean-forward="false" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -861,21 +767,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="64" column="34" lean-forward="false" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/FactureAchat.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-195">
-          <caret line="29" column="57" lean-forward="true" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
+        <state relative-caret-position="435">
+          <caret line="29" column="57" lean-forward="false" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/CommandeFournisseur.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="921">
+        <state relative-caret-position="2145">
           <caret line="143" column="28" lean-forward="false" selection-start-line="139" selection-start-column="18" selection-end-line="143" selection-end-column="28" />
           <folding />
         </state>
@@ -883,7 +788,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/BonLivraison.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
+        <state relative-caret-position="630">
           <caret line="42" column="50" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="50" />
           <folding />
         </state>
@@ -892,7 +797,7 @@
     <entry file="file://$PROJECT_DIR$/models/BonLivraison.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
-          <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="48" selection-end-column="6" />
+          <caret line="43" column="12" lean-forward="false" selection-start-line="43" selection-start-column="5" selection-end-line="48" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -900,23 +805,23 @@
     <entry file="file://$PROJECT_DIR$/views/CommandeClient.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/FactureAchat.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="215" column="9" lean-forward="true" selection-start-line="215" selection-start-column="9" selection-end-line="215" selection-end-column="9" />
+        <state relative-caret-position="3195">
+          <caret line="215" column="9" lean-forward="false" selection-start-line="215" selection-start-column="9" selection-end-line="215" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/FactureVente.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="150" column="10" lean-forward="true" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="19" />
+        <state relative-caret-position="2235">
+          <caret line="150" column="10" lean-forward="false" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -924,7 +829,47 @@
     <entry file="file://$PROJECT_DIR$/views/FactureVente.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="90" column="35" lean-forward="true" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+          <caret line="90" column="35" lean-forward="false" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../resource/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../resource/views/resource_views.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="105" lean-forward="false" selection-start-line="32" selection-start-column="105" selection-end-line="32" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Emballage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="26" lean-forward="false" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
           <folding />
         </state>
       </provider>

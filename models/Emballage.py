@@ -11,7 +11,7 @@ class Emballage(models.Model):
      name = fields.Char(string='Nom' ,default="Produit" ,compute='_compute_name',required=True)
          
        
-     type = fields.Char('Type d\'emballage', default='Type', placeholder="Type",required=True)
+     type = fields.Char('Type d\'emballage', default=' ',required=True)
      
      poids = fields.Integer(string='Poids unitaire', placeholder="0",required=True)
      
