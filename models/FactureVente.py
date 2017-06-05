@@ -70,6 +70,13 @@ class FactureVente(models.Model):
                                    ondelete='restrict'
                                    )
 
+     adresse = fields.Char(
+         string='Adresse',
+         related='client_id.adresse',
+         readonly="1",
+         store=True
+     )
+
      bonlivraison_id = fields.Many2one(
          string="Bon livraison N°",
          ondelete='restrict',

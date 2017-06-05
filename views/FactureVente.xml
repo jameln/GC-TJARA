@@ -21,6 +21,7 @@
                             </group>
                             <group string="Références">
                                 <field name="client_id"/>
+                                <field name="adresse" />
                                 <field name="bonlivraison_id"/>
                                 <field name="etatreglement"/>
                                 <field name="refregvente"/>
@@ -138,7 +139,7 @@
             <field name="name">facturevente.graph</field>
             <field name="model">gctjara.facturevente</field>
             <field name="arch" type="xml">
-                <graph string="Participations by Courses">
+                <graph string="Factures par montan TTC">
                     <field name="client_id"/>
                     <field name="montantttc" type="measure"/>
                 </graph>
