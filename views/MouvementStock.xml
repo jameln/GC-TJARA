@@ -27,7 +27,7 @@
             <field name="name">mvtstock.tree</field>
             <field name="model">gctjara.mvtstock</field>
             <field name="arch" type="xml">
-                <tree string="Mouvements de  stock" create="false">
+                <tree string="Mouvements de  stock"  default_order='date , bonentree_id, bonlivraison_id ,produit,type' create="false">
                     <field name="numero"/>
                     <field name="date"/>
                     <field name="bonentree_id"/>

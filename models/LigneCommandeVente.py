@@ -54,7 +54,7 @@ class LigneCommandeVente(models.Model):
     prixvente= fields.Float(
         related='embalageproduit_id.prixvente',
         string='Prix unitaire',
-        compute='_prix_unit',
+        # compute='_prix_unit',
         store=True
     )
     
@@ -74,7 +74,7 @@ class LigneCommandeVente(models.Model):
         for pe in self:
             remise = float(pe.remise) / 100
             tauxtva = float(pe.tva) / 100
-            prixht = pe.quantite * pe.embalageproduit_id.prixunit
+            prixht = pe.quantite * pe.embalageproduit_id.prixvente
             pe.prix_ht = prixht
             pe.prix_total = (prixht * (1 + tauxtva)) - (prixht * remise)
             

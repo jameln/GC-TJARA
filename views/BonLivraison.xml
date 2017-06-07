@@ -50,7 +50,7 @@
                                 <group>
                                     <field name="lignebonlivraison_id" nolabel="1">
                                         <tree>
-                                            <field name="embalageproduit_id"/>
+                                            <field name="embalageproduit_id"  options='{"no_create":1,"no_create_edit":1}'/>
                                             <field name="quantite"/>
                                             <field name="quantitetot" />
                                             <field name="prixvente"/>

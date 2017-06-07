@@ -21,7 +21,10 @@
                                             <tr>
                                                 
                                                 <th class="text-left">Produits</th>
+                                                 <th class="text-left">Emballages</th>
                                                 <th class="text-left">Quantité</th>
+                                                <th class="text-left">Poids Unitaire</th>
+
                                                 <th class="text-left">Quantité Total</th>
                                                                                         
                                             </tr>
@@ -29,14 +32,15 @@
                                             <tbody style="border:solid 2px; border-color:#0C6592">
                                                 <t t-foreach="o.lignebonlivraison_id" t-as="page">
                                                 <tr>
-                                                   <td> <t t-esc="page.embalageproduit_id.name"/> </td> 
-                                
+                                                   <td> <t t-esc="page.embalageproduit_id.produit_id.name"/> </td>
+                                                   <td> <t t-esc="page.embalageproduit_id.emballage_id.name"/> </td>
                                                    <td> <t t-esc="page.quantite"/> </td>
-                                                     <td> <t t-esc="page.quantitetot"/> </td>
+                                                   <td> <t t-esc="page.embalageproduit_id.emballage_id.poids"/> </td>
+                                                   <td> <t t-esc="page.quantitetot"/> </td>
                                       
                                                 </tr>
                                                 </t>
-                                         </tbody>
+                                            </tbody>
                                 </table> 
            
                         </div>

@@ -33,7 +33,7 @@
                                     <field name="lignefact_id" nolabel="1">
 
                                         <tree editable="bottom" >
-                                            <field name="embalageproduit_id"/>
+                                            <field name="embalageproduit_id"  options='{"no_create":1,"no_create_edit":1}'/>
                                             <field name="prixvente"/>
                                             <field name="quantite"/>
                                             <field name="quantitetot" />

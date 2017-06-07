@@ -42,9 +42,10 @@ class CommandeFournisseur(models.Model):
                             help='Date   reception  de la commande ')
      
      description = fields.Text(
-         String='Description'
+         String='Description',
+         default='Liste des descritpions'
          )
-     
+     texthtml=fields.Html(string='Log' , readonly="1")
      
      fournisseur_id = fields.Many2one(
          comodel_name='gctjara.fournisseur',
@@ -208,10 +209,13 @@ class CommandeFournisseur(models.Model):
     
      @api.one
      def cmdfrs_valider(self):
-      
+        info1 =str(self.description)
+        info2=str('Commande fournisseur valide le: ' + str(fields.datetime.now().strftime('%d/%m/%Y %H:%M')))
+        texthtml="<ul><li>"+info1+"</li><br/><li>"+info2+"</li></ul>"
         self.write({
             'state': 'va',
-            'description': 'Commande fournisseur valide le: ' + fields.datetime.now().strftime('%d/%m/%Y %H:%M'),
+            'description': info1 +"\n" +info2,
+            'texthtml':texthtml
             })
         self.create_factachat()
 

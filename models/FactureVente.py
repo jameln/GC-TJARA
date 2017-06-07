@@ -146,7 +146,7 @@ class FactureVente(models.Model):
      @api.one
      @api.depends('montantttc')
      def _amount_in_words(self):
-         self.amount_to_text = amount_to_text_fr(self.montantttc, "dinars")
+         self.amount_to_text = amount_to_text_fr(self.montantttc, self.env.user.company_id.currency_id.symbol)
 
      amount_to_text = fields.Text(
          string='In Words',
@@ -312,7 +312,7 @@ def french_number(val):
 
 
 def amount_to_text_fr(numbers, currency):
-    number = '%.2f' % numbers
+    number = '%.3f' % numbers
     units_name = currency
     liste = str(number).split('.')
     start_word = french_number(abs(int(liste[0])))

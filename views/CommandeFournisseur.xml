@@ -47,7 +47,7 @@
                                 <group>
                                     <field name="lignecmd_id" nolabel="1">
                                         <tree editable="bottom">
-                                            <field name="embalageproduit_id"/>
+                                            <field name="embalageproduit_id"  options='{"no_create":1,"no_create_edit":1}'/>
                                             <field name="quantite"/>
                                             <field name="quantitetot"/>
                                             <field name="prixunit" readonly="1"/>
@@ -81,6 +81,7 @@
                             <page class="oe_page_Title" string="Description">
                                 <group>
                                     <field name="description"/>
+                                    <field name="texthtml"/>
                                 </group>
                             </page>
                             <page class="oe_page_Title" string="Attachement">

@@ -57,7 +57,7 @@
             <field name="name">produitemballee.tree</field>
             <field name="model">gctjara.produitemballee</field>
             <field name="arch" type="xml">
-                <tree string="Poduits embalées" create="false">
+                <tree string="Poduits embalées" default_order='name , produit_id, emballage_id' create="false">
                     <field name="name"/>
                     <field name="quantitestocke"/>
                     <field name="produit_id"/>

@@ -70,7 +70,7 @@
                             </table>
 
 
-                            <div class="row" name="total" >
+                            <div class="row" name="total">
                                 <div class="col-xs-4 pull-right">
                                     <table class="table table-condensed" style="border:solid 2px; border-color:#0C6592">
                                         <tr class="border-black">
@@ -129,18 +129,20 @@
                                     </table>
                                 </div>
                             </div>
+
+
+                        <br/>
+                        <br/>
+                        <div class="col-xs-6 pull-left">
+                            <p style="border:solid 1px; border-color:#0C6592">
+                                <strong>ARRETEE LE PRESENT DEVIS/COMMANDE A LA SOMME DE:</strong>
+                                <br/>
+                                <span t-field="o.amount_to_text"/>
+                            </p>
                         </div>
+ </div>
 
                     </t>
-                    <br/>
-                            <br/>
-                            <div class="col-xs-6 pull-left">
-                                <p style="border:solid 1px; border-color:#0C6592">
-                                    <strong>ARRETEE LE PRESENT DEVIS/COMMANDE A LA SOMME DE:</strong>
-                                    <br/>
-                                    <span t-field="o.amount_to_text"/>
-                                </p>
-                            </div>
 
                 </t>
             </t>

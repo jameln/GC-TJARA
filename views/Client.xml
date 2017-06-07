@@ -17,30 +17,39 @@
             <field name="arch" type="xml">
                 <form string="Clients">
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
+                                <field name="active" widget="boolean_button"
+                                       options="{&quot;terminology&quot;: &quot;active&quot;}"/>
+                            </button>
+                        </div>
 
                         <group>
                             <field class="oe_left oe_avatar"
                                    name="image" widget="image"/>
                             <field name="name"/>
                         </group>
-                        <group col="2">
-                            <group string="Informations générales">
-                                <field name="company_name"/>
-                                <field name="email"/>
-                                <field name="phone"/>
-                                <field name="fax"/>
-                                <field name="mobile"/>
-                            </group>
-                            <group string="Coordonées">
-                                <field name="adresse"/>
-                                <field name="street"/>
-                                <field name="zip"/>
-                                <field name="city"/>
-                                <field name="active"/>
-                            </group>
-                        </group>
-
                         <notebook>
+                            <page class="oe_page_Title" string="Informations générales">
+                                <group>
+                                    <field name="company_name"/>
+                                    <field name="email"/>
+                                    <field name="phone"/>
+                                    <field name="fax"/>
+                                    <field name="mobile"/>
+                                </group>
+                            </page>
+                            <page class="oe_page_Title" string="Coordonées">
+                                <group>
+                                    <field name="adresse"/>
+                                    <field name="street"/>
+                                    <field name="zip"/>
+                                    <field name="city"/>
+
+                                </group>
+                            </page>
+
+
                             <!-- <page class="oe_page_Title" string="Produits">
                                 <group>
                                     <field name="produits_id">
@@ -69,6 +78,14 @@
                                     </field>
                                 </group>
                             </page>
+                            <page string="Détails" class="oe_read_only">
+                                <group>
+                                    <field name="create_uid"/>
+                                    <field name="create_date"/>
+                                    <field name="write_uid"/>
+                                    <field name="write_date"/>
+                                </group>
+                            </page>
                         </notebook>
                     </sheet>
 
@@ -93,7 +110,6 @@
                 </tree>
             </field>
         </record>
-
 
 
         <record id="client_kanban_view" model="ir.ui.view">

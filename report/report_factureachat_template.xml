@@ -68,7 +68,7 @@
                             </table>
 
 
-                            <div class="row" name="total" >
+                            <div class="row" name="total">
                                 <div class="col-xs-4 pull-right">
                                     <table class="table table-condensed" style="border:solid 2px; border-color:#0C6592">
                                         <tr class="border-black">
