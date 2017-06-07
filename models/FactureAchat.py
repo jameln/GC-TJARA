@@ -292,7 +292,7 @@ def _convert_nnn_fr(val):
     (mod, rem) = (val % 100, val // 100)
     if rem > 0:
         if rem == 1:
-            word = 'Millime'
+            word = 'Cent'
         else:
             word = to_19_fr[rem] + ' Cent'
         if mod > 0:

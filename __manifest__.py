@@ -23,7 +23,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'report', 'board','account','sale'],
+    'depends': ['base', 'mail', 'report', 'board'],
 
     # always loaded
     'data': [
@@ -55,7 +55,6 @@
         'report/report_cmdclient_template.xml',
         'report/report_bonlivraison.xml',
         'report/report_bonlivraison_template.xml',
-        'views/order_invoice.xml',
         'views/menu.xml',
                
     ],

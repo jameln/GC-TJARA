@@ -17,7 +17,6 @@ import ReglementVente
 import LigneCommandeAchat
 import LigneCommandeVente
 import LigneFactureAchat
-import amount_to_text_fr
 import LigneBonLivraison
 import LigneFactureVente
 import ProduitEmballee
