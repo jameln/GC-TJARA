@@ -55,6 +55,7 @@
         'report/report_cmdclient_template.xml',
         'report/report_bonlivraison.xml',
         'report/report_bonlivraison_template.xml',
+
         'views/menu.xml',
                
     ],

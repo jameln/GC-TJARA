@@ -18,9 +18,10 @@ import LigneCommandeAchat
 import LigneCommandeVente
 import LigneFactureAchat
 import LigneBonLivraison
+import LigneBonEntree
 import LigneFactureVente
 import ProduitEmballee
 import MouvementStock
-
+import amount_to_text_fr
 
 

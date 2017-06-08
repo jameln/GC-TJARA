@@ -11,7 +11,7 @@
                           <span> Confirmé </span><field name="valid" />
                       </div>
                     <sheet>
-                        <group col="2">
+                        <group col="2"  style="border: 2px dotted black; padding: 35px; background: #E5F0EF;">
                             <group string="Informations générales">
                                 <field name="numero"/>
                                 <field name="datefact"/>
@@ -20,10 +20,10 @@
 
                             </group>
                             <group string="Références">
-                                <field name="client_id"/>
+                                <field name="client_id" />
                                 <field name="adresse" />
                                 <field name="bonlivraison_id"/>
-                                <field name="etatreglement"/>
+                                <field name="etatreglement" style="border:solid 1px;background-color: #40A497 ;border-color:#0C6592"/>
                                 <field name="refregvente"/>
                             </group>
                         </group>

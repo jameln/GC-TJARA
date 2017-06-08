@@ -129,8 +129,8 @@
                             <br/>
                             <br/>
                             <div class="col-xs-6 pull-left">
-                                <p style="border:solid 1px; border-color:#0C6592">
-                                    <strong>ARRETEE LE PRESENT DEVIS/COMMANDE A LA SOMME DE:</strong>
+                                <p >
+                                    <strong>ARRETEE LE PRESENT FACTURE D'ACHAT A LA SOMME DE:</strong>
                                     <br/>
                                     <span t-field="o.amount_to_text"/>
                                 </p>

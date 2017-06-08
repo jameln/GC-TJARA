@@ -37,6 +37,9 @@ class Fournisseur(models.Model):
      city = fields.Char()
      
      active = fields.Boolean(default=True)
+
+     Agree = fields.Boolean(string='Fournisseur Agréé' ,default=False)
+
       
      commande_id = fields.One2many(
        string="Commande",
@@ -57,3 +60,49 @@ class Fournisseur(models.Model):
 #        comodel_name='gctjara.produits'
 #       )
 #    
+     nature_relation = fields.Selection(
+    string='Nature de la relation',
+    default='',
+    selection=[
+        ('fr', 'Fournisseur'),
+        ('cn', 'Concurent'),
+        ('ag', 'Agence'),
+
+    ]
+)
+     relation = fields.Selection(
+    string='Relation fournisseur',
+    default='',
+    selection=[
+        ('exclusif', 'Régulier exclusif'),
+        ('potentiel', 'Potentiel'),
+        ('regulier', 'Régulier'),
+        ('occacionnel', 'Occacionnel'),
+        ('Pas', 'Pas de relation actuel')
+    ]
+)
+     type_de_relation = fields.Selection(
+    string='Type de relation',
+    default='',
+    selection=[
+        ('Intense', 'Intense'),
+        ('Confiante', 'Confiante'),
+        ('Inexistante', 'Inexistante'),
+        ('Réserve', 'Réservée'),
+        ('Negative', 'Negative'),
+        ('Limite', 'Limitée')
+    ]
+)
+     necessite_fournisseur = fields.Selection(
+    string='Type de relation',
+    default='',
+    selection=[
+        ('Intense', 'Prioritaire'),
+        ('Confiante', 'Contact interessant'),
+        ('Inexistante', 'Structuration Engagée'),
+        ('Réserve', 'Compangnes périodiques'),
+        ('Negative', 'Non categorisé')
+
+    ]
+)
+

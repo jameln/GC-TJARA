@@ -60,7 +60,7 @@
 
                           <span> Confirmé </span><field name="valid" />
                       </div>
-                        <group col="2">
+                        <group col="2"  style="border: 2px dotted black; padding: 35px; background: #E5F0EF;">
                             <group>
                                 <field name="numero"/>
                                 <field name="datefact"/>
@@ -68,7 +68,7 @@
                             </group>
                             <group>
                                 <field name="fournisseur_id"/>
-                                <field name="etatreglement"/>
+                                <field name="etatreglement" style="border:solid 1px;background-color: #40A497 ;border-color:#0C6592"/>
                                 <field name="refregachat"/>
 
                             </group>

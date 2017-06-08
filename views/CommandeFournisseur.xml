@@ -38,6 +38,7 @@
                             </group>
                             <group>
                                 <field name="fournisseur_id"/>
+                                <field name="emplacement" options="{'horizontal': true}" widget="radio" />
                              
                             </group>
                         </group>
@@ -80,8 +81,10 @@
                             </page>
                             <page class="oe_page_Title" string="Description">
                                 <group>
-                                    <field name="description"/>
-                                    <field name="texthtml"/>
+<!--
+                                    <field name="description" nolabel="1"/>
+-->
+                                    <field name="texthtml" nolabel="1"/>
                                 </group>
                             </page>
                             <page class="oe_page_Title" string="Attachement">

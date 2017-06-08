@@ -48,41 +48,7 @@ class Produits(models.Model):
         required=True
         )
     
-   
-#     prixachat = fields.Float(
-#         string='Prix d\'achat'
-#         )
-    
-#     prixvente = fields.Float(
-#         string='Prix de vente'
-#         )
-#     
-#     quantite = fields.Float(
-#         string='Quantite',
-#         required=True,
-#         default=0.0,
-#         digits=(16, 3)
-#     )
-    
-#     fournisseur_id = fields.One2many(
-#         comodel='gctjara.fournisseur',
-#         string="Fournisseur",
-#         ondelete='restrict',
-#         inverse_name='produit_id'
-#         )
-       
-#     client_id = fields.One2many(
-#         comodel='gctjara.client',
-#         string="Clients",
-#         inverse_name='produits_id'
-#         )
-#        
-#     stock_id = fields.One2many(
-#         comodel_name='gctjara.stock',
-#         string='Stock',
-#         inverse_name='produit_id'
-#     )
-#       
+
     produitemballee_ids = fields.One2many(
         comodel_name='gctjara.produitemballee',
         string='Emballage',
@@ -94,23 +60,4 @@ class Produits(models.Model):
         string='Emballages',
         store=False
         )
-    
-   
-    
-#     states=fields.Char('Status', default ='able')
-#               
-#     def create_produitemballee(self):
-#         
-#         self.env['gctjara.produitemballee'].write({
-#             'quantite':50,
-#             'produit_id' :  self.name,
-#             'emballage_id': 1,
-#             'prix_total':1200
-#               
-#             })
-#         self.states='enable'
-#         return True
-#     
-   
-   
     

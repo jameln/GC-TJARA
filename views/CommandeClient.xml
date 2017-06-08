@@ -38,6 +38,7 @@
                             <group>
                                 <field name="client_id"/>
                                 <field name="adresse" />
+                                <field name="reglement_autorisee" style="font:solid 2px; "/>
                             </group>
 
                         </group>

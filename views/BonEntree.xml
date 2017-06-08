@@ -45,10 +45,35 @@
                                 <field name="date"/>
                             </group>
                             <group>
-                                <field name="produit"/>
-                                <field name="quantite"/>
+                                <field name="commande_id"/>
+
                             </group>
                         </group>
+                        <notebook>
+                            <page class="oe_page_Title" string="Produits">
+                                <group>
+                                    <field name="lignebonentree_id" nolabel="1">
+                                        <tree>
+                                            <field name="embalageproduit_id"  options='{"no_create":1,"no_create_edit":1}'/>
+                                            <field name="quantite"/>
+                                            <field name="quantitetot" />
+                                            <field name="prixunit"/>
+                                            <field name="prix_ht"/>
+                                            <field name="tva"/>
+                                            <field name="remise"/>
+                                            <field name="prix_total"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="embalageproduit_id"/>
+                                            </group>
+                                        </form>
+
+                                    </field>
+                                </group>
+                            </page>
+
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -61,8 +86,8 @@
                 <tree string="Bon d'entrée" create="false" decoration-warning="state == 'nr'" decoration-muted="state == 'lv'">
                     <field name="numero"/>
                     <field name="date"/>
-                    <field name="produit"/>
-                    <field name="quantite"/>
+                    <field name="lignebonentree_id"/>
+                    <field name="fournisseur_id"/>
                     <field name="state"/>
                     <field name="create_uid"/>
 
@@ -76,8 +101,8 @@
                 <search string="Bon d'entrée Search">
                     <field name="numero"/>
                     <field name="date"/>
-                    <field name="produit"/>
-                    <field name="quantite"/>
+                    <field name="create_uid"/>
+                    <field name="commande_id"/>
                     <filter name="filter" string="States" domain="[('create_uid', '=', uid)]"/>
                     <group string="Group By">
                         <filter name="by_state" string="State"
@@ -92,7 +117,7 @@
             <field name="name">bonentree.calendar</field>
             <field name="model">gctjara.bonentree</field>
             <field name="arch" type="xml">
-                <calendar string="Calendier BE" date_start="date" color="produit">
+                <calendar string="Calendier BE" date_start="date" color="commande_id">
                     <field name="numero"/>
                 </calendar>
             </field>

@@ -18,12 +18,20 @@ class BonEntree(models.Model):
          default=fields.datetime.now(),
          help='La date de  bon de livraison'
         )
-    
-    produit=fields.Many2one(
-        string='Produits',
-        comodel_name='gctjara.produitemballee')
-    
-    quantite=fields.Integer(string ='Quantité' , default=0)
+
+    commande_id = fields.Many2one(
+        string='Commande',
+        # required=True,
+        index=True,
+        comodel_name='gctjara.cmdfournisseur',
+
+    )
+
+    fournisseur_id = fields.Many2one(
+        string="Fournisseur",
+        ondelete='restrict',
+        comodel_name='gctjara.fournisseur'
+    )
       
     state = fields.Selection(
         string='Etat',
@@ -34,6 +42,12 @@ class BonEntree(models.Model):
             ('lv', 'livrée'),
            
         ]
+    )
+    lignebonentree_id = fields.One2many(
+        string='Produits',
+        comodel_name='gctjara.lignebonentree',
+        inverse_name='bonentree_id',
+        store=True
     )
     @api.multi 
     def action_draft(self):
@@ -46,17 +60,26 @@ class BonEntree(models.Model):
     @api.multi  
     def creat_mvtstock(self):
         self.write({'state': 'rc'})
-        sequencesmvt =   self.env['ir.sequence'].next_by_code('gctjara.mvtstock.seq') 
-        self.env['gctjara.mvtstock'].create({
-              'numero' :  sequencesmvt,
-              'date': fields.datetime.now().strftime('%m/%d/%Y %H:%M'),
-              'quantite':self.quantite,
-              'produit':self.produit.id,
-              'bonentree_id': self.id,
-              'type':'Entrée'
-              
-            })
-        self.maj_produits()
+        for recmvt in self.lignebonentree_id :
+
+            sequencesmvt =   self.env['ir.sequence'].next_by_code('gctjara.mvtstock.seq')
+            self.env['gctjara.mvtstock'].create({
+                  'numero' :  sequencesmvt,
+                  'date': fields.datetime.now().strftime('%m/%d/%Y %H:%M'),
+                  'quantite':recmvt.quantite,
+                  'produit':recmvt.embalageproduit_id.id,
+                  'bonentree_id': self.id,
+                  'type':'Entrée'
+
+                })
+
+            qteprod = int(recmvt.embalageproduit_id.quantitestocke) + int(recmvt.quantite)
+            product = self.env['gctjara.produitemballee']
+            product_id = recmvt.embalageproduit_id.id
+            package_product = product.browse(product_id)
+            package_product.quantitestocke = qteprod
+
+            # self.maj_produits()
         return True
     
     def getProductID(self):

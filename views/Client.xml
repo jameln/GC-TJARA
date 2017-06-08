@@ -50,24 +50,6 @@
                             </page>
 
 
-                            <!-- <page class="oe_page_Title" string="Produits">
-                                <group>
-                                    <field name="produits_id">
-                                        <tree>
-                                            <field String="Produit" name="name"/>
-                                        </tree>
-                                    </field>
-                                </group>
-                            </page> -->
-                            <!--    <page class="oe_page_Title" string="Factures">
-                            <group>
-                                <field name="facture_id">
-                                    <tree>
-                                    <field String="N° Factures" name="numero"/>
-                                    </tree>
-                                </field>
-                            </group>
-                        </page>-->
                             <page class="oe_page_Title" string="Commandes">
                                 <group>
                                     <field name="commande_id">
@@ -76,6 +58,14 @@
 
                                         </tree>
                                     </field>
+                                </group>
+                            </page>
+                              <page string="Identifiant" class="oe_page_Title">
+                                <group>
+                                    <field name="nature_reg_acceptee"/>
+                                    <field name="mode_reglement_autorisee"/>
+                                    <field name="type_de_relation"/>
+
                                 </group>
                             </page>
                             <page string="Détails" class="oe_read_only">

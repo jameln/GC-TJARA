@@ -10,11 +10,18 @@
 
 
 
+
                            <div class="oe_button_box" name="button_box">
                             <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
                                 <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;active&quot;}"/>
                             </button>
                         </div>
+
+                         <div class="oe_button_box" name="button_box"
+                           style="font-weight: bold; font-size: 16px;">
+
+                          <span> Fournisseur Agréé </span><field name="Agree" />
+                      </div>
 
                         <group>
                             <field class="oe_left oe_avatar" name="image" widget="image"/>
@@ -68,6 +75,15 @@
                                             <field name="numero" readonly="1"/>
                                         </tree>
                                     </field>
+                                </group>
+                            </page>
+                            <page string="Relations" class="oe_page_Title">
+                                <group>
+                                    <field name="nature_relation"/>
+                                    <field name="relation"/>
+                                      <field name="type_de_relation"/>
+                                    <field name="necessite_fournisseur"/>
+
                                 </group>
                             </page>
                             <page string="Détails" class="oe_read_only">

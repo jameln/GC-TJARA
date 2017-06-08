@@ -60,7 +60,40 @@ class Client(models.Model):
        comodel_name='gctjara.facturevente',
        inverse_name='client_id',
        )
-     
-   
+
+     nature_reg_acceptee=fields.Selection(
+        string='Mode de règlement acceptées',
+        default='',
+        selection=[
+            ('ch', 'Chèque'),
+            ('es', 'Espèce'),
+            ('vr', 'Virement'),
+            ('tr', 'Traite'),
+            ('pr', 'Prélevement')
+        ]
+    )
+     mode_reglement_autorisee=fields.Selection(
+        string='Mode de règlement autoriées',
+        default='',
+        selection=[
+            ('livraison', 'A la livraison'),
+            ('Contre', 'Contre rembourssement'),
+            ('Suivi', 'Suivi'),
+            ('avance', 'A l\'avance'),
+            ('determiner', 'A determiner')
+        ]
+    )
+     type_de_relation =fields.Selection(
+        string='Type de relation',
+        default='',
+        selection=[
+            ('livraison', 'Intense'),
+            ('Confiante', 'Confiante'),
+            ('Inexistante', 'Inexistante'),
+            ('Réserve', 'Réservée'),
+            ('Negative', 'Negative'),
+            ('Limite', 'Limitée')
+        ]
+    )
  
      

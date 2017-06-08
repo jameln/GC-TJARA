@@ -36,7 +36,8 @@ class CommandeClient(models.Model):
          required=True,
          default=fields.datetime.now(),
          help='Date création',
-         readonly=True)
+         readonly=True
+     )
      
      datelivraison = fields.Date(
          string='Date de livraison',
@@ -71,6 +72,19 @@ class CommandeClient(models.Model):
          related='client_id.adresse',
          readonly="1",
          store=True
+     )
+     reglement_autorisee=fields.Selection(
+         string='Mode de règlement',
+         related='client_id.mode_reglement_autorisee',
+         readonly="1",
+         store=True,
+         selection=[
+             ('livraison', 'A la livraison'),
+             ('Contre', 'Contre rembourssement'),
+             ('Suivi', 'Suivi'),
+             ('avance', 'A l\'avance'),
+             ('determiner', 'A determiner')
+         ]
      )
      
      

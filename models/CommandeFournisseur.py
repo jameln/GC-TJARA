@@ -19,6 +19,18 @@ class CommandeFournisseur(models.Model):
         readonly=True
         
      )
+     emplacement = fields.Selection(
+         string='Emplacement',
+         default='commande',
+
+         selection=[
+             ('commande', 'Commandé'),
+             ('route', 'En route'),
+             ('depot', 'Au dépôt'),
+
+         ]
+     )
+
      @api.model
      def _newrecord(self):
          sequence = self.env['ir.sequence'].search([('code','=','gctjara.cmdfrs.seq')])
@@ -45,7 +57,7 @@ class CommandeFournisseur(models.Model):
          String='Description',
          default='Liste des descritpions'
          )
-     texthtml=fields.Html(string='Log' , readonly="1")
+     texthtml=fields.Html(string='Log' )
      
      fournisseur_id = fields.Many2one(
          comodel_name='gctjara.fournisseur',
@@ -194,16 +206,35 @@ class CommandeFournisseur(models.Model):
         return True
     
      def create_bon_entree(self):
-          for rec in self:
-              for r in rec.lignecmd_id :
-                  rec.env['gctjara.bonentree'].create({
-                      'numero':self.env['ir.sequence'].next_by_code('gctjara.bonentree.seq') ,
-                      'date':fields.datetime.now().strftime('%m/%d/%Y %H:%M'),
-                      'produit' : r.embalageproduit_id.id,
-                      'quantite': str(r.quantite)
-                      })   
-          
-          return True
+
+         sequences = self.env['ir.sequence'].next_by_code('gctjara.bonentree.seq')
+         record = self.env['gctjara.bonentree'].create({
+
+             'numero': sequences,
+             'date': fields.datetime.now().strftime('%m/%d/%Y %H:%M'),
+             'fournisseur_id': self.fournisseur_id.id,
+             'commande_id': self.id
+
+         })
+         print ("Commmande id  =================>"+str(self.id))
+
+         for rec in self:
+             for r in rec.lignecmd_id:
+                 record1 = self.env['gctjara.lignebonentree'].create({
+                     'quantite': r.quantite,
+                     'quantitetot': r.quantitetot,
+                     'embalageproduit_id': r.embalageproduit_id.id,
+                     'prix_total': r.prix_total,
+                     'prixunit': r.prixunit,
+                     'prix_ht': r.prix_ht,
+                     'tva': r.tva,
+                     'remise': r.remise,
+                     'bonentree_id': record.id,
+                     'commande_id': self.id #[(0,0,self.id)]
+
+                 })
+         return True
+
     
     
     
@@ -215,14 +246,19 @@ class CommandeFournisseur(models.Model):
         self.write({
             'state': 'va',
             'description': info1 +"\n" +info2,
-            'texthtml':texthtml
+            'texthtml':texthtml,
+            'emplacement': 'route'
+
             })
         self.create_factachat()
 
         return True
 
      def cmdfrs_terminer(self):
-        self.write({'state': 'tr'})
+        self.write({
+            'state': 'tr',
+            'emplacement': 'depot'
+        })
         self.create_bon_entree()
         return True
     
