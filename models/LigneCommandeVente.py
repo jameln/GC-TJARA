@@ -69,12 +69,16 @@ class LigneCommandeVente(models.Model):
          string='Produits'
      )
     @api.multi
-    @api.constrains("remise")
+    @api.constrains("remise","quantite")
     def verif_remise(self):
         for pe in self:
             tauxremise = float(pe.remise) / 100
             if tauxremise < 0 or tauxremise > 1:
                 raise ValidationError("Le remise doit être un entier superieure a zéro et inferieure a 100")
+            qte = float(pe.quantite) 
+            if qte <= 0 :
+                raise ValidationError("La quantité doit être un entier superieure à zéro ")
+
     @api.multi
     @api.constrains("quantite")
     def verif_remise(self):

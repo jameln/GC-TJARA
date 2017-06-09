@@ -92,14 +92,6 @@ class LigneCommandeAchat(models.Model):
             qte = float(pe.quantite) 
             if qte <= 0 :
                 raise ValidationError("La quantité doit être un entier superieure à zéro ")
-#     @api.multi
-#     @api.constrains("quantite")
-#     def verif_remise(self):
-#         for pe in self:
-#             qte = float(pe.quantite) 
-#             if qte <= 0 :
-#                 raise ValidationError("La quantité doit être un entier superieure à zéro ")
-
 
     @api.multi
     @api.depends("quantite" , "embalageproduit_id","tva","remise")
