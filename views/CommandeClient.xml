@@ -29,7 +29,7 @@
                          
                           <span> Confirmé </span><field name="valid" />
                       </div>
-                        <group col="2">
+                        <group col="2" class="header">
                             <group>
                                 <field name="numerocmdc"/>
                                 <field name="datecommande"/>
@@ -116,7 +116,7 @@
             <field name="arch" type="xml">
                 <tree string="Commande client" decoration-info="state == 'va'" decoration-muted="state == 'an'"
                       decoration-success="state == 'tr'">
-                    <field name="numerocmdc"/>
+                    <field name="numerocmdc" />
                     <field name="datecommande"/>
                     <field name="datelivraison"/>
                     <field name="client_id"/>

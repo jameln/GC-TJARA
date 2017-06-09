@@ -6,7 +6,6 @@ encoding//models/BonLivraison.py=utf-8
 encoding//models/Client.py=utf-8
 encoding//models/CommandeClient.py=utf-8
 encoding//models/CommandeFournisseur.py=utf-8
-encoding//models/Depot.py=utf-8
 encoding//models/Emballage.py=utf-8
 encoding//models/FactureAchat.py=utf-8
 encoding//models/FactureVente.py=utf-8

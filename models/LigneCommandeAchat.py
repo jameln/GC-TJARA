@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+
 
 class LigneCommandeAchat(models.Model):
     _name = 'gctjara.lignecmdachat'
     
     _rec_name = 'name'
+    
     
     name =fields.Char(
         string='Nom:',
@@ -79,7 +82,16 @@ class LigneCommandeAchat(models.Model):
         digits=(16, 1),
 
     )
-    @api.multi 
+    @api.constrains("remise")
+    @api.multi
+    def verif_remise(self):
+        for pe in self:
+            tauxremise = float(pe.remise) / 100
+            if tauxremise < 0 or tauxremise > 1:
+                raise ValidationError("Le remise doit être un entier superieure a zéro et inferieure a 100")
+
+
+    @api.multi
     @api.depends("quantite" , "embalageproduit_id","tva","remise")
     def prixtot(self):
         for pe in self:
@@ -89,7 +101,8 @@ class LigneCommandeAchat(models.Model):
             print ("tva ===> "+str(tauxtva))
             print("prixht ==>" + str(prixht))
             pe.prix_ht=prixht
-            pe.prix_total =(prixht*(1+tauxtva))-(prixht*remise)
+            prix_remise=prixht*(1-remise)
+            pe.prix_total =(prix_remise*(1+tauxtva))
             
     prix_total = fields.Float(
         string='Prix Tot',

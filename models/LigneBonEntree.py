@@ -77,7 +77,8 @@ class LigneBonEntree(models.Model):
             tauxtva = float(pe.tva) / 100
             prixht = pe.quantite * pe.embalageproduit_id.prixvente
             pe.prix_ht = prixht
-            pe.prix_total = (prixht * (1 + tauxtva)) - (prixht * remise)
+            prix_remise = prixht * (1 - remise)
+            pe.prix_total = (prix_remise * (1 + tauxtva))
      
 
             

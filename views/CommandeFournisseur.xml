@@ -30,7 +30,7 @@
                          
                           <span> Confirmé </span><field name="valid" />
                       </div>
-                        <group col="2">
+                        <group col="2" class="header">
                             <group>
                                 <field name="numero" readonly="1"/>
                                 <field name="datecommande"/>

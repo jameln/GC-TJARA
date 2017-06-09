@@ -33,7 +33,7 @@
                                statusbar_visible="at,an,lv" widget="statusbar"/>
                     </header>
                     <sheet>
-                        <group col="2">
+                        <group col="2" class="header">
                          <group>
                             <field name="numero"/>
                             <field name="date"/>

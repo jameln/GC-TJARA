@@ -194,10 +194,10 @@ class CommandeClient(models.Model):
               'numero' :  sequences,
               'date':fields.datetime.now().strftime('%m/%d/%Y %H:%M'),
               'client_id':self.client_id.id,
+
               'commande_id' :  self.id
               
                })
-
         
         for rec in self:
              for r in rec.lignecmd_id :
@@ -221,13 +221,15 @@ class CommandeClient(models.Model):
     
      @api.multi
      def cmdclt_valider(self):
-      
-        self.write({
+         dict={}
+         dict.add(self.description)
+         dict.add('Commande client valide le: ' + fields.datetime.now().strftime('%d/%m/%Y %H:%M')+' par '+str(self.env.user.name))
+         self.write({
             'state': 'va',
-            'description': 'Commande client valide le: ' + fields.datetime.now().strftime('%d/%m/%Y %H:%M'),
+            'description':dict,
             })  
-        self.create_bon_livraison()
-        return True
+         self.create_bon_livraison()
+         return True
 
      def cmdclt_terminer(self):
         self.write({'state': 'tr'})

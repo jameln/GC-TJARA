@@ -29,7 +29,7 @@
 
                             </button>
                         </div>
-                        <group col="3">
+                        <group col="3" class="header">
                             <group string="Général">
                                 <field name="numero"/>
                                 <field name="date"/>

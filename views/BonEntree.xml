@@ -38,7 +38,7 @@
                                statusbar_visible="nr,rc,lv" widget="statusbar"/>
                     </header>
                     <sheet>
-                        <group col="2">
+                        <group col="2" class="header">
 
                             <group>
                                 <field name="numero"/>
