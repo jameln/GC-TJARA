@@ -1,16 +1,16 @@
 <odoo>
     <data>
-        <record id="facturevente_calendar_action" model="ir.actions.act_window">
+        <record id="facturevente_graph_action" model="ir.actions.act_window">
             <field name="name">Factures Ventes</field>
             <field name="res_model">gctjara.facturevente</field>
             <field name="view_type">form</field>
-            <field name="view_mode">calendar</field>
+            <field name="view_mode">graph</field>
         </record>
-        <record id="factureachat_calendar_action" model="ir.actions.act_window">
+        <record id="factureachat_graph_action" model="ir.actions.act_window">
             <field name="name">Factures Achats</field>
             <field name="res_model">gctjara.factureachat</field>
             <field name="view_type">form</field>
-            <field name="view_mode">calendar</field>
+            <field name="view_mode">graph</field>
         </record>
           <record id="produitemballee_graph_action" model="ir.actions.act_window">
             <field name="name">Produits emballées</field>
@@ -48,8 +48,8 @@
 
                        
                         <column>
-                            <action   name="%(facturevente_calendar_action)d" string="Ventes"/>
-                            <action   name="%(factureachat_calendar_action)d" string="Achats"/>
+                            <action   name="%(facturevente_graph_action)d" string="Ventes"/>
+                            <action   name="%(factureachat_graph_action)d" string="Achats"/>
                         </column>
 
                     </board>

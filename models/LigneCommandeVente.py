@@ -68,6 +68,22 @@ class LigneCommandeVente(models.Model):
          comodel_name='gctjara.produitemballee',
          string='Produits'
      )
+    @api.multi
+    @api.constrains("remise")
+    def verif_remise(self):
+        for pe in self:
+            tauxremise = float(pe.remise) / 100
+            if tauxremise < 0 or tauxremise > 1:
+                raise ValidationError("Le remise doit être un entier superieure a zéro et inferieure a 100")
+    @api.multi
+    @api.constrains("quantite")
+    def verif_remise(self):
+        for pe in self:
+            qte = float(pe.quantite) 
+            if qte <= 0 :
+                raise ValidationError("La quantité doit être un entier superieure à zéro ")
+
+
     @api.multi 
     @api.depends("quantite" , "embalageproduit_id","tva","remise")
     def prixtot(self):
