@@ -22,10 +22,11 @@
                             <group string="Références">
                                 <field name="client_id" />
                                 <field name="adresse" />
-                                <field name="bonlivraison_id"/>
+                                <field name="bonlivraison_id"  attrs="{'invisible': [('bonlivraison_id','=',False)]}"/>
                                 <field name="etatreglement" attrs="{'invisible': [('etatreglement','!=','Réglée')]}"
                                        style="border:solid 0px;border-radius: 10px;background-color: #A3D9F4 ;border-color:#A3D9F4"/>
-                                <field name="refregvente" attrs="{'invisible': [('etatreglement','!=','Réglée')]}"/>
+                                <field name="refregvente" attrs="{'invisible': [('etatreglement','!=','Réglée')]}"
+                                       widget="many2many_tags"    options="{'no_create_edit': True}"/>
                             </group>
                         </group>
                         <notebook>
@@ -35,9 +36,10 @@
 
                                         <tree editable="bottom" >
                                             <field name="embalageproduit_id"  options='{"no_create":1,"no_create_edit":1}'/>
-                                            <field name="prixvente"/>
+
                                             <field name="quantite"/>
                                             <field name="quantitetot" />
+                                            <field name="prixvente"/>
                                             <field name="tva"/>
                                             <field name="remise"/>
                                             <field name="prix_ht"/>
@@ -92,7 +94,7 @@
                             </page>
                         </notebook>
 
-                          <p>
+                          <p  class="header">
                             <strong>ARRETEE LE PRESENT FACTURE DE VENTE A LA SOMME DE:</strong>
                             <field name="amount_to_text"/>
 
@@ -122,6 +124,8 @@
                     <field name="bonlivraison_id"/>
                     <field name="etatreglement"/>
                     <field name="refregvente"/>
+                     <field name="montant" sum="True"/>
+                    <field name="montantttc" sum="True"/>
                     <field name="create_uid"/>
                 </tree>
             </field>
@@ -155,44 +159,7 @@
                 <p class="oe_view_nocontent_create">Créer votre première facture</p>
             </field>
         </record>
-        <act_window id="action_group"
-                    key2="client_action_multi"
-                    name="Paiement"
-                    res_model="gctjara.factureventeregle"
-                    src_model="gctjara.facturevente"
-                    target="new"
-                    view_mode="form"
-        />
 
-        <record id="factureventeregle_form_view" model="ir.ui.view">
-            <field name="name">factureventeregle.form</field>
-            <field name="model">gctjara.factureventeregle</field>
-            <field name="arch" type="xml">
-                <form string="Paiement facture vente">
-
-                    <group col="2">
-                        <group>
-                            <field name="datereception"/>
-                            <field name="datevaleur"/>
-                            <field name="dateoperation"/>
-                            <field name="dateecheance"/>
-                        </group>
-                        <group>
-                            <field name="modepayment"/>
-                            <field name="etatrapp" options="{'vertical': true}" widget="radio"/>
-                            <field name="numerochq"
-                                   attrs="{'invisible': [('modepayment','!=','ch'),('modepayment','!=','tr')]}"/>
-                        </group>
-                    </group>
-
-                    <footer>
-                        <button class="oe_highlight" name="Paiement"
-                                string="Créer règlement" type="object"/>
-                        <button class="oe_link" special="cancel" string="Annuler"/>
-                    </footer>
-                </form>
-            </field>
-        </record>
 
     </data>
 </odoo>

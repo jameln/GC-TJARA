@@ -55,7 +55,8 @@
         'report/report_cmdclient_template.xml',
         'report/report_bonlivraison.xml',
         'report/report_bonlivraison_template.xml',
-
+        'wizard/FactureAchat_wizard.xml',
+        'wizard/FactureVente_wizard.xml',
         'views/menu.xml',
                
     ],

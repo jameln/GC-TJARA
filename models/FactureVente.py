@@ -2,6 +2,8 @@
 
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+from datetime import datetime
+
 
 
 class FactureVente(models.Model):
@@ -17,8 +19,20 @@ class FactureVente(models.Model):
         required=True,
         index=True,
         size=50,
+        default= lambda self : self._newrecord()
        
     )
+
+     @api.model
+     def _newrecord(self):
+         sequence = self.env['ir.sequence'].search([('code', '=', 'gctjara.facturevente.seq')])
+         next = sequence.get_next_char(sequence.number_next_actual)
+         return next
+
+     @api.model
+     def create(self, vals):
+         vals['numerocmdc'] = self.env['ir.sequence'].next_by_code('gctjara.facturevente.seq')
+         return super(FactureVente, self).create(vals)
     
      datefact = fields.Date(
         string='Date facture',
@@ -97,7 +111,7 @@ class FactureVente(models.Model):
         store=True,
         default=''
         )
-     refregvente = fields.Many2one(comodel_name='gctjara.regvente',string='Réf reglement')
+     refregvente = fields.Many2many(comodel_name='gctjara.regvente',string='Réf reglement')
       
      attachment = fields.One2many('ir.attachment',
                                'factureachat',
@@ -166,67 +180,3 @@ class FactureVente(models.Model):
                mmttc = self.montant + self.timbre
        self.montantttc=mmttc
     
-
-class FactureVenteTemp(models.TransientModel):
-    _name = "gctjara.factureventeregle"
-    
-    datereception=fields.Date(string='Date réception')
-    datevaleur=fields.Date(string='Date valeur')
-    dateoperation=fields.Date(string='Date opération')
-    dateecheance=fields.Date(string='Date écheance')
-
-    modepayment=fields.Selection(
-        string='Mode de payment',
-        default='',
-        selection=[
-            ('ch', 'Chèque'),
-            ('es', 'Espèce'),
-            ('vr', 'Virement'),
-            ('tr', 'Traite'),
-            ('pr', 'Prélevement')
-        ]
-    )
-    etatrapp=fields.Selection(
-        string='Etat de rapprochement',
-        default='',
-        selection=[
-            ('cd', 'A céditer'),
-            ('vs', 'A versé'),
-            ('rp', 'Rapproché'),
-        
-        ]
-    )
-    numerochq=fields.Char(string='Numero')
-
-
-    @api.multi
-    def Paiement(self):
-        for facture_id in self.env.context.get('active_ids'):
-            factures=self.env['gctjara.facturevente'].search([('id','=',facture_id)])
-           
-         
-            if(factures.etatreglement == u"Réglée"):
-                raise ValidationError('La facture numéro  ' + str(factures.numero) + ' est déja réglée')
-                return False
-
-                              
-            record=self.env['gctjara.regvente'].create({
-                  'numero' : self.env['ir.sequence'].next_by_code('gctjara.regvente.seq'),
-                  'date':fields.datetime.now(),
-                  'dateoperation':self.dateoperation,
-                  'datevaleur':self.datevaleur,
-                  'daterecption':self.dateecheance,
-                  'tauxtva':'18',
-                  'prixht':factures.montant,
-                  'prixttc': factures.montantttc,
-                  'etatrapp':self.etatrapp,
-                  'modepayment':self.modepayment,
-                  'numerochq':self.numerochq,
-                  'facture_id':factures.id
-                  
-                   })
-               
-            factures.etatreglement='Réglée'
-            factures.refregvente = record.id
-       
-        return True

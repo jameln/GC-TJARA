@@ -11,7 +11,7 @@
         <menuitem action="bonentree_list_action" id="Bonentree_menu"  name="Bons des entrées" parent="achat_menu" sequence="5"/>
    
         <!-- Vente -->
-         <menuitem id="vente_menu" name="Ventes" parent="main_menue" sequence="10" groups="gctjara_group_ventes" />
+        <menuitem id="vente_menu" name="Ventes" parent="main_menue" sequence="10" groups="gctjara_group_ventes" />
         <menuitem action="cmdclient_list_action" id="commandeclts_menu" name="Commandes Clients" parent="vente_menu" sequence="11" groups="gctjara_group_ventes"  />
         <menuitem action="bonlivraison_list_action"  id="bonlivraison_menu" name="Bons des livraisons"   parent="vente_menu" sequence="12"/>
         <menuitem action="facturevente_list_action" id="facturevente_menu"  name="Factures Ventes" parent="vente_menu" sequence="13"/>
@@ -22,7 +22,7 @@
          <menuitem id="stcock_menu" name="Stock" parent="main_menue" sequence="20" groups="gctjara_group_achats" />
       
         <menuitem action="produits_list_action" id="produit_menu" name="Produits" parent="stcock_menu" sequence="21"/>
-         <menuitem action="produitemballee_list_action" id="produitembalee_menu" name="Produits Emballées" parent="produit_menu" sequence="22"/>
+        <menuitem action="produitemballee_list_action" id="produitembalee_menu" name="Produits Emballées" parent="produit_menu" sequence="22"/>
         <menuitem action="emballage_list_action" id="emballage_menu" name="Emballages" parent="stcock_menu" sequence="23"/>
         <menuitem action="mvtstock_list_action" id="mouvement_menu"  name="Mouvements des stocks" parent="stcock_menu" sequence="24"/>
          

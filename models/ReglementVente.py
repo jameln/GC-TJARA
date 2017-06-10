@@ -47,17 +47,17 @@ class ReglementVente(models.Model):
             start_date = fields.Datetime.from_string(r.date)
             end_date = fields.Datetime.from_string(r.daterecption)
             r.duration = (end_date - start_date).days
-
-    tauxtva = fields.Char(
-        string='TVA',
-     
-        digits=(16, 3)
-    )
-    prixht = fields.Float(
-        string='Prix HT',
-       
-        digits=(16, 3)
-    )
+    #
+    # tauxtva = fields.Char(
+    #     string='TVA',
+    #
+    #     digits=(16, 3)
+    # )
+    # prixht = fields.Float(
+    #     string='Prix HT',
+    #
+    #     digits=(16, 3)
+    # )
    
     prixttc = fields.Float(
         string='Prix TTC',
@@ -65,7 +65,7 @@ class ReglementVente(models.Model):
         digits=(16, 3)
     )
 
-    facture_id = fields.Many2one(
+    facture_id = fields.Many2many(
         string='Réf. facture',
         comodel_name='gctjara.facturevente'
     )

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+
 
 class LignefactureVente(models.Model):
     
@@ -23,11 +25,6 @@ class LignefactureVente(models.Model):
         string='Quantite',
         required=True,
           )
-    prixvente= fields.Float(
-       string='Prix unitaire',
-       store=True,
-      digits=(16, 3)
-    )
 
     facture_id = fields.Many2one(
          required=True,
@@ -39,6 +36,13 @@ class LignefactureVente(models.Model):
          comodel_name='gctjara.produitemballee',
          string='Produits'
      )
+
+    prixvente = fields.Float(
+        related='embalageproduit_id.prixvente',
+        string='Prix unitaire',
+        store=True,
+        digits=(16, 3)
+    )
 
     @api.depends('quantite', 'embalageproduit_id')
     def compute_qte_tot(self):

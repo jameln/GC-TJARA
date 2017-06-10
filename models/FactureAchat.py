@@ -54,7 +54,8 @@ class FactureAchat(models.Model):
                                    ondelete='restrict',
                                    store=True
                                    )
-       
+
+
     commande_id = fields.Many2one(
         string="Commande",
         ondelete='restrict',
@@ -116,7 +117,8 @@ class FactureAchat(models.Model):
          store=True
         )
     
-    refregachat=fields.Many2one(comodel_name='gctjara.regachat',string='Réf reglement')
+    refregachat=fields.Many2many(comodel_name='gctjara.regachat',string='Réf reglement')
+
     
     def getReglementID(self):
         if self.refregachat: 
@@ -173,70 +175,3 @@ class FactureAchat(models.Model):
        self.montantttc=mmttc
 
 
-class FactureAchatTemp(models.TransientModel):
-
-    _name = "gctjara.factureachatregle"
-    datevaleur=fields.Date(string='Date valeur')
-    dateoperation=fields.Date(string='Date opération')
-    dateecheance=fields.Date(string='Date écheance')
-
-    modepayment=fields.Selection(
-        string='Mode de payment',
-        default='',
-        selection=[
-            ('ch', 'Chèque'),
-            ('es', 'Espèce'),
-            ('vr', 'Virement'),
-            ('tr', 'Traite')
-        ]
-    )
-    etatrapp=fields.Selection(
-        string='Etat de rapprochement',
-        default='',
-        selection=[
-            ('db', 'A débiter'),
-            ('vs', 'A versé'),
-            ('rp', 'Rapproché'),
-        
-        ]
-    )
-    numerochq=fields.Char(string='Numero')
-    @api.multi
-    def Paiement(self):
-        for facture_id in self.env.context.get('active_ids'):
-            factures=self.env['gctjara.factureachat'].search([('id','=',facture_id)])
-           
-         
-            if(factures.etatreglement == u"Réglée"):
-                raise ValidationError('La facture numéro  ' + str(factures.numero) + ' est déja réglée')
-                return False
-                              
-            record=self.env['gctjara.regachat'].create({
-                  'numero' : self.env['ir.sequence'].next_by_code('gctjara.regachat.seq'),
-                  'date':fields.datetime.now(),
-                  'dateoperation':self.dateoperation,
-                  'datevaleur': self.datevaleur,
-                  'dateecheance':self.dateecheance,
-                  'tauxtva':'18',
-                  'prixht':factures.montant,
-                  'prixttc': factures.montantttc,
-                  'etatrapp':self.etatrapp,
-                  'modepayment':self.modepayment,
-                  'numerochq':self.numerochq,
-                  'facture_id':factures.id
-                   })
-            factures.etatreglement= 'Réglée'
-            factures.refregachat=record.id
-        return True
-    
-    
-class Attachment(models.Model):
-  
-     _inherit = 'ir.attachment'
-     _name = 'ir.attachment'
-       
-     factureachat = fields.Many2one(
-        'gctjara.factureachat',
-        string="Facture"
-    )   
-     

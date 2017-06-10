@@ -37,15 +37,14 @@
                                 <field name="dateecheance"/>
                             </group>
                             <group String="Opérations">
-                                <field name="tauxtva"/>
-                                <field name="prixht"/>
+
                                 <field name="prixttc"/>
                             </group>
 
                             <group string="Réglement">
                                 <field name="etatrapp" options="{'horizontal': true}" widget="radio"/>
                                 <field name="modepayment"/>
-                                <field name="facture_id"/>
+                                <field name="facture_id" widget="many2many_tags"/>
                                 <field name="numerochq"
                                        attrs="{'invisible': [('modepayment','!=','ch'),('modepayment','!=','tr')]}"/>
 
@@ -91,7 +90,6 @@
                     <field name="dateecheance"/>
                     <field name="etatrapp"/>
                     <field name="duration"/>
-                    <field name="prixht"/>
                     <field name="prixttc"/>
                     <field name="modepayment"/>
                     <field name="create_uid"/>
