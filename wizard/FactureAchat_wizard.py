@@ -61,7 +61,7 @@ class FactureAchatTemp(models.TransientModel):
                 'etatrapp': self.etatrapp,
                 'modepayment': self.modepayment,
                 'numerochq': self.numerochq,
-                'facture_id': factures.id
+                'facture_id': str(factures.id)
             })
 
             factures.write({'refregachat': [(4, record.id, False)], 'etatreglement': 'Réglée'})
@@ -117,7 +117,7 @@ class DefalquerFactureAchat(models.TransientModel):
                     'etatrapp': rec.etatrapp,
                     'modepayment': rec.modepayment,
                     'numerochq': rec.numerochq,
-                    'facture_id': records.id
+                    'facture_id': str(records.id)
                 })
                 list_reg += (record.id,)
             records.write({'etatreglement': 'Réglée'})

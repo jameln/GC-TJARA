@@ -221,12 +221,10 @@ class CommandeClient(models.Model):
     
      @api.multi
      def cmdclt_valider(self):
-         dict={}
-         dict.add(self.description)
-         dict.add('Commande client valide le: ' + fields.datetime.now().strftime('%d/%m/%Y %H:%M')+' par '+str(self.env.user.name))
+
          self.write({
             'state': 'va',
-            'description':dict,
+            'description':'Commande client valide le: ' + fields.datetime.now().strftime('%d/%m/%Y %H:%M')+' par '+str(self.env.user.name),
             })  
          self.create_bon_livraison()
          return True

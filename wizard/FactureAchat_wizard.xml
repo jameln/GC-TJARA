@@ -63,7 +63,7 @@
                                 <field name="dateecheance"/>
                                 <field name="modepayment"/>
                                 <field name="etatrapp"/>
-                                <field name="numerochq"/>
+                                <field name="numerochq"  attrs="{'readonly': [('modepayment','!=','ch'),('modepayment','!=','tr')]}"/>
 
                             </tree>
                         </field>

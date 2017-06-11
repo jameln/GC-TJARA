@@ -59,18 +59,16 @@ class FactureVenteTemp(models.TransientModel):
                 'dateoperation': self.dateoperation,
                 'datevaleur': self.datevaleur,
                 'daterecption': self.dateecheance,
-                'tauxtva': '18',
-                'prixht': factures.montant,
                 'prixttc': factures.montantttc,
                 'etatrapp': self.etatrapp,
                 'modepayment': self.modepayment,
                 'numerochq': self.numerochq,
-                'facture_id': factures.id
+                'facture_id': str(factures.id)
 
             })
 
-            factures.etatreglement = 'Réglée'
-            factures.refregvente = record.id
+            factures.write({'refregvente': [(4, record.id, False)], 'etatreglement': 'Réglée'})
+
 
         return True
 
@@ -107,14 +105,14 @@ class DefalquerFactureVente(models.TransientModel):
                 record = self.env['gctjara.regvente'].create({
                     'numero': self.env['ir.sequence'].next_by_code('gctjara.regvente.seq'),
                     'date': fields.datetime.now(),
-                    'dateoperation': self.dateoperation,
-                    'datevaleur': self.datevaleur,
-                    'daterecption': self.dateecheance,
+                    'dateoperation': rec.dateoperation,
+                    'datevaleur': rec.datevaleur,
+                    'daterecption': rec.dateecheance,
                     'prixttc': rec.montant_tranche,
                     'etatrapp': rec.etatrapp,
                     'modepayment': rec.modepayment,
                     'numerochq': rec.numerochq,
-                    'facture_id': records.id
+                    'facture_id': str(records.id)
                 })
                 list_reg += (record.id,)
             records.write({'etatreglement': 'Réglée'})
