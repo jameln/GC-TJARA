@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
+        <report file="gctjara.report_cmdclient" id="cmdclient_report"
+            model="gctjara.cmdclient" name="gc-tjara.report_cmdclient"
+            report_type="qweb-pdf" string="Commande client"/>
         <template id="report_cmdclient">
             <t t-call="report.html_container">
                 <t t-as="o" t-foreach="docs">
@@ -11,7 +14,8 @@
                                 <span t-field="o.numerocmdc"/>
                             </h3>
                             <div class="col-xs-6 pull-left">
-                                <p>
+                                <p style=" border-color:#0C6592; border: 2px dotted black;
+                                    padding: 35px; background: #F7F7F0; border-radius: 10px;">
                                     Crée le :
                                     <span t-field="o.datecommande"/>
                                     <br/>

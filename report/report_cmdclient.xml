@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-<data>
-    <report file="gctjara.report_cmdclient" id="cmdclient_report"
-            model="gctjara.cmdclient" name="gc-tjara.report_cmdclient"
-            report_type="qweb-pdf" string="Commande client"/>
-            
-</data>
-</odoo>

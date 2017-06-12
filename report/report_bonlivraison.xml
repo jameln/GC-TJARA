@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-<data>
-    <report file="gctjara.report_bonlivraison" id="bonlivraison_report"
-            model="gctjara.bonlivraison" name="gc-tjara.report_bonlivraison"
-            report_type="qweb-pdf" string="Bon de livraison"/>
-            
-</data>
-</odoo>

@@ -65,7 +65,7 @@
                                     <label
                                             class="oe_subtotal_footer_separator" string="Montant TTC"/>
 
-                                    <field name="montantttc" nolabel="1"/><field name="currency_id" nolabel="1" readonly="1"/>
+                                    <field name="montantttc" nolabel="0"/><field name="currency_id" nolabel="1" readonly="1"/>
                                 </group>
                             </page>
                             <page class="oe_page_Title" string="Attachement">
@@ -117,13 +117,13 @@
             <field name="name">facturevente.tree</field>
             <field name="model">gctjara.facturevente</field>
             <field name="arch" type="xml">
-                <tree string="Factures ">
+                <tree string="Factures " delete="false">
                     <field name="numero"/>
                     <field name="datefact"/>
                     <field name="client_id"/>
                     <field name="bonlivraison_id"/>
                     <field name="etatreglement"/>
-                    <field name="refregvente"/>
+                    <field name="refregvente"  />
                      <field name="montant" sum="True"/>
                     <field name="montantttc" sum="True"/>
                     <field name="create_uid"/>

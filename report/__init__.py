@@ -1,2 +1,2 @@
-# import report_factureachat
-# import report_facturevente
+# -*- coding: utf-8 -*-
+

@@ -2,6 +2,7 @@
 from odoo.exceptions import ValidationError
 from odoo import models, fields, api
 from datetime import datetime
+from collections import defaultdict, Counter
 
 
 class FactureAchat(models.Model):
@@ -27,6 +28,13 @@ class FactureAchat(models.Model):
         default=fields.datetime.now(),
         help='La date de création de la facture'
     )
+    nbrreg=fields.Char(string='Nombre de reg',compute='tot_reg')
+
+    @api.one
+    @api.depends("refregachat")
+    def tot_reg(self):
+       self.nbrreg=str(len(self.refregachat))
+
     
     datepayfact = fields.Date(
         string='Date payment',
@@ -121,11 +129,11 @@ class FactureAchat(models.Model):
 
     
     def getReglementID(self):
-        if self.refregachat: 
+        for reg in self.refregachat :
             return {
                 'name' : 'Règlement',
                 'res_model':'gctjara.regachat',
-                'res_id':self.refregachat.id,
+                'res_id':reg.id,
                 'view_type':'form',
                 'view_mode':'form',
                 'type':'ir.actions.act_window'

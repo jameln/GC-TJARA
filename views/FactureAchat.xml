@@ -157,6 +157,8 @@
                     <field name="datepayfact"/>
                     <field name="attachment"/>
                     <field name="etatreglement"/>
+                    <field name="refregachat"/>
+
                     <button type="object" name="getReglementID" icon="fa-bars"
                             attrs="{'invisible':[('etatreglement','!=', 'Réglée')]}"/>
                     <field name="montant" sum="True"/>

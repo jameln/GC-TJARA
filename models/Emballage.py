@@ -26,7 +26,7 @@ class Emballage(models.Model):
         selection=[
             ('KG', 'KG'),
             ('L', 'L'),
-            ('Pièce', 'Pièce'),
+            ('Piece', 'Pièce'),
             ('M', 'M'),
         
         ],

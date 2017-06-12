@@ -92,7 +92,7 @@
             <field name="model">gctjara.client</field>
             <field name="arch" type="xml">
                 <tree string="Client">
-                    <field name="name"/>
+                    <field name="name"  widget="handle" />
                     <field name="company_name"/>
                     <field name="email"/>
                     <field name="phone"/>
