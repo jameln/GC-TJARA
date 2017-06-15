@@ -17,7 +17,7 @@ class LigneProduitEmballage(models.Model):
     def _compute_name(self):
         for r in self:
             if(isinstance(r.produit_id.name , unicode)) and isinstance(r.emballage_id.name,unicode)and isinstance(r.emballage_id.unite,unicode):
-                r.name= r.produit_id.name + " "+ r.emballage_id.name+" "+r.emballage_id.unite
+                r.name= r.produit_id.name + " "+ (r.emballage_id.name).strip()+" "+r.emballage_id.unite
                
    
     @api.one     
@@ -73,13 +73,13 @@ class LigneProduitEmballage(models.Model):
      )
     
     lignecmd_id = fields.One2many(
-        string='Commandes',
+        string='Commandes Achats',
         comodel_name='gctjara.lignecmdachat',
         inverse_name='embalageproduit_id'
                         )  
     
     lignecmdvente_id = fields.One2many(
-        string='Commandes',
+        string='Commandes Ventes',
         comodel_name='gctjara.lignecmdvente',
         inverse_name='embalageproduit_id'
                         )  

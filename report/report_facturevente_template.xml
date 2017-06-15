@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-          <report file="gctjara.report_facturevente" id="facturevente_report"
-            model="gctjara.facturevente" name="gc-tjara.report_facturevente"
-            report_type="qweb-pdf" string="Factures de vente"/>
+        <report file="gctjara.report_facturevente" id="facturevente_report"
+                model="gctjara.facturevente" name="gc-tjara.report_facturevente"
+                report_type="qweb-pdf" string="Factures de vente"/>
 
         <template id="report_facturevente">
             <t t-call="report.html_container">
@@ -16,7 +16,8 @@
                             </h3>
                             <div class="col-xs-6 pull-left">
 
-                                <p>
+                                <p style=" border-color:#0C6592; border: 2px dotted black;
+                                    padding: 35px; background: #F7F7F0; border-radius: 10px;">
                                     Crée le :
                                     <span t-field="o.datefact"/>
                                     <br/>
@@ -29,7 +30,8 @@
                             </div>
 
 
-                            <table class="table table-condensed">
+                            <table class="table table-condensed" style=" border-color:#0C6592; border: 2px dotted black;
+                                    padding: 35px; background: #F7F7F0; border-radius: 10px;">
                                 <thead style="border:solid 2px; border-color:#0C6592">
                                     <tr>
 
@@ -76,8 +78,9 @@
 
                             <div class="row" name="total">
                                 <div class="col-xs-4 pull-right">
-                                    <table class="table table-condensed" style="border:solid 2px; border-color:#0C6592">
-                                        <tr class="border-black">
+                                    <table class="table table-condensed" style=" border-color:#0C6592; border: 2px dotted black;
+                                    padding: 35px; background: #F7F7F0; border-radius: 10px;">
+                                        <tr class="border-black" style="border:solid 2px; border-color:#0C6592">
                                             <td>
                                                 <strong>Montant HT</strong>
                                             </td>
@@ -87,17 +90,17 @@
                                             <br/>
                                         </tr>
 
-                                        <tr class="border-black">
+                                        <tr class="border-black" style="border:solid 2px; border-color:#0C6592">
                                             <td>
-                                                <strong>Montant</strong>
+                                                <strong>Montant TVA</strong>
                                             </td>
                                             <td class="text-right">
-                                                <span t-field="o.montant"/>
+                                                <span t-field="o.montanttva"/>
                                             </td>
                                             <br/>
                                         </tr>
 
-                                        <tr class="border-black">
+                                        <tr class="border-black" style="border:solid 2px; border-color:#0C6592">
                                             <td>
                                                 <strong>Remise</strong>
                                             </td>
@@ -108,7 +111,7 @@
                                         </tr>
 
 
-                                        <tr class="border-black">
+                                        <tr class="border-black" style="border:solid 2px; border-color:#0C6592">
                                             <td>
                                                 <strong>Timbre</strong>
                                             </td>
@@ -119,7 +122,7 @@
                                         </tr>
 
 
-                                        <tr class="border-black">
+                                        <tr class="border-black" style="border:solid 2px; border-color:#0C6592">
                                             <td>
                                                 <strong>Montant TTC</strong>
                                             </td>
@@ -135,16 +138,17 @@
                             </div>
 
 
-                        <br/>
-                        <br/>
-                        <div class="col-xs-6 pull-left">
-                            <p >
-                                <strong>ARRETEE LE PRESENT FACTURE DE VENTE A LA SOMME DE:</strong>
-                                <br/>
-                                <span t-field="o.amount_to_text"/>
-                            </p>
+                            <br/>
+                            <br/>
+                            <div class="col-xs-6 pull-left" style=" border-color:#0C6592; border: 2px dotted black;
+                                    padding: 35px; background: #F7F7F0; border-radius: 10px;">
+                                <p>
+                                    <strong>ARRETEE LE PRESENT FACTURE DE VENTE A LA SOMME DE:</strong>
+                                    <br/>
+                                    <span t-field="o.amount_to_text"/>
+                                </p>
+                            </div>
                         </div>
- </div>
 
                     </t>
 

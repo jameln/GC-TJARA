@@ -65,7 +65,7 @@
                                     <newline/>
                                     <field name="prix_ht" nolabel="0"/>
                                     <newline/>
-                                    <field name="montant" nolabel="0"/>
+                                    <field name="montanttva" nolabel="0"/>
                                     <newline/>
                                     <field name="montantremise" nolabel="0"/>
 
@@ -151,7 +151,7 @@
             <field name="name">factureachat.tree</field>
             <field name="model">gctjara.factureachat</field>
             <field name="arch" type="xml">
-                <tree string="Factures " create="false">
+                <tree string="Factures " create="false" decoration-info="etatreglement == 'false'" decoration-success="etatreglement == 'Réglée'">
                     <field name="numero"/>
                     <field name="datefact"/>
                     <field name="datepayfact"/>

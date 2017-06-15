@@ -53,12 +53,12 @@ class LigneFactureAchat(models.Model):
     tva = fields.Float(
         string='TVA (%)',
         default='6',
-        digits=(16, 1),
+        digits=(16, 0),
     )
     remise = fields.Float(
         string='Remise (%)',
         default='0.0',
-        digits=(16, 1),
+        digits=(16, 0),
 
     )
 

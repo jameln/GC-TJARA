@@ -99,6 +99,7 @@ class FactureAchat(models.Model):
     timbre=fields.Float(
         string ='Timbre',
         default=0.5,
+        digits=(16, 3),
         store=True
         )
     
@@ -147,7 +148,14 @@ class FactureAchat(models.Model):
     )
 
     montantremise = fields.Float(
-        string='Remise',
+        string='Remise ',
+        compute='montant_totale',
+        digits=(16, 3),
+        default=0.0,
+        store=True
+    )
+    montanttva= fields.Float(
+        string='TVA',
         compute='montant_totale',
         digits=(16, 3),
         default=0.0,
@@ -167,12 +175,16 @@ class FactureAchat(models.Model):
     def montant_totale(self):
        montanttot=0
        montantremise=0
+       montanttva=0
        for rec in self :
            for lfa in rec.lignefact_id:
                    montanttot +=   lfa.prix_total
-                   montantremise+=lfa.prix_ht*(float(lfa.remise/100))
-       self.montant=montanttot
-       self.montantremise=montantremise
+                   montantremise+= lfa.prix_ht*(float(lfa.remise/100))
+                   montanttva += (lfa.prix_ht * (1 - (float(lfa.remise / 100)))) * (float(lfa.tva / 100))
+
+           rec.montant=montanttot
+           rec.montantremise=montantremise
+           rec.montanttva=  montanttva
 
     @api.one
     @api.depends("montant")

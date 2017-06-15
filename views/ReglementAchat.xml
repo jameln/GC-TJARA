@@ -125,11 +125,12 @@
             <field name="arch" type="xml">
                 <gantt string="Reg achat Gantt" color="etatrapp"
                        date_start="date" date_delay="duration"
-                       default_group_by='modepayment'>
+                       default_group_by='modepayment' drag_resize='true'>
                     <field name="numero"/>
                 </gantt>
             </field>
         </record>
+        
     </data>
 </odoo>
 

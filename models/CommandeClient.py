@@ -56,10 +56,29 @@ class CommandeClient(models.Model):
          String='Description'
          )
 
-     valid = fields.Boolean(
-        string='Ne pas annuler',
-        default=False
-    )
+     valid = fields.Selection(
+         string="Etat",
+         required=True,
+         selection=[
+             ('Confirme', 'Confirmé'),
+             ('NonConfirme', 'Non Confirmé')
+         ],
+         default='NonConfirme'
+     )
+     valid_bool = fields.Boolean(compute="_valid_bool")
+
+     @api.one
+     def toggle_valid(self):
+         if self.valid == 'Confirme':
+             self.valid = 'NonConfirme'
+         else:
+             self.valid = 'Confirme'
+         return True
+
+     @api.depends("valid")
+     def _valid_bool(self):
+         for v in self:
+             v.valid_bool = (v.valid != 'NonConfirme')
      
      client_id = fields.Many2one(
           string="Client",
@@ -138,21 +157,27 @@ class CommandeClient(models.Model):
          store=True
      )
 
+
+
      @api.multi
      @api.depends("lignecmd_id")
      def _montant_totale(self):
-         montanttot = 0
-         montantht = 0
-         montantremise = 0
+         print("0.01")
          for rec in self:
+             montanttot = 0
+             montantht = 0
+             montantremise = 0
+             montanttva = 0
              for lca in rec.lignecmd_id:
+                 print("0.02")
                  montanttot += lca.prix_total
                  montantht += lca.prix_ht
                  montantremise += lca.prix_ht * (float(lca.remise / 100))
-         self.montant = montanttot
-         self.montant_ht = montantht
-         self.montanttva = montanttot - montantht
-         self.montantremise = montantremise
+                 montanttva += (lca.prix_ht * (1 - (float(lca.remise / 100)))) * (float(lca.tva / 100))
+             rec.montant = montanttot
+             rec.montant_ht = montantht
+             rec.montanttva = montanttva
+             rec.montantremise = montantremise
 
      def write(self, values):
         print values
@@ -234,7 +259,7 @@ class CommandeClient(models.Model):
         return True
     
      def cmdclt_annuler(self):
-        if self.valid:
+        if self.valid=="Confirme":
             raise ValidationError("Cette commande client est verouillee!")
         self.write({'state': 'an'})
         return True

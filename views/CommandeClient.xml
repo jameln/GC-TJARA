@@ -24,11 +24,19 @@
                                statusbar_visible="br,va,tr,an" widget="statusbar"/>
                     </header>
                     <sheet>
-                      <div class="oe_button_box" name="button_box" 
-                           style="font-weight: bold; font-size: 16px;">
-                         
-                          <span> Confirmé </span><field name="valid" />
-                      </div>
+
+                          <div class="oe_button_box" name="button_box">
+
+
+                               <button name="toggle_valid" type="object" class="oe_stat_button oe_read_only" icon="fa-check" style="font-weight: bold; font-size: 16px;">
+                                <field name="valid_bool" widget="boolean_button" options='{"terminology": {
+                                    "string_true": "Confirmé",
+                                    "hover_true": "Non Confirme",
+                                    "string_false": "Non Confirme",
+                                    "hover_false": "Confirmé"
+                                }}'/>
+                                </button>
+                            </div>
                         <group col="2" class="header">
                             <group>
                                 <field name="numerocmdc"/>
@@ -68,8 +76,9 @@
                                 <group class="oe_subtotal_footer">
                                                                       
                                     <field name="montant_ht"/>
-                                    <field name="montanttva" />
                                     <field name="montantremise"/>
+                                    <field name="montanttva" />
+
                                      <label class="oe_subtotal_footer_separator" string="Montant TTC"/> 
                                     <field name="montant"  nolabel="1"/>
 
@@ -150,6 +159,9 @@
             <field name="res_model">gctjara.cmdclient</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,search</field>
+              <field name="context"
+                   eval="{'search_default_filter': 1,'search_default_by_state': 1}"/>
+
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Créer la première commande</p>
             </field>

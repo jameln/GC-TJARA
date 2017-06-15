@@ -15,13 +15,18 @@
                             <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
                                 <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;active&quot;}"/>
                             </button>
-                        </div>
 
-                         <div class="oe_button_box" name="button_box"
-                           style="font-weight: bold; font-size: 16px;">
+                          <!--<span class="oe_stat_button" >  Agréé  <field name="Agree" /> </span>-->
 
-                          <span> Fournisseur Agréé </span><field name="Agree" />
-                      </div>
+                               <button name="toggle_state" type="object" class="oe_stat_button oe_read_only" icon="fa-check-square-o" style="font-weight: bold; font-size: 16px;">
+                                <field name="state_bool" widget="boolean_button" options='{"terminology": {
+                                    "string_true": "Agrée",
+                                    "hover_true": "Non Agrée",
+                                    "string_false": "Non Agrée",
+                                    "hover_false": "Agrée"
+                                }}'/>
+                                </button>
+                            </div>
 
                         <group>
                             <field class="oe_left oe_avatar" name="image" widget="image"/>
@@ -108,7 +113,7 @@
             <field name="model">gctjara.fournisseur</field>
             <field name="arch" type="xml">
                 <tree string="Fournisseur">
-                    <field name="name"/>
+                    <field name="name" widget="handle"/>
                     <field name="company_name"/>
                     <field name="email"/>
                     <field name="phone"/>

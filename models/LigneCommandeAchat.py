@@ -71,17 +71,7 @@ class LigneCommandeAchat(models.Model):
          string='Produits'
      )
 
-    tva = fields.Float(
-        string='TVA (%)',
-        default='6',
-        digits=(16, 1),
-    )
-    remise = fields.Float(
-        string='Remise (%)',
-        default='0.0',
-        digits=(16, 1),
 
-    )
     @api.multi
     @api.constrains("remise","quantite")
     def verif_remise(self):
@@ -100,11 +90,9 @@ class LigneCommandeAchat(models.Model):
             remise= float(pe.remise)/100
             tauxtva=float(pe.tva)/100
             prixht=pe.quantite * pe.embalageproduit_id.prixunit #*pe.embalageproduit_id.emballage_id.poids
-            print ("tva ===> "+str(tauxtva))
-            print("prixht ==>" + str(prixht))
             pe.prix_ht=prixht
             prix_remise=prixht*(1-remise)
-            pe.prix_total =(prix_remise*(1+tauxtva))
+            pe.prix_total =(prixht*(1-remise))*(1+tauxtva)
             
     prix_total = fields.Float(
         string='Prix Tot',

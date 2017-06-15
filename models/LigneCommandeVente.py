@@ -45,7 +45,7 @@ class LigneCommandeVente(models.Model):
     remise = fields.Float(
         string='Remise (%)',
         default='0.0',
-        digits=(16, 1),
+        digits=(16, 0),
 
     )
     @api.depends('embalageproduit_id')

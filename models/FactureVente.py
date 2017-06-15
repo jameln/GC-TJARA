@@ -157,23 +157,37 @@ class FactureVente(models.Model):
          store=True
      )
 
+     montanttva  = fields.Float(
+         string='TVA',
+         compute='_montant_totale',
+         digits=(16, 3),
+         default=0.0,
+         store=True
+     )
+
 
      @api.multi
      @api.depends("lignefact_id")
      def _montant_totale(self):
-        montanttot=0
-        mht=0
-        montantremise=0
-        for lfa in self.lignefact_id:
-               montanttot = montanttot + lfa.prix_total 
-               mht+= lfa.prix_ht
-               montantremise += lfa.prix_ht * (float(lfa.remise / 100))
-        self.montant=montanttot
-        self.montantht=mht
-        self.montantremise=montantremise
+         for rec in self :
+
+            montanttot=0
+            mht=0
+            montantremise=0
+            montanttva=0
+            for lfa in rec.lignefact_id:
+                   montanttot = montanttot + lfa.prix_total
+                   mht+= lfa.prix_ht
+                   montantremise += lfa.prix_ht * (float(lfa.remise / 100))
+                   montanttva +=  (lfa.prix_ht * (1-float(lfa.remise / 100)))*(float(lfa.tva / 100))
+
+            rec.montant=montanttot
+            rec.montantht=mht
+            rec.montantremise=montantremise
+            rec.montanttva=montanttva
 
      @api.one
-     @api.depends("montant")
+     @api.depends("montant","timbre")
      def _montant_ttc(self):
        mmttc=0
        for mnt in self:

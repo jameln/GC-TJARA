@@ -38,7 +38,26 @@ class Fournisseur(models.Model):
      
      active = fields.Boolean(default=True)
 
-     Agree = fields.Boolean(string='Fournisseur Agréé' ,default=False)
+     # Agree = fields.Boolean(string='Fournisseur Agréé' ,default=False)
+
+     state = fields.Selection(string="Etat", required=True, selection=[
+         ('Agree', 'Agrée'),
+         ('NonAgree', 'Non Agrée')
+     ], default='marche')
+     state_bool = fields.Boolean(compute="_state_bool")
+
+     @api.one
+     def toggle_state(self):
+         if self.state == 'Agree':
+             self.state = 'NonAgree'
+         else:
+             self.state = 'Agree'
+         return True
+
+     @api.depends("state")
+     def _state_bool(self):
+         for v in self:
+             v.state_bool = (v.state != 'NonAgree')
 
       
      commande_id = fields.One2many(

@@ -25,10 +25,10 @@ class Produits(models.Model):
         size=50
         )
 
-    dateexpiration = fields.Datetime(
-        string='Date Expiration',
-        default=fields.datetime.now(),
-        )
+    # dateexpiration = fields.Datetime(
+    #     string='Date Expiration',
+    #     default=fields.datetime.now(),
+    #     )
     
     description = fields.Text(
         string='Description'

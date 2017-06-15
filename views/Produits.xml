@@ -22,11 +22,11 @@
 
                         </header> -->
                     <sheet>
-                        <group col="2">
+                        <group col="2" class="header">
                             <group String="Produits">
                                 <field name="name"/>
                                 <field name="code"/>
-                                <field name="dateexpiration"/>
+                                <!--<field name="dateexpiration"/>-->
                             </group>
                             <group String="Prix">
                                 <field name="prixunit"/>
@@ -79,7 +79,7 @@
                 <tree string="Poduits">
                     <field name="name"/>
                     <field name="code"/>
-                    <field name="dateexpiration"/>
+                    <!--<field name="dateexpiration"/>-->
                     <field name="prixunit"/>
                     <field name="prixvente"/>
                 </tree>
